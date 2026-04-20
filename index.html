@@ -493,6 +493,8 @@
   }
   .bonus-btn.active .bonus-icon { filter: none; }
   .bonus-note { font-size: 11px; color: var(--ink-3); margin-top: 8px; font-style: italic; }
+  /* Year-end spans the full grid width */
+  .bonus-btn--yearend { grid-column: 1 / -1; }
 
   /* ── BONUS RESULTS BAR ── */
   .bonus-bar {
@@ -542,6 +544,22 @@
   .insight-box strong { color: var(--g-pale-3); font-weight: 600; }
 
   /* ── RECALC BUTTON ── */
+  /* Year-end cash gift callout */
+  .yearend-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: var(--g-pale);
+    border: 1.5px solid var(--g-pale-3);
+    border-left: 4px solid var(--g-mid);
+    border-radius: var(--r-sm);
+    padding: 14px 16px;
+    margin-top: 10px;
+  }
+  .yearend-icon { font-size: 22px; flex-shrink: 0; line-height: 1.3; }
+  .yearend-text { font-size: 13px; color: var(--ink-2); line-height: 1.55; }
+  .yearend-text strong { color: var(--g-dark); font-size: 15px; display: block; margin-bottom: 3px; }
+
   .recalc-btn {
     width: 100%;
     padding: 14px;
@@ -920,6 +938,14 @@
           <span class="bonus-icon">⏰</span>
           <span>Squeezed Me In<br><small style="font-weight:400;color:var(--ink-3)">+3% suggested</small></span>
         </button>
+        <button class="bonus-btn" data-bonus="0.05" data-key="outstanding" type="button">
+          <span class="bonus-icon">✨</span>
+          <span>Truly Outstanding<br><small style="font-weight:400;color:var(--ink-3)">+5% suggested</small></span>
+        </button>
+        <button class="bonus-btn bonus-btn--yearend" data-key="yearend" type="button" id="yearendBtn">
+          <span class="bonus-icon">🎁</span>
+          <span>Year-End Bonus<br><small id="yearendLabel" style="font-weight:400;color:var(--ink-3)">= 1 full service</small></span>
+        </button>
 
       </div>
       <p class="bonus-note" id="bonusNote" style="display:none"></p>
@@ -1263,19 +1289,35 @@ updateSlider();
 // ─────────────────────────────────────────────────────────────────────────────
 // ── BONUS TOGGLES ────────────────────────────────────────────────────────────
 const bonusLabels = {
-  holiday: 'Holiday / Christmas bonus included',
-  baby:    'New baby celebration bonus included',
-  squeeze: 'Last-minute squeeze-in bonus included'
+  holiday:     'Holiday / Christmas bonus included',
+  baby:        'New baby celebration bonus included',
+  squeeze:     'Last-minute squeeze-in bonus included',
+  outstanding: 'Truly Outstanding results bonus included',
+  yearend:     'Year-end bonus (1 full service) included'
 };
+// Update year-end button label whenever price changes
+function updateYearendLabel() {
+  const price = parseFloat(document.getElementById('priceInput').value);
+  const lbl = document.getElementById('yearendLabel');
+  if (lbl) {
+    lbl.textContent = price >= 1 ? '+ $' + Math.round(price) + ' cash bonus' : '= 1 full service';
+  }
+}
+document.getElementById('priceInput').addEventListener('input', updateYearendLabel);
+
 document.getElementById('bonusGroup').querySelectorAll('.bonus-btn').forEach(btn => {
   btn.addEventListener('click', () => {
-    const key   = btn.dataset.key;
-    const frac  = parseFloat(btn.dataset.bonus);
-    if (selectedBonuses[key]) {
+    const key  = btn.dataset.key;
+    if (selectedBonuses[key] !== undefined) {
       delete selectedBonuses[key];
       btn.classList.remove('active');
     } else {
-      selectedBonuses[key] = frac;
+      if (key === 'yearend') {
+        // Store as a special sentinel; actual dollar amount resolved at calculate time
+        selectedBonuses[key] = 'YEAREND';
+      } else {
+        selectedBonuses[key] = parseFloat(btn.dataset.bonus);
+      }
       btn.classList.add('active');
     }
     const keys = Object.keys(selectedBonuses);
@@ -1381,7 +1423,13 @@ function calculate() {
   const adjusted = baseRate + durationAdj + clientAdj;
 
   // ── BONUS OCCASIONS ────────────────────────────────────────────────────────
-  const bonusTotal = Object.values(selectedBonuses).reduce((s, v) => s + v, 0);
+  // Percentage bonuses (holiday, baby, squeeze) added to all tip tiers
+  const bonusPctTotal = Object.entries(selectedBonuses)
+    .filter(([k]) => k !== 'yearend')
+    .reduce((s, [, v]) => s + v, 0);
+  // Year-end flat bonus: one full service charge (separate cash gift, shown in results)
+  const yearendFlat = selectedBonuses['yearend'] === 'YEAREND' ? price : 0;
+  const bonusTotal  = bonusPctTotal;  // only pct bonuses affect the tip tiers
 
   // ── TIER CALCULATION BY STAR RATING ───────────────────────────────────────
   let acceptablePct, goodPct, betterPct, bestPct;
@@ -1472,11 +1520,13 @@ function calculate() {
   ];
 
   // ── BONUS BAR (shown once above the grid when any bonus is active) ──────────
-  const bonusIcons = { holiday: '🎄', baby: '👶', squeeze: '⏰' };
-  const bonusFriendly = { holiday: 'Holiday', baby: 'New Baby', squeeze: 'Squeezed Me In' };
+  const bonusIcons = { holiday: '🎄', baby: '👶', squeeze: '⏰', outstanding: '✨', yearend: '🎁' };
+  const bonusFriendly = { holiday: 'Holiday', baby: 'New Baby', squeeze: 'Squeezed Me In', outstanding: 'Truly Outstanding', yearend: 'Year-End Bonus' };
   const activeKeys = Object.keys(selectedBonuses);
   const bonusIconString = activeKeys.map(k => bonusIcons[k]).join('');
-  const bonusDollar = bonusTotal > 0 ? '+$' + Math.round(price * bonusTotal) + ' bonus' : '';
+  const pctDollar   = bonusPctTotal > 0 ? '+$' + Math.round(price * bonusPctTotal) : '';
+  const yearDollar  = yearendFlat > 0 ? '+$' + Math.round(yearendFlat) + ' cash' : '';
+  const bonusDollar = [pctDollar, yearDollar].filter(Boolean).join(' · ') || '';
 
   if (activeKeys.length) {
     const bar = document.createElement('div');
@@ -1576,10 +1626,12 @@ function calculate() {
                      : localIncome >= 74000  ? 'above the national average'
                      : localIncome >= 55000  ? 'near the national average'
                      : 'below the national average';
-  const bonusNames = { holiday: 'holiday', baby: 'new baby', squeeze: 'last-minute squeeze-in' };
+  const bonusNames = { holiday: 'holiday', baby: 'new baby', squeeze: 'last-minute squeeze-in', outstanding: 'truly outstanding results', yearend: 'year-end service bonus' };
   const bonusKeys  = Object.keys(selectedBonuses);
+  const pctKeys    = bonusKeys.filter(k => k !== 'yearend');
   const bonusInsight = bonusKeys.length
-    ? ' A ' + bonusKeys.map(k => bonusNames[k]).join(' + ') + ' bonus has been added to all suggestions.'
+    ? (pctKeys.length ? ' A ' + pctKeys.map(k => bonusNames[k]).join(' + ') + ' bonus has been added to all tip suggestions.' : '')
+      + (yearendFlat > 0 ? ' A separate year-end cash gift of $' + Math.round(yearendFlat) + ' (one full service) is also shown below.' : '')
     : '';
   const durationNote = duration >= 120 ? ' Your long appointment is factored in.'
                      : duration >= 90  ? ' Time in the chair is reflected in your suggestions.'
@@ -1598,6 +1650,28 @@ function calculate() {
     '. Your suggestions are calibrated to what feels appropriate in this area.' +
     durationNote + bonusInsight + fallbackNote
   ));
+
+  // Year-end cash gift callout box
+  const prevYearBox = document.getElementById('yearendBox');
+  if (prevYearBox) prevYearBox.remove();
+  if (yearendFlat > 0) {
+    const yBox = document.createElement('div');
+    yBox.id = 'yearendBox';
+    yBox.className = 'yearend-box';
+    const yIcon = document.createElement('span');
+    yIcon.className = 'yearend-icon';
+    yIcon.textContent = '🎁';
+    const yText = document.createElement('div');
+    yText.className = 'yearend-text';
+    const yStrong = document.createElement('strong');
+    yStrong.textContent = 'Year-End Cash Gift: $' + Math.round(yearendFlat);
+    const yDesc = document.createTextNode(' — Give this directly to your stylist, separate from your visit tip. This is in addition to whichever tip above you choose.');
+    yText.appendChild(yStrong);
+    yText.appendChild(yDesc);
+    yBox.appendChild(yIcon);
+    yBox.appendChild(yText);
+    insight.parentNode.insertBefore(yBox, insight.nextSibling);
+  }
 
   // ── SHOW RESULTS ───────────────────────────────────────────────────────────
   document.getElementById('resultCity').textContent =
