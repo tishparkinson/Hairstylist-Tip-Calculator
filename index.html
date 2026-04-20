@@ -1387,10 +1387,13 @@ function calculate() {
   let acceptablePct, goodPct, betterPct, bestPct;
 
   if (selectedStars <= 2) {
-    acceptablePct = Math.max(0.10, adjusted - 0.07);
-    goodPct       = Math.max(0.13, adjusted - 0.04);
-    betterPct     = adjusted - 0.01;
-    bestPct       = adjusted + 0.02;
+    // Unhappy: minimum anchors to location-only base, capped at 15%
+    // Duration, client type, and high-income premiums don't inflate a dissatisfied tip
+    const unhappyBase = Math.max(0.10, Math.min(0.15, baseRate - 0.05));
+    acceptablePct = unhappyBase;
+    goodPct       = Math.max(unhappyBase + 0.03, adjusted - 0.06);
+    betterPct     = adjusted - 0.02;
+    bestPct       = adjusted + 0.01;
   } else if (selectedStars === 3) {
     acceptablePct = Math.max(0.12, adjusted - 0.05);
     goodPct       = adjusted - 0.02;
