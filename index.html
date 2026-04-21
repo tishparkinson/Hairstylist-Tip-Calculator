@@ -3,1685 +3,497 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How Much to Tip Hairdresser? (2025 Hair Stylist Tip Calculator)</title>
-<meta name="description" content="US hair stylist tip calculator. Find the right tip for your hairdresser based on your city's local income data. Covers every US city — fast, free, no signup.">
+<title>GeoTipper — How Much to Tip? US Tip Calculators by City (2025)</title>
+<meta name="description" content="Free US tipping calculators for every service — calibrated to your city, not a national average. Hair stylist, barber, restaurant, massage, movers, rideshare, and more.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --bg:         #F2F1ED;
-    --surface:    #FDFCFA;
-    --ink:        #111111;
-    --ink-2:      #2A2A2A;       /* high-contrast body text */
-    --ink-3:      #4A4A4A;       /* muted — still AA-compliant on white */
-    --rule:       #DEDAD5;
-    /* green hierarchy — one family, four weights */
-    --g-dark:     #1E4D35;       /* darkest: best label bg, header accent */
-    --g-mid:      #2E6B4A;       /* mid: better label, accent */
-    --g-soft:     #3D8A5F;       /* soft: good label, slider, stars */
-    --g-pale:     #E6F2EC;       /* pale: tint backgrounds */
-    --g-pale-2:   #D0E9DA;       /* slightly deeper tint */
-    --g-pale-3:   #B8DCCA;       /* border accent */
-    --shadow-sm:  0 1px 4px rgba(0,0,0,0.06);
-    --shadow-md:  0 4px 20px rgba(0,0,0,0.09);
-    --shadow-lg:  0 12px 40px rgba(0,0,0,0.13);
-    --r:          14px;
-    --r-sm:       9px;
-    --serif:      'DM Serif Display', Georgia, serif;
-    --sans:       'Inter', system-ui, sans-serif;
-  }
-
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: var(--sans);
-    font-size: 15px;
-    line-height: 1.6;
-    min-height: 100vh;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* ── HEADER ── */
-  .header {
-    background: var(--ink);
-    padding: 52px 24px 44px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .header::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 60% 80% at 15% 50%, rgba(61,107,79,0.18) 0%, transparent 70%),
-                radial-gradient(ellipse 50% 60% at 85% 25%, rgba(61,107,79,0.10) 0%, transparent 60%);
-    pointer-events: none;
-  }
-  .header-scissor { font-size: 24px; margin-bottom: 14px; display: block; letter-spacing: 0.05em; }
-  .header h1 {
-    font-family: var(--serif);
-    font-size: clamp(30px, 6vw, 48px);
-    font-weight: 600;
-    color: #FDFCFA;
-    line-height: 1.15;
-    margin-bottom: 12px;
-    letter-spacing: -0.01em;
-  }
-  .header h1 em {
-    font-style: italic;
-    color: #A8C9B4;
-    font-weight: 400;
-  }
-  .header p {
-    color: rgba(253,252,250,0.55);
-    font-size: 14px;
-    font-weight: 300;
-    max-width: 400px;
-    margin: 0 auto;
-    letter-spacing: 0.01em;
-  }
-  .header-answer {
-    color: rgba(253,252,250,0.82) !important;
-    font-size: 14px !important;
-    font-weight: 400 !important;
-    max-width: 460px !important;
-    line-height: 1.65 !important;
-    margin: 0 auto !important;
-  }
-  .header-answer strong { color: #A8C9B4; font-weight: 600; }
-
-  /* ── LAYOUT ── */
-  .main { max-width: 600px; margin: 0 auto; padding: 28px 14px 60px; }
-
-  .card {
-    background: var(--surface);
-    border-radius: var(--r);
-    border: 1px solid var(--rule);
-    box-shadow: var(--shadow-md);
-    padding: 26px 22px;
-    margin-bottom: 14px;
-  }
-
-  /* ── SECTION LABEL ── */
-  .section-label {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--g-mid);
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
-
-  /* ── FORM FIELDS ── */
-  .field { margin-bottom: 20px; }
-  .field:last-child { margin-bottom: 0; }
-
-  label {
-    display: block;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--ink-2);
-    margin-bottom: 6px;
-    letter-spacing: 0.01em;
-  }
-
-  input[type="text"],
-  input[type="number"] {
-    width: 100%;
-    padding: 13px 15px;
-    border: 1.5px solid var(--rule);
-    border-radius: var(--r-sm);
-    font-family: var(--sans);
-    font-size: 16px;
-    color: var(--ink);
-    background: #FAFAF8;
-    outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    -webkit-appearance: none;
-  }
-  input:focus {
-    border-color: var(--g-mid);
-    box-shadow: 0 0 0 3px rgba(46,107,74,0.13);
-    background: #fff;
-  }
-  input::placeholder { color: #BDBDB8; }
-
-  .input-prefix-wrap { position: relative; }
-  .input-prefix {
-    position: absolute; left: 14px; top: 50%;
-    transform: translateY(-50%);
-    font-size: 15px; color: var(--ink-3); font-weight: 500; pointer-events: none;
-  }
-  .input-prefix-wrap input { padding-left: 26px; }
-
-  /* ── AUTOCOMPLETE ── */
-  .autocomplete-wrap { position: relative; }
-  .autocomplete-list {
-    position: absolute;
-    top: calc(100% + 4px); left: 0; right: 0;
-    background: var(--surface);
-    border: 1.5px solid var(--g-mid);
-    border-radius: var(--r-sm);
-    box-shadow: var(--shadow-lg);
-    z-index: 100;
-    max-height: 220px;
-    overflow-y: auto;
-    display: none;
-  }
-  .autocomplete-list.open { display: block; }
-  .autocomplete-item {
-    padding: 11px 15px;
-    cursor: pointer;
-    font-size: 14px;
-    border-bottom: 1px solid var(--rule);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: background 0.1s;
-  }
-  .autocomplete-item:last-child { border-bottom: none; }
-  .autocomplete-item:hover, .autocomplete-item.active { background: var(--g-pale); }
-  .autocomplete-item:hover .city-text,
-  .autocomplete-item.active .city-text { color: var(--g-dark); font-weight: 500; }
-  .state-badge {
-    font-size: 10px; color: var(--ink-3);
-    background: var(--bg); padding: 2px 7px;
-    border-radius: 20px; flex-shrink: 0;
-    border: 1px solid var(--rule);
-  }
-
-  /* ── STARS ── */
-  .stars-wrap { display: flex; gap: 6px; margin-top: 4px; }
-  .star-btn {
-    background: none; border: none; cursor: pointer;
-    font-size: 28px; line-height: 1;
-    transition: transform 0.12s, color 0.12s;
-    color: var(--rule); padding: 0;
-  }
-  .star-btn.lit { color: var(--g-soft); }
-  .star-btn:hover { transform: scale(1.18); }
-  .star-label { font-size: 12px; color: var(--ink-2); margin-top: 6px; min-height: 18px; }
-
-  /* ── PILLS ── */
-  .pill-group { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
-  .pill {
-    padding: 8px 16px;
-    border-radius: 50px;
-    border: 1.5px solid var(--rule);
-    background: #FAFAF8;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--ink-2);
-    cursor: pointer;
-    transition: all 0.15s;
-    font-family: var(--sans);
-  }
-  .pill:hover { border-color: var(--g-mid); color: var(--g-dark); }
-  .pill.selected { background: var(--g-dark); border-color: var(--g-dark); color: #fff; }
-
-  /* ── DURATION SLIDER ── */
-  .duration-display {
-    font-family: var(--serif);
-    font-size: 26px;
-    font-weight: 600;
-    color: var(--ink);
-    margin-bottom: 10px;
-    letter-spacing: -0.01em;
-  }
-  .duration-display span {
-    font-size: 15px; font-weight: 400; color: var(--ink-3);
-    font-family: var(--sans);
-  }
-  input[type="range"] {
-    -webkit-appearance: none;
-    width: 100%; height: 4px;
-    border-radius: 2px;
-    background: linear-gradient(to right, var(--g-soft) 0%, var(--g-soft) var(--range-pct, 7%), var(--rule) var(--range-pct, 7%), var(--rule) 100%);
-    outline: none; cursor: pointer; border: none; padding: 0;
-  }
-  input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 20px; height: 20px;
-    border-radius: 50%;
-    background: var(--surface);
-    border: 2.5px solid var(--g-soft);
-    cursor: pointer;
-    box-shadow: 0 1px 6px rgba(0,0,0,0.15);
-  }
-  input[type="range"]::-moz-range-thumb {
-    width: 20px; height: 20px;
-    border-radius: 50%;
-    background: var(--surface);
-    border: 2.5px solid var(--g-soft);
-    cursor: pointer;
-  }
-  .range-labels { display: flex; justify-content: space-between; font-size: 11px; color: var(--ink-2); margin-top: 5px; }
-
-  /* ── CTA BUTTON ── */
-  .calc-btn {
-    width: 100%;
-    padding: 17px;
-    background: var(--g-dark);
-    color: #fff;
-    border: none;
-    border-radius: var(--r-sm);
-    font-family: var(--sans);
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 0.03em;
-    cursor: pointer;
-    transition: all 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-  .calc-btn::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 60%);
-  }
-  .calc-btn:hover { background: var(--g-mid); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(30,77,53,0.35); }
-  .calc-btn:active { transform: translateY(0); }
-  .calc-btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
-
-  /* ── RESULTS ── */
-  .results { display: none; animation: fadeUp 0.38s ease both; }
-  .results.show { display: block; }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(14px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  .result-header { text-align: center; padding: 18px 0 12px; }
-  .result-header .city-name {
-    font-size: 11px; font-weight: 600;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--ink-3); margin-bottom: 4px;
-  }
-  .result-header h2 {
-    font-family: var(--serif);
-    font-size: 22px; font-weight: 600;
-    color: var(--ink);
-    letter-spacing: -0.01em;
-  }
-
-  /* ── TIP GRID — good/better/best in one row, minimum full-width below ── */
-  .tip-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 12px;
-  }
-
-  .tip-card {
-    background: var(--surface);
-    border-radius: var(--r-sm);
-    border: 1.5px solid var(--rule);
-    padding: 14px 10px 12px;
-    text-align: center;
-    box-shadow: var(--shadow-sm);
-    transition: transform 0.16s, box-shadow 0.16s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-self: stretch;
-  }
-  /* Border color matches label color for each tier */
-  .tip-card.good     { border-color: var(--g-pale-3); }
-  .tip-card.better   { border-color: var(--g-soft); }
-  .tip-card.best     { border-color: var(--g-mid); }
-  .tip-card.minimum  { border-color: #BEBEBE; background: #F7F7F7; }
-  .tip-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
-
-  /* Acceptable — full-width horizontal strip */
-  .tip-card.acceptable {
-    grid-column: 1 / -1;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    text-align: left;
-    padding: 14px 16px;
-    background: #F7F7F7;
-    border-color: #BEBEBE;
-  }
-  .tip-card.acceptable .tip-card-body {
-    display: flex; flex-direction: column;
-    align-items: flex-start; flex: 1;
-  }
-  .tip-card.acceptable .tip-card-right {
-    text-align: right; flex-shrink: 0;
-  }
-
-  /* Label pills */
-  .tip-card-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    padding: 3px 10px;
-    border-radius: 20px;
-    margin-bottom: 11px;
-    white-space: nowrap;
-  }
-  /* Green hierarchy labels — clearly distinct steps */
-  .tip-card.good     .tip-card-label { background: var(--g-pale);  color: var(--g-dark);  border: 1.5px solid var(--g-pale-3); }
-  .tip-card.better   .tip-card-label { background: var(--g-soft);  color: #FFFFFF;        border: 1.5px solid var(--g-mid); }
-  .tip-card.best     .tip-card-label { background: var(--g-dark);  color: #FFFFFF;        border: 1.5px solid var(--g-dark); }
-  .tip-card.minimum  .tip-card-label { background: #E4E4E4; color: #4A4A4A; border: 1.5px solid #BEBEBE; margin-bottom: 5px; }
-  .tip-card.acceptable .tip-card-label { background: #E4E4E4; color: #4A4A4A; border: 1.5px solid #BEBEBE; margin-bottom: 5px; }
-
-  /* Tip amount */
-  .tip-card-amount {
-    font-family: var(--serif);
-    font-size: 36px;
-    font-weight: 600;
-    line-height: 1;
-    color: var(--ink);
-    margin-bottom: 3px;
-    letter-spacing: 0.03em;
-  }
-  .tip-card.acceptable .tip-card-amount { font-size: 30px; }
-
-  /* New total — bordered box, most visually prominent after tip amount */
-  .tip-card-total {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: var(--bg);
-    border: 1.5px solid var(--rule);
-    border-radius: 7px;
-    padding: 6px 12px 7px;
-    margin: 8px 0 6px;
-    width: 100%;
-    gap: 1px;
-  }
-  .tip-card-total-label {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-  }
-  .tip-card-total-value {
-    font-family: var(--serif);
-    font-size: 21px;
-    font-weight: 600;
-    color: var(--ink);
-    line-height: 1.1;
-    letter-spacing: 0.02em;
-  }
-  /* Acceptable card total is horizontal — keep it inline */
-  .tip-card.acceptable .tip-card-total {
-    flex-direction: row;
-    align-items: baseline;
-    gap: 6px;
-    padding: 5px 10px;
-    margin: 6px 0 4px;
-    width: auto;
-  }
-  .tip-card.acceptable .tip-card-total-value { font-size: 18px; }
-
-  /* Percentage */
-  .tip-card-pct {
-    font-size: 13px;
-    color: var(--ink-2);
-    font-weight: 500;
-    margin-bottom: 3px;
-  }
-
-  /* Most common tag */
-  .most-common-tag {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--g-dark);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    background: var(--g-pale);
-    padding: 3px 10px;
-    border-radius: 20px;
-    margin-top: 6px;
-  }
-
-  /* Description */
-  .tip-card-desc {
-    font-size: 12px;
-    color: var(--ink-2);
-    line-height: 1.45;
-    margin-top: 5px;
-  }
-  .tip-card.acceptable .tip-card-desc { font-size: 13px; color: var(--ink-2); }
-
-  /* ── BONUS TOGGLES ── */
-  .bonus-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-top: 6px;
-  }
-  .bonus-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 9px 12px;
-    border-radius: var(--r-sm);
-    border: 1.5px solid var(--rule);
-    background: #FAFAF8;
-    font-family: var(--sans);
-    font-size: 12.5px;
-    font-weight: 500;
-    color: var(--ink-2);
-    cursor: pointer;
-    transition: all 0.16s;
-    text-align: left;
-    line-height: 1.3;
-  }
-  .bonus-btn .bonus-icon { font-size: 16px; flex-shrink: 0; }
-  .bonus-btn:hover { border-color: var(--g-pale-3); background: var(--g-pale); }
-  .bonus-btn.active {
-    background: var(--g-pale);
-    border-color: var(--g-soft);
-    color: var(--g-dark);
-    font-weight: 600;
-  }
-  .bonus-btn.active .bonus-icon { filter: none; }
-  .bonus-note { font-size: 11px; color: var(--ink-3); margin-top: 8px; font-style: italic; }
-  /* Year-end spans the full grid width */
-  .bonus-btn--yearend { grid-column: 1 / -1; }
-
-  /* ── BONUS RESULTS BAR ── */
-  .bonus-bar {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--g-pale);
-    border: 1px solid var(--g-pale-3);
-    border-radius: var(--r-sm);
-    padding: 9px 14px;
-    margin-bottom: 10px;
-    flex-wrap: wrap;
-  }
-  .bonus-bar-icons {
-    font-size: 17px;
-    letter-spacing: 0.05em;
-    flex-shrink: 0;
-  }
-  .bonus-bar-text {
-    font-size: 12px;
-    color: var(--g-dark);
-    font-weight: 500;
-    flex: 1;
-  }
-  .bonus-bar-amount {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--g-dark);
-    background: var(--g-pale-2);
-    border-radius: 6px;
-    padding: 2px 8px;
-    flex-shrink: 0;
-  }
-
-
-  /* ── INSIGHT BOX ── */
-  .insight-box {
-    background: var(--ink);
-    border-radius: var(--r-sm);
-    padding: 16px 18px;
-    font-size: 13px;
-    color: rgba(253,252,250,0.72);
-    line-height: 1.6;
-    margin-top: 0;
-    letter-spacing: 0.01em;
-  }
-  .insight-box strong { color: var(--g-pale-3); font-weight: 600; }
-
-  /* ── RECALC BUTTON ── */
-  /* Year-end cash gift callout */
-  .yearend-box {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    background: var(--g-pale);
-    border: 1.5px solid var(--g-pale-3);
-    border-left: 4px solid var(--g-mid);
-    border-radius: var(--r-sm);
-    padding: 14px 16px;
-    margin-top: 10px;
-  }
-  .yearend-icon { font-size: 22px; flex-shrink: 0; line-height: 1.3; }
-  .yearend-text { font-size: 13px; color: var(--ink-2); line-height: 1.55; }
-  .yearend-text strong { color: var(--g-dark); font-size: 15px; display: block; margin-bottom: 3px; }
-
-  .recalc-btn {
-    width: 100%;
-    padding: 14px;
-    background: transparent;
-    color: var(--ink-2);
-    border: 1.5px solid var(--ink-2);
-    border-radius: var(--r-sm);
-    font-family: var(--sans);
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.18s;
-    margin-top: 12px;
-    letter-spacing: 0.01em;
-  }
-  .recalc-btn:hover {
-    background: var(--ink);
-    border-color: var(--ink);
-    color: #fff;
-  }
-
-  /* ── MISC ── */
-  .helper { font-size: 11px; color: var(--ink-2); margin-top: 5px; }
-  input.error { border-color: #C0392B !important; }
-  .error-msg { font-size: 11px; color: #C0392B; margin-top: 4px; display: none; }
-  .error-msg.show { display: block; }
-  /* ── SEO CONTENT SECTION ── */
-  .seo-section {
-    background: var(--surface);
-    border-top: 1px solid var(--rule);
-    padding: 52px 16px 48px;
-    margin-top: 16px;
-  }
-  .seo-inner { max-width: 720px; margin: 0 auto; }
-  .seo-h2 {
-    font-family: var(--serif);
-    font-size: clamp(22px, 4vw, 32px);
-    font-weight: 600;
-    color: var(--ink);
-    margin-bottom: 10px;
-    letter-spacing: -0.01em;
-  }
-  .seo-lead {
-    font-size: 15px;
-    color: var(--ink-2);
-    margin-bottom: 32px;
-    max-width: 560px;
-    line-height: 1.65;
-  }
-  .seo-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 16px;
-    margin-bottom: 40px;
-  }
-  .seo-card {
-    background: var(--bg);
-    border: 1px solid var(--rule);
-    border-radius: var(--r-sm);
-    padding: 20px 18px;
-  }
-  .seo-card-icon { font-size: 22px; margin-bottom: 10px; display: block; }
-  .seo-card h3 {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--ink);
-    margin-bottom: 8px;
-    line-height: 1.35;
-  }
-  .seo-card p {
-    font-size: 13px;
-    color: var(--ink-2);
-    line-height: 1.65;
-  }
-  .seo-card strong { color: var(--g-dark); }
-  .seo-faq { border-top: 1px solid var(--rule); padding-top: 28px; }
-  .seo-faq-title {
-    font-family: var(--serif);
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--ink);
-    margin-bottom: 18px;
-  }
-  .seo-faq-item {
-    margin-bottom: 18px;
-    padding-bottom: 18px;
-    border-bottom: 1px solid var(--rule);
-  }
-  .seo-faq-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-  .seo-faq-item strong {
-    display: block;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--ink);
-    margin-bottom: 5px;
-  }
-  .seo-faq-item p { font-size: 13px; color: var(--ink-2); line-height: 1.65; }
-
-  .footer-link { color: var(--g-mid); text-decoration: underline; }
-  .footer-link:hover { color: var(--g-dark); }
-  .footer {
-    text-align: center;
-    padding: 28px 20px;
-    border-top: 1px solid var(--rule);
-    margin-top: 32px;
-  }
-  .footer-data {
-    font-size: 11px;
-    color: var(--ink-3);
-    margin-bottom: 10px;
-  }
-  .footer-disclaimer {
-    font-size: 11px;
-    color: var(--ink-3);
-    line-height: 1.6;
-    max-width: 480px;
-    margin: 0 auto;
-    padding: 10px 14px;
-    background: #F0F1EE;
-    border-radius: var(--r-sm);
-    border: 1px solid var(--rule);
-  }
-  .footer-disclaimer strong { color: var(--ink-2); font-weight: 600; }
-
-  /* ── RESPONSIVE ── */
-  /* Compact 3-col on medium-small phones */
-  @media (max-width: 400px) {
-    .tip-card { padding: 11px 7px 10px; }
-    .tip-card-amount { font-size: 26px; }
-    .tip-card-label { font-size: 8.5px; padding: 2px 7px; }
-    .tip-card-total, .tip-card-pct, .tip-card-desc { font-size: 10px; }
-    .card { padding: 16px 12px; }
-  }
-  /* Smallest phones: drop to single column for 3-col row only */
-  @media (max-width: 320px) {
-    .tip-grid { grid-template-columns: 1fr; }
-    .tip-card.acceptable { flex-direction: column; align-items: flex-start; }
-    .tip-card.acceptable .tip-card-right { text-align: left; }
-  }
-</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How much to tip a hairdresser in the United States?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The standard tip for a hair stylist in the United States is 15% to 25% of the total service cost. For excellent service or complex color treatments, 20% is the widely accepted baseline. Tipping norms also vary by city — areas with a higher cost of living tend to have higher tipping expectations. Our calculator adjusts this recommendation based on the median household income in your specific city and county."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How much do you tip on a $150 hair service in the United States?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "For a $150 hair service at a US salon, a standard 20% tip is $30. For balayage, toning, or any service involving significant time and product, $35–$45 is a generous amount that reflects the additional skill and effort involved. Local income norms in your city may also influence what feels appropriate."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How much do you tip on a $200 hair service in the United States?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "At $200, a standard 20% tip for a US hair stylist is $40. For full-day color work or complex treatments, many clients tip toward $50–$60 to reflect the hours and expertise involved. The service type and your satisfaction level should guide where in that range you land."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How much do you tip on a $300 hair service in the United States?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "At $300, a standard 20% tip is $60. For premium services like balayage, keratin treatments, or color correction, $70–$90 is not uncommon among regular clients who want to show meaningful appreciation for the time and skill involved."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How much do you tip a $350 hairdresser in the United States?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "For a $350 hair service in the United States, $70 is the 20% baseline tip. For exceptional work or a multi-hour appointment, $85–$105 is a generous and well-regarded amount. If you had a senior or highly experienced stylist, erring toward the higher end is appropriate."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How much do you tip a $400 hairdresser in the United States?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "At $400, a standard tip is $80 (20%). For complex, high-skill work such as full color corrections, extensions, or multi-service appointments, $90–$120 is common among satisfied clients. A $400 service typically reflects advanced expertise that warrants a thoughtful and generous tip."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How much should I tip my hair stylist at Christmas?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The most widely cited guideline for a Christmas or holiday tip for a regular hairdresser is the equivalent of one full service, or a 25%–30% tip on your last visit of the year. If you see your stylist monthly, a separate cash bonus of $20–$50 on top of your regular tip is a meaningful way to show appreciation for the full year. Holiday tipping is not required, but it is a deeply appreciated gesture among clients who have an ongoing relationship with their stylist."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Should you tip extra for a holiday, a new baby, or being squeezed in last minute?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes — these are all common and genuine reasons to tip above your normal amount. For the holidays or Christmas, adding 5%–10% to your regular tip is a warm gesture. If your stylist just had a new baby, a little extra cash shows you care beyond the appointment. If they rearranged their schedule to fit you in at the last minute, especially before a big event, acknowledging that effort with an extra $10–$20 is considered good etiquette. Our calculator includes a bonus toggle for each of these situations."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do you tip the salon owner?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, in most cases. The old etiquette rule that said you do not need to tip the salon owner is widely considered outdated. Most modern salon owners work the chair alongside their staff and provide the same skilled service. Tipping 15%–20% is appropriate and appreciated. If the owner provides exceptional service or a complex treatment, tip as you would any skilled professional — there is no reason to treat them differently."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How much do you tip on a $100 haircut?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "For a $100 haircut, a standard 18%–20% tip is $18–$20. If you were very happy with the results, or the appointment was longer or more complex than a basic trim, $20–$25 is a generous and appreciated amount. In high cost-of-living cities like New York or San Francisco, tipping 20%–25% on a $100 service is the local norm."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How much do you tip on a $200 or $300 hair service?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "At $200, a standard 20% tip is $40. At $300, it is $60. For full-day services like color corrections or balayage that involve multiple hours of skilled work, many clients tip toward the higher end of the range — $50–$75 on a $200 service, and $70–$90 on a $300 service. The time and expertise involved in complex color work generally warrants a more generous tip than a simple cut at the same price."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is it rude not to tip your hairdresser in the United States?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "In the United States, not tipping your hairdresser is generally considered impolite unless you had a genuinely poor experience. Hair stylists often rely on tips as a meaningful portion of their take-home income. Even if you are disappointed with the results, a minimum 10%–15% tip acknowledges the time and effort your stylist invested — though local norms and your specific situation may suggest a higher floor. If you have a serious concern, it is better to speak with your stylist or the salon manager than to skip the tip without explanation."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do you tip for every person who touches your hair?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, it is considered good etiquette to tip each person who provides a service during your appointment. If a shampoo assistant washes and conditions your hair, a $3–$10 tip is customary depending on the salon. If a separate colorist, toner specialist, or blowout technician assisted your main stylist, a small individual tip for each is appreciated, particularly at upscale salons. You can ask the front desk how tips are distributed if you are unsure."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is it better to tip your US hair stylist in cash or on a card?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Most hair stylists prefer cash tips. Cash is received immediately, in full, with no processing fees or delays. Card tips are still very much appreciated when cash is not available, but some salons charge processing fees that reduce the amount the stylist actually receives. If you know you will be tipping, coming prepared with cash is a thoughtful habit. Some salons also offer digital tipping through apps or payment terminals, which typically go directly to the stylist."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Why do tipping norms vary by city?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Tipping norms in US hair salons vary by city primarily because of differences in cost of living, local wages, and what clients in a given area are accustomed to. In cities like New York, San Francisco, and Seattle, where the cost of living and stylist wages are both higher, a 20%–25% tip is considered standard. In smaller cities or rural areas where both prices and local incomes are lower, 15%–18% may be entirely appropriate and generous. Our calculator uses US Census median household income data for your specific county to calibrate what feels right for where you are."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How much to tip for a last-minute squeeze-in at a hair salon?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "When a hair stylist rearranges their schedule or stays late to fit you in at the last minute — especially before a big event like a wedding, graduation, or holiday party — an additional tip of $10–$20 on top of your normal percentage is considered good etiquette. Many clients add a 3%–5% bonus on top of their regular tip to acknowledge the inconvenience the stylist absorbed on their behalf. Our calculator includes a 'Squeezed Me In' toggle that automatically adds this to your tip suggestion."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Hair stylist Christmas tip vs. regular service tip — what's the difference?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "A regular service tip is a percentage of that day's bill — typically 18%–22% in the United States — given at the end of every appointment. A Christmas or holiday tip is a separate, additional gesture given once a year to a stylist you see regularly, meant to express gratitude for the whole year's relationship, not just that single visit. The holiday tip is typically the cost of one service, or a cash bonus of $20–$50 given on top of your normal visit tip. You can think of the regular tip as payment for the service and the Christmas tip as a thank-you for the relationship."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "First-time client vs. regular client tipping etiquette at a US hair salon",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "First-time clients in the US typically tip 15%–20%, which is considered polite and appropriate when you don't yet have an established relationship with the stylist. Regular clients often tip 20%–25% or more, reflecting the ongoing relationship, the stylist's familiarity with their hair, and appreciation for consistent quality. If you love your first appointment and plan to return, tipping closer to 20%–22% signals that you valued the experience. Long-term regulars sometimes give higher tips around the holidays or when the stylist has gone above and beyond for them."
-      }
-    }
-  ]
+  "@type": "WebSite",
+  "name": "US Tip Calculator",
+  "description": "Free US tipping calculators calibrated to your city. Covers hair stylists, barbers, restaurants, massage therapists, movers, rideshare, and more.",
+  "url": "https://geotipper.com"
 }
 </script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:#F2F1ED; --surface:#FDFCFA; --ink:#111111; --ink-2:#2A2A2A; --ink-3:#4A4A4A;
+    --rule:#DEDAD5; --g-dark:#1E4D35; --g-mid:#2E6B4A; --g-soft:#3D8A5F;
+    --g-pale:#E6F2EC; --g-pale-2:#D0E9DA; --g-pale-3:#B8DCCA;
+    --shadow-sm:0 1px 4px rgba(0,0,0,0.06); --shadow-md:0 4px 20px rgba(0,0,0,0.09);
+    --r:14px; --r-sm:9px;
+    --serif:"DM Serif Display",Georgia,serif; --sans:"Inter",system-ui,sans-serif;
+  }
+  body { background:var(--bg); color:var(--ink); font-family:var(--sans); font-size:15px; line-height:1.6; min-height:100vh; -webkit-font-smoothing:antialiased; }
+
+  /* HEADER */
+  .header { background:var(--ink); padding:56px 24px 48px; text-align:center; position:relative; overflow:hidden; }
+  .header::after { content:""; position:absolute; inset:0; background:radial-gradient(ellipse 60% 80% at 15% 50%,rgba(61,107,79,.18) 0%,transparent 70%),radial-gradient(ellipse 50% 60% at 85% 25%,rgba(61,107,79,.10) 0%,transparent 60%); pointer-events:none; }
+  .header-icon { font-size:26px; margin-bottom:16px; display:block; letter-spacing:.08em; }
+  .header h1 { font-family:var(--serif); font-size:clamp(28px,6vw,52px); color:#FDFCFA; line-height:1.12; margin-bottom:16px; letter-spacing:-.01em; }
+  .header h1 em { font-style:italic; color:#A8C9B4; font-weight:400; }
+  .header-tagline { color:rgba(253,252,250,.82); font-size:15px; max-width:520px; margin:0 auto 20px; line-height:1.65; }
+  .header-tagline strong { color:#A8C9B4; font-weight:600; }
+  .header-note { display:inline-block; font-size:12px; color:rgba(253,252,250,.45); border:1px solid rgba(253,252,250,.15); border-radius:20px; padding:4px 14px; letter-spacing:.04em; }
+
+  /* LAYOUT */
+  .main { max-width:880px; margin:0 auto; padding:40px 16px 72px; }
+  .section-title { font-family:var(--serif); font-size:clamp(20px,3vw,28px); color:var(--ink); margin-bottom:6px; letter-spacing:-.01em; }
+  .section-sub { font-size:14px; color:var(--ink-3); margin-bottom:24px; line-height:1.6; }
+
+  /* DIFFERENTIATOR BOX */
+  .diff-box { background:var(--ink); border-radius:var(--r); padding:28px 28px 24px; margin-bottom:48px; position:relative; overflow:hidden; }
+  .diff-box::after { content:""; position:absolute; inset:0; background:radial-gradient(ellipse 60% 100% at 0% 50%,rgba(61,107,79,.2) 0%,transparent 60%); pointer-events:none; }
+  .diff-box h2 { font-family:var(--serif); font-size:clamp(18px,3vw,24px); color:#FDFCFA; margin-bottom:10px; line-height:1.25; position:relative; }
+  .diff-box h2 em { color:#A8C9B4; font-style:italic; }
+  .diff-box p { font-size:14px; color:rgba(253,252,250,.70); line-height:1.65; max-width:640px; position:relative; }
+  .diff-box strong { color:#A8C9B4; }
+
+  /* CALCULATOR GRID */
+  .calc-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px; margin-bottom:56px; }
+  .calc-card { background:var(--surface); border:1px solid var(--rule); border-radius:var(--r); overflow:hidden; box-shadow:var(--shadow-sm); transition:transform .2s,box-shadow .2s,border-color .2s; display:flex; flex-direction:column; text-decoration:none; color:inherit; }
+  .calc-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-md); border-color:var(--g-pale-3); }
+  .card-visual { height:110px; width:100%; display:flex; flex-direction:column; justify-content:flex-end; padding:10px 14px 12px; position:relative; overflow:hidden; flex-shrink:0; }
+  /* ── CARD VISUAL GRADIENTS — pure, no shapes ── */
+  /* Hair Stylist — warm dusty rose */
+  .vis-hair { background: linear-gradient(145deg, #3D1A28 0%, #8B3A5E 35%, #D4748A 70%, #F0B8C4 100%); }
+  /* Barber — bold red to blue diagonal */
+  .vis-barber { background: linear-gradient(135deg, #CC0000 0%, #990033 40%, #330099 75%, #1A4FA8 100%); }
+  /* Restaurant — deep amber to warm gold */
+  .vis-restaurant { background: linear-gradient(150deg, #2C1000 0%, #7A3800 30%, #D4751A 65%, #F5C842 100%); }
+  /* Massage — deep teal to seafoam */
+  .vis-massage { background: linear-gradient(135deg, #003D3D 0%, #006B6B 40%, #00A896 70%, #7FDBCF 100%); }
+  /* Nail Salon — vivid fuchsia to soft orchid */
+  .vis-nail { background: linear-gradient(140deg, #1A0030 0%, #6A0080 35%, #CC00CC 68%, #F080E0 100%); }
+  /* Tattoo — near black to electric indigo */
+  .vis-tattoo { background: linear-gradient(135deg, #05050F 0%, #12124A 40%, #2E2E9E 72%, #6464D8 100%); }
+  /* Hotel — deep midnight sapphire to pale powder blue */
+  .vis-hotel { background: linear-gradient(145deg, #030A1A 0%, #0A2550 35%, #1565C0 68%, #90CAF9 100%); }
+  /* Movers — rich burnt sienna to cream */
+  .vis-movers { background: linear-gradient(130deg, #1A0800 0%, #6B2500 30%, #C84B00 62%, #F4A460 100%); }
+  /* Rideshare — charcoal to electric cyan */
+  .vis-rideshare { background: linear-gradient(135deg, #050D15 0%, #0D2535 40%, #006080 68%, #00C8D8 100%); }
+  /* Valet — road charcoal to traffic yellow */
+  .vis-valet { background: linear-gradient(135deg, #0A0A0A 0%, #1C1C1C 35%, #4A4A00 68%, #F5D800 100%); }
+  /* Food Delivery (UberEats/DoorDash) — deep plum to warm orange */
+  .vis-delivery { background: linear-gradient(135deg, #1A0520 0%, #4A1040 35%, #A03000 68%, #F06000 100%); }
+  /* Grocery Delivery — deep navy to fresh produce green */
+  .vis-grocery { background: linear-gradient(135deg, #001A10 0%, #00401A 35%, #007A30 68%, #40C060 100%); }
+  /* House Cleaner — navy to bright sky */
+  .vis-cleaner { background: linear-gradient(140deg, #000C24 0%, #003080 35%, #0070CC 68%, #56B4F5 100%); }
+  .card-visual-label { display:none; } /* category text removed */
+  .card-visual-title { position:relative; z-index:1; font-family:var(--serif); font-size:17px; font-weight:600; color:#fff; line-height:1.2; text-shadow:0 1px 6px rgba(0,0,0,0.55); margin-bottom:3px; }
+  .card-visual-range { position:relative; z-index:1; font-size:11px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:rgba(255,255,255,0.8); text-shadow:0 1px 4px rgba(0,0,0,0.5); }
+  .card-body { padding:16px 16px 14px;display:flex;flex-direction:column;flex:1; }
+  .calc-card-title { display:none; } /* title moved into card-visual */
+  .calc-card-range { display:none; } /* range moved into card-visual */
+  .calc-card-desc { font-size:12.5px;color:var(--ink-3);line-height:1.55;flex:1;margin-bottom:12px; }
+  .card-sub { font-size:10.5px; color:var(--ink-3); margin-bottom:8px; font-style:italic; line-height:1.4; }
+  .calc-card-btn { display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--g-dark);padding:6px 13px;background:var(--g-pale);border-radius:50px;border:1px solid var(--g-pale-3);transition:background .15s;align-self:flex-start; }
+  .calc-card-tagline { font-size:11px;color:var(--ink-3);margin-bottom:7px;font-style:italic; }
+  .calc-card:hover .calc-card-btn { background:var(--g-pale-2); }
+  .calc-card.soon { opacity:.65;pointer-events:none; }
+  .soon-badge { font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);background:var(--bg);border:1px solid var(--rule);border-radius:20px;padding:3px 9px;align-self:flex-start; }
+
+  /* QUICK REFERENCE TABLE */
+  .ref-section { margin-bottom:52px; }
+  .ref-wrap { overflow-x:auto; border-radius:var(--r-sm); border:1px solid var(--rule); }
+  table { width:100%; border-collapse:collapse; font-size:13.5px; background:var(--surface); }
+  th { text-align:left; padding:11px 16px; font-size:10.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--g-mid); border-bottom:1px solid var(--rule); white-space:nowrap; background:var(--surface); }
+  td { padding:11px 16px; border-bottom:1px solid var(--rule); color:var(--ink-2); vertical-align:top; }
+  tr:last-child td { border-bottom:none; }
+  tr:hover td { background:#FAFAF7; }
+  td:first-child { font-weight:500; color:var(--ink); white-space:nowrap; }
+  .tag { display:inline-block; font-size:11px; font-weight:600; padding:2px 8px; border-radius:20px; white-space:nowrap; }
+  .tl { background:#FEF3E2; color:#92511A; }
+  .ts { background:var(--g-pale); color:var(--g-dark); }
+  .tg { background:var(--g-pale-2); color:var(--g-mid); }
+  .to { background:#F3E2FE; color:#6B1A92; }
+
+  /* INFO GRID */
+  .info-section { margin-bottom:52px; }
+  .info-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:14px; }
+  .info-card { background:var(--surface); border:1px solid var(--rule); border-radius:var(--r-sm); padding:20px 18px; }
+  .info-icon { font-size:22px; margin-bottom:10px; display:block; line-height:1; }
+  .info-card h3 { font-size:14px; font-weight:600; color:var(--ink); margin-bottom:8px; line-height:1.35; }
+  .info-card p { font-size:13px; color:var(--ink-2); line-height:1.65; margin:0; }
+  .info-card strong { color:var(--g-dark); }
+
+  /* FOOTER */
+  .footer { text-align:center; padding:28px 20px; border-top:1px solid var(--rule); margin-top:32px; }
+  .footer-data { font-size:11px; color:var(--ink-3); margin-bottom:10px; }
+  .footer-disc { font-size:11px; color:var(--ink-3); line-height:1.6; max-width:480px; margin:0 auto; padding:10px 14px; background:#F0F1EE; border-radius:var(--r-sm); border:1px solid var(--rule); }
+  .footer-disc strong { color:var(--ink-2); font-weight:600; }
+  a.flink { color:var(--g-mid); text-decoration:underline; }
+  a.flink:hover { color:var(--g-dark); }
+
+
+  /* ── ADSENSE PLACEHOLDERS ── */
+  .ad-slot {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto 20px;
+    min-height: 1px; /* collapses if no ad loaded */
+  }
+  .ad-slot-top    { margin-bottom: 20px; }
+  .ad-slot-mid    { margin: 24px 0; }
+  .ad-sticky-footer {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--surface);
+    border-top: 1px solid var(--rule);
+    padding: 6px;
+    text-align: center;
+    z-index: 50;
+    display: none; /* shown only on mobile via media query */
+  }
+  @media (max-width: 600px) {
+    .ad-sticky-footer { display: block; }
+    /* Push page content up so sticky footer doesn't cover it */
+    body { padding-bottom: 70px; }
+  }
+  @media(max-width:480px){
+    .calc-grid { grid-template-columns:1fr 1fr; gap:10px; }
+    .calc-card { padding:16px 14px 14px; }
+    .calc-card-icon { font-size:22px; }
+    .diff-box { padding:22px 18px 18px; }
+  }
+  @media(max-width:340px){ .calc-grid { grid-template-columns:1fr; } }
+</style>
+  <!-- ═══════════════════════════════════════════════════════
+       ADSENSE: Add your site-level script tag here (once per page)
+       Get this from your AdSense account after approval
+  ═══════════════════════════════════════════════════════ -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
 </head>
 <body>
 
 <header class="header">
-  <span class="header-scissor">✂ ✦</span>
-  <h1>How Much to Tip<br><em>Your Hairdresser?</em></h1>
-  <p class="header-answer">Most clients in the United States tip <strong>15%–25%</strong> for a hair stylist. For holiday tipping, the most common gesture is a 20%–25% tip on your last visit of the year, plus an optional separate cash gift of $20–$50. Use the calculator below for a tip calibrated to your city.</p>
+  <span style="font-size:11px;letter-spacing:.18em;color:rgba(168,201,180,.65);display:block;margin-bottom:20px;text-transform:uppercase;font-weight:600">United States Tip Calculators</span>
+  <h1>How Much<br>Should You <em>Tip?</em></h1>
+  <p class="header-tagline">Tip suggestions <strong>calibrated to your city</strong> &#x2014; not a national average that ignores where you are. Every calculator uses real US Census income data for your specific area.</p>
+  <span class="header-note">United States &middot; Free &middot; No signup</span>
 </header>
 
 <main class="main">
-  <div class="card" id="formCard">
 
-    <!-- LOCATION -->
-    <div class="section-label">Your Location</div>
-    <div class="field">
-      <label for="cityInput">City &amp; State</label>
-      <div class="autocomplete-wrap">
-        <input type="text" id="cityInput" placeholder="Start typing a city…" autocomplete="off" maxlength="80">
-        <div class="autocomplete-list" id="autocompleteList"></div>
-      </div>
-      <p class="helper" id="cityHelper">We use your area's median household income to calibrate tip expectations.</p>
-      <div class="error-msg" id="cityError">Please select a city from the list.</div>
-    </div>
-
-    <!-- PRICE -->
-    <div class="section-label">Your Bill</div>
-    <div class="field">
-      <label for="priceInput">Total Service Cost (before tip)</label>
-      <div class="input-prefix-wrap">
-        <span class="input-prefix">$</span>
-        <input type="number" id="priceInput" placeholder="0" min="1" max="5000" step="1">
-      </div>
-      <div class="error-msg" id="priceError">Please enter a valid service cost.</div>
-    </div>
-
-    <!-- DURATION -->
-    <div class="section-label">Appointment Length</div>
-    <div class="field">
-      <div class="duration-display" id="durationDisplay">30 <span>minutes</span></div>
-      <input type="range" id="durationSlider" min="15" max="240" step="15" value="30">
-      <div class="range-labels"><span>15 min</span><span style="margin-left:auto">4 hrs</span></div>
-      <p class="helper">Longer appointments mean more time and skill — that's factored in.</p>
-    </div>
-
-    <!-- CLIENT TYPE -->
-    <div class="section-label">Visit Type</div>
-    <div class="field">
-      <label>Are you a regular or first-time client?</label>
-      <div class="pill-group" id="clientGroup">
-        <button class="pill selected" data-val="regular">Regular client</button>
-        <button class="pill" data-val="first">First time</button>
-      </div>
-    </div>
-
-    <!-- QUALITY -->
-    <div class="section-label">Your Experience</div>
-    <div class="field">
-      <label>How satisfied are you with the results?</label>
-      <div class="stars-wrap" id="starsWrap">
-        <button class="star-btn" data-star="1" aria-label="1 star">★</button>
-        <button class="star-btn" data-star="2" aria-label="2 stars">★</button>
-        <button class="star-btn" data-star="3" aria-label="3 stars">★</button>
-        <button class="star-btn" data-star="4" aria-label="4 stars">★</button>
-        <button class="star-btn" data-star="5" aria-label="5 stars">★</button>
-      </div>
-      <div class="star-label" id="starLabel">Tap to rate your experience</div>
-      <div class="error-msg" id="starError">Please rate your experience.</div>
-    </div>
-
-    <!-- BONUS OCCASION -->
-    <div class="section-label">Special Occasion? <span style="font-size:10px;text-transform:none;letter-spacing:0;font-weight:400;color:var(--ink-3);">(optional)</span></div>
-    <div class="field">
-      <label>Tip a little extra for any of these? Tap to toggle.</label>
-      <div class="bonus-grid" id="bonusGroup">
-        <button class="bonus-btn" data-bonus="0.05" data-key="holiday" type="button">
-          <span class="bonus-icon">🎄</span>
-          <span>Holiday / Christmas<br><small style="font-weight:400;color:var(--ink-3)">+5% suggested</small></span>
-        </button>
-        <button class="bonus-btn" data-bonus="0.05" data-key="baby" type="button">
-          <span class="bonus-icon">👶</span>
-          <span>Stylist's New Baby<br><small style="font-weight:400;color:var(--ink-3)">+5% suggested</small></span>
-        </button>
-        <button class="bonus-btn" data-bonus="0.03" data-key="squeeze" type="button">
-          <span class="bonus-icon">⏰</span>
-          <span>Squeezed Me In<br><small style="font-weight:400;color:var(--ink-3)">+3% suggested</small></span>
-        </button>
-        <button class="bonus-btn" data-bonus="0.05" data-key="outstanding" type="button">
-          <span class="bonus-icon">✨</span>
-          <span>Truly Outstanding<br><small style="font-weight:400;color:var(--ink-3)">+5% suggested</small></span>
-        </button>
-        <button class="bonus-btn bonus-btn--yearend" data-key="yearend" type="button" id="yearendBtn">
-          <span class="bonus-icon">🎁</span>
-          <span>Year-End Bonus<br><small id="yearendLabel" style="font-weight:400;color:var(--ink-3)">= 1 full service</small></span>
-        </button>
-
-      </div>
-      <p class="bonus-note" id="bonusNote" style="display:none"></p>
-    </div>
-
-    <button class="calc-btn" id="calcBtn">Calculate My Tip →</button>
+  <!-- ═══════════════════════════════════════════════════════
+       ADSENSE PLACEMENT 1: Above Calculator (Leaderboard)
+       Replace the comment below with your AdSense ad unit code
+       Best size: responsive or 728x90 desktop / 320x50 mobile
+  ═══════════════════════════════════════════════════════ -->
+  <div class="ad-slot ad-slot-top">
+    <!-- PASTE ADSENSE UNIT 1 HERE -->
+    <!-- Example:
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="XXXXXXXXXX"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    -->
   </div>
 
-  <!-- RESULTS -->
-  <div class="results" id="resultsSection">
-    <div class="card">
-      <div class="result-header">
-        <div class="city-name" id="resultCity"></div>
-        <h2>Your Tip Suggestions</h2>
+  <div class="diff-box">
+    <h2>Most tip calculators give you <em>the same number</em><br>whether you&#x2019;re in rural Mississippi or Manhattan.</h2>
+    <p>Ours doesn&#x2019;t. A 20% tip means something very different when the median household income in your county is $42,000 versus $136,000. Every calculator on this site factors in the <strong>actual median household income</strong> for your city and county &#x2014; pulled from US Census data &#x2014; so the suggestion feels right for where you are, not just where the average American happens to be.</p>
+  </div>
+
+  <div class="section-title">Tip Calculators</div>
+  <p class="section-sub">Each calculator is built around the specific inputs that matter for that service &#x2014; not a one-size-fits-all percentage field.</p>
+
+  <div class="calc-grid">
+
+
+    <a class="calc-card" href="hair-stylist-tip-calculator/index.html">
+      <div class="card-visual vis-hair">
+        <div class="card-visual-title">Hair Stylist</div>
+        <div class="card-visual-range">15% &ndash; 25%</div>
       </div>
-      <div class="tip-grid" id="tipGrid"></div>
-      <div class="insight-box" id="insightBox"></div>
-      <button class="recalc-btn" id="recalcBtn">← Calculate Again</button>
+      <div class="card-body">
+        <p class="calc-card-desc">Factors in your city&rsquo;s income data, how long you were in the chair, whether you&rsquo;re a regular, and how happy you are with the results.</p>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+      </div>
+    </a>
+
+    <a class="calc-card" href="barber-tip-calculator/index.html">
+      <div class="card-visual vis-barber">
+        <div class="card-visual-title">Barber</div>
+        <div class="card-visual-range">15% &ndash; 20%</div>
+      </div>
+      <div class="card-body">
+        <p class="calc-card-desc">Service type, regularity as a client, and local norms for your area &mdash; because a great barber deserves more than a flat 15%.</p>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+      </div>
+    </a>
+
+    <a class="calc-card" href="restaurant-tip-calculator/index.html">
+      <div class="card-visual vis-restaurant">
+        <div class="card-visual-title">Restaurant Server</div>
+        <div class="card-visual-range">18% &ndash; 22%</div>
+      </div>
+      <div class="card-body">
+        <p class="calc-card-desc">Food quality, drink refills, timing, and accuracy &mdash; with a note that tips are often shared with kitchen staff.</p>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+      </div>
+    </a>
+
+    <a class="calc-card" href="massage-therapist-tip-calculator/index.html">
+      <div class="card-visual vis-massage">
+        <div class="card-visual-title">Massage Therapist</div>
+        <div class="card-visual-range">15% &ndash; 20%</div>
+      </div>
+      <div class="card-body">
+        <p class="calc-card-desc">Session length, massage type, spa vs. independent therapist, and whether it&rsquo;s your first visit or you&rsquo;re a regular.</p>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+      </div>
+    </a>
+
+    <a class="calc-card" href="nail-salon-tip-calculator/index.html">
+      <div class="card-visual vis-nail">
+        <div class="card-visual-title">Nail Salon</div>
+        <div class="card-visual-range">15% &ndash; 20%</div>
+      </div>
+      <div class="card-body">
+        <p class="calc-card-desc">Covers mani, pedi, gel, acrylics, and nail art &mdash; complexity of the service matters as much as the total.</p>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+      </div>
+    </a>
+
+    <a class="calc-card" href="tattoo-tip-calculator/index.html">
+      <div class="card-visual vis-tattoo">
+        <div class="card-visual-title">Tattoo Artist</div>
+        <div class="card-visual-range">15% &ndash; 25%</div>
+      </div>
+      <div class="card-body">
+        <p class="calc-card-desc">Session length, design complexity, ongoing project vs. first visit &mdash; including final-session completion tip guidance.</p>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+      </div>
+    </a>
+
+    <a class="calc-card" href="hotel-housekeeping-tip-calculator/index.html">
+      <div class="card-visual vis-hotel">
+        <div class="card-visual-title">Housekeeping</div>
+        <div class="card-visual-range">$2 &ndash; $10 / night</div>
+      </div>
+      <div class="card-body">
+        <p class="card-sub">Hotels · Motels · Resorts · Airbnbs · Cabins · All-Inclusive</p>
+        <p class="calc-card-desc">Number of nights, room type, guests, and quality of service. Includes checkout etiquette so they know what helps.</p>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+      </div>
+    </a>
+
+    <a class="calc-card" href="movers-tip-calculator/index.html">
+      <div class="card-visual vis-movers">
+        <div class="card-visual-title">Movers</div>
+        <div class="card-visual-range">$20 &ndash; $50 / mover</div>
+      </div>
+      <div class="card-body">
+        <p class="calc-card-desc">Home size, hours, difficulty, care with your belongings, and whether they followed your instructions.</p>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+      </div>
+    </a>
+
+    <a class="calc-card" href="rideshare-tip-calculator/index.html">
+      <div class="card-visual vis-rideshare">
+        <div class="card-visual-title">Rideshare Driver</div>
+        <div class="card-visual-range">10% &ndash; 20%</div>
+      </div>
+      <div class="card-body">
+        <p class="card-sub">Uber · Lyft · Via · and all rideshare apps</p>
+        <p class="calc-card-desc">Car cleanliness, friendliness, ride smoothness, on-time pickup, and amenities &mdash; not just a flat percentage.</p>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+      </div>
+    </a>
+
+    <a class="calc-card" href="valet-tip-calculator/index.html">
+      <div class="card-visual vis-valet">
+        <div class="card-visual-title">Valet</div>
+        <div class="card-visual-range">$3 &ndash; $10 flat</div>
+      </div>
+      <div class="card-body">
+        <p class="card-sub">Restaurant · Hotel · Hospital · Event · Casino</p>
+        <p class="calc-card-desc">Wait time, how your car was handled, friendliness, and venue type. A flat-dollar suggestion, not a percentage.</p>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+      </div>
+    </a>
+
+    <a class="calc-card" href="food-delivery-tip-calculator/index.html">
+      <div class="card-visual vis-delivery">
+        <div class="card-visual-title">Food Delivery</div>
+        <div class="card-visual-range">15% &ndash; 20% (min $3)</div>
+      </div>
+      <div class="card-body">
+        <p class="calc-card-desc">Order size, distance, weather, and accuracy. UberEats, DoorDash, and similar &mdash; always with a fair minimum.</p>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+      </div>
+    </a>
+
+    <a class="calc-card" href="grocery-delivery-tip-calculator/index.html">
+      <div class="card-visual vis-grocery">
+        <div class="card-visual-title">Grocery Delivery</div>
+        <div class="card-visual-range">10% &ndash; 15% (min $5)</div>
+      </div>
+      <div class="card-body">
+        <p class="card-sub">Instacart · Shipt · Walmart · Whole Foods · Kroger · Target · Amazon Fresh</p>
+        <p class="calc-card-desc">Large grocery orders involve real effort &mdash; size of order, handling of cold items, delivery accuracy, and weather.</p>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+      </div>
+    </a>
+
+    <a class="calc-card" href="house-cleaner-tip-calculator/index.html">
+      <div class="card-visual vis-cleaner">
+        <div class="card-visual-title">House Cleaner</div>
+        <div class="card-visual-range">15% &ndash; 20%</div>
+      </div>
+      <div class="card-body">
+        <p class="card-sub">Regular · Deep Clean · Move-In/Out · Airbnb Turnovers</p>
+        <p class="calc-card-desc">One-time vs. recurring, home size, quality of clean, whether your specific instructions were followed.</p>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- QUICK REFERENCE TABLE -->
+  <div class="ref-section">
+    <div class="section-title">US Tipping Quick Reference</div>
+    <p class="section-sub">Ranges reflect national norms. Your city&#x2019;s calculator may suggest slightly different amounts based on local income data.</p>
+    <div class="ref-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Too Low</th>
+            <th>Standard</th>
+            <th>Generous</th>
+            <th>More Than Generous</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Hair Stylist</td><td><span class="tag tl">Under 15%</span></td><td><span class="tag ts">15% &#x2013; 20%</span></td><td><span class="tag tg">20% &#x2013; 25%</span></td><td><span class="tag to">Over 30%</span></td></tr>
+          <tr><td>Barber</td><td><span class="tag tl">Under 10%</span></td><td><span class="tag ts">15% &#x2013; 20%</span></td><td><span class="tag tg">20% &#x2013; 25%</span></td><td><span class="tag to">Over 30%</span></td></tr>
+          <tr><td>Restaurant</td><td><span class="tag tl">Under 15%</span></td><td><span class="tag ts">18% &#x2013; 20%</span></td><td><span class="tag tg">22% &#x2013; 25%</span></td><td><span class="tag to">Over 30%</span></td></tr>
+          <tr><td>Massage</td><td><span class="tag tl">Under 10%</span></td><td><span class="tag ts">15% &#x2013; 20%</span></td><td><span class="tag tg">20% &#x2013; 25%</span></td><td><span class="tag to">Over 30%</span></td></tr>
+          <tr><td>Nail Salon</td><td><span class="tag tl">Under 10%</span></td><td><span class="tag ts">15% &#x2013; 20%</span></td><td><span class="tag tg">20% &#x2013; 25%</span></td><td><span class="tag to">Over 30%</span></td></tr>
+          <tr><td>Tattoo Artist</td><td><span class="tag tl">Under 10%</span></td><td><span class="tag ts">15% &#x2013; 20%</span></td><td><span class="tag tg">20% &#x2013; 25%</span></td><td><span class="tag to">Over 30%</span></td></tr>
+          <tr><td>Hotel Housekeeping</td><td><span class="tag tl">Under $1/night</span></td><td><span class="tag ts">$2 &#x2013; $5/night</span></td><td><span class="tag tg">$5 &#x2013; $10/night</span></td><td><span class="tag to">Over $15/night</span></td></tr>
+          <tr><td>Movers</td><td><span class="tag tl">Under $10/mover</span></td><td><span class="tag ts">$20 &#x2013; $30/mover</span></td><td><span class="tag tg">$30 &#x2013; $50/mover</span></td><td><span class="tag to">Over $75/mover</span></td></tr>
+          <tr><td>Rideshare</td><td><span class="tag tl">Under 10%</span></td><td><span class="tag ts">10% &#x2013; 15%</span></td><td><span class="tag tg">15% &#x2013; 20%</span></td><td><span class="tag to">Over 25%</span></td></tr>
+          <tr><td>Valet</td><td><span class="tag tl">Under $2</span></td><td><span class="tag ts">$3 &#x2013; $5</span></td><td><span class="tag tg">$5 &#x2013; $10</span></td><td><span class="tag to">Over $20</span></td></tr>
+          <tr><td>Food Delivery</td><td><span class="tag tl">Under $2</span></td><td><span class="tag ts">15% or $3 min</span></td><td><span class="tag tg">20% &#x2013; 25%</span></td><td><span class="tag to">Over 30%</span></td></tr>
+          <tr><td>House Cleaner</td><td><span class="tag tl">Under 10%</span></td><td><span class="tag ts">15% &#x2013; 20%</span></td><td><span class="tag tg">20% &#x2013; 25%</span></td><td><span class="tag to">Over 30%</span></td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
+
+  <!-- TIPPING IN AMERICA -->
+  <div class="info-section">
+    <div class="section-title">Tipping in America &#x2014; What You Should Know</div>
+    <p class="section-sub">The US has a tipping culture unlike most countries. Here&#x2019;s what shapes it.</p>
+    <div class="info-grid">
+
+      <div class="info-card">
+        <span class="info-icon"><span class="info-icon">💰</span>
+        <h3>Why tipping is expected in the US</h3>
+        <p>Many US service workers &#x2014; particularly servers, stylists, and drivers &#x2014; earn wages with the expectation that tips will supplement their income. In some states, tipped employees can legally be paid as little as <strong>$2.13/hour</strong> by employers. For many workers, tips are not optional generosity &#x2014; they are a primary income source.</p>
+      </div>
+
+      <div class="info-card">
+        <span class="info-icon"><span class="info-icon">📍</span>
+        <h3>Why tips vary so much by city</h3>
+        <p>A 20% tip in New York City &#x2014; where median household income exceeds $93,000 &#x2014; is table stakes. The same percentage in a rural area with a $42,000 median income is genuinely above and beyond. <strong>Local income levels shape what feels fair</strong> on both sides. Our calculators account for this using US Census data.</p>
+      </div>
+
+      <div class="info-card">
+        <span class="info-icon"><span class="info-icon">💵</span>
+        <h3>Cash vs. card &#x2014; does it matter?</h3>
+        <p>For personal services, <strong>cash tips are strongly preferred</strong>. Cash reaches the worker immediately and in full. Card tips may be subject to a 2&#x2013;3% processing fee and at some businesses aren&#x2019;t distributed until payday. When possible, carry small bills.</p>
+      </div>
+
+      <div class="info-card">
+        <span class="info-icon"><span class="info-icon">🎄</span>
+        <h3>Holiday and year-end tipping</h3>
+        <p>For service providers you see regularly &#x2014; your hair stylist, barber, house cleaner, or massage therapist &#x2014; a year-end gift is customary and deeply appreciated. The most common standard is a <strong>separate cash gift equal to one service cost</strong>, given at your last appointment of the year. This is in addition to your regular visit tip.</p>
+      </div>
+
+      <div class="info-card">
+        <span class="info-icon"><span class="info-icon">🍽️</span>
+        <h3>Restaurant tips are often shared</h3>
+        <p>At many US restaurants, tips are pooled and distributed among servers, food runners, bussers, and kitchen staff. This means <strong>the quality of your food is relevant to your tip</strong> even when your server was excellent. When food was poorly prepared but service was great, tipping well and speaking to a manager about the food separately is the right approach.</p>
+      </div>
+
+      <div class="info-card">
+        <span class="info-icon"><span class="info-icon">🚫</span>
+        <h3>When it&#x2019;s acceptable to tip less</h3>
+        <p>If service was genuinely poor &#x2014; not just imperfect, but meaningfully below standard &#x2014; tipping at the lower end of the range is reasonable. <strong>Skipping a tip entirely without any feedback is considered rude</strong> in most US service settings, even when disappointed. A word to the service provider or manager is always more constructive.</p>
+      </div>
+
+      <div class="info-card">
+        <span class="info-icon"><span class="info-icon">🧾</span>
+        <h3>Pre-tax or post-tax?</h3>
+        <p>The widely accepted US practice is to calculate a restaurant tip on the <strong>pre-tax total</strong>. For personal services like haircuts or massages, the tip is calculated on the service cost. Our calculators always use the service cost you enter &#x2014; no tax confusion.</p>
+      </div>
+
+      <div class="info-card">
+        <span class="info-icon"><span class="info-icon">📱</span>
+        <h3>The tablet tip prompt</h3>
+        <p>Counter service businesses increasingly present a payment tablet with pre-selected tip options. There is <strong>no universal obligation to tip at counter service</strong> where you placed your own order and received no table service. For full table service or any skilled personal work, a tip remains appropriate regardless of how payment is collected.</p>
+      </div>
+
+    </div>
+  </div>
+
 </main>
 
-<!-- SEO CONTENT: Common Tipping Etiquette in US Salons -->
-<section class="seo-section" aria-label="Hair salon tipping guide">
-  <div class="seo-inner">
-    <h2 class="seo-h2">United States Hair Stylist Tipping Guide</h2>
-    <p class="seo-lead">Not sure what's normal for US salon tipping? Here's what most Americans actually do — and why local norms matter more than any single national rule.</p>
 
-    <div class="seo-grid">
-      <div class="seo-card">
-        <div class="seo-card-icon">💇</div>
-        <h3>The Standard Range</h3>
-        <p>The widely accepted tip for a hair stylist in the US is <strong>15%–20%</strong> of the total service cost. For exceptional work — precise cuts, complex color, or creative styling — <strong>20%–25%</strong> is common and appreciated. Going below 15% is generally considered low by industry standards.</p>
-      </div>
-
-      <div class="seo-card">
-        <div class="seo-card-icon">🎄</div>
-        <h3>How Much Should I Tip My Hair Stylist at Christmas?</h3>
-        <p>For regular clients, a <strong>holiday tip equivalent to the cost of one service</strong> is the most common guideline — or a generous 25%–30% on your last appointment of the year. A $20–$50 cash bonus on top of your normal tip is a warm, meaningful gesture your stylist will remember.</p>
-      </div>
-
-      <div class="seo-card">
-        <div class="seo-card-icon">📍</div>
-        <h3>Why Tips Vary by City</h3>
-        <p>Tipping norms in New York City, San Francisco, or Seattle naturally run higher than in rural areas — cost of living, stylist wages, and local income all affect what feels appropriate. A 20% tip in Manhattan is table stakes; the same percentage in a small Midwestern town may be genuinely above and beyond.</p>
-      </div>
-
-      <div class="seo-card">
-        <div class="seo-card-icon">⏱️</div>
-        <h3>Does Appointment Length Matter?</h3>
-        <p>Yes. A 30-minute trim and a 3-hour balayage both show on your bill as a dollar amount — but the longer appointment demands significantly more of your stylist's time, skill, and energy. Tipping based on time as well as price is increasingly considered the thoughtful approach.</p>
-      </div>
-
-      <div class="seo-card">
-        <div class="seo-card-icon">👑</div>
-        <h3>Should You Tip the Salon Owner?</h3>
-        <p>The old etiquette rule that said "don't tip the owner" is largely outdated. Most salon owners today work the chair just like their staff, and tipping <strong>15%–20%</strong> is appropriate and appreciated. If the owner provides exceptional service, tip as you would any skilled professional.</p>
-      </div>
-
-      <div class="seo-card">
-        <div class="seo-card-icon">💵</div>
-        <h3>Cash vs. Card Tips</h3>
-        <p>Stylists almost universally prefer cash tips — they receive the full amount immediately, with no processing delay or card fees. If cash isn't an option, card tips are still very much appreciated. Some salons use digital tip prompts at checkout; these go directly to the stylist.</p>
-      </div>
-    </div>
-
-    <div class="seo-faq">
-      <h3 class="seo-faq-title">Frequently Asked Questions — US Hair Stylist Tips</h3>
-      <div class="seo-faq-item">
-        <strong>How much do you tip on a $100 haircut?</strong>
-        <p>For a $100 haircut in the United States, $18–$20 is standard (18%–20%). If you were very happy, or the appointment was long or complex, $20–$25 is generous and appreciated. In high cost-of-living cities like New York or San Francisco, 20%–25% is the local norm.</p>
-      </div>
-      <div class="seo-faq-item">
-        <strong>How much do you tip on a $150 hair service?</strong>
-        <p>At $150, a standard 20% tip is $30. For balayage, toning, or any service involving significant time and product, $35–$45 (23%–30%) reflects the extra skill involved. Use our calculator above to get a figure calibrated to your specific city.</p>
-      </div>
-      <div class="seo-faq-item">
-        <strong>How much do you tip on a $200 hair service?</strong>
-        <p>At $200, a 20% tip is $40. For full-day color work or complex treatments, many US clients tip toward $50–$60 (25%–30%) to reflect the hours and expertise involved. The service type and your satisfaction level should guide where you land in that range.</p>
-      </div>
-      <div class="seo-faq-item">
-        <strong>How much do you tip on a $300 hair service?</strong>
-        <p>At $300, a standard 20% tip is $60. For premium services like balayage, keratin treatments, or color correction, $70–$90 (23%–30%) is not uncommon among regular clients who want to show meaningful appreciation for the time and skill involved.</p>
-      </div>
-      <div class="seo-faq-item">
-        <strong>How much do you tip on a $350 hair service?</strong>
-        <p>For a $350 service in a US salon, $70 is the 20% baseline. For exceptional work or a multi-hour appointment, $85–$105 (24%–30%) is a generous and well-regarded tip. If you had a senior or highly experienced stylist, erring toward the higher end is appropriate.</p>
-      </div>
-      <div class="seo-faq-item">
-        <strong>How much do you tip on a $400 hair service?</strong>
-        <p>At $400, a standard tip is $80 (20%). For complex, high-skill work — full color corrections, extensions, or multi-service appointments — $90–$120 (22%–30%) is common among satisfied clients. A $400 service typically reflects advanced expertise that merits a thoughtful tip.</p>
-      </div>
-      <div class="seo-faq-item">
-        <strong>Is it rude not to tip your hairdresser in the United States?</strong>
-        <p>In the US, not tipping is generally considered impolite unless you had a genuinely poor experience. Stylists often rely on tips as a meaningful part of their income. Even if you're disappointed, a minimum 10%–15% tip acknowledges the time and effort involved — though local norms and your specific situation may suggest a higher floor in the calculator results.</p>
-      </div>
-      <div class="seo-faq-item">
-        <strong>Do you tip for every person who touches your hair?</strong>
-        <p>Yes — if a shampoo assistant washes and conditions your hair, a $3–$10 tip is customary in US salons. If a separate colorist or blowout technician assisted, a small individual tip for each is a thoughtful practice, especially at upscale salons. Ask the front desk how tips are distributed if you're unsure.</p>
-      </div>
-      <div class="seo-faq-item">
-        <strong>Is it better to tip cash or card at a US hair salon?</strong>
-        <p>Most US hair stylists prefer cash — it's received immediately and in full, with no card processing fees. Card tips are still appreciated when cash isn't available, but some salons take a small processing fee that reduces what the stylist actually receives. Coming prepared with cash is a thoughtful habit, especially for regular appointments.</p>
-      </div>
-      <div class="seo-faq-item">
-        <strong>How much should I tip my hair stylist at Christmas in the US?</strong>
-        <p>The most common US guideline for a Christmas or holiday tip is the cost of one full service, or a 25%–30% tip on your last appointment of the year. A separate cash bonus of $20–$50 on top of your regular tip is a warm way to show appreciation for the whole year. Use the Holiday toggle in our calculator above to see how this affects your total.</p>
-      </div>
-      <div class="seo-faq-item">
-        <strong>How much to tip for a last-minute squeeze-in?</strong>
-        <p>When a stylist rearranges their schedule or stays late to fit you in — especially before a wedding, holiday party, or other big event — an extra $10–$20 on top of your regular tip is considered thoughtful etiquette. Many clients add a 3%–5% bonus to their normal percentage to acknowledge the inconvenience the stylist absorbed. Our calculator's "Squeezed Me In" toggle automatically factors this in.</p>
-      </div>
-      <div class="seo-faq-item">
-        <strong>Hair stylist Christmas tip vs. regular service tip — what's the difference?</strong>
-        <p>A regular tip is a percentage of that day's bill — typically 18%–22% — given at every appointment. A Christmas or holiday tip is a separate, once-a-year gesture for stylists you see regularly, meant to express gratitude for the whole relationship, not just one visit. Think of the regular tip as payment for the service and the holiday tip as a thank-you for the year. The holiday amount is typically the cost of one service, or $20–$50 cash on top of your normal visit tip.</p>
-      </div>
-      <div class="seo-faq-item">
-        <strong>First-time client vs. regular client — how does tipping etiquette differ?</strong>
-        <p>First-time clients in US salons typically tip 15%–20%, which is polite and appropriate when there's no established relationship yet. Regular clients often tip 20%–25% or more, reflecting ongoing loyalty, the stylist's deep familiarity with their hair, and appreciation for consistent quality. If you love your first appointment and plan to return, tipping closer to 20%–22% signals that to your stylist. Long-term regulars often give more around the holidays or when the stylist has gone above and beyond.</p>
-      </div>
-    </div>
+  <!-- ═══════════════════════════════════════════════════════
+       ADSENSE PLACEMENT 2: Between Results & SEO Content
+       Replace the comment below with your AdSense ad unit code
+       Best size: responsive or 336x280 rectangle
+  ═══════════════════════════════════════════════════════ -->
+  <div class="ad-slot ad-slot-mid">
+    <!-- PASTE ADSENSE UNIT 2 HERE -->
+    <!-- Example:
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="XXXXXXXXXX"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    -->
   </div>
-</section>
 
 <footer class="footer">
-  <p class="footer-data">Calculations run entirely in your browser — we collect no personal data. Income figures from U.S. Census ACS 5-year estimates. City data provided by <a href="https://simplemaps.com/data/us-cities" target="_blank" rel="noopener noreferrer" class="footer-link">SimpleMaps</a>.</p>
-  <p class="footer-disclaimer"><strong>Disclaimer:</strong> Tip suggestions are estimates only, based on local income data and general tipping norms. Actual appropriate amounts may vary. We make no guarantee of accuracy — always use your own judgment when tipping.</p>
+  <p class="footer-data">All calculations run in your browser &#x2014; we collect no personal data. Income data from US Census Bureau ACS 5-year estimates. City data by <a href="https://simplemaps.com/data/us-cities" target="_blank" rel="noopener noreferrer" class="flink">SimpleMaps</a>.</p>
+  <p class="footer-disc"><strong>Disclaimer:</strong> Tip suggestions are estimates based on local income data and general US tipping norms. Actual appropriate amounts may vary. Always use your own judgment.</p>
+
+  <p style="margin-top:10px;font-size:11px;"><a href="privacy-policy/index.html" style="color:var(--ink-3);margin-right:14px;">Privacy Policy</a><a href="terms-of-use/index.html" style="color:var(--ink-3);">Terms of Use</a></p>
 </footer>
 
-<script>
-// ─────────────────────────────────────────────────────────────────────────────
-// DATA LOADING
-// cities.json  → [{c: "City", s: "ST", f: "FIPS5"}]
-// counties.json → {"FIPS5": medianHouseholdIncome}
-// Both files sit in the same directory as this HTML file.
-// ─────────────────────────────────────────────────────────────────────────────
 
-const US_MEDIAN_INCOME = 74580; // 2022 ACS national median, fallback
+<!-- ═══════════════════════════════════════════════════════
+     ADSENSE PLACEMENT 3: Sticky Mobile Footer
+     Shows only on screens under 600px wide
+     Replace the comment below with your AdSense ad unit code
+     Best size: 320x50 or smart banner
+═══════════════════════════════════════════════════════ -->
+<div class="ad-sticky-footer">
+  <!-- PASTE ADSENSE UNIT 3 HERE -->
+  <!-- Example:
+  <ins class="adsbygoogle"
+       style="display:inline-block;width:320px;height:50px"
+       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+       data-ad-slot="XXXXXXXXXX"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  -->
+</div>
 
-// Data embedded directly — no server needed, works from any local file or host
-// ── CITY DATA ──────────────────────────────────────────────────────────────
-// Embedded fallback: top 1,000 US cities (works offline / local file open)
-// Full dataset: loaded from cities.json when served from a web host (~28K cities)
-const CITIES_FALLBACK = [{"c":"New York","s":"NY","f":"36081"},{"c":"Los Angeles","s":"CA","f":"06037"},{"c":"Chicago","s":"IL","f":"17031"},{"c":"Miami","s":"FL","f":"12086"},{"c":"Houston","s":"TX","f":"48201"},{"c":"Dallas","s":"TX","f":"48113"},{"c":"Philadelphia","s":"PA","f":"42101"},{"c":"Atlanta","s":"GA","f":"13121"},{"c":"Washington","s":"DC","f":"11001"},{"c":"Boston","s":"MA","f":"25025"},{"c":"Phoenix","s":"AZ","f":"04013"},{"c":"Detroit","s":"MI","f":"26163"},{"c":"Seattle","s":"WA","f":"53033"},{"c":"San Francisco","s":"CA","f":"06075"},{"c":"San Diego","s":"CA","f":"06073"},{"c":"Tampa","s":"FL","f":"12057"},{"c":"Minneapolis","s":"MN","f":"27053"},{"c":"Brooklyn","s":"NY","f":"36047"},{"c":"Denver","s":"CO","f":"08031"},{"c":"Queens","s":"NY","f":"36081"},{"c":"Riverside","s":"CA","f":"06065"},{"c":"Las Vegas","s":"NV","f":"32003"},{"c":"Baltimore","s":"MD","f":"24510"},{"c":"St. Louis","s":"MO","f":"29510"},{"c":"Portland","s":"OR","f":"41051"},{"c":"San Antonio","s":"TX","f":"48029"},{"c":"Sacramento","s":"CA","f":"06067"},{"c":"Orlando","s":"FL","f":"12095"},{"c":"Austin","s":"TX","f":"48453"},{"c":"San Jose","s":"CA","f":"06085"},{"c":"Indianapolis","s":"IN","f":"18097"},{"c":"Pittsburgh","s":"PA","f":"42003"},{"c":"Cincinnati","s":"OH","f":"39061"},{"c":"Kansas City","s":"MO","f":"29095"},{"c":"Cleveland","s":"OH","f":"39035"},{"c":"Manhattan","s":"NY","f":"36061"},{"c":"Columbus","s":"OH","f":"39049"},{"c":"Charlotte","s":"NC","f":"37119"},{"c":"Bronx","s":"NY","f":"36005"},{"c":"Virginia Beach","s":"VA","f":"51810"},{"c":"Jacksonville","s":"FL","f":"12031"},{"c":"Providence","s":"RI","f":"44007"},{"c":"Milwaukee","s":"WI","f":"55079"},{"c":"Nashville","s":"TN","f":"47037"},{"c":"Salt Lake City","s":"UT","f":"49035"},{"c":"Raleigh","s":"NC","f":"37183"},{"c":"Richmond","s":"VA","f":"51760"},{"c":"Memphis","s":"TN","f":"47157"},{"c":"Oklahoma City","s":"OK","f":"40109"},{"c":"Hartford","s":"CT","f":"09110"},{"c":"Louisville","s":"KY","f":"21111"},{"c":"Fort Worth","s":"TX","f":"48439"},{"c":"Bridgeport","s":"CT","f":"09120"},{"c":"Buffalo","s":"NY","f":"36029"},{"c":"New Orleans","s":"LA","f":"22071"},{"c":"Tucson","s":"AZ","f":"04019"},{"c":"El Paso","s":"TX","f":"48141"},{"c":"Omaha","s":"NE","f":"31055"},{"c":"McAllen","s":"TX","f":"48215"},{"c":"Birmingham","s":"AL","f":"01073"},{"c":"Albuquerque","s":"NM","f":"35001"},{"c":"Tulsa","s":"OK","f":"40143"},{"c":"Charleston","s":"SC","f":"45019"},{"c":"Fresno","s":"CA","f":"06019"},{"c":"Rochester","s":"NY","f":"36055"},{"c":"Cape Coral","s":"FL","f":"12071"},{"c":"Dayton","s":"OH","f":"39113"},{"c":"Baton Rouge","s":"LA","f":"22033"},{"c":"Mission Viejo","s":"CA","f":"06059"},{"c":"Allentown","s":"PA","f":"42077"},{"c":"Colorado Springs","s":"CO","f":"08041"},{"c":"Provo","s":"UT","f":"49049"},{"c":"Ogden","s":"UT","f":"49057"},{"c":"Knoxville","s":"TN","f":"47093"},{"c":"Grand Rapids","s":"MI","f":"26081"},{"c":"Columbia","s":"SC","f":"45079"},{"c":"Albany","s":"NY","f":"36001"},{"c":"Des Moines","s":"IA","f":"19153"},{"c":"New Haven","s":"CT","f":"09170"},{"c":"Bakersfield","s":"CA","f":"06029"},{"c":"Palm Bay","s":"FL","f":"12009"},{"c":"Akron","s":"OH","f":"39153"},{"c":"Concord","s":"CA","f":"06013"},{"c":"Wichita","s":"KS","f":"20173"},{"c":"Mesa","s":"AZ","f":"04013"},{"c":"Harrisburg","s":"PA","f":"42043"},{"c":"Worcester","s":"MA","f":"25027"},{"c":"Staten Island","s":"NY","f":"36085"},{"c":"Toledo","s":"OH","f":"39095"},{"c":"Port St. Lucie","s":"FL","f":"12111"},{"c":"Madison","s":"WI","f":"55025"},{"c":"Kissimmee","s":"FL","f":"12097"},{"c":"Reno","s":"NV","f":"32031"},{"c":"Little Rock","s":"AR","f":"05119"},{"c":"Denton","s":"TX","f":"48121"},{"c":"Spokane","s":"WA","f":"53063"},{"c":"Long Beach","s":"CA","f":"06037"},{"c":"Bonita Springs","s":"FL","f":"12071"},{"c":"Boise","s":"ID","f":"16001"},{"c":"Winston-Salem","s":"NC","f":"37067"},{"c":"Oakland","s":"CA","f":"06001"},{"c":"Augusta","s":"GA","f":"13245"},{"c":"Springfield","s":"MA","f":"25013"},{"c":"Durham","s":"NC","f":"37063"},{"c":"Pensacola","s":"FL","f":"12033"},{"c":"Chattanooga","s":"TN","f":"47065"},{"c":"Stockton","s":"CA","f":"06077"},{"c":"Fayetteville","s":"AR","f":"05143"},{"c":"Lancaster","s":"PA","f":"42071"},{"c":"Greenville","s":"SC","f":"45045"},{"c":"Syracuse","s":"NY","f":"36067"},{"c":"Arlington","s":"TX","f":"48439"},{"c":"Aurora","s":"CO","f":"08005"},{"c":"Trenton","s":"NJ","f":"34021"},{"c":"Oxnard","s":"CA","f":"06111"},{"c":"Huntsville","s":"AL","f":"01089"},{"c":"Indio","s":"CA","f":"06065"},{"c":"Scranton","s":"PA","f":"42069"},{"c":"Victorville","s":"CA","f":"06071"},{"c":"Modesto","s":"CA","f":"06099"},{"c":"Myrtle Beach","s":"SC","f":"45051"},{"c":"Honolulu","s":"HI","f":"15003"},{"c":"Anaheim","s":"CA","f":"06059"},{"c":"Greensboro","s":"NC","f":"37081"},{"c":"Corpus Christi","s":"TX","f":"48355"},{"c":"Fort Wayne","s":"IN","f":"18003"},{"c":"Fort Collins","s":"CO","f":"08069"},{"c":"Antioch","s":"CA","f":"06013"},{"c":"Jackson","s":"MS","f":"28049"},{"c":"Henderson","s":"NV","f":"32003"},{"c":"Lansing","s":"MI","f":"26065"},{"c":"Fayetteville","s":"NC","f":"37051"},{"c":"Savannah","s":"GA","f":"13051"},{"c":"Lexington","s":"KY","f":"21067"},{"c":"Ann Arbor","s":"MI","f":"26161"},{"c":"Poughkeepsie","s":"NY","f":"36027"},{"c":"Mobile","s":"AL","f":"01097"},{"c":"Youngstown","s":"OH","f":"39099"},{"c":"Santa Ana","s":"CA","f":"06059"},{"c":"Irvine","s":"CA","f":"06059"},{"c":"Newark","s":"NJ","f":"34013"},{"c":"St. Paul","s":"MN","f":"27123"},{"c":"Winter Haven","s":"FL","f":"12105"},{"c":"Springfield","s":"MO","f":"29077"},{"c":"Concord","s":"NC","f":"37025"},{"c":"Lincoln","s":"NE","f":"31109"},{"c":"Flint","s":"MI","f":"26049"},{"c":"Asheville","s":"NC","f":"37021"},{"c":"Jersey City","s":"NJ","f":"34017"},{"c":"Santa Rosa","s":"CA","f":"06097"},{"c":"Plano","s":"TX","f":"48085"},{"c":"Lakeland","s":"FL","f":"12105"},{"c":"Anchorage","s":"AK","f":"02020"},{"c":"Canton","s":"OH","f":"39151"},{"c":"Wilmington","s":"NC","f":"37129"},{"c":"Lubbock","s":"TX","f":"48303"},{"c":"Reading","s":"PA","f":"42011"},{"c":"Davenport","s":"IA","f":"19163"},{"c":"Gilbert","s":"AZ","f":"04013"},{"c":"Chandler","s":"AZ","f":"04013"},{"c":"South Bend","s":"IN","f":"18141"},{"c":"North Las Vegas","s":"NV","f":"32003"},{"c":"Chula Vista","s":"CA","f":"06073"},{"c":"Shreveport","s":"LA","f":"22017"},{"c":"Eugene","s":"OR","f":"41039"},{"c":"Rockford","s":"IL","f":"17201"},{"c":"Santa Clarita","s":"CA","f":"06037"},{"c":"Salem","s":"OR","f":"41047"},{"c":"Round Lake Beach","s":"IL","f":"17097"},{"c":"Killeen","s":"TX","f":"48027"},{"c":"St. Petersburg","s":"FL","f":"12103"},{"c":"Tallahassee","s":"FL","f":"12073"},{"c":"Kennewick","s":"WA","f":"53005"},{"c":"Laredo","s":"TX","f":"48479"},{"c":"Columbus","s":"GA","f":"13215"},{"c":"Irving","s":"TX","f":"48113"},{"c":"Peoria","s":"IL","f":"17143"},{"c":"Montgomery","s":"AL","f":"01101"},{"c":"Glendale","s":"AZ","f":"04013"},{"c":"Chesapeake","s":"VA","f":"51550"},{"c":"Garland","s":"TX","f":"48113"},{"c":"Gulfport","s":"MS","f":"28047"},{"c":"York","s":"PA","f":"42133"},{"c":"Scottsdale","s":"AZ","f":"04013"},{"c":"Lafayette","s":"LA","f":"22055"},{"c":"Nashua","s":"NH","f":"33011"},{"c":"Enterprise","s":"NV","f":"32003"},{"c":"Rock Hill","s":"SC","f":"45091"},{"c":"Arlington","s":"VA","f":"51013"},{"c":"Norfolk","s":"VA","f":"51710"},{"c":"Fargo","s":"ND","f":"38017"},{"c":"Appleton","s":"WI","f":"55087"},{"c":"Fremont","s":"CA","f":"06001"},{"c":"Clarksville","s":"TN","f":"47125"},{"c":"Hialeah","s":"FL","f":"12086"},{"c":"Bremerton","s":"WA","f":"53035"},{"c":"Deltona","s":"FL","f":"12127"},{"c":"Brownsville","s":"TX","f":"48061"},{"c":"Tacoma","s":"WA","f":"53053"},{"c":"San Bernardino","s":"CA","f":"06071"},{"c":"Green Bay","s":"WI","f":"55009"},{"c":"College Station","s":"TX","f":"48041"},{"c":"Frisco","s":"TX","f":"48085"},{"c":"Spring Valley","s":"NV","f":"32003"},{"c":"Spartanburg","s":"SC","f":"45083"},{"c":"Roanoke","s":"VA","f":"51770"},{"c":"Olympia","s":"WA","f":"53067"},{"c":"Gainesville","s":"FL","f":"12001"},{"c":"Kalamazoo","s":"MI","f":"26077"},{"c":"Fontana","s":"CA","f":"06071"},{"c":"Hickory","s":"NC","f":"37035"},{"c":"Moreno Valley","s":"CA","f":"06065"},{"c":"Portland","s":"ME","f":"23005"},{"c":"McKinney","s":"TX","f":"48085"},{"c":"Yonkers","s":"NY","f":"36119"},{"c":"Ocala","s":"FL","f":"12083"},{"c":"Sioux Falls","s":"SD","f":"46099"},{"c":"Thousand Oaks","s":"CA","f":"06111"},{"c":"Amarillo","s":"TX","f":"48375"},{"c":"Hagerstown","s":"MD","f":"24043"},{"c":"Evansville","s":"IN","f":"18163"},{"c":"Waterbury","s":"CT","f":"09140"},{"c":"Santa Barbara","s":"CA","f":"06083"},{"c":"Lorain","s":"OH","f":"39093"},{"c":"Nampa","s":"ID","f":"16027"},{"c":"Grand Prairie","s":"TX","f":"48113"},{"c":"Overland Park","s":"KS","f":"20091"},{"c":"Sunrise Manor","s":"NV","f":"32003"},{"c":"Galveston","s":"TX","f":"48167"},{"c":"Peoria","s":"AZ","f":"04013"},{"c":"Cedar Rapids","s":"IA","f":"19113"},{"c":"Vancouver","s":"WA","f":"53011"},{"c":"Huntington Beach","s":"CA","f":"06059"},{"c":"Frederick","s":"MD","f":"24021"},{"c":"Murfreesboro","s":"TN","f":"47149"},{"c":"Waco","s":"TX","f":"48309"},{"c":"Huntington","s":"WV","f":"54011"},{"c":"Glendale","s":"CA","f":"06037"},{"c":"Mauldin","s":"SC","f":"45045"},{"c":"Tempe","s":"AZ","f":"04013"},{"c":"Fredericksburg","s":"VA","f":"51630"},{"c":"Paradise","s":"NV","f":"32003"},{"c":"Fort Lauderdale","s":"FL","f":"12011"},{"c":"Hemet","s":"CA","f":"06065"},{"c":"Erie","s":"PA","f":"42049"},{"c":"Gainesville","s":"GA","f":"13139"},{"c":"Newport News","s":"VA","f":"51700"},{"c":"Gastonia","s":"NC","f":"37071"},{"c":"Spring Hill","s":"FL","f":"12053"},{"c":"Ontario","s":"CA","f":"06071"},{"c":"Aurora","s":"IL","f":"17089"},{"c":"Cary","s":"NC","f":"37183"},{"c":"Elk Grove","s":"CA","f":"06067"},{"c":"Panama City","s":"FL","f":"12005"},{"c":"Rancho Cucamonga","s":"CA","f":"06071"},{"c":"High Point","s":"NC","f":"37081"},{"c":"Danbury","s":"CT","f":"09190"},{"c":"Salinas","s":"CA","f":"06053"},{"c":"Pembroke Pines","s":"FL","f":"12011"},{"c":"Vallejo","s":"CA","f":"06095"},{"c":"Oceanside","s":"CA","f":"06073"},{"c":"Leesburg","s":"FL","f":"12069"},{"c":"Garden Grove","s":"CA","f":"06059"},{"c":"Muskegon","s":"MI","f":"26121"},{"c":"Medford","s":"OR","f":"41029"},{"c":"Tuscaloosa","s":"AL","f":"01125"},{"c":"Lancaster","s":"CA","f":"06037"},{"c":"Visalia","s":"CA","f":"06107"},{"c":"Manchester","s":"NH","f":"33011"},{"c":"Norwich","s":"CT","f":"09180"},{"c":"Marysville","s":"WA","f":"53061"},{"c":"Lafayette","s":"IN","f":"18157"},{"c":"Palmdale","s":"CA","f":"06037"},{"c":"Santa Cruz","s":"CA","f":"06087"},{"c":"Odessa","s":"TX","f":"48135"},{"c":"New Bedford","s":"MA","f":"25005"},{"c":"Merced","s":"CA","f":"06047"},{"c":"Corona","s":"CA","f":"06065"},{"c":"Hayward","s":"CA","f":"06001"},{"c":"Paterson","s":"NJ","f":"34031"},{"c":"Binghamton","s":"NY","f":"36007"},{"c":"Springfield","s":"IL","f":"17167"},{"c":"Alexandria","s":"VA","f":"51510"},{"c":"Lakewood","s":"CO","f":"08059"},{"c":"Macon","s":"GA","f":"13021"},{"c":"Roseville","s":"CA","f":"06061"},{"c":"Kansas City","s":"KS","f":"20209"},{"c":"Hollywood","s":"FL","f":"12011"},{"c":"Surprise","s":"AZ","f":"04013"},{"c":"Sunnyvale","s":"CA","f":"06085"},{"c":"Champaign","s":"IL","f":"17019"},{"c":"Lake Charles","s":"LA","f":"22019"},{"c":"Burlington","s":"NC","f":"37001"},{"c":"Bellevue","s":"WA","f":"53033"},{"c":"Fairfield","s":"CA","f":"06095"},{"c":"Naperville","s":"IL","f":"17043"},{"c":"Joliet","s":"IL","f":"17197"},{"c":"Elkhart","s":"IN","f":"18039"},{"c":"Escondido","s":"CA","f":"06073"},{"c":"Pasadena","s":"TX","f":"48201"},{"c":"Mesquite","s":"TX","f":"48113"},{"c":"Midland","s":"TX","f":"48329"},{"c":"Columbia","s":"MO","f":"29019"},{"c":"Warner Robins","s":"GA","f":"13153"},{"c":"St. George","s":"UT","f":"49053"},{"c":"Pomona","s":"CA","f":"06037"},{"c":"Topeka","s":"KS","f":"20177"},{"c":"Beaumont","s":"TX","f":"48245"},{"c":"South Lyon","s":"MI","f":"26125"},{"c":"Yuma","s":"AZ","f":"04027"},{"c":"Olathe","s":"KS","f":"20091"},{"c":"Santa Maria","s":"CA","f":"06083"},{"c":"Thornton","s":"CO","f":"08001"},{"c":"Athens","s":"GA","f":"13059"},{"c":"Torrance","s":"CA","f":"06037"},{"c":"Fullerton","s":"CA","f":"06059"},{"c":"Grand Junction","s":"CO","f":"08077"},{"c":"Greeley","s":"CO","f":"08123"},{"c":"Metairie","s":"LA","f":"22051"},{"c":"Las Cruces","s":"NM","f":"35013"},{"c":"Houma","s":"LA","f":"22109"},{"c":"Miramar","s":"FL","f":"12011"},{"c":"West Valley City","s":"UT","f":"49035"},{"c":"Orange","s":"CA","f":"06059"},{"c":"Warren","s":"MI","f":"26099"},{"c":"Charleston","s":"WV","f":"54039"},{"c":"Hampton","s":"VA","f":"51650"},{"c":"Elizabeth","s":"NJ","f":"34039"},{"c":"Stamford","s":"CT","f":"09190"},{"c":"Pasadena","s":"CA","f":"06037"},{"c":"Racine","s":"WI","f":"55101"},{"c":"Yakima","s":"WA","f":"53077"},{"c":"Coral Springs","s":"FL","f":"12011"},{"c":"Kent","s":"WA","f":"53033"},{"c":"Bellingham","s":"WA","f":"53073"},{"c":"Bloomington","s":"IL","f":"17113"},{"c":"Tyler","s":"TX","f":"48423"},{"c":"Carrollton","s":"TX","f":"48113"},{"c":"Sterling Heights","s":"MI","f":"26099"},{"c":"Iowa City","s":"IA","f":"19103"},{"c":"Lehigh Acres","s":"FL","f":"12071"},{"c":"Johnson City","s":"TN","f":"47179"},{"c":"Coeur d'Alene","s":"ID","f":"16055"},{"c":"Dover","s":"DE","f":"10001"},{"c":"Lewisville","s":"TX","f":"48121"},{"c":"Santa Clara","s":"CA","f":"06085"},{"c":"Meridian","s":"ID","f":"16001"},{"c":"Temple","s":"TX","f":"48027"},{"c":"Norman","s":"OK","f":"40027"},{"c":"Kailua","s":"HI","f":"15003"},{"c":"Billings","s":"MT","f":"30111"},{"c":"Abilene","s":"TX","f":"48441"},{"c":"Round Rock","s":"TX","f":"48491"},{"c":"Greenville","s":"NC","f":"37147"},{"c":"Pearland","s":"TX","f":"48039"},{"c":"Simi Valley","s":"CA","f":"06111"},{"c":"Kenosha","s":"WI","f":"55059"},{"c":"Lynchburg","s":"VA","f":"51680"},{"c":"Waldorf","s":"MD","f":"24017"},{"c":"Clovis","s":"CA","f":"06019"},{"c":"Yuba City","s":"CA","f":"06101"},{"c":"Seaside","s":"CA","f":"06053"},{"c":"Logan","s":"UT","f":"49005"},{"c":"Fort Smith","s":"AR","f":"05131"},{"c":"Rochester","s":"MN","f":"27109"},{"c":"Burlington","s":"VT","f":"50007"},{"c":"Arvada","s":"CO","f":"08059"},{"c":"Mandeville","s":"LA","f":"22103"},{"c":"West Palm Beach","s":"FL","f":"12099"},{"c":"Pueblo","s":"CO","f":"08101"},{"c":"Independence","s":"MO","f":"29095"},{"c":"Monroe","s":"LA","f":"22073"},{"c":"The Woodlands","s":"TX","f":"48339"},{"c":"Boulder","s":"CO","f":"08013"},{"c":"Berkeley","s":"CA","f":"06001"},{"c":"North Charleston","s":"SC","f":"45019"},{"c":"Brandon","s":"FL","f":"12057"},{"c":"Waterloo","s":"IA","f":"19013"},{"c":"Duluth","s":"MN","f":"27137"},{"c":"Cambridge","s":"MA","f":"25017"},{"c":"Richardson","s":"TX","f":"48113"},{"c":"Lowell","s":"MA","f":"25017"},{"c":"Broken Arrow","s":"OK","f":"40143"},{"c":"Utica","s":"NY","f":"36065"},{"c":"Redding","s":"CA","f":"06089"},{"c":"Clearwater","s":"FL","f":"12103"},{"c":"St. Cloud","s":"MN","f":"27145"},{"c":"Harlingen","s":"TX","f":"48061"},{"c":"Gilroy","s":"CA","f":"06085"},{"c":"West Jordan","s":"UT","f":"49035"},{"c":"League City","s":"TX","f":"48167"},{"c":"Port Arthur","s":"TX","f":"48245"},{"c":"Richmond","s":"CA","f":"06013"},{"c":"Westminster","s":"CO","f":"08001"},{"c":"Elgin","s":"IL","f":"17089"},{"c":"Carlsbad","s":"CA","f":"06073"},{"c":"Pompano Beach","s":"FL","f":"12011"},{"c":"Riverview","s":"FL","f":"12057"},{"c":"Miami Gardens","s":"FL","f":"12086"},{"c":"Bend","s":"OR","f":"41017"},{"c":"Sioux City","s":"IA","f":"19193"},{"c":"Gresham","s":"OR","f":"41051"},{"c":"Murrieta","s":"CA","f":"06065"},{"c":"Saginaw","s":"MI","f":"26145"},{"c":"Everett","s":"WA","f":"53061"},{"c":"East Los Angeles","s":"CA","f":"06037"},{"c":"Jacksonville","s":"NC","f":"37133"},{"c":"Temecula","s":"CA","f":"06065"},{"c":"Idaho Falls","s":"ID","f":"16019"},{"c":"Downey","s":"CA","f":"06037"},{"c":"South Fulton","s":"GA","f":"13121"},{"c":"Costa Mesa","s":"CA","f":"06059"},{"c":"Menifee","s":"CA","f":"06065"},{"c":"Allen","s":"TX","f":"48085"},{"c":"Sparks","s":"NV","f":"32031"},{"c":"Leominster","s":"MA","f":"25027"},{"c":"Sugar Land","s":"TX","f":"48157"},{"c":"Eau Claire","s":"WI","f":"55035"},{"c":"San Buenaventura","s":"CA","f":"06111"},{"c":"San Tan Valley","s":"AZ","f":"04021"},{"c":"Auburn","s":"AL","f":"01081"},{"c":"Rio Rancho","s":"NM","f":"35043"},{"c":"Davie","s":"FL","f":"12011"},{"c":"Chico","s":"CA","f":"06007"},{"c":"Hillsboro","s":"OR","f":"41067"},{"c":"Centennial","s":"CO","f":"08005"},{"c":"Bloomington","s":"IN","f":"18105"},{"c":"Goodyear","s":"AZ","f":"04013"},{"c":"Dearborn","s":"MI","f":"26163"},{"c":"Holland","s":"MI","f":"26139"},{"c":"Sandy Springs","s":"GA","f":"13121"},{"c":"West Covina","s":"CA","f":"06037"},{"c":"Jurupa Valley","s":"CA","f":"06065"},{"c":"Bowling Green","s":"KY","f":"21227"},{"c":"Longview","s":"TX","f":"48183"},{"c":"Spokane Valley","s":"WA","f":"53063"},{"c":"El Monte","s":"CA","f":"06037"},{"c":"Brockton","s":"MA","f":"25023"},{"c":"Renton","s":"WA","f":"53033"},{"c":"Buckeye","s":"AZ","f":"04013"},{"c":"New Braunfels","s":"TX","f":"48091"},{"c":"Inglewood","s":"CA","f":"06037"},{"c":"Edinburg","s":"TX","f":"48215"},{"c":"Burbank","s":"CA","f":"06037"},{"c":"El Cajon","s":"CA","f":"06073"},{"c":"Columbia","s":"MD","f":"24027"},{"c":"Rialto","s":"CA","f":"06071"},{"c":"Portsmouth","s":"NH","f":"33015"},{"c":"Lee's Summit","s":"MO","f":"29095"},{"c":"Kingsport","s":"TN","f":"47163"},{"c":"Charlottesville","s":"VA","f":"51540"},{"c":"San Mateo","s":"CA","f":"06081"},{"c":"Vacaville","s":"CA","f":"06095"},{"c":"Wichita Falls","s":"TX","f":"48485"},{"c":"Longmont","s":"CO","f":"08013"},{"c":"Conroe","s":"TX","f":"48339"},{"c":"Fishers","s":"IN","f":"18057"},{"c":"Highlands Ranch","s":"CO","f":"08035"},{"c":"Quincy","s":"MA","f":"25021"},{"c":"Daly City","s":"CA","f":"06081"},{"c":"Lynn","s":"MA","f":"25009"},{"c":"Carmel","s":"IN","f":"18057"},{"c":"Hesperia","s":"CA","f":"06071"},{"c":"Bismarck","s":"ND","f":"38015"},{"c":"Santa Fe","s":"NM","f":"35049"},{"c":"Boca Raton","s":"FL","f":"12099"},{"c":"Norwalk","s":"CA","f":"06037"},{"c":"San Angelo","s":"TX","f":"48451"},{"c":"Lafayette","s":"CO","f":"08013"},{"c":"Federal Way","s":"WA","f":"53033"},{"c":"Atascocita","s":"TX","f":"48201"},{"c":"Vista","s":"CA","f":"06073"},{"c":"Prescott Valley","s":"AZ","f":"04025"},{"c":"Suffolk","s":"VA","f":"51800"},{"c":"Palm Coast","s":"FL","f":"12035"},{"c":"Williamsburg","s":"VA","f":"51830"},{"c":"Sunrise","s":"FL","f":"12011"},{"c":"Beaverton","s":"OR","f":"41067"},{"c":"Middletown","s":"OH","f":"39017"},{"c":"Lawrence","s":"KS","f":"20045"},{"c":"La Crosse","s":"WI","f":"55063"},{"c":"Portsmouth","s":"VA","f":"51740"},{"c":"Orem","s":"UT","f":"49049"},{"c":"Tracy","s":"CA","f":"06077"},{"c":"Edmond","s":"OK","f":"40109"},{"c":"Plantation","s":"FL","f":"12011"},{"c":"Fort Myers","s":"FL","f":"12071"},{"c":"Arden-Arcade","s":"CA","f":"06067"},{"c":"San Marcos","s":"CA","f":"06073"},{"c":"Sandy","s":"UT","f":"49035"},{"c":"Manteca","s":"CA","f":"06077"},{"c":"Fall River","s":"MA","f":"25005"},{"c":"Mount Pleasant","s":"SC","f":"45019"},{"c":"Livonia","s":"MI","f":"26163"},{"c":"O'Fallon","s":"MO","f":"29183"},{"c":"Rapid City","s":"SD","f":"46103"},{"c":"Carson","s":"CA","f":"06037"},{"c":"Compton","s":"CA","f":"06037"},{"c":"Chino","s":"CA","f":"06071"},{"c":"Hoover","s":"AL","f":"01073"},{"c":"Roswell","s":"GA","f":"13121"},{"c":"Kirkland","s":"WA","f":"53033"},{"c":"Avondale","s":"AZ","f":"04013"},{"c":"Alafaya","s":"FL","f":"12095"},{"c":"Norwalk","s":"CT","f":"09190"},{"c":"South Gate","s":"CA","f":"06037"},{"c":"Santa Monica","s":"CA","f":"06037"},{"c":"Slidell","s":"LA","f":"22103"},{"c":"Florence","s":"SC","f":"45041"},{"c":"Germantown","s":"MD","f":"24031"},{"c":"Lawton","s":"OK","f":"40031"},{"c":"Missoula","s":"MT","f":"30063"},{"c":"Westminster","s":"CA","f":"06059"},{"c":"Joplin","s":"MO","f":"29097"},{"c":"Clifton","s":"NJ","f":"34031"},{"c":"Waukegan","s":"IL","f":"17097"},{"c":"Newton","s":"MA","f":"25017"},{"c":"Lawrence","s":"MA","f":"25009"},{"c":"Bloomington","s":"MN","f":"27053"},{"c":"St. Augustine","s":"FL","f":"12109"},{"c":"Springdale","s":"AR","f":"05143"},{"c":"Deerfield Beach","s":"FL","f":"12011"},{"c":"Bryan","s":"TX","f":"48041"},{"c":"Troy","s":"MI","f":"26125"},{"c":"San Leandro","s":"CA","f":"06001"},{"c":"Franklin","s":"TN","f":"47187"},{"c":"Mission","s":"TX","f":"48215"},{"c":"Citrus Heights","s":"CA","f":"06067"},{"c":"Melbourne","s":"FL","f":"12009"},{"c":"Lake Forest","s":"CA","f":"06059"},{"c":"Whittier","s":"CA","f":"06037"},{"c":"Winchester","s":"VA","f":"51840"},{"c":"Georgetown","s":"TX","f":"48491"},{"c":"San Ramon","s":"CA","f":"06013"},{"c":"Town 'n' Country","s":"FL","f":"12057"},{"c":"Auburn","s":"WA","f":"53033"},{"c":"Livermore","s":"CA","f":"06001"},{"c":"Muncie","s":"IN","f":"18035"},{"c":"Baytown","s":"TX","f":"48201"},{"c":"Hawthorne","s":"CA","f":"06037"},{"c":"Lehi","s":"UT","f":"49049"},{"c":"Wenatchee","s":"WA","f":"53007"},{"c":"North Port","s":"FL","f":"12115"},{"c":"State College","s":"PA","f":"42027"},{"c":"Vineland","s":"NJ","f":"34011"},{"c":"Folsom","s":"CA","f":"06067"},{"c":"Brooklyn Park","s":"MN","f":"27053"},{"c":"Newport Beach","s":"CA","f":"06059"},{"c":"Mountain View","s":"CA","f":"06085"},{"c":"Westland","s":"MI","f":"26163"},{"c":"Farmington Hills","s":"MI","f":"26125"},{"c":"The Villages","s":"FL","f":"12119"},{"c":"Layton","s":"UT","f":"49011"},{"c":"Cranston","s":"RI","f":"44007"},{"c":"Warwick","s":"RI","f":"44003"},{"c":"Madera","s":"CA","f":"06039"},{"c":"Buena Park","s":"CA","f":"06059"},{"c":"Homestead","s":"FL","f":"12086"},{"c":"Cicero","s":"IL","f":"17031"},{"c":"New Rochelle","s":"NY","f":"36119"},{"c":"South Jordan","s":"UT","f":"49035"},{"c":"Largo","s":"FL","f":"12103"},{"c":"Redwood City","s":"CA","f":"06081"},{"c":"Newark","s":"OH","f":"39089"},{"c":"Napa","s":"CA","f":"06055"},{"c":"Miami Beach","s":"FL","f":"12086"},{"c":"Johns Creek","s":"GA","f":"13121"},{"c":"Rancho Cordova","s":"CA","f":"06067"},{"c":"Silver Spring","s":"MD","f":"24031"},{"c":"Boynton Beach","s":"FL","f":"12099"},{"c":"Elizabethtown","s":"KY","f":"21093"},{"c":"Flagstaff","s":"AZ","f":"04005"},{"c":"Somerville","s":"MA","f":"25017"},{"c":"Alhambra","s":"CA","f":"06037"},{"c":"Springfield","s":"OH","f":"39023"},{"c":"Albany","s":"GA","f":"13095"},{"c":"Anderson","s":"IN","f":"18095"},{"c":"Terre Haute","s":"IN","f":"18167"},{"c":"Perris","s":"CA","f":"06065"},{"c":"Jackson","s":"MI","f":"26075"},{"c":"Florence","s":"AL","f":"01077"},{"c":"Pharr","s":"TX","f":"48215"},{"c":"Alton","s":"IL","f":"17119"},{"c":"Anniston","s":"AL","f":"01015"},{"c":"Jonesboro","s":"AR","f":"05031"},{"c":"Decatur","s":"IL","f":"17115"},{"c":"Pine Hills","s":"FL","f":"12095"},{"c":"Cheyenne","s":"WY","f":"56021"},{"c":"Port Huron","s":"MI","f":"26147"},{"c":"Parma","s":"OH","f":"39035"},{"c":"Lakewood","s":"CA","f":"06037"},{"c":"Hattiesburg","s":"MS","f":"28035"},{"c":"Turlock","s":"CA","f":"06099"},{"c":"Pasco","s":"WA","f":"53021"},{"c":"Kendall","s":"FL","f":"12086"},{"c":"Upland","s":"CA","f":"06071"},{"c":"Plymouth","s":"MN","f":"27053"},{"c":"Doral","s":"FL","f":"12086"},{"c":"Castle Rock","s":"CO","f":"08035"},{"c":"Valdosta","s":"GA","f":"13185"},{"c":"Daytona Beach","s":"FL","f":"12127"},{"c":"Tustin","s":"CA","f":"06059"},{"c":"Milpitas","s":"CA","f":"06085"},{"c":"Loveland","s":"CO","f":"08069"},{"c":"Flower Mound","s":"TX","f":"48121"},{"c":"Woodbury","s":"MN","f":"27163"},{"c":"Cedar Park","s":"TX","f":"48491"},{"c":"Bethlehem","s":"PA","f":"42095"},{"c":"Chino Hills","s":"CA","f":"06071"},{"c":"Wausau","s":"WI","f":"55073"},{"c":"Morgantown","s":"WV","f":"54061"},{"c":"Davis","s":"CA","f":"06113"},{"c":"Mableton","s":"GA","f":"13067"},{"c":"Mansfield","s":"TX","f":"48439"},{"c":"Wyoming","s":"MI","f":"26081"},{"c":"Redmond","s":"WA","f":"53033"},{"c":"Alameda","s":"CA","f":"06001"},{"c":"Saratoga Springs","s":"NY","f":"36091"},{"c":"Rochester Hills","s":"MI","f":"26125"},{"c":"Pleasanton","s":"CA","f":"06001"},{"c":"Carmichael","s":"CA","f":"06067"},{"c":"Camarillo","s":"CA","f":"06111"},{"c":"Schaumburg","s":"IL","f":"17031"},{"c":"Bellflower","s":"CA","f":"06037"},{"c":"Texarkana","s":"TX","f":"48037"},{"c":"Hammond","s":"IN","f":"18089"},{"c":"Salisbury","s":"MD","f":"24045"},{"c":"Missouri City","s":"TX","f":"48157"},{"c":"Dothan","s":"AL","f":"01069"},{"c":"Alexandria","s":"LA","f":"22079"},{"c":"Evanston","s":"IL","f":"17031"},{"c":"Broomfield","s":"CO","f":"08014"},{"c":"Pittsburg","s":"CA","f":"06013"},{"c":"Southfield","s":"MI","f":"26125"},{"c":"Wesley Chapel","s":"FL","f":"12101"},{"c":"Arlington Heights","s":"IL","f":"17031"},{"c":"Pawtucket","s":"RI","f":"44007"},{"c":"Apple Valley","s":"CA","f":"06071"},{"c":"Sheboygan","s":"WI","f":"55117"},{"c":"Oshkosh","s":"WI","f":"55139"},{"c":"Ellicott City","s":"MD","f":"24027"},{"c":"Mansfield","s":"OH","f":"39139"},{"c":"Poinciana","s":"FL","f":"12105"},{"c":"Lodi","s":"CA","f":"06077"},{"c":"Battle Creek","s":"MI","f":"26025"},{"c":"Lauderhill","s":"FL","f":"12011"},{"c":"Lebanon","s":"PA","f":"42075"},{"c":"Lakeville","s":"MN","f":"27037"},{"c":"Dover","s":"NH","f":"33017"},{"c":"New Britain","s":"CT","f":"09110"},{"c":"Bolingbrook","s":"IL","f":"17197"},{"c":"Leander","s":"TX","f":"48491"},{"c":"Owensboro","s":"KY","f":"21059"},{"c":"Conway","s":"AR","f":"05045"},{"c":"Harrisonburg","s":"VA","f":"51660"},{"c":"Redlands","s":"CA","f":"06071"},{"c":"Noblesville","s":"IN","f":"18057"},{"c":"Rocklin","s":"CA","f":"06061"},{"c":"St. Joseph","s":"MO","f":"29021"},{"c":"Tamarac","s":"FL","f":"12011"},{"c":"Rogers","s":"AR","f":"05007"},{"c":"Pocatello","s":"ID","f":"16005"},{"c":"Morristown","s":"TN","f":"47063"},{"c":"Altoona","s":"PA","f":"42013"},{"c":"San Marcos","s":"TX","f":"48209"},{"c":"Jackson","s":"TN","f":"47113"},{"c":"Ankeny","s":"IA","f":"19153"},{"c":"Glen Burnie","s":"MD","f":"24003"},{"c":"Bristol","s":"TN","f":"47163"},{"c":"Blaine","s":"MN","f":"27003"},{"c":"Lake Elsinore","s":"CA","f":"06065"},{"c":"Maricopa","s":"AZ","f":"04021"},{"c":"Mount Vernon","s":"NY","f":"36119"},{"c":"Framingham","s":"MA","f":"25017"},{"c":"Michigan City","s":"IN","f":"18091"},{"c":"Casas Adobes","s":"AZ","f":"04019"},{"c":"Cleveland","s":"TN","f":"47011"},{"c":"Janesville","s":"WI","f":"55105"},{"c":"Queen Creek","s":"AZ","f":"04013"},{"c":"Wilmington","s":"DE","f":"10003"},{"c":"Centreville","s":"VA","f":"51059"},{"c":"Bayonne","s":"NJ","f":"34017"},{"c":"Sumter","s":"SC","f":"45085"},{"c":"St. Charles","s":"MO","f":"29183"},{"c":"Sherman","s":"TX","f":"48181"},{"c":"Camden","s":"NJ","f":"34007"},{"c":"Longview","s":"WA","f":"53015"},{"c":"Waukesha","s":"WI","f":"55133"},{"c":"Maple Grove","s":"MN","f":"27053"},{"c":"West Des Moines","s":"IA","f":"19153"},{"c":"Dale City","s":"VA","f":"51153"},{"c":"Tulare","s":"CA","f":"06107"},{"c":"Dublin","s":"CA","f":"06001"},{"c":"North Richland Hills","s":"TX","f":"48439"},{"c":"Eastvale","s":"CA","f":"06065"},{"c":"Apex","s":"NC","f":"37183"},{"c":"Hammond","s":"LA","f":"22105"},{"c":"Blacksburg","s":"VA","f":"51121"},{"c":"Baldwin Park","s":"CA","f":"06037"},{"c":"East Orange","s":"NJ","f":"34013"},{"c":"Walnut Creek","s":"CA","f":"06013"},{"c":"Passaic","s":"NJ","f":"34031"},{"c":"Gaithersburg","s":"MD","f":"24031"},{"c":"Porterville","s":"CA","f":"06107"},{"c":"Dubuque","s":"IA","f":"19061"},{"c":"Mount Vernon","s":"WA","f":"53057"},{"c":"Bethesda","s":"MD","f":"24031"},{"c":"Redondo Beach","s":"CA","f":"06037"},{"c":"Corvallis","s":"OR","f":"41003"},{"c":"Glens Falls","s":"NY","f":"36113"},{"c":"Watsonville","s":"CA","f":"06087"},{"c":"Fairbanks","s":"AK","f":"02090"},{"c":"Schenectady","s":"NY","f":"36093"},{"c":"Brunswick","s":"GA","f":"13127"},{"c":"Weston","s":"FL","f":"12011"},{"c":"Hanford","s":"CA","f":"06031"},{"c":"Great Falls","s":"MT","f":"30013"},{"c":"Spring","s":"TX","f":"48201"},{"c":"Shawnee","s":"KS","f":"20091"},{"c":"Ames","s":"IA","f":"19169"},{"c":"Grand Forks","s":"ND","f":"38035"},{"c":"Gary","s":"IN","f":"18089"},{"c":"South Hill","s":"WA","f":"53053"},{"c":"Eagan","s":"MN","f":"27037"},{"c":"Delray Beach","s":"FL","f":"12099"},{"c":"Spring Hill","s":"TN","f":"47119"},{"c":"Haverhill","s":"MA","f":"25009"},{"c":"Rockville","s":"MD","f":"24031"},{"c":"Sebring","s":"FL","f":"12055"},{"c":"Union City","s":"CA","f":"06001"},{"c":"Horizon West","s":"FL","f":"12095"},{"c":"El Paso de Robles","s":"CA","f":"06079"},{"c":"Palo Alto","s":"CA","f":"06085"},{"c":"Yorba Linda","s":"CA","f":"06059"},{"c":"Bay City","s":"MI","f":"26017"},{"c":"Alpharetta","s":"GA","f":"13121"},{"c":"Novi","s":"MI","f":"26125"},{"c":"DeKalb","s":"IL","f":"17037"},{"c":"Caldwell","s":"ID","f":"16027"},{"c":"Sammamish","s":"WA","f":"53033"},{"c":"Union City","s":"NJ","f":"34017"},{"c":"Commerce City","s":"CO","f":"08001"},{"c":"Lima","s":"OH","f":"39003"},{"c":"Palatine","s":"IL","f":"17031"},{"c":"Skokie","s":"IL","f":"17031"},{"c":"Port Charlotte","s":"FL","f":"12015"},{"c":"Dalton","s":"GA","f":"13313"},{"c":"Greenwood","s":"IN","f":"18081"},{"c":"Pflugerville","s":"TX","f":"48453"},{"c":"Dundalk","s":"MD","f":"24005"},{"c":"Malden","s":"MA","f":"25017"},{"c":"Victoria","s":"TX","f":"48469"},{"c":"Casper","s":"WY","f":"56025"},{"c":"Kankakee","s":"IL","f":"17091"},{"c":"Albany","s":"OR","f":"41043"},{"c":"Rowlett","s":"TX","f":"48113"},{"c":"Beaufort","s":"SC","f":"45013"},{"c":"Brentwood","s":"CA","f":"06013"},{"c":"St. Cloud","s":"FL","f":"12097"},{"c":"Castro Valley","s":"CA","f":"06001"},{"c":"Kenner","s":"LA","f":"22051"},{"c":"Waltham","s":"MA","f":"25017"},{"c":"Port Orange","s":"FL","f":"12127"},{"c":"Lynwood","s":"CA","f":"06037"},{"c":"North Little Rock","s":"AR","f":"05119"},{"c":"Bellevue","s":"NE","f":"31153"},{"c":"Burnsville","s":"MN","f":"27037"},{"c":"Reston","s":"VA","f":"51059"},{"c":"South San Francisco","s":"CA","f":"06081"},{"c":"Laguna Niguel","s":"CA","f":"06059"},{"c":"Huntersville","s":"NC","f":"37119"},{"c":"Sanford","s":"FL","f":"12117"},{"c":"Millcreek","s":"UT","f":"49035"},{"c":"Coon Rapids","s":"MN","f":"27003"},{"c":"Hamilton","s":"OH","f":"39017"},{"c":"Moore","s":"OK","f":"40027"},{"c":"San Clemente","s":"CA","f":"06059"},{"c":"Hendersonville","s":"TN","f":"47165"},{"c":"Eden Prairie","s":"MN","f":"27053"},{"c":"Lakewood","s":"WA","f":"53053"},{"c":"Bossier City","s":"LA","f":"22015"},{"c":"Richland","s":"WA","f":"53005"},{"c":"Council Bluffs","s":"IA","f":"19155"},{"c":"Marietta","s":"GA","f":"13067"},{"c":"Bozeman","s":"MT","f":"30031"},{"c":"Wellington","s":"FL","f":"12099"},{"c":"Pontiac","s":"MI","f":"26125"},{"c":"Taylor","s":"MI","f":"26163"},{"c":"La Habra","s":"CA","f":"06059"},{"c":"Jupiter","s":"FL","f":"12099"},{"c":"Woodland","s":"CA","f":"06113"},{"c":"Parker","s":"CO","f":"08035"},{"c":"Dearborn Heights","s":"MI","f":"26163"},{"c":"Chapel Hill","s":"NC","f":"37135"},{"c":"Palm Harbor","s":"FL","f":"12103"},{"c":"Springfield","s":"OR","f":"41039"},{"c":"Encinitas","s":"CA","f":"06073"},{"c":"Bristol","s":"CT","f":"09140"},{"c":"Shoreline","s":"WA","f":"53033"},{"c":"Montebello","s":"CA","f":"06037"},{"c":"Palm Beach Gardens","s":"FL","f":"12099"},{"c":"Casa Grande","s":"AZ","f":"04021"},{"c":"La Mesa","s":"CA","f":"06073"},{"c":"Florence-Graham","s":"CA","f":"06037"},{"c":"White Plains","s":"NY","f":"36119"},{"c":"Meriden","s":"CT","f":"09170"},{"c":"Stonecrest","s":"GA","f":"13089"},{"c":"San Rafael","s":"CA","f":"06041"},{"c":"Taunton","s":"MA","f":"25005"},{"c":"Euless","s":"TX","f":"48439"},{"c":"North Miami","s":"FL","f":"12086"},{"c":"Wylie","s":"TX","f":"48085"},{"c":"Pico Rivera","s":"CA","f":"06037"},{"c":"Madison","s":"AL","f":"01089"},{"c":"Revere","s":"MA","f":"25025"},{"c":"Blue Springs","s":"MO","f":"29095"},{"c":"West Allis","s":"WI","f":"55079"},{"c":"Gardena","s":"CA","f":"06037"},{"c":"Medford","s":"MA","f":"25017"},{"c":"Herriman","s":"UT","f":"49035"},{"c":"Santee","s":"CA","f":"06073"},{"c":"Petaluma","s":"CA","f":"06097"},{"c":"Margate","s":"FL","f":"12011"},{"c":"Des Plaines","s":"IL","f":"17031"},{"c":"Monterey Park","s":"CA","f":"06037"},{"c":"Kokomo","s":"IN","f":"18067"},{"c":"St. Peters","s":"MO","f":"29183"},{"c":"National City","s":"CA","f":"06073"},{"c":"The Hammocks","s":"FL","f":"12086"},{"c":"Towson","s":"MD","f":"24005"},{"c":"Taylorsville","s":"UT","f":"49035"},{"c":"Hoboken","s":"NJ","f":"34017"},{"c":"Cupertino","s":"CA","f":"06085"},{"c":"Severn","s":"MD","f":"24003"},{"c":"Carson City","s":"NV","f":"32510"},{"c":"Lenexa","s":"KS","f":"20091"},{"c":"Lake Havasu City","s":"AZ","f":"04015"},{"c":"Coconut Creek","s":"FL","f":"12011"},{"c":"Midwest City","s":"OK","f":"40109"},{"c":"Bentonville","s":"AR","f":"05007"},{"c":"Apopka","s":"FL","f":"12095"},{"c":"St. Clair Shores","s":"MI","f":"26099"},{"c":"Bel Air South","s":"MD","f":"24025"},{"c":"Royal Oak","s":"MI","f":"26125"},{"c":"Bowie","s":"MD","f":"24033"},{"c":"Orland Park","s":"IL","f":"17031"},{"c":"Kannapolis","s":"NC","f":"37025"},{"c":"Brookhaven","s":"GA","f":"13089"},{"c":"Lacey","s":"WA","f":"53067"},{"c":"Decatur","s":"AL","f":"01103"},{"c":"Kettering","s":"OH","f":"39113"},{"c":"Bradenton","s":"FL","f":"12081"},{"c":"Sarasota","s":"FL","f":"12115"},{"c":"Marana","s":"AZ","f":"04019"},{"c":"Bartlett","s":"TN","f":"47157"},{"c":"Oak Lawn","s":"IL","f":"17031"},{"c":"Kyle","s":"TX","f":"48209"},{"c":"Smyrna","s":"TN","f":"47149"},{"c":"Highland","s":"CA","f":"06071"},{"c":"Smyrna","s":"GA","f":"13067"},{"c":"New Brunswick","s":"NJ","f":"34023"},{"c":"Beaumont","s":"CA","f":"06065"},{"c":"Fountain Valley","s":"CA","f":"06059"},{"c":"Southaven","s":"MS","f":"28033"},{"c":"DeSoto","s":"TX","f":"48113"},{"c":"Tigard","s":"OR","f":"41067"},{"c":"Perth Amboy","s":"NJ","f":"34023"},{"c":"Apple Valley","s":"MN","f":"27037"},{"c":"Fountainebleau","s":"FL","f":"12086"},{"c":"South Whittier","s":"CA","f":"06037"},{"c":"Berwyn","s":"IL","f":"17031"},{"c":"Mount Prospect","s":"IL","f":"17031"},{"c":"Texas City","s":"TX","f":"48167"},{"c":"West Haven","s":"CT","f":"09170"},{"c":"Chicopee","s":"MA","f":"25013"},{"c":"Plainfield","s":"NJ","f":"34039"},{"c":"San Jacinto","s":"CA","f":"06065"},{"c":"Arcadia","s":"CA","f":"06037"},{"c":"West Sacramento","s":"CA","f":"06113"},{"c":"Tinley Park","s":"IL","f":"17031"},{"c":"Little Elm","s":"TX","f":"48121"},{"c":"Peabody","s":"MA","f":"25009"},{"c":"Westfield","s":"IN","f":"18057"},{"c":"Yucaipa","s":"CA","f":"06071"},{"c":"Rocky Mount","s":"NC","f":"37127"},{"c":"Kentwood","s":"MI","f":"26081"},{"c":"Hacienda Heights","s":"CA","f":"06037"},{"c":"Manhattan","s":"KS","f":"20161"},{"c":"Twin Falls","s":"ID","f":"16083"},{"c":"Colton","s":"CA","f":"06071"},{"c":"Normal","s":"IL","f":"17113"},{"c":"Pinellas Park","s":"FL","f":"12103"},{"c":"Wheaton","s":"IL","f":"17043"},{"c":"Diamond Bar","s":"CA","f":"06037"},{"c":"Oak Park","s":"IL","f":"17031"},{"c":"Eagle Mountain","s":"UT","f":"49049"},{"c":"Aspen Hill","s":"MD","f":"24031"},{"c":"Edina","s":"MN","f":"27053"},{"c":"Huntington Park","s":"CA","f":"06037"},{"c":"Minnetonka","s":"MN","f":"27053"},{"c":"Elyria","s":"OH","f":"39093"},{"c":"Lincoln","s":"CA","f":"06061"},{"c":"Wheaton","s":"MD","f":"24031"},{"c":"Burleson","s":"TX","f":"48251"},{"c":"Grand Island","s":"NE","f":"31079"},{"c":"Wake Forest","s":"NC","f":"37183"},{"c":"Placentia","s":"CA","f":"06059"},{"c":"Kendale Lakes","s":"FL","f":"12086"},{"c":"Catalina Foothills","s":"AZ","f":"04019"},{"c":"Novato","s":"CA","f":"06041"},{"c":"Aloha","s":"OR","f":"41067"},{"c":"Mooresville","s":"NC","f":"37097"},{"c":"Cathedral City","s":"CA","f":"06065"},{"c":"Paramount","s":"CA","f":"06037"},{"c":"Westchester","s":"FL","f":"12086"},{"c":"West New York","s":"NJ","f":"34017"},{"c":"Palm Desert","s":"CA","f":"06065"},{"c":"Levittown","s":"NY","f":"36059"},{"c":"Columbus","s":"IN","f":"18005"},{"c":"Florissant","s":"MO","f":"29189"},{"c":"Dunwoody","s":"GA","f":"13089"},{"c":"Delano","s":"CA","f":"06029"},{"c":"Summerville","s":"SC","f":"45035"},{"c":"Collierville","s":"TN","f":"47157"},{"c":"Burien","s":"WA","f":"53033"},{"c":"East Honolulu","s":"HI","f":"15003"},{"c":"Country Club","s":"FL","f":"12086"},{"c":"Hoffman Estates","s":"IL","f":"17031"},{"c":"Rockwall","s":"TX","f":"48397"},{"c":"Grapevine","s":"TX","f":"48439"},{"c":"Aliso Viejo","s":"CA","f":"06059"},{"c":"Jeffersonville","s":"IN","f":"18019"},{"c":"Troy","s":"NY","f":"36083"},{"c":"El Dorado Hills","s":"CA","f":"06017"},{"c":"Milford city ","s":"CT","f":"09170"},{"c":"Mishawaka","s":"IN","f":"18141"},{"c":"Levittown","s":"PA","f":"42017"},{"c":"Glendora","s":"CA","f":"06037"},{"c":"Cuyahoga Falls","s":"OH","f":"39153"},{"c":"Enid","s":"OK","f":"40047"},{"c":"Hilo","s":"HI","f":"15001"},{"c":"Draper","s":"UT","f":"49035"},{"c":"Florin","s":"CA","f":"06067"},{"c":"Murray","s":"UT","f":"49035"},{"c":"Downers Grove","s":"IL","f":"17043"},{"c":"Everett","s":"MA","f":"25017"},{"c":"Rosemead","s":"CA","f":"06037"},{"c":"Lakewood","s":"OH","f":"39035"},{"c":"Covina","s":"CA","f":"06037"},{"c":"Coral Gables","s":"FL","f":"12086"},{"c":"Tamiami","s":"FL","f":"12086"},{"c":"North Bethesda","s":"MD","f":"24031"},{"c":"McLean","s":"VA","f":"51059"},{"c":"Bothell","s":"WA","f":"53033"},{"c":"St. Louis Park","s":"MN","f":"27053"},{"c":"Chesterfield","s":"MO","f":"29189"},{"c":"Lawrence","s":"IN","f":"18097"},{"c":"Cypress","s":"CA","f":"06059"},{"c":"Titusville","s":"FL","f":"12009"},{"c":"Ceres","s":"CA","f":"06099"},{"c":"Dublin","s":"OH","f":"39049"},{"c":"Stillwater","s":"OK","f":"40119"},{"c":"Portage","s":"MI","f":"26077"},{"c":"Tuckahoe","s":"VA","f":"51087"},{"c":"Leesburg","s":"VA","f":"51107"},{"c":"Bedford","s":"TX","f":"48439"},{"c":"Fort Pierce","s":"FL","f":"12111"},{"c":"Ocoee","s":"FL","f":"12095"},{"c":"Azusa","s":"CA","f":"06037"},{"c":"Cedar Hill","s":"TX","f":"48113"},{"c":"Biloxi","s":"MS","f":"28047"},{"c":"Euclid","s":"OH","f":"39035"},{"c":"Poway","s":"CA","f":"06073"},{"c":"Gallatin","s":"TN","f":"47165"},{"c":"Wauwatosa","s":"WI","f":"55079"},{"c":"San Luis Obispo","s":"CA","f":"06079"},{"c":"Saratoga Springs","s":"UT","f":"49049"},{"c":"Wilson","s":"NC","f":"37195"},{"c":"Antelope","s":"CA","f":"06067"},{"c":"Oro Valley","s":"AZ","f":"04019"},{"c":"University","s":"FL","f":"12057"},{"c":"Goose Creek","s":"SC","f":"45015"},{"c":"Niagara Falls","s":"NY","f":"36063"},{"c":"Middletown","s":"CT","f":"09130"},{"c":"North Highlands","s":"CA","f":"06067"},{"c":"Winter Garden","s":"FL","f":"12095"},{"c":"Cerritos","s":"CA","f":"06037"},{"c":"Huntsville","s":"TX","f":"48471"},{"c":"Minot","s":"ND","f":"38101"},{"c":"Glenview","s":"IL","f":"17031"},{"c":"Roswell","s":"NM","f":"35005"},{"c":"Los Banos","s":"CA","f":"06047"},{"c":"Brea","s":"CA","f":"06059"},{"c":"Prescott","s":"AZ","f":"04025"},{"c":"Pahrump","s":"NV","f":"32023"},{"c":"East Providence","s":"RI","f":"44007"},{"c":"Whitney","s":"NV","f":"32003"},{"c":"La Mirada","s":"CA","f":"06037"},{"c":"Mentor","s":"OH","f":"39085"},{"c":"Beavercreek","s":"OH","f":"39057"}];
-const COUNTIES_EMBEDDED = {"36061":93000,"36047":67000,"36081":72000,"36005":52000,"36085":82000,"36059":105000,"36103":111000,"36119":103000,"36087":88000,"36055":62000,"36029":56000,"36007":54000,"36019":58000,"36091":68000,"06037":81000,"06073":96000,"06059":107000,"06065":75000,"06071":68000,"06085":141000,"06075":136000,"06081":131000,"06001":117000,"06013":110000,"06067":76000,"06077":64000,"06019":58000,"06029":59000,"06083":82000,"06111":96000,"48201":65000,"48113":72000,"48439":71000,"48029":72000,"48453":80000,"48121":101000,"48085":98000,"48491":63000,"48141":58000,"48355":50000,"48375":43000,"48303":54000,"12086":63000,"12011":75000,"12099":77000,"12057":65000,"12095":63000,"12031":58000,"12009":59000,"12071":64000,"12103":55000,"12001":58000,"12073":55000,"17031":72000,"17043":91000,"17097":84000,"17089":80000,"17111":78000,"17197":74000,"17201":56000,"17113":55000,"42101":63000,"42091":89000,"42017":93000,"42045":88000,"42003":64000,"42011":60000,"42095":57000,"39049":62000,"39035":55000,"39061":58000,"39113":52000,"39153":60000,"39057":66000,"39093":61000,"13121":72000,"13089":81000,"13067":97000,"13135":95000,"13117":83000,"13151":58000,"13185":49000,"13051":52000,"37183":69000,"37119":65000,"37063":61000,"37081":58000,"37067":57000,"37021":56000,"37051":55000,"26163":58000,"26125":75000,"26099":72000,"26081":62000,"26065":58000,"26145":55000,"53033":102000,"53061":85000,"53053":78000,"53011":67000,"53063":58000,"53067":66000,"04013":72000,"04019":58000,"04021":53000,"04003":48000,"04005":55000,"08031":72000,"08005":91000,"08059":89000,"08001":86000,"08035":96000,"08069":80000,"08041":79000,"08013":86000,"47037":67000,"47157":58000,"47093":57000,"47065":61000,"47149":64000,"47187":72000,"47105":53000,"51059":126000,"51013":107000,"51510":82000,"51760":52000,"51810":57000,"51710":54000,"51041":78000,"24031":103000,"24033":97000,"24003":87000,"24005":81000,"24510":58000,"24027":86000,"24021":92000,"25025":86000,"25017":103000,"25021":101000,"25023":86000,"25027":82000,"25013":78000,"25003":74000,"34013":94000,"34017":96000,"34039":113000,"34023":97000,"34029":102000,"34003":94000,"34007":95000,"34021":115000,"34035":110000,"34027":90000,"32003":67000,"32031":62000,"32510":58000,"41051":82000,"41067":84000,"41005":75000,"41029":62000,"41039":60000,"27053":91000,"27123":84000,"27037":93000,"27163":90000,"27019":80000,"27109":67000,"55079":65000,"55025":71000,"55133":68000,"55059":66000,"55101":64000,"55087":57000,"18097":63000,"18057":75000,"18109":61000,"18089":60000,"18141":63000,"29095":61000,"29189":55000,"29510":48000,"29019":59000,"29021":54000,"22071":54000,"22033":58000,"22017":53000,"22051":55000,"22103":50000,"01073":59000,"01101":52000,"01097":53000,"01089":62000,"01117":55000,"45045":61000,"45019":60000,"45079":56000,"45007":53000,"45041":58000,"21111":62000,"21067":57000,"21117":54000,"21059":50000,"09001":83000,"09009":78000,"09003":76000,"09007":80000,"09011":74000,"49035":80000,"49049":83000,"49011":86000,"49057":81000,"49045":85000,"20091":62000,"20173":55000,"20045":56000,"20177":52000,"40109":59000,"40143":56000,"40027":54000,"40031":52000,"19153":67000,"19013":65000,"19103":66000,"19163":64000,"05119":55000,"05131":52000,"05007":50000,"35001":56000,"35049":54000,"35013":47000,"16001":66000,"16027":61000,"16055":57000,"31055":68000,"31109":66000,"31153":64000,"15003":96000,"15009":80000,"15001":78000,"15007":83000,"02020":82000,"02090":76000,"02110":78000,"28049":52000,"28047":49000,"28175":50000,"54039":52000,"54011":50000,"30049":62000,"30111":58000,"30063":56000,"56021":73000,"56025":75000,"38017":71000,"38015":68000,"46099":65000,"46013":63000,"23005":67000,"23011":60000,"33011":84000,"33015":87000,"33013":76000,"50007":72000,"50003":66000,"44007":72000,"44005":77000,"10003":74000,"10001":64000,"10005":66000,"11001":101000,"16065":55000,"16069":53000,"16057":55000,"16019":60000,"16011":52000,"16059":54000,"49021":62000,"49037":56000,"56039":85000,"56033":62000,"56029":70000,"30029":58000,"30031":68000,"30041":52000,"30015":55000,"23031":62000,"23001":59000,"23003":52000,"23009":68000,"33005":68000,"33003":62000,"54019":48000,"54069":50000,"54017":51000,"54003":56000,"38105":75000,"38033":61000,"38251":55000,"46029":60000,"46087":57000,"46135":59000,"02170":76000,"02150":68000,"02122":72000,"35009":49000,"35025":60000,"35015":54000,"35035":52000,"35055":54000,"31081":58000,"31119":60000,"31141":61000,"20169":57000,"20155":56000,"20103":60000,"20057":55000,"20067":55000,"40119":58000,"40101":51000,"40047":56000,"40147":62000,"19061":62000,"19155":61000,"05045":57000,"05069":44000,"05051":50000,"28081":53000,"28035":49000,"28087":50000,"22073":47000,"22079":48000,"22109":52000,"01049":52000,"01033":52000,"01055":49000,"01113":51000,"01001":58000,"45051":57000,"45013":78000,"45003":55000,"21227":54000,"21073":60000,"21093":57000,"21151":54000,"47141":56000,"47163":55000,"47011":55000,"47057":54000,"47119":60000,"51630":68000,"51121":62000,"51683":72000,"51590":48000,"51840":57000,"51790":52000,"37001":60000,"37133":55000,"37127":51000,"37195":52000,"37191":52000,"37035":56000,"13139":63000,"13313":57000,"13295":54000,"13113":82000,"12083":54000,"12115":72000,"12033":56000,"12021":82000,"12081":62000,"12015":60000,"39124":52000,"39003":47000,"39063":58000,"39119":50000,"39071":52000,"39089":60000,"39085":67000,"26111":68000,"26017":54000,"26121":52000,"26025":55000,"26005":62000,"26075":55000,"26147":57000,"18035":54000,"18167":50000,"18067":57000,"18011":54000,"18039":58000,"17001":54000,"17095":52000,"17199":48000,"55063":58000,"55073":60000,"55117":60000,"55039":59000,"55097":58000,"55071":57000,"27013":62000,"27087":60000,"27169":57000,"27007":55000,"27035":58000,"29097":51000,"29031":54000,"29051":60000,"08101":53000,"08077":58000,"08067":62000,"08107":68000,"08037":90000,"08097":95000,"53071":57000,"53075":60000,"53007":60000,"41043":56000,"41033":53000,"41035":52000,"41019":54000,"04025":60000,"04015":52000,"06089":58000,"06007":57000,"06101":60000,"06023":52000,"06079":74000,"06087":83000,"06047":57000,"06055":86000,"06031":55000,"48183":57000,"48485":52000,"48091":72000,"48039":87000,"48167":85000,"48441":52000,"48353":58000,"48329":75000};
-
-let citiesData   = CITIES_FALLBACK;  // replaced by fetch if available
-let countiesData = COUNTIES_EMBEDDED;
-let dataReady    = true;             // true immediately with fallback data
-
-// Attempt to load full dataset from external files (when hosted on a server)
-(async () => {
-  try {
-    // Works on GitHub Pages with custom domain (root) and subfolder deployments
-    const base = document.querySelector('base')?.href || '';
-    const [cr, kr] = await Promise.all([
-      fetch(base + 'cities.json'),
-      fetch(base + 'counties.json')
-    ]);
-    if (cr.ok && kr.ok) {
-      const [fullCities, fullCounties] = await Promise.all([cr.json(), kr.json()]);
-      citiesData   = fullCities;
-      countiesData = fullCounties;
-      // Clear autocomplete in case user already typed something
-      if (document.getElementById('cityInput').value.length >= 2) {
-        document.getElementById('cityInput').dispatchEvent(new Event('input'));
-      }
-    }
-  } catch (e) {
-    // Silently stay on fallback — calculator works fine with embedded data
-  }
-})();
-
-// ─────────────────────────────────────────────────────────────────────────────
-// STATE
-// ─────────────────────────────────────────────────────────────────────────────
-let selectedCity   = null;  // {c, s, f}
-let selectedStars  = 0;
-let selectedClient = 'regular';
-let selectedBonuses = {};   // key → bonus fraction
-
-// ─────────────────────────────────────────────────────────────────────────────
-// AUTOCOMPLETE
-// ─────────────────────────────────────────────────────────────────────────────
-const cityInput = document.getElementById('cityInput');
-const acList    = document.getElementById('autocompleteList');
-let acActiveIdx = -1;
-
-// Full state name → abbreviation lookup so users can type "Idaho" or "id"
-const STATE_ABBR = {
-  'alabama':'AL','alaska':'AK','arizona':'AZ','arkansas':'AR','california':'CA',
-  'colorado':'CO','connecticut':'CT','delaware':'DE','florida':'FL','georgia':'GA',
-  'hawaii':'HI','idaho':'ID','illinois':'IL','indiana':'IN','iowa':'IA','kansas':'KS',
-  'kentucky':'KY','louisiana':'LA','maine':'ME','maryland':'MD','massachusetts':'MA',
-  'michigan':'MI','minnesota':'MN','mississippi':'MS','missouri':'MO','montana':'MT',
-  'nebraska':'NE','nevada':'NV','new hampshire':'NH','new jersey':'NJ','new mexico':'NM',
-  'new york':'NY','north carolina':'NC','north dakota':'ND','ohio':'OH','oklahoma':'OK',
-  'oregon':'OR','pennsylvania':'PA','rhode island':'RI','south carolina':'SC',
-  'south dakota':'SD','tennessee':'TN','texas':'TX','utah':'UT','vermont':'VT',
-  'virginia':'VA','washington':'WA','west virginia':'WV','wisconsin':'WI','wyoming':'WY',
-  'district of columbia':'DC','washington dc':'DC','washington d.c.':'DC'
-};
-
-cityInput.addEventListener('input', () => {
-  selectedCity = null;
-  document.getElementById('cityError').classList.remove('show');
-  cityInput.classList.remove('error');
-
-  const raw = cityInput.value.trim();
-  if (raw.length < 2 || !dataReady) { closeAC(); return; }
-
-  const val = raw.toLowerCase();
-
-  // Parse "city, state" — state can be abbreviation OR full name
-  // handles: "rexburg, idaho"  "rexburg, ID"  "rexburg idaho"  "rexburg id"
-  let cityPart = val;
-  let statePart = '';
-  const commaIdx = val.indexOf(',');
-  if (commaIdx !== -1) {
-    cityPart = val.slice(0, commaIdx).trim();
-    const rawState = val.slice(commaIdx + 1).trim();
-    statePart = STATE_ABBR[rawState] || rawState.toUpperCase();
-  } else {
-    // No comma — check if the typed string ends with a state name or abbr
-    for (const [name, abbr] of Object.entries(STATE_ABBR)) {
-      if (val.endsWith(' ' + name)) {
-        cityPart = val.slice(0, val.length - name.length - 1).trim();
-        statePart = abbr;
-        break;
-      }
-      if (val.endsWith(' ' + abbr.toLowerCase())) {
-        cityPart = val.slice(0, val.length - abbr.length - 1).trim();
-        statePart = abbr;
-        break;
-      }
-    }
-  }
-
-  const matches = citiesData.filter(city => {
-    const cityLower = city.c.toLowerCase();
-    if (!cityLower.startsWith(cityPart)) return false;
-    if (statePart) return city.s === statePart;
-    return true;
-  }).slice(0, 9);
-
-  renderAC(matches, raw);
-});
-
-cityInput.addEventListener('keydown', e => {
-  const items = acList.querySelectorAll('.autocomplete-item');
-  if (e.key === 'ArrowDown') {
-    acActiveIdx = Math.min(acActiveIdx + 1, items.length - 1);
-    updateACActive(items); e.preventDefault();
-  } else if (e.key === 'ArrowUp') {
-    acActiveIdx = Math.max(acActiveIdx - 1, 0);
-    updateACActive(items); e.preventDefault();
-  } else if (e.key === 'Enter' && acActiveIdx >= 0) {
-    items[acActiveIdx].click(); e.preventDefault();
-  } else if (e.key === 'Escape') closeAC();
-});
-
-document.addEventListener('click', e => {
-  if (!e.target.closest('.autocomplete-wrap')) closeAC();
-});
-
-function renderAC(matches, typed) {
-  acActiveIdx = -1;
-  if (!matches.length) { closeAC(); return; }
-  acList.innerHTML = '';
-  matches.forEach(city => {
-    const div = document.createElement('div');
-    div.className = 'autocomplete-item';
-    div.setAttribute('role', 'option');
-
-    const nameSpan = document.createElement('span');
-    nameSpan.className = 'city-text';
-    // Bold-match the typed portion — safe text manipulation only
-    const cityName = city.c + ', ' + city.s;
-    const matchLen = typed.length;
-    if (cityName.toLowerCase().startsWith(typed.toLowerCase())) {
-      const bold = document.createElement('strong');
-      bold.textContent = cityName.slice(0, matchLen);
-      const rest = document.createTextNode(cityName.slice(matchLen));
-      nameSpan.appendChild(bold);
-      nameSpan.appendChild(rest);
-    } else {
-      nameSpan.textContent = cityName;
-    }
-
-    const badge = document.createElement('span');
-    badge.className = 'state-badge';
-    badge.textContent = city.s;
-
-    div.appendChild(nameSpan);
-    div.appendChild(badge);
-    div.addEventListener('mousedown', e => { e.preventDefault(); selectCity(city); });
-    acList.appendChild(div);
-  });
-  acList.classList.add('open');
-}
-
-function updateACActive(items) {
-  items.forEach((el, i) => el.classList.toggle('active', i === acActiveIdx));
-}
-
-function selectCity(city) {
-  cityInput.value = city.c + ', ' + city.s;
-  selectedCity = city;
-  closeAC();
-}
-
-function closeAC() {
-  acList.classList.remove('open');
-  acList.innerHTML = '';
-  acActiveIdx = -1;
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// DURATION SLIDER
-// ─────────────────────────────────────────────────────────────────────────────
-const slider          = document.getElementById('durationSlider');
-const durationDisplay = document.getElementById('durationDisplay');
-
-function updateSlider() {
-  const val = parseInt(slider.value);
-  const hrs = Math.floor(val / 60);
-  const mins = val % 60;
-  let label = '';
-  if (hrs > 0 && mins > 0)      label = hrs + ' hr ' + mins + ' <span>min</span>';
-  else if (hrs > 0)              label = hrs + ' <span>hr' + (hrs > 1 ? 's' : '') + '</span>';
-  else                           label = val + ' <span>minutes</span>';
-  durationDisplay.innerHTML = label;
-  const pct = ((val - 15) / (240 - 15)) * 100;
-  slider.style.setProperty('--range-pct', pct + '%');
-}
-slider.addEventListener('input', updateSlider);
-updateSlider();
-
-// ─────────────────────────────────────────────────────────────────────────────
-// PILL GROUP
-// ─────────────────────────────────────────────────────────────────────────────
-// ── BONUS TOGGLES ────────────────────────────────────────────────────────────
-const bonusLabels = {
-  holiday:     'Holiday / Christmas bonus included',
-  baby:        'New baby celebration bonus included',
-  squeeze:     'Last-minute squeeze-in bonus included',
-  outstanding: 'Truly Outstanding results bonus included',
-  yearend:     'Year-end bonus (1 full service) included'
-};
-// Update year-end button label whenever price changes
-function updateYearendLabel() {
-  const price = parseFloat(document.getElementById('priceInput').value);
-  const lbl = document.getElementById('yearendLabel');
-  if (lbl) {
-    lbl.textContent = price >= 1 ? '+ $' + Math.round(price) + ' cash bonus' : '= 1 full service';
-  }
-}
-document.getElementById('priceInput').addEventListener('input', updateYearendLabel);
-
-document.getElementById('bonusGroup').querySelectorAll('.bonus-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const key  = btn.dataset.key;
-    if (selectedBonuses[key] !== undefined) {
-      delete selectedBonuses[key];
-      btn.classList.remove('active');
-    } else {
-      if (key === 'yearend') {
-        // Store as a special sentinel; actual dollar amount resolved at calculate time
-        selectedBonuses[key] = 'YEAREND';
-      } else {
-        selectedBonuses[key] = parseFloat(btn.dataset.bonus);
-      }
-      btn.classList.add('active');
-    }
-    const keys = Object.keys(selectedBonuses);
-    const note = document.getElementById('bonusNote');
-    if (keys.length) {
-      note.textContent = keys.map(k => bonusLabels[k]).join(' · ');
-      note.style.display = '';
-    } else {
-      note.style.display = 'none';
-    }
-  });
-});
-
-document.getElementById('clientGroup').querySelectorAll('.pill').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.getElementById('clientGroup').querySelectorAll('.pill')
-      .forEach(b => b.classList.remove('selected'));
-    btn.classList.add('selected');
-    selectedClient = btn.dataset.val;
-  });
-});
-
-// ─────────────────────────────────────────────────────────────────────────────
-// STARS
-// ─────────────────────────────────────────────────────────────────────────────
-const starLabels = ['','Not happy with results','Below expectations','Satisfied','Really happy','Blown away!'];
-document.getElementById('starsWrap').querySelectorAll('.star-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    selectedStars = parseInt(btn.dataset.star);
-    document.getElementById('starsWrap').querySelectorAll('.star-btn').forEach(b => {
-      b.classList.toggle('lit', parseInt(b.dataset.star) <= selectedStars);
-    });
-    document.getElementById('starLabel').textContent = starLabels[selectedStars] || '';
-    document.getElementById('starError').classList.remove('show');
-  });
-});
-
-// ─────────────────────────────────────────────────────────────────────────────
-// CALCULATE
-// ─────────────────────────────────────────────────────────────────────────────
-document.getElementById('calcBtn').addEventListener('click', calculate);
-
-document.getElementById('recalcBtn').addEventListener('click', () => {
-  document.getElementById('resultsSection').classList.remove('show');
-  document.getElementById('formCard').style.display = '';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-function calculate() {
-  let valid = true;
-
-  if (!selectedCity) {
-    document.getElementById('cityError').classList.add('show');
-    cityInput.classList.add('error');
-    valid = false;
-  }
-
-  const rawPrice = document.getElementById('priceInput').value;
-  const price    = parseFloat(rawPrice);
-  if (!rawPrice || isNaN(price) || price < 1 || price > 5000) {
-    document.getElementById('priceError').classList.add('show');
-    document.getElementById('priceInput').classList.add('error');
-    valid = false;
-  } else {
-    document.getElementById('priceError').classList.remove('show');
-    document.getElementById('priceInput').classList.remove('error');
-  }
-
-  if (selectedStars === 0) {
-    document.getElementById('starError').classList.add('show');
-    valid = false;
-  }
-
-  if (!valid) return;
-
-  // ── INCOME LOOKUP ──────────────────────────────────────────────────────────
-  // Get median household income for the city's county
-  // Falls back gracefully to national median if data unavailable
-  const fips          = selectedCity.f;
-  const localIncome   = (countiesData && fips && countiesData[fips])
-                          ? countiesData[fips]
-                          : US_MEDIAN_INCOME;
-  const dataSource    = (countiesData && fips && countiesData[fips]) ? 'local' : 'national';
-
-  // ── BASE RATE FROM LOCAL INCOME ────────────────────────────────────────────
-  // Scale: income $40K → ~15%, $74K (national avg) → ~20%, $120K+ → ~25%
-  // Formula: baseRate = 0.15 + ((income - 40000) / (120000 - 40000)) * 0.10
-  // Clamped to [0.13, 0.27]
-  const incomeRatio = (localIncome - 40000) / (120000 - 40000);
-  const baseRate    = Math.max(0.13, Math.min(0.27, 0.15 + incomeRatio * 0.10));
-
-  // ── DURATION ADJUSTMENT ────────────────────────────────────────────────────
-  const duration    = parseInt(slider.value);
-  let durationAdj   = 0;
-  if (duration >= 150) durationAdj = 0.03;
-  else if (duration >= 90) durationAdj = 0.015;
-  else if (duration <= 20) durationAdj = -0.02;
-
-  // ── CLIENT TYPE ADJUSTMENT ─────────────────────────────────────────────────
-  const clientAdj = selectedClient === 'regular' ? 0.015 : 0;
-
-  // ── ADJUSTED BASE ──────────────────────────────────────────────────────────
-  const adjusted = baseRate + durationAdj + clientAdj;
-
-  // ── BONUS OCCASIONS ────────────────────────────────────────────────────────
-  // Percentage bonuses (holiday, baby, squeeze) added to all tip tiers
-  const bonusPctTotal = Object.entries(selectedBonuses)
-    .filter(([k]) => k !== 'yearend')
-    .reduce((s, [, v]) => s + v, 0);
-  // Year-end flat bonus: one full service charge (separate cash gift, shown in results)
-  const yearendFlat = selectedBonuses['yearend'] === 'YEAREND' ? price : 0;
-  const bonusTotal  = bonusPctTotal;  // only pct bonuses affect the tip tiers
-
-  // ── TIER CALCULATION BY STAR RATING ───────────────────────────────────────
-  let acceptablePct, goodPct, betterPct, bestPct;
-
-  if (selectedStars <= 2) {
-    // Unhappy: minimum anchors to location-only base, capped at 15%
-    // Duration, client type, and high-income premiums don't inflate a dissatisfied tip
-    const unhappyBase = Math.max(0.10, Math.min(0.15, baseRate - 0.05));
-    acceptablePct = unhappyBase;
-    goodPct       = Math.max(unhappyBase + 0.03, adjusted - 0.06);
-    betterPct     = adjusted - 0.02;
-    bestPct       = adjusted + 0.01;
-  } else if (selectedStars === 3) {
-    acceptablePct = Math.max(0.12, adjusted - 0.05);
-    goodPct       = adjusted - 0.02;
-    betterPct     = adjusted + 0.02;
-    bestPct       = adjusted + 0.05;
-  } else {
-    acceptablePct = Math.max(0.12, adjusted - 0.04);
-    goodPct       = adjusted;
-    betterPct     = adjusted + 0.04;
-    bestPct       = adjusted + 0.08;
-  }
-
-  // Apply bonus to all tiers
-  acceptablePct += bonusTotal;
-  goodPct       += bonusTotal;
-  betterPct     += bonusTotal;
-  bestPct       += bonusTotal;
-
-  // ── FORMAT HELPERS ─────────────────────────────────────────────────────────
-  const fmt    = pct => '$' + Math.round(price * pct);
-  const fmtPct = pct => Math.round(pct * 100) + '%';
-
-  // ── BUILD TIP CARDS ────────────────────────────────────────────────────────
-  const grid = document.getElementById('tipGrid');
-  grid.innerHTML = '';
-  // Remove any previous bonus bar
-  const prevBar = grid.parentNode.querySelector('.bonus-bar');
-  if (prevBar) prevBar.remove();
-
-  // Dollar total = price + tip amount
-  const fmtTotal = (pct) => '$' + (price + Math.round(price * pct)).toLocaleString();
-
-  const cards = [
-    {
-      cls:        'good',
-      label:      'Good',
-      tipAmt:     fmt(goodPct),
-      total:      fmtTotal(goodPct),
-      pct:        fmtPct(goodPct),
-      mostCommon: false,
-      isAcceptable: false,
-      desc:       'A solid, respectful tip for standard service.'
-    },
-    {
-      cls:        'better',
-      label:      'Better',
-      tipAmt:     fmt(betterPct),
-      total:      fmtTotal(betterPct),
-      pct:        fmtPct(betterPct),
-      mostCommon: selectedStars >= 3,
-      isAcceptable: false,
-      desc:       'The local sweet spot. Shows real appreciation.'
-    },
-    {
-      cls:        'best',
-      label:      'Best',
-      tipAmt:     fmt(bestPct),
-      total:      fmtTotal(bestPct),
-      pct:        fmtPct(bestPct),
-      mostCommon: false,
-      isAcceptable: false,
-      desc:       selectedStars === 5 ? 'You loved it — make their day.' : 'For exceptional work above and beyond.'
-    },
-    {
-      cls:        'minimum',
-      label:      selectedStars <= 2 ? 'If Unhappy' : 'Minimum',
-      tipAmt:     fmt(acceptablePct),
-      total:      fmtTotal(acceptablePct),
-      pct:        fmtPct(acceptablePct),
-      mostCommon: false,
-      isAcceptable: true,
-      desc:       selectedStars <= 2
-                    ? 'Not thrilled, but the stylist put in time and effort. This acknowledges that.'
-                    : 'Disappointed with results — still acknowledges the effort.'
-    }
-  ];
-
-  // ── BONUS BAR (shown once above the grid when any bonus is active) ──────────
-  const bonusIcons = { holiday: '🎄', baby: '👶', squeeze: '⏰', outstanding: '✨', yearend: '🎁' };
-  const bonusFriendly = { holiday: 'Holiday', baby: 'New Baby', squeeze: 'Squeezed Me In', outstanding: 'Truly Outstanding', yearend: 'Year-End Bonus' };
-  const activeKeys = Object.keys(selectedBonuses);
-  const bonusIconString = activeKeys.map(k => bonusIcons[k]).join('');
-  const pctDollar   = bonusPctTotal > 0 ? '+$' + Math.round(price * bonusPctTotal) : '';
-  const yearDollar  = yearendFlat > 0 ? '+$' + Math.round(yearendFlat) + ' cash' : '';
-  const bonusDollar = [pctDollar, yearDollar].filter(Boolean).join(' · ') || '';
-
-  if (activeKeys.length) {
-    const bar = document.createElement('div');
-    bar.className = 'bonus-bar';
-
-    const iconsSpan = document.createElement('span');
-    iconsSpan.className = 'bonus-bar-icons';
-    iconsSpan.textContent = bonusIconString;
-
-    const textSpan = document.createElement('span');
-    textSpan.className = 'bonus-bar-text';
-    textSpan.textContent = activeKeys.map(k => bonusFriendly[k]).join(' + ') + ' bonus included in each tip suggestion';
-
-    const amtSpan = document.createElement('span');
-    amtSpan.className = 'bonus-bar-amount';
-    amtSpan.textContent = bonusDollar;
-
-    bar.appendChild(iconsSpan);
-    bar.appendChild(textSpan);
-    bar.appendChild(amtSpan);
-    grid.parentNode.insertBefore(bar, grid);
-  }
-
-  // ── DRAW EACH TIP CARD ────────────────────────────────────────────────────
-  cards.forEach(card => {
-    const div = document.createElement('div');
-    div.className = 'tip-card ' + card.cls + (card.isAcceptable ? ' acceptable' : '');
-    const isAcceptable = card.isAcceptable === true;
-
-    // Label pill — with bonus icons appended inline if active
-    const lbl = document.createElement('div');
-    lbl.className = 'tip-card-label';
-    lbl.textContent = card.label;
-
-
-    // Tip amount
-    const amt = document.createElement('div');
-    amt.className = 'tip-card-amount';
-    amt.textContent = card.tipAmt;
-
-    // New total — bordered box with label + large value
-    const tot = document.createElement('div');
-    tot.className = 'tip-card-total';
-    const totLbl = document.createElement('div');
-    totLbl.className = 'tip-card-total-label';
-    totLbl.textContent = 'New Total';
-    const totVal = document.createElement('div');
-    totVal.className = 'tip-card-total-value';
-    totVal.textContent = card.total;
-    tot.appendChild(totLbl);
-    tot.appendChild(totVal);
-
-    // Percentage
-    const pct = document.createElement('div');
-    pct.className = 'tip-card-pct';
-    pct.textContent = card.pct + ' tip';
-
-    // Most common tag
-    const mcTag = document.createElement('div');
-    mcTag.className = 'most-common-tag';
-    mcTag.textContent = card.mostCommon ? '★ Most Common' : '';
-
-    // Description
-    const desc = document.createElement('div');
-    desc.className = 'tip-card-desc';
-    desc.textContent = card.desc;
-
-    if (isAcceptable) {
-      const body = document.createElement('div');
-      body.className = 'tip-card-body';
-      body.appendChild(lbl);
-      body.appendChild(desc);
-
-      const right = document.createElement('div');
-      right.className = 'tip-card-right';
-      right.appendChild(amt);
-      right.appendChild(pct);
-      right.appendChild(tot);
-
-      div.appendChild(body);
-      div.appendChild(right);
-    } else {
-      div.appendChild(lbl);
-      div.appendChild(amt);
-      div.appendChild(tot);
-      div.appendChild(pct);
-      if (card.mostCommon) div.appendChild(mcTag);
-      div.appendChild(desc);
-    }
-
-    grid.appendChild(div);
-  });
-
-  // ── INSIGHT BOX ────────────────────────────────────────────────────────────
-  const fmtIncome    = '$' + localIncome.toLocaleString();
-  const incomeDesc   = localIncome >= 100000 ? 'high'
-                     : localIncome >= 74000  ? 'above the national average'
-                     : localIncome >= 55000  ? 'near the national average'
-                     : 'below the national average';
-  const bonusNames = { holiday: 'holiday', baby: 'new baby', squeeze: 'last-minute squeeze-in', outstanding: 'truly outstanding results', yearend: 'year-end service bonus' };
-  const bonusKeys  = Object.keys(selectedBonuses);
-  const pctKeys    = bonusKeys.filter(k => k !== 'yearend');
-  const bonusInsight = bonusKeys.length
-    ? (pctKeys.length ? ' A ' + pctKeys.map(k => bonusNames[k]).join(' + ') + ' bonus has been added to all tip suggestions.' : '')
-      + (yearendFlat > 0 ? ' A separate year-end cash gift of $' + Math.round(yearendFlat) + ' (one full service) is also shown below.' : '')
-    : '';
-  const durationNote = duration >= 120 ? ' Your long appointment is factored in.'
-                     : duration >= 90  ? ' Time in the chair is reflected in your suggestions.'
-                     : '';
-  const fallbackNote = dataSource === 'national'
-    ? ' (Using national average — local data not available for this city.)'
-    : '';
-
-  const insight = document.getElementById('insightBox');
-  insight.textContent = '';
-  const strong = document.createElement('strong');
-  strong.textContent = selectedCity.c + ', ' + selectedCity.s + ':';
-  insight.appendChild(strong);
-  insight.appendChild(document.createTextNode(
-    ' Median household income here is ' + fmtIncome + ' — ' + incomeDesc +
-    '. Your suggestions are calibrated to what feels appropriate in this area.' +
-    durationNote + bonusInsight + fallbackNote
-  ));
-
-  // Year-end cash gift callout box
-  const prevYearBox = document.getElementById('yearendBox');
-  if (prevYearBox) prevYearBox.remove();
-  if (yearendFlat > 0) {
-    const yBox = document.createElement('div');
-    yBox.id = 'yearendBox';
-    yBox.className = 'yearend-box';
-    const yIcon = document.createElement('span');
-    yIcon.className = 'yearend-icon';
-    yIcon.textContent = '🎁';
-    const yText = document.createElement('div');
-    yText.className = 'yearend-text';
-    const yStrong = document.createElement('strong');
-    yStrong.textContent = 'Year-End Cash Gift: $' + Math.round(yearendFlat);
-    const yDesc = document.createTextNode(' — Give this directly to your stylist, separate from your visit tip. This is in addition to whichever tip above you choose.');
-    yText.appendChild(yStrong);
-    yText.appendChild(yDesc);
-    yBox.appendChild(yIcon);
-    yBox.appendChild(yText);
-    insight.parentNode.insertBefore(yBox, insight.nextSibling);
-  }
-
-  // ── SHOW RESULTS ───────────────────────────────────────────────────────────
-  document.getElementById('resultCity').textContent =
-    selectedCity.c.toUpperCase() + ', ' + selectedCity.s;
-
-  document.getElementById('formCard').style.display = 'none';
-  const results = document.getElementById('resultsSection');
-  results.classList.add('show');
-  results.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-</script>
 </body>
 </html>
