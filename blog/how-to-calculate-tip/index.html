@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Calculate a Tip — Quick Methods That Actually Work | GeoTipper.com</title>
+  <meta name="description" content="Three fast ways to calculate a tip in your head, on paper, or on your phone — plus a quick calculator. No math anxiety required.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://geotipper.com/blog/how-to-calculate-tip/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+  *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+  :root {
+    --sans:'Inter',system-ui,sans-serif; --serif:'DM Serif Display',Georgia,serif;
+    --ink:#1A1A18; --ink-2:#3D3D38; --ink-3:#6B6B65;
+    --bg:#F2F1ED; --surface:#FDFCFA;
+    --g-dark:#1E4D35; --g-mid:#2E6B4A; --g-pale:#EBF3EE; --g-pale-2:#D6E9DD; --g-pale-3:#B8D9C4;
+    --rule:#E4E3DF; --r:12px; --r-sm:7px;
+    --shadow:0 2px 8px rgba(0,0,0,0.07);
+  }
+  body { font-family:var(--sans); background:var(--bg); color:var(--ink); font-size:16px; line-height:1.75; }
+  a { color:var(--g-mid); }
+  a:hover { color:var(--g-dark); }
+  strong { font-weight:600; }
+  /* NAV */
+  .site-nav { background:var(--g-dark); padding:12px 20px; display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+  .site-nav a { color:rgba(253,252,250,0.75); text-decoration:none; font-size:13px; }
+  .site-nav a:hover { color:#fff; }
+  .site-nav .nav-home { font-family:var(--serif); font-size:15px; color:#FDFCFA; margin-right:auto; }
+  /* HERO */
+  .blog-hero { background:var(--g-dark); color:#FDFCFA; padding:44px 20px 36px; text-align:center; }
+  .blog-hero h1 { font-family:var(--serif); font-size:clamp(22px,5vw,36px); font-weight:400; line-height:1.2; margin-bottom:12px; }
+  .blog-hero .meta { font-size:12px; color:rgba(253,252,250,0.5); }
+  /* ARTICLE */
+  .blog-article { max-width:720px; margin:0 auto; padding:40px 20px 64px; }
+  .blog-article h2 { font-family:var(--serif); font-size:22px; font-weight:400; color:var(--g-dark); margin:36px 0 12px; }
+  .blog-article h3 { font-size:16px; font-weight:600; color:var(--ink); margin:24px 0 8px; }
+  .blog-article p { color:var(--ink-2); margin-bottom:16px; }
+  .blog-article ul, .blog-article ol { color:var(--ink-2); padding-left:22px; margin-bottom:16px; }
+  .blog-article li { margin-bottom:8px; }
+  .blog-article blockquote { border-left:3px solid var(--g-pale-3); padding:10px 16px; margin:20px 0; background:var(--g-pale); border-radius:0 var(--r-sm) var(--r-sm) 0; color:var(--ink-2); font-style:italic; }
+  /* CALC CARD inline */
+  .inline-calc { background:var(--surface); border:1px solid var(--rule); border-radius:var(--r); padding:20px 22px; margin:24px 0; }
+  .inline-calc h3 { font-family:var(--serif); font-size:18px; color:var(--g-dark); margin-bottom:12px; font-weight:400; }
+  .calc-row { display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:10px; }
+  .calc-row input { border:1px solid var(--rule); border-radius:var(--r-sm); padding:9px 12px; font-size:15px; width:140px; font-family:var(--sans); background:var(--bg); }
+  .calc-row button { background:var(--g-dark); color:#FDFCFA; border:none; border-radius:var(--r-sm); padding:9px 18px; font-size:14px; font-weight:600; cursor:pointer; font-family:var(--sans); }
+  .calc-row button:hover { background:var(--g-mid); }
+  .calc-result { font-size:22px; font-family:var(--serif); color:var(--g-dark); min-height:30px; margin-top:6px; }
+  /* CTA BOXES */
+  .cta-box { background:var(--g-pale); border:1px solid var(--g-pale-3); border-radius:var(--r); padding:16px 18px; margin:24px 0; }
+  .cta-box p { margin-bottom:8px; color:var(--ink-2); font-size:14px; }
+  .cta-box p:last-child { margin-bottom:0; }
+  .cta-box a { font-weight:600; }
+  /* RELATED POSTS */
+  .related-posts { background:var(--surface); border-top:1px solid var(--rule); padding:32px 20px; }
+  .related-posts-inner { max-width:720px; margin:0 auto; }
+  .related-posts h3 { font-family:var(--serif); font-size:18px; color:var(--g-dark); margin-bottom:16px; font-weight:400; }
+  .related-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:10px; }
+  .related-link { background:var(--bg); border:1px solid var(--rule); border-radius:var(--r-sm); padding:10px 12px; text-decoration:none; color:var(--ink); font-size:13px; display:block; }
+  .related-link:hover { border-color:var(--g-pale-3); color:var(--g-dark); }
+  /* FOOTER */
+  footer { text-align:center; padding:24px 20px; border-top:1px solid var(--rule); font-size:12px; color:var(--ink-3); }
+  footer a { color:var(--ink-3); margin:0 8px; text-decoration:none; }
+  footer a:hover { color:var(--ink-2); }
+  /* Schema */
+  @media(max-width:600px) { .blog-article { padding:28px 16px 48px; } }
+</style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the easiest way to calculate a tip?","acceptedAnswer":{"@type":"Answer","text":"The easiest method: move the decimal point one place left to get 10% of the bill. Double it to get 20%. For 15%, take your 10% number and add half of it. Example: $48 check → $4.80 is 10% → $9.60 is 20% → $7.20 is 15%."}},{"@type":"Question","name":"How do you calculate 20% tip?","acceptedAnswer":{"@type":"Answer","text":"Move the decimal one place left to get 10%, then double it. On a $65 check: $6.50 is 10%, doubled is $13.00 — that's your 20% tip."}},{"@type":"Question","name":"How do you calculate 15% tip?","acceptedAnswer":{"@type":"Answer","text":"Find 10% (move decimal left), then add half of that amount. On a $40 check: 10% = $4.00, half of that = $2.00, add them = $6.00 — that's your 15% tip."}}]}</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"GeoTipper.com","url":"https://geotipper.com"}
+</script>
+</head>
+<div style="background:#1E4D35;padding:8px 20px;display:flex;gap:18px;font-size:12px;font-weight:500;">
+  <a href="../../index.html" style="color:rgba(255,255,255,0.8);text-decoration:none;font-family:'DM Serif Display',serif;font-size:13px;margin-right:auto;">GeoTipper</a>
+  <a href="../index.html" style="color:rgba(255,255,255,0.65);text-decoration:none;">Blog</a>
+  <a href="../../about/index.html" style="color:rgba(255,255,255,0.65);text-decoration:none;">About</a>
+</div>
+<body>
+<nav class="site-nav">
+  <a href="../index.html" class="nav-home">GeoTipper.com</a>
+  <a href="../blog/index.html">Blog</a>
+  <a href="../hair-stylist-tip-calculator/index.html">Hair</a>
+  <a href="../restaurant-tip-calculator/index.html">Restaurant</a>
+  <a href="../rideshare-tip-calculator/index.html">Rideshare</a>
+  <a href="../hotel-housekeeping-tip-calculator/index.html">Hotel</a>
+</nav>
+<div class="blog-hero">
+  <p class="meta">GeoTipper.com · Tipping Guide · 2026</p>
+  <h1>How to Calculate a Tip — Quick Methods That Actually Work</h1>
+  <p class="meta" style="margin-top:8px;">Three methods that work without a calculator — plus one for when you just want the answer</p>
+</div>
+<article class="blog-article">
+
+<div class="inline-calc">
+  <h3>Quick Tip Calculator</h3>
+  <div class="calc-row">
+    <input type="number" id="billAmt" placeholder="Bill amount ($)" min="1">
+    <input type="number" id="tipPct" placeholder="Tip %" value="20" min="1" max="50">
+    <button onclick="calcTip()">Calculate</button>
+  </div>
+  <div class="calc-result" id="tipResult"></div>
+</div>
+<script>
+function calcTip(){
+  const bill=parseFloat(document.getElementById('billAmt').value);
+  const pct=parseFloat(document.getElementById('tipPct').value);
+  if(isNaN(bill)||bill<=0){document.getElementById('tipResult').textContent='Enter a valid bill amount';return;}
+  const tip=bill*pct/100;
+  const total=bill+tip;
+  document.getElementById('tipResult').textContent='Tip: $'+tip.toFixed(2)+' · Total: $'+total.toFixed(2);
+}
+document.getElementById('billAmt').addEventListener('keydown',e=>{if(e.key==='Enter')calcTip();});
+</script>
+
+<p>Need something more detailed — adjusted for your city, service type, and satisfaction? <a href="../../index.html">Use a full GeoTipper calculator →</a></p>
+
+<h2>Method 1: The 10% Double Method (Best for 20%)</h2>
+<p>This is the fastest mental math approach in existence:</p>
+<ol>
+  <li>Move the decimal one place to the left. $48.50 becomes $4.85. That's 10%.</li>
+  <li>Double it. $4.85 × 2 = $9.70. That's 20%.</li>
+</ol>
+<p>If the service was average, use that number. If great, round up. If below average, stay closer to 15%.</p>
+
+<h2>Method 2: The Half-Add Method (Best for 15%)</h2>
+<ol>
+  <li>Find 10% (move decimal left). On $52: that's $5.20.</li>
+  <li>Take half of that. Half of $5.20 is $2.60.</li>
+  <li>Add them together. $5.20 + $2.60 = $7.80. That's 15%.</li>
+</ol>
+
+<h2>Method 3: The Double-Tax Trick</h2>
+<p>In US states with ~8% sales tax, doubling the tax amount on your receipt gives you a 16% tip — close enough to 18% for most situations. Just look at the tax line and double it. Easy, fast, and leaves a reasonable tip.</p>
+
+<h2>Common Tip Quick Reference</h2>
+<ul>
+  <li><a href="../how-much-is-15-percent-tip/index.html">How much is a 15% tip?</a></li>
+  <li><a href="../how-much-is-20-percent-tip/index.html">How much is a 20% tip?</a></li>
+  <li><a href="../how-much-is-10-percent-tip/index.html">How much is a 10% tip?</a></li>
+</ul>
+
+</article>
+<div class="related-posts">
+  <div class="related-posts-inner">
+    <h3>Related Guides</h3>
+    <div class="related-grid"><a class="related-link" href="../blog/how-much-is-15-percent-tip/index.html">How much is a 15% tip?</a>
+<a class="related-link" href="../blog/how-much-is-20-percent-tip/index.html">How much is a 20% tip?</a>
+<a class="related-link" href="../blog/how-much-is-10-percent-tip/index.html">How much is a 10% tip?</a>
+<a class="related-link" href="../blog/how-to-tip-in-usa-restaurant/index.html">How to tip at a US restaurant</a>
+<a class="related-link" href="../blog/tipping-mistakes-in-the-us/index.html">Common tipping mistakes</a></div>
+  </div>
+</div>
+<footer>
+  <a href="../index.html">Home</a>
+  <a href="../blog/index.html">Blog</a>
+  <a href="../about/index.html">About</a> · <a href="../privacy-policy/index.html">Privacy Policy</a>
+  <a href="../terms-of-use/index.html">Terms of Use</a>
+  <span style="display:block;margin-top:8px;">© 2026 Verdant Web Solutions, LLC · GeoTipper.com</span>
+</footer>
+</body>
+</html>

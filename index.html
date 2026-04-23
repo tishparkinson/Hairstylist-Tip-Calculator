@@ -162,21 +162,120 @@
     .diff-box { padding:22px 18px 18px; }
   }
   @media(max-width:340px){ .calc-grid { grid-template-columns:1fr; } }
+  .vis-photographer { background: linear-gradient(135deg, #001A2C 0%, #1B6CA8 100%); }
+  .vis-colorist { background: linear-gradient(135deg, #1A0030 0%, #D4648C 100%); }
+  .vis-furniture { background: linear-gradient(135deg, #0A0A00 0%, #8B6914 100%); }
+  .vis-dog     { background: linear-gradient(135deg, #1A0A30 0%, #8B4513 100%); }
+  .vis-caterer { background: linear-gradient(135deg, #1A0A00 0%, #C0702A 100%); }
+  .vis-wedding { background: linear-gradient(135deg, #2A0030 0%, #D4A0C8 100%); }
 </style>
   <!-- ═══════════════════════════════════════════════════════
        ADSENSE: Add your site-level script tag here (once per page)
        Get this from your AdSense account after approval
   ═══════════════════════════════════════════════════════ -->
   <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "GeoTipper.com",
+  "url": "https://geotipper.com",
+  "description": "Free US tip calculators calibrated to the cost of living in your area, using US Census county income data.",
+  "email": "verdantwebsolutions@gmail.com",
+  "foundingDate": "2025",
+  "areaServed": "US",
+  "knowsAbout": ["tipping etiquette","service industry wages","US cost of living","gratuity"],
+  "sameAs": []
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "GeoTipper.com",
+  "url": "https://geotipper.com",
+  "description": "Free US tip calculators calibrated to the cost of living in the area.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://geotipper.com/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
 </head>
 <body>
 
+<div style="background:rgba(0,0,0,0.18);padding:8px 20px;display:flex;gap:18px;font-size:12px;font-weight:500;letter-spacing:.03em;">
+  <span style="color:rgba(255,255,255,0.5);margin-right:auto;font-family:var(--serif);font-size:13px;color:rgba(255,255,255,0.8);">GeoTipper</span>
+  <a href="blog/index.html" style="color:rgba(255,255,255,0.65);text-decoration:none;">Blog</a>
+  <a href="about/index.html" style="color:rgba(255,255,255,0.65);text-decoration:none;">About</a>
+</div>
 <header class="header">
   <span style="font-size:11px;letter-spacing:.18em;color:rgba(168,201,180,.65);display:block;margin-bottom:20px;text-transform:uppercase;font-weight:600">United States Tip Calculators</span>
   <h1>How Much<br>Should You <em>Tip?</em></h1>
   <p class="header-tagline">Tip suggestions <strong>calibrated to your city</strong> &#x2014; not a national average that ignores where you are. Every calculator uses real US Census income data for your specific area.</p>
   <span class="header-note">United States &middot; Free &middot; No signup</span>
 </header>
+  <!-- SEARCH BAR -->
+  <div class="tip-search-wrap">
+    <div class="tip-search-inner">
+      <div class="tip-search-field">
+        <span class="tip-search-icon">🔍</span>
+        <input type="text" id="tipSearchInput" placeholder="Who do you need to tip? (e.g. barber, DJ, dog groomer…)" autocomplete="off" maxlength="60" aria-label="Search tip calculators">
+        <div class="tip-search-dropdown" id="tipSearchDropdown"></div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+  .tip-search-wrap { background:var(--g-dark); padding:0 20px 28px; }
+  .tip-search-inner { max-width:600px; margin:0 auto; }
+  .tip-search-field { position:relative; }
+  .tip-search-icon { position:absolute; left:14px; top:50%; transform:translateY(-50%); font-size:16px; pointer-events:none; z-index:2; }
+  #tipSearchInput { width:100%; padding:13px 16px 13px 42px; border-radius:50px; border:none; font-size:15px; font-family:var(--sans); background:#fff; color:var(--ink); outline:none; box-shadow:0 2px 12px rgba(0,0,0,0.18); }
+  #tipSearchInput::placeholder { color:var(--ink-3); }
+  .tip-search-dropdown { position:absolute; top:calc(100% + 6px); left:0; right:0; background:#fff; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,0.15); z-index:100; overflow:hidden; display:none; max-height:320px; overflow-y:auto; }
+  .tip-search-item { display:flex; align-items:center; padding:11px 16px; text-decoration:none; color:var(--ink); font-size:14px; border-bottom:1px solid var(--rule); transition:background .1s; }
+  .tip-search-item:last-child { border-bottom:none; }
+  .tip-search-item:hover { background:var(--g-pale); color:var(--g-dark); }
+  .tip-search-item span { color:var(--g-mid); font-size:11px; margin-left:auto; padding-left:10px; white-space:nowrap; }
+  </style>
+
+  <script>
+  (function(){
+    const CALCS = [{"n":'Barber',"u":'barber-tip-calculator/index.html'},{"n":'Bellhop / Hotel Porter',"u":'bellhop-tip-calculator/index.html'},{"n":'Bridal Dress Consultant',"u":'bridal-dress-consultant-tip-calculator/index.html'},{"n":'Caterer',"u":'caterer-tip-calculator/index.html'},{"n":'Dog Groomer',"u":'dog-groomer-tip-calculator/index.html'},{"n":'Food Delivery Driver',"u":'food-delivery-tip-calculator/index.html'},{"n":'Furniture Delivery',"u":'furniture-delivery-tip-calculator/index.html'},{"n":'Grocery Delivery',"u":'grocery-delivery-tip-calculator/index.html'},{"n":'Hair Colorist',"u":'hair-colorist-tip-calculator/index.html'},{"n":'Hair Stylist',"u":'hair-stylist-tip-calculator/index.html'},{"n":'Hotel Housekeeper',"u":'hotel-housekeeping-tip-calculator/index.html'},{"n":'House Cleaner',"u":'house-cleaner-tip-calculator/index.html'},{"n":'Massage Therapist',"u":'massage-therapist-tip-calculator/index.html'},{"n":'Movers',"u":'movers-tip-calculator/index.html'},{"n":'Nail Salon Technician',"u":'nail-salon-tip-calculator/index.html'},{"n":'Restaurant Server / Waiter',"u":'restaurant-tip-calculator/index.html'},{"n":'Rideshare Driver (Uber / Lyft)',"u":'rideshare-tip-calculator/index.html'},{"n":'Tattoo Artist',"u":'tattoo-tip-calculator/index.html'},{"n":'Valet Attendant',"u":'valet-tip-calculator/index.html'},{"n":'Wedding Band',"u":'wedding-band-tip-calculator/index.html'},{"n":'Wedding Bartender',"u":'wedding-bartender-tip-calculator/index.html'},{"n":'Wedding Coordinator',"u":'wedding-coordinator-tip-calculator/index.html'},{"n":'Wedding DJ',"u":'wedding-dj-tip-calculator/index.html'},{"n":'Wedding Florist',"u":'wedding-florist-tip-calculator/index.html'},{"n":'Wedding Hair Stylist',"u":'wedding-hair-stylist-tip-calculator/index.html'},{"n":'Wedding Limo Driver',"u":'wedding-limo-driver-tip-calculator/index.html'},{"n":'Wedding Makeup Artist',"u":'wedding-makeup-artist-tip-calculator/index.html'},{"n":'Wedding Officiant',"u":'wedding-officiant-tip-calculator/index.html'},{"n":'Wedding Photographer',"u":'wedding-photographer-tip-calculator/index.html'},{"n":'Wedding Planner',"u":'wedding-planner-tip-calculator/index.html'},{"n":'Wedding Server / Catering Staff',"u":'wedding-server-tip-calculator/index.html'},{"n":'Wedding Shuttle Driver',"u":'wedding-shuttle-driver-tip-calculator/index.html'},{"n":'All Wedding Vendors',"u":'wedding-tip-calculators/index.html'}];
+    const inp = document.getElementById('tipSearchInput');
+    const dd  = document.getElementById('tipSearchDropdown');
+    function show(items){
+      if(!items.length){ dd.style.display='none'; return; }
+      dd.innerHTML = items.map(c=>`<a class="tip-search-item" href="${c.u}">${c.n}<span>Calculate →</span></a>`).join('');
+      dd.style.display='block';
+    }
+    inp.addEventListener('input',function(){
+      const q=this.value.trim().toLowerCase();
+      if(!q){ dd.style.display='none'; return; }
+      const hits=CALCS.filter(c=>c.n.toLowerCase().includes(q)).slice(0,8);
+      show(hits);
+    });
+    inp.addEventListener('focus',function(){
+      if(this.value.trim()) inp.dispatchEvent(new Event('input'));
+    });
+    document.addEventListener('click',function(e){
+      if(!e.target.closest('.tip-search-field')) dd.style.display='none';
+    });
+    inp.addEventListener('keydown',function(e){
+      if(e.key==='Enter'){
+        const first=dd.querySelector('.tip-search-item');
+        if(first) window.location.href=first.href;
+      }
+    });
+  })();
+  </script>
+
+
 
 <main class="main">
 
@@ -200,22 +299,25 @@
 
   <div class="diff-box">
     <h2>Most tip calculators give you <em>the same number</em><br>whether you&#x2019;re in rural Mississippi or Manhattan.</h2>
-    <p>Ours doesn&#x2019;t. A 20% tip means something very different when the median household income in your county is $42,000 versus $136,000. Every calculator on this site factors in the <strong>actual median household income</strong> for your city and county &#x2014; pulled from US Census data &#x2014; so the suggestion feels right for where you are, not just where the average American happens to be.</p>
+    <p>Ours doesn&#x2019;t. A 20% tip means something very different when the median household income in your county is $42,000 versus $136,000. Every calculator on this site factors in the <strong>actual median household income</strong> for your city and county &#x2014; based on US Census income data for your county &#x2014; so the suggestion feels right for where you are, not just where the average American happens to be.</p>
   </div>
-
-  <div class="section-title">Tip Calculators</div>
-  <p class="section-sub">Each calculator is built around the specific inputs that matter for that service &#x2014; not a one-size-fits-all percentage field.</p>
-
+  <div style="background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:16px 20px;margin-bottom:28px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+    <span style="font-size:20px;">📖</span>
+    <div style="flex:1;min-width:180px;">
+      <div style="font-weight:600;font-size:14px;color:var(--ink);margin-bottom:2px;">US Tipping Guides</div>
+      <div style="font-size:12px;color:var(--ink-3);">How tipping works, who to tip, cash vs. card, holiday tips, and more</div>
+    </div>
+    <a href="blog/index.html" style="font-size:13px;font-weight:600;color:var(--g-dark);white-space:nowrap;text-decoration:none;">Read the guides →</a>
+  </div>
   <div class="calc-grid">
-
-
-    <a class="calc-card" href="hair-stylist-tip-calculator/index.html">
-      <div class="card-visual vis-hair">
-        <div class="card-visual-title">Hair Stylist</div>
-        <div class="card-visual-range">15% &ndash; 25%</div>
+    <a class="calc-card" href="bellhop-tip-calculator/index.html">
+      <div class="card-visual vis-hotel">
+        <div class="card-visual-title">Bellhop</div>
+        <div class="card-visual-range">$1 &ndash; $5 / bag</div>
       </div>
       <div class="card-body">
-        <p class="calc-card-desc">Factors in your city&rsquo;s income data, how long you were in the chair, whether you&rsquo;re a regular, and how happy you are with the results.</p>
+        <p class="card-sub">Hotel Bellhops &middot; Bellmen &middot; Hotel Porters &middot; Bell Staff</p>
+        <p class="calc-card-desc">Per-bag tip calibrated to hotel type and number of bags.</p>
         <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
       </div>
     </a>
@@ -226,98 +328,41 @@
         <div class="card-visual-range">15% &ndash; 20%</div>
       </div>
       <div class="card-body">
+        <p class="card-sub">Haircut · Beard Trim · Straight Razor Shave · Color &amp; Tint</p>
         <p class="calc-card-desc">Service type, regularity as a client, and local norms for your area &mdash; because a great barber deserves more than a flat 15%.</p>
         <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
       </div>
     </a>
-
-    <a class="calc-card" href="restaurant-tip-calculator/index.html">
-      <div class="card-visual vis-restaurant">
-        <div class="card-visual-title">Restaurant Server</div>
-        <div class="card-visual-range">18% &ndash; 22%</div>
-      </div>
-      <div class="card-body">
-        <p class="calc-card-desc">Food quality, drink refills, timing, and accuracy &mdash; with a note that tips are often shared with kitchen staff.</p>
-        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
-      </div>
-    </a>
-
-    <a class="calc-card" href="massage-therapist-tip-calculator/index.html">
-      <div class="card-visual vis-massage">
-        <div class="card-visual-title">Massage Therapist</div>
-        <div class="card-visual-range">15% &ndash; 20%</div>
-      </div>
-      <div class="card-body">
-        <p class="calc-card-desc">Session length, massage type, spa vs. independent therapist, and whether it&rsquo;s your first visit or you&rsquo;re a regular.</p>
-        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
-      </div>
-    </a>
-
-    <a class="calc-card" href="nail-salon-tip-calculator/index.html">
-      <div class="card-visual vis-nail">
-        <div class="card-visual-title">Nail Salon</div>
-        <div class="card-visual-range">15% &ndash; 20%</div>
-      </div>
-      <div class="card-body">
-        <p class="calc-card-desc">Covers mani, pedi, gel, acrylics, and nail art &mdash; complexity of the service matters as much as the total.</p>
-        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
-      </div>
-    </a>
-
-    <a class="calc-card" href="tattoo-tip-calculator/index.html">
-      <div class="card-visual vis-tattoo">
-        <div class="card-visual-title">Tattoo Artist</div>
-        <div class="card-visual-range">15% &ndash; 25%</div>
-      </div>
-      <div class="card-body">
-        <p class="calc-card-desc">Session length, design complexity, ongoing project vs. first visit &mdash; including final-session completion tip guidance.</p>
-        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
-      </div>
-    </a>
-
-    <a class="calc-card" href="hotel-housekeeping-tip-calculator/index.html">
-      <div class="card-visual vis-hotel">
-        <div class="card-visual-title">Housekeeping</div>
-        <div class="card-visual-range">$2 &ndash; $10 / night</div>
-      </div>
-      <div class="card-body">
-        <p class="card-sub">Hotels · Motels · Resorts · Airbnbs · Cabins · All-Inclusive</p>
-        <p class="calc-card-desc">Number of nights, room type, guests, and quality of service. Includes checkout etiquette so they know what helps.</p>
-        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
-      </div>
-    </a>
-
-    <a class="calc-card" href="movers-tip-calculator/index.html">
-      <div class="card-visual vis-movers">
-        <div class="card-visual-title">Movers</div>
-        <div class="card-visual-range">$20 &ndash; $50 / mover</div>
-      </div>
-      <div class="card-body">
-        <p class="calc-card-desc">Home size, hours, difficulty, care with your belongings, and whether they followed your instructions.</p>
-        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
-      </div>
-    </a>
-
-    <a class="calc-card" href="rideshare-tip-calculator/index.html">
-      <div class="card-visual vis-rideshare">
-        <div class="card-visual-title">Rideshare Driver</div>
+    <a class="calc-card" href="caterer-tip-calculator/index.html">
+      <div class="card-visual vis-caterer">
+        <div class="card-visual-title">Caterer</div>
         <div class="card-visual-range">10% &ndash; 20%</div>
       </div>
       <div class="card-body">
-        <p class="card-sub">Uber · Lyft · Via · and all rideshare apps</p>
-        <p class="calc-card-desc">Car cleanliness, friendliness, ride smoothness, on-time pickup, and amenities &mdash; not just a flat percentage.</p>
+        <p class="card-sub">Wedding · Corporate · Food Truck · Taco Bar · Buffet</p>
+        <p class="calc-card-desc">Always check your contract for included gratuity before adding a tip.</p>
         <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
       </div>
     </a>
-
-    <a class="calc-card" href="valet-tip-calculator/index.html">
-      <div class="card-visual vis-valet">
-        <div class="card-visual-title">Valet</div>
-        <div class="card-visual-range">$3 &ndash; $10 flat</div>
+    <a class="calc-card" href="dog-groomer-tip-calculator/index.html">
+      <div class="card-visual vis-dog">
+        <div class="card-visual-title">Dog Groomer</div>
+        <div class="card-visual-range">15% &ndash; 25%</div>
       </div>
       <div class="card-body">
-        <p class="card-sub">Restaurant · Hotel · Hospital · Event · Casino</p>
-        <p class="calc-card-desc">Wait time, how your car was handled, friendliness, and venue type. A flat-dollar suggestion, not a percentage.</p>
+        <p class="card-sub">PetSmart · Petco · Private Salons · Mobile Groomers</p>
+        <p class="calc-card-desc">Tip based on dog size, coat complexity, and whether they traveled to you.</p>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+      </div>
+    </a>
+    <a class="calc-card" href="furniture-delivery-tip-calculator/index.html">
+      <div class="card-visual vis-furniture">
+        <div class="card-visual-title">Furniture Delivery</div>
+        <div class="card-visual-range">$5 &ndash; $25 / person</div>
+      </div>
+      <div class="card-body">
+        <p class="card-sub">Curbside &middot; Room-of-Choice &middot; White Glove &middot; Assembly &middot; Haul-Away</p>
+        <p class="calc-card-desc">Tip by service type, crew size, stairs, and heavy items.</p>
         <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
       </div>
     </a>
@@ -328,11 +373,11 @@
         <div class="card-visual-range">15% &ndash; 20% (min $3)</div>
       </div>
       <div class="card-body">
+        <p class="card-sub">DoorDash · Uber Eats · Grubhub · Pizza Delivery · Any App</p>
         <p class="calc-card-desc">Order size, distance, weather, and accuracy. UberEats, DoorDash, and similar &mdash; always with a fair minimum.</p>
         <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
       </div>
     </a>
-
     <a class="calc-card" href="grocery-delivery-tip-calculator/index.html">
       <div class="card-visual vis-grocery">
         <div class="card-visual-title">Grocery Delivery</div>
@@ -344,7 +389,29 @@
         <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
       </div>
     </a>
+    <a class="calc-card" href="hair-colorist-tip-calculator/index.html">
+      <div class="card-visual vis-colorist">
+        <div class="card-visual-title">Hair Colorist</div>
+        <div class="card-visual-range">18% &ndash; 25%</div>
+      </div>
+      <div class="card-body">
+        <p class="card-sub">Balayage &middot; Highlights &middot; Color Correction &middot; Root Touch-Ups &middot; Fashion Color</p>
+        <p class="calc-card-desc">Fair tips even for unsatisfying results — color correction is a multi-session process.</p>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+      </div>
+    </a>
 
+    <a class="calc-card" href="hair-stylist-tip-calculator/index.html">
+      <div class="card-visual vis-hair">
+        <div class="card-visual-title">Hair Stylist</div>
+        <div class="card-visual-range">15% &ndash; 25%</div>
+      </div>
+      <div class="card-body">
+        <p class="card-sub">Cuts · Color · Balayage · Highlights · Blowouts · Treatments</p>
+        <p class="calc-card-desc">Factors in your city&rsquo;s income data, how long you were in the chair, whether you&rsquo;re a regular, and how happy you are with the results.</p>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+      </div>
+    </a>
     <a class="calc-card" href="house-cleaner-tip-calculator/index.html">
       <div class="card-visual vis-cleaner">
         <div class="card-visual-title">House Cleaner</div>
@@ -356,7 +423,131 @@
         <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
       </div>
     </a>
+    <a class="calc-card" href="hotel-housekeeping-tip-calculator/index.html">
+      <div class="card-visual vis-hotel">
+        <div class="card-visual-title">Housekeeping</div>
+        <div class="card-visual-range">$2 &ndash; $10 / night</div>
+      </div>
+      <div class="card-body">
+        <p class="card-sub">Hotels · Motels · Resorts · Airbnbs · Cabins · All-Inclusive</p>
+        <p class="calc-card-desc">Number of nights, room type, guests, and quality of service. Includes checkout etiquette so they know what helps.</p>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+      </div>
+    </a>
+    <a class="calc-card" href="massage-therapist-tip-calculator/index.html">
+      <div class="card-visual vis-massage">
+        <div class="card-visual-title">Massage Therapist</div>
+        <div class="card-visual-range">15% &ndash; 20%</div>
+      </div>
+      <div class="card-body">
+        <p class="card-sub">Spa · Independent · In-Home · Chiropractor · Sports &amp; Deep Tissue</p>
+        <p class="calc-card-desc">Session length, massage type, spa vs. independent therapist, and whether it&rsquo;s your first visit or you&rsquo;re a regular.</p>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+      </div>
+    </a>
+    <a class="calc-card" href="movers-tip-calculator/index.html">
+      <div class="card-visual vis-movers">
+        <div class="card-visual-title">Movers</div>
+        <div class="card-visual-range">$20 &ndash; $50 / mover</div>
+      </div>
+      <div class="card-body">
+        <p class="card-sub">Local · Short Distance · Long Distance · Cross-Country Moves</p>
+        <p class="calc-card-desc">Home size, hours, difficulty, care with your belongings, and whether they followed your instructions.</p>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+      </div>
+    </a>
+    <a class="calc-card" href="nail-salon-tip-calculator/index.html">
+      <div class="card-visual vis-nail">
+        <div class="card-visual-title">Nail Salon</div>
+        <div class="card-visual-range">15% &ndash; 20%</div>
+      </div>
+      <div class="card-body">
+        <p class="card-sub">Manicure · Pedicure · Gel · Acrylics · Dip Powder · Nail Art</p>
+        <p class="calc-card-desc">Covers mani, pedi, gel, acrylics, and nail art &mdash; complexity of the service matters as much as the total.</p>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+      </div>
+    </a>
+    <a class="calc-card" href="photographer-tip-calculator/index.html">
+      <div class="card-visual vis-photographer">
+        <div class="card-visual-title">Photographer</div>
+        <div class="card-visual-range">15% &ndash; 20%</div>
+      </div>
+      <div class="card-body">
+        <p class="card-sub">Family &middot; Engagement &middot; Senior &middot; Newborn &middot; Event &middot; Birth Story</p>
+        <p class="calc-card-desc">Optional but appreciated — tip based on session type, travel, and how happy you are with the results.</p>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+      </div>
+    </a>
 
+    <a class="calc-card" href="restaurant-tip-calculator/index.html">
+      <div class="card-visual vis-restaurant">
+        <div class="card-visual-title">Restaurant Server</div>
+        <div class="card-visual-range">18% &ndash; 22%</div>
+      </div>
+      <div class="card-body">
+        <p class="card-sub">Sit-Down Dining · Fine Dining · Casual Restaurants · Any Table Service</p>
+        <p class="calc-card-desc">Food quality, drink refills, timing, and accuracy &mdash; with a note that tips are often shared with kitchen staff.</p>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+      </div>
+    </a>
+    <a class="calc-card" href="rideshare-tip-calculator/index.html">
+      <div class="card-visual vis-rideshare">
+        <div class="card-visual-title">Rideshare Driver</div>
+        <div class="card-visual-range">10% &ndash; 20%</div>
+      </div>
+      <div class="card-body">
+        <p class="card-sub">Uber · Lyft · Via · and all rideshare apps</p>
+        <p class="calc-card-desc">Car cleanliness, friendliness, ride smoothness, on-time pickup, and amenities &mdash; not just a flat percentage.</p>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+      </div>
+    </a>
+    <a class="calc-card" href="tattoo-tip-calculator/index.html">
+      <div class="card-visual vis-tattoo">
+        <div class="card-visual-title">Tattoo Artist</div>
+        <div class="card-visual-range">15% &ndash; 25%</div>
+      </div>
+      <div class="card-body">
+        <p class="card-sub">Simple · Medium · Complex · Custom · Single &amp; Multi-Session</p>
+        <p class="calc-card-desc">Session length, design complexity, ongoing project vs. first visit &mdash; including final-session completion tip guidance.</p>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+      </div>
+    </a>
+    <a class="calc-card" href="valet-tip-calculator/index.html">
+      <div class="card-visual vis-valet">
+        <div class="card-visual-title">Valet</div>
+        <div class="card-visual-range">$3 &ndash; $10 flat</div>
+      </div>
+      <div class="card-body">
+        <p class="card-sub">Restaurant · Hotel · Hospital · Event · Casino</p>
+        <p class="calc-card-desc">Wait time, how your car was handled, friendliness, and venue type. A flat-dollar suggestion, not a percentage.</p>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+      </div>
+    </a>
+    <a class="calc-card" href="wedding-server-tip-calculator/index.html">
+      <div class="card-visual vis-wedding">
+        <div class="card-visual-title">Wedding Servers</div>
+        <div class="card-visual-range">$25 &ndash; $50 / server</div>
+      </div>
+      <div class="card-body">
+        <p class="card-sub">Plated Service · Buffet Staff · Cocktail Hour · Catering Crews</p>
+        <p class="calc-card-desc">Per-server and total crew tips — includes whether to tip individually or through the captain.</p>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+      </div>
+    </a>
+
+    <a class="calc-card" href="wedding-tip-calculators/index.html">
+      <div class="card-visual vis-wedding">
+        <div class="card-visual-title">Wedding Vendors</div>
+        <div class="card-visual-range">14 calculators</div>
+      </div>
+      <div class="card-body">
+        <p class="card-sub">Photographer · DJ · Band · Planner · Florist · Hair · Makeup · Officiant · Bartender · Limo · More</p>
+        <p class="calc-card-desc">Every wedding vendor covered — individual tip suggestions for each one, calibrated to your city.</p>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">See all wedding calculators &rarr;</span>
+      </div>
+    </a
+    a>
+  </div>
   </div>
 
   <!-- QUICK REFERENCE TABLE -->

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How Much Is a 15% Tip? Quick Calculator + Chart | GeoTipper.com</title>
+  <meta name="description" content="Calculate a 15% tip instantly. Enter your bill and get the tip and total — plus a quick reference chart for common check amounts.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://geotipper.com/blog/how-much-is-15-percent-tip/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+  *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+  :root {
+    --sans:'Inter',system-ui,sans-serif; --serif:'DM Serif Display',Georgia,serif;
+    --ink:#1A1A18; --ink-2:#3D3D38; --ink-3:#6B6B65;
+    --bg:#F2F1ED; --surface:#FDFCFA;
+    --g-dark:#1E4D35; --g-mid:#2E6B4A; --g-pale:#EBF3EE; --g-pale-2:#D6E9DD; --g-pale-3:#B8D9C4;
+    --rule:#E4E3DF; --r:12px; --r-sm:7px;
+    --shadow:0 2px 8px rgba(0,0,0,0.07);
+  }
+  body { font-family:var(--sans); background:var(--bg); color:var(--ink); font-size:16px; line-height:1.75; }
+  a { color:var(--g-mid); }
+  a:hover { color:var(--g-dark); }
+  strong { font-weight:600; }
+  /* NAV */
+  .site-nav { background:var(--g-dark); padding:12px 20px; display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+  .site-nav a { color:rgba(253,252,250,0.75); text-decoration:none; font-size:13px; }
+  .site-nav a:hover { color:#fff; }
+  .site-nav .nav-home { font-family:var(--serif); font-size:15px; color:#FDFCFA; margin-right:auto; }
+  /* HERO */
+  .blog-hero { background:var(--g-dark); color:#FDFCFA; padding:44px 20px 36px; text-align:center; }
+  .blog-hero h1 { font-family:var(--serif); font-size:clamp(22px,5vw,36px); font-weight:400; line-height:1.2; margin-bottom:12px; }
+  .blog-hero .meta { font-size:12px; color:rgba(253,252,250,0.5); }
+  /* ARTICLE */
+  .blog-article { max-width:720px; margin:0 auto; padding:40px 20px 64px; }
+  .blog-article h2 { font-family:var(--serif); font-size:22px; font-weight:400; color:var(--g-dark); margin:36px 0 12px; }
+  .blog-article h3 { font-size:16px; font-weight:600; color:var(--ink); margin:24px 0 8px; }
+  .blog-article p { color:var(--ink-2); margin-bottom:16px; }
+  .blog-article ul, .blog-article ol { color:var(--ink-2); padding-left:22px; margin-bottom:16px; }
+  .blog-article li { margin-bottom:8px; }
+  .blog-article blockquote { border-left:3px solid var(--g-pale-3); padding:10px 16px; margin:20px 0; background:var(--g-pale); border-radius:0 var(--r-sm) var(--r-sm) 0; color:var(--ink-2); font-style:italic; }
+  /* CALC CARD inline */
+  .inline-calc { background:var(--surface); border:1px solid var(--rule); border-radius:var(--r); padding:20px 22px; margin:24px 0; }
+  .inline-calc h3 { font-family:var(--serif); font-size:18px; color:var(--g-dark); margin-bottom:12px; font-weight:400; }
+  .calc-row { display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:10px; }
+  .calc-row input { border:1px solid var(--rule); border-radius:var(--r-sm); padding:9px 12px; font-size:15px; width:140px; font-family:var(--sans); background:var(--bg); }
+  .calc-row button { background:var(--g-dark); color:#FDFCFA; border:none; border-radius:var(--r-sm); padding:9px 18px; font-size:14px; font-weight:600; cursor:pointer; font-family:var(--sans); }
+  .calc-row button:hover { background:var(--g-mid); }
+  .calc-result { font-size:22px; font-family:var(--serif); color:var(--g-dark); min-height:30px; margin-top:6px; }
+  /* CTA BOXES */
+  .cta-box { background:var(--g-pale); border:1px solid var(--g-pale-3); border-radius:var(--r); padding:16px 18px; margin:24px 0; }
+  .cta-box p { margin-bottom:8px; color:var(--ink-2); font-size:14px; }
+  .cta-box p:last-child { margin-bottom:0; }
+  .cta-box a { font-weight:600; }
+  /* RELATED POSTS */
+  .related-posts { background:var(--surface); border-top:1px solid var(--rule); padding:32px 20px; }
+  .related-posts-inner { max-width:720px; margin:0 auto; }
+  .related-posts h3 { font-family:var(--serif); font-size:18px; color:var(--g-dark); margin-bottom:16px; font-weight:400; }
+  .related-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:10px; }
+  .related-link { background:var(--bg); border:1px solid var(--rule); border-radius:var(--r-sm); padding:10px 12px; text-decoration:none; color:var(--ink); font-size:13px; display:block; }
+  .related-link:hover { border-color:var(--g-pale-3); color:var(--g-dark); }
+  /* FOOTER */
+  footer { text-align:center; padding:24px 20px; border-top:1px solid var(--rule); font-size:12px; color:var(--ink-3); }
+  footer a { color:var(--ink-3); margin:0 8px; text-decoration:none; }
+  footer a:hover { color:var(--ink-2); }
+  /* Schema */
+  @media(max-width:600px) { .blog-article { padding:28px 16px 48px; } }
+</style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much is a 15% tip?","acceptedAnswer":{"@type":"Answer","text":"A 15% tip on a $50 bill is $7.50. On a $100 bill it is $15. To calculate: multiply the bill by 0.15, or move the decimal left one place to get 10% then add half of that."}},{"@type":"Question","name":"Is 15% a good tip at a restaurant?","acceptedAnswer":{"@type":"Answer","text":"Fifteen percent is below the current US standard of 18%–20% but is an acceptable minimum for adequate service. Most servers will read it as slightly below average rather than a strong signal of dissatisfaction. For excellent service, 20% is more appropriate."}},{"@type":"Question","name":"How do you calculate a 15% tip in your head?","acceptedAnswer":{"@type":"Answer","text":"Find 10% by moving the decimal one place left. Then add half of that. On a $60 check: 10% = $6.00, half = $3.00, total tip = $9.00 — that's 15%."}}]}</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"GeoTipper.com","url":"https://geotipper.com"}
+</script>
+</head>
+<div style="background:#1E4D35;padding:8px 20px;display:flex;gap:18px;font-size:12px;font-weight:500;">
+  <a href="../../index.html" style="color:rgba(255,255,255,0.8);text-decoration:none;font-family:'DM Serif Display',serif;font-size:13px;margin-right:auto;">GeoTipper</a>
+  <a href="../index.html" style="color:rgba(255,255,255,0.65);text-decoration:none;">Blog</a>
+  <a href="../../about/index.html" style="color:rgba(255,255,255,0.65);text-decoration:none;">About</a>
+</div>
+<body>
+<nav class="site-nav">
+  <a href="../index.html" class="nav-home">GeoTipper.com</a>
+  <a href="../blog/index.html">Blog</a>
+  <a href="../hair-stylist-tip-calculator/index.html">Hair</a>
+  <a href="../restaurant-tip-calculator/index.html">Restaurant</a>
+  <a href="../rideshare-tip-calculator/index.html">Rideshare</a>
+  <a href="../hotel-housekeeping-tip-calculator/index.html">Hotel</a>
+</nav>
+<div class="blog-hero">
+  <p class="meta">GeoTipper.com · Tipping Guide · 2026</p>
+  <h1>How Much Is a 15% Tip? Quick Calculator + Chart</h1>
+  <p class="meta" style="margin-top:8px;">Enter your bill and get the answer instantly — plus the mental math trick</p>
+</div>
+<article class="blog-article">
+
+<div class="inline-calc">
+  <h3>15% Tip Calculator</h3>
+  <div class="calc-row">
+    <input type="number" id="bill15" placeholder="Bill amount ($)" min="1">
+    <button onclick="calc15()">Calculate 15%</button>
+  </div>
+  <div class="calc-result" id="res15"></div>
+</div>
+<script>
+function calc15(){
+  const b=parseFloat(document.getElementById('bill15').value);
+  if(isNaN(b)||b<=0){document.getElementById('res15').textContent='Enter a valid amount';return;}
+  const tip=b*0.15;
+  document.getElementById('res15').textContent='15% tip: $'+tip.toFixed(2)+' · Total: $'+(b+tip).toFixed(2);
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  const el=document.getElementById('bill15');
+  if(el)el.addEventListener('keydown',e=>{if(e.key==='Enter')calc15();});
+});
+</script>
+
+<h2>15% Tip Quick Reference Chart</h2>
+<ul>
+  <li>$10 → $1.50 tip · $11.50 total</li>
+  <li>$15 → $2.25 tip · $17.25 total</li>
+  <li>$20 → $3.00 tip · $23.00 total</li>
+  <li>$25 → $3.75 tip · $28.75 total</li>
+  <li>$30 → $4.50 tip · $34.50 total</li>
+  <li>$40 → $6.00 tip · $46.00 total</li>
+  <li>$50 → $7.50 tip · $57.50 total</li>
+  <li>$60 → $9.00 tip · $69.00 total</li>
+  <li>$75 → $11.25 tip · $86.25 total</li>
+  <li>$100 → $15.00 tip · $115.00 total</li>
+  <li>$120 → $18.00 tip · $138.00 total</li>
+  <li>$150 → $22.50 tip · $172.50 total</li>
+  <li>$200 → $30.00 tip · $230.00 total</li>
+</ul>
+
+<h2>Mental Math: How to Calculate 15% in Your Head</h2>
+<ol>
+  <li>Move the decimal one place left to find 10%. ($48 → $4.80)</li>
+  <li>Divide that by 2 to find 5%. ($4.80 ÷ 2 = $2.40)</li>
+  <li>Add them together. ($4.80 + $2.40 = $7.20) — that's 15%.</li>
+</ol>
+
+<h2>Is 15% Enough?</h2>
+<p>Fifteen percent is below the current US standard of <strong>18%–20%</strong> for sit-down restaurant service. It was the standard in the 1990s and early 2000s but has since been overtaken. For adequate service, 15% is acceptable. For good service, 20% is more appropriate.</p>
+<p>For services outside restaurants — hair salons, rideshare, delivery — 15% is at the low end of acceptable. See: <a href="../how-to-tip-in-the-us/index.html">Full US tip guide by service type</a>.</p>
+<p>Compare: <a href="../how-much-is-20-percent-tip/index.html">How much is a 20% tip?</a> · <a href="../how-much-is-10-percent-tip/index.html">How much is a 10% tip?</a></p>
+<div class="cta-box">
+  <p>For a tip that also accounts for your city's cost of living and service quality:</p>
+  <p><a href="../../restaurant-tip-calculator/index.html">→ Restaurant Tip Calculator</a> · <a href="../../index.html">All Service Calculators →</a></p>
+</div>
+
+</article>
+<div class="related-posts">
+  <div class="related-posts-inner">
+    <h3>Related Guides</h3>
+    <div class="related-grid"><a class="related-link" href="../blog/how-much-is-20-percent-tip/index.html">How much is a 20% tip?</a>
+<a class="related-link" href="../blog/how-much-is-10-percent-tip/index.html">How much is a 10% tip?</a>
+<a class="related-link" href="../blog/how-to-calculate-tip/index.html">How to calculate a tip</a>
+<a class="related-link" href="../blog/how-much-do-you-tip-waiters/index.html">How much do you tip waiters?</a></div>
+  </div>
+</div>
+<footer>
+  <a href="../index.html">Home</a>
+  <a href="../blog/index.html">Blog</a>
+  <a href="../about/index.html">About</a> · <a href="../privacy-policy/index.html">Privacy Policy</a>
+  <a href="../terms-of-use/index.html">Terms of Use</a>
+  <span style="display:block;margin-top:8px;">© 2026 Verdant Web Solutions, LLC · GeoTipper.com</span>
+</footer>
+</body>
+</html>

@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Much to Tip a Wedding Makeup Artist? (2025 Calculator)</title>
+<meta name="description" content="How much to tip a wedding makeup artist? Get a tip for bridal makeup, trials, and full bridal party bookings. Free.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:         #F2F1ED;
+    --surface:    #FDFCFA;
+    --ink:        #111111;
+    --ink-2:      #2A2A2A;       /* high-contrast body text */
+    --ink-3:      #4A4A4A;       /* muted — still AA-compliant on white */
+    --rule:       #DEDAD5;
+    /* green hierarchy — one family, four weights */
+    --g-dark:     #1E4D35;       /* darkest: best label bg, header accent */
+    --g-mid:      #2E6B4A;       /* mid: better label, accent */
+    --g-soft:     #3D8A5F;       /* soft: good label, slider, stars */
+    --g-pale:     #E6F2EC;       /* pale: tint backgrounds */
+    --g-pale-2:   #D0E9DA;       /* slightly deeper tint */
+    --g-pale-3:   #B8DCCA;       /* border accent */
+    --shadow-sm:  0 1px 4px rgba(0,0,0,0.06);
+    --shadow-md:  0 4px 20px rgba(0,0,0,0.09);
+    --shadow-lg:  0 12px 40px rgba(0,0,0,0.13);
+    --r:          14px;
+    --r-sm:       9px;
+    --serif:      'DM Serif Display', Georgia, serif;
+    --sans:       'Inter', system-ui, sans-serif;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--ink);
+    padding: 52px 24px 44px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 15% 50%, rgba(61,107,79,0.18) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 60% at 85% 25%, rgba(61,107,79,0.10) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .header h1 {
+    font-family: var(--serif);
+    font-size: clamp(30px, 6vw, 48px);
+    font-weight: 600;
+    color: #FDFCFA;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+  .header h1 em {
+    font-style: italic;
+    color: #A8C9B4;
+    font-weight: 400;
+  }
+  .header p {
+    color: rgba(253,252,250,0.55);
+    font-size: 14px;
+    font-weight: 300;
+    max-width: 400px;
+    margin: 0 auto;
+    letter-spacing: 0.01em;
+  }
+  .header-sub { font-size:12px; color:rgba(253,252,250,0.55); font-weight:400; letter-spacing:0.02em; margin:0 auto 10px; max-width:520px; }
+  .header-sub strong { color:rgba(253,252,250,0.8); font-weight:600; }
+  .header-answer {
+    color: rgba(253,252,250,0.82) !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    max-width: 460px !important;
+    line-height: 1.65 !important;
+    margin: 0 auto !important;
+  }
+  .header-answer strong { color: #A8C9B4; font-weight: 600; }
+
+  /* ── LAYOUT ── */
+  .main { max-width: 600px; margin: 0 auto; padding: 28px 14px 60px; }
+
+  .card {
+    background: var(--surface);
+    border-radius: var(--r);
+    border: 1px solid var(--rule);
+    box-shadow: var(--shadow-md);
+    padding: 26px 22px;
+    margin-bottom: 14px;
+  }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--g-mid);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+
+  /* ── FORM FIELDS ── */
+  .field { margin-bottom: 20px; }
+  .field:last-child { margin-bottom: 0; }
+
+  label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-2);
+    margin-bottom: 6px;
+    letter-spacing: 0.01em;
+  }
+
+  input[type="text"],
+  input[type="number"] {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1.5px solid var(--rule);
+    border-radius: var(--r-sm);
+    font-family: var(--sans);
+    font-size: 16px;
+    color: var(--ink);
+    background: #FAFAF8;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    -webkit-appearance: none;
+  }
+  input:focus {
+    border-color: var(--g-mid);
+    box-shadow: 0 0 0 3px rgba(46,107,74,0.13);
+    background: #fff;
+  }
+  input::placeholder { color: #BDBDB8; }
+
+  .input-prefix-wrap { position: relative; }
+  .input-prefix {
+    position: absolute; left: 14px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 15px; color: var(--ink-3); font-weight: 500; pointer-events: none;
+  }
+  .input-prefix-wrap input { padding-left: 26px; }
+
+  /* ── AUTOCOMPLETE ── */
+  .autocomplete-wrap { position: relative; }
+  .autocomplete-list {
+    position: absolute;
+    top: calc(100% + 4px); left: 0; right: 0;
+    background: var(--surface);
+    border: 1.5px solid var(--g-mid);
+    border-radius: var(--r-sm);
+    box-shadow: var(--shadow-lg);
+    z-index: 100;
+    max-height: 220px;
+    overflow-y: auto;
+    display: none;
+  }
+  .ac-item {
+    padding: 9px 14px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--ink);
+    border-bottom: 1px solid var(--rule);
+    transition: background .1s;
+  }
+  .ac-item:last-child { border-bottom: none; }
+  .ac-item:hover, .ac-item.active { background: var(--g-pale); color: var(--g-dark); }
+  .autocomplete-list.open { display: block; }
+  .autocomplete-item {
+    padding: 11px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.1s;
+  }
+  .autocomplete-item:last-child { border-bottom: none; }
+  .autocomplete-item:hover, .autocomplete-item.active { background: var(--g-pale); }
+  .autocomplete-item:hover .city-text,
+  .autocomplete-item.active .city-text { color: var(--g-dark); font-weight: 500; }
+  .state-badge {
+    font-size: 10px; color: var(--ink-3);
+    background: var(--bg); padding: 2px 7px;
+    border-radius: 20px; flex-shrink: 0;
+    border: 1px solid var(--rule);
+  }
+
+  /* ── STARS ── */
+  .stars-wrap { display: flex; gap: 6px; margin-top: 4px; }
+  .star-btn {
+    background: none; border: none; cursor: pointer;
+    font-size: 28px; line-height: 1;
+    transition: transform 0.12s, color 0.12s;
+    color: var(--rule); padding: 0;
+  }
+  .star-btn.lit { color: var(--g-soft); }
+  .star-btn:hover { transform: scale(1.18); }
+  .star-label { font-size: 12px; color: var(--ink-2); margin-top: 6px; min-height: 18px; }
+
+  /* ── PILLS ── */
+  .pill-group { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+  .pill {
+    padding: 8px 16px;
+    border-radius: 50px;
+    border: 1.5px solid var(--rule);
+    background: #FAFAF8;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-2);
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: var(--sans);
+  }
+  .pill:hover { border-color: var(--g-mid); color: var(--g-dark); }
+  .pill.selected { background: var(--g-dark); border-color: var(--g-dark); color: #fff; }
+
+  /* ── DURATION SLIDER ── */
+  .duration-display {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .duration-display span {
+    font-size: 15px; font-weight: 400; color: var(--ink-3);
+    font-family: var(--sans);
+  }
+  input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%; height: 4px;
+    border-radius: 2px;
+    background: linear-gradient(to right, var(--g-soft) 0%, var(--g-soft) var(--range-pct, 7%), var(--rule) var(--range-pct, 7%), var(--rule) 100%);
+    outline: none; cursor: pointer; border: none; padding: 0;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 2.5px solid var(--g-soft);
+    cursor: pointer;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.15);
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 2.5px solid var(--g-soft);
+    cursor: pointer;
+  }
+  .range-labels { display: flex; justify-content: space-between; font-size: 11px; color: var(--ink-2); margin-top: 5px; }
+
+  /* ── CTA BUTTON ── */
+  .calc-btn {
+    width: 100%;
+    padding: 17px;
+    background: var(--g-dark);
+    color: #fff;
+    border: none;
+    border-radius: var(--r-sm);
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .calc-btn::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 60%);
+  }
+  .calc-btn:hover { background: var(--g-mid); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(30,77,53,0.35); }
+  .calc-btn:active { transform: translateY(0); }
+  .calc-btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+
+  /* ── RESULTS ── */
+  .results { display: none; animation: fadeUp 0.38s ease both; }
+  .results.show { display: block; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .result-header { text-align: center; padding: 18px 0 12px; }
+  .result-header .city-name {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-3); margin-bottom: 4px;
+  }
+  .result-header h2 {
+    font-family: var(--serif);
+    font-size: 22px; font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  /* ── TIP GRID — good/better/best in one row, minimum full-width below ── */
+  .tip-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .tip-card {
+    background: var(--surface);
+    border-radius: var(--r-sm);
+    border: 1.5px solid var(--rule);
+    padding: 14px 10px 12px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.16s, box-shadow 0.16s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: stretch;
+  }
+  /* Border color matches label color for each tier */
+  .tip-card.good     { border-color: var(--g-pale-3); }
+  .tip-card.better   { border-color: var(--g-soft); }
+  .tip-card.best     { border-color: var(--g-mid); }
+  .tip-card.minimum  { border-color: #BEBEBE; background: #F7F7F7; }
+  .tip-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+  /* Acceptable — full-width horizontal strip */
+  .tip-card.acceptable {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    text-align: left;
+    padding: 14px 16px;
+    background: #F7F7F7;
+    border-color: #BEBEBE;
+  }
+  .tip-card.acceptable .tip-card-body {
+    display: flex; flex-direction: column;
+    align-items: flex-start; flex: 1;
+  }
+  .tip-card.acceptable .tip-card-right {
+    text-align: right; flex-shrink: 0;
+  }
+
+  /* Label pills */
+  .tip-card-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 11px;
+    white-space: nowrap;
+  }
+  /* Green hierarchy labels — clearly distinct steps */
+  .tip-card.good     .tip-card-label { background: var(--g-pale);  color: var(--g-dark);  border: 1.5px solid var(--g-pale-3); }
+  .tip-card.better   .tip-card-label { background: var(--g-soft);  color: #FFFFFF;        border: 1.5px solid var(--g-mid); }
+  .tip-card.best     .tip-card-label { background: var(--g-dark);  color: #FFFFFF;        border: 1.5px solid var(--g-dark); }
+  .tip-card.minimum  .tip-card-label { background: #E4E4E4; color: #4A4A4A; border: 1.5px solid #BEBEBE; margin-bottom: 5px; }
+  .tip-card.acceptable .tip-card-label { background: #E4E4E4; color: #4A4A4A; border: 1.5px solid #BEBEBE; margin-bottom: 5px; }
+
+  /* Tip amount */
+  .tip-card-amount {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 3px;
+    letter-spacing: 0.03em;
+  }
+  .tip-card.acceptable .tip-card-amount { font-size: 30px; }
+
+  /* New total — bordered box, most visually prominent after tip amount */
+  .tip-card-total {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--bg);
+    border: 1.5px solid var(--rule);
+    border-radius: 7px;
+    padding: 6px 12px 7px;
+    margin: 8px 0 6px;
+    width: 100%;
+    gap: 1px;
+  }
+  .tip-card-total-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .tip-card-total-value {
+    font-family: var(--serif);
+    font-size: 21px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+  }
+  /* Acceptable card total is horizontal — keep it inline */
+  .tip-card.acceptable .tip-card-total {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 6px;
+    padding: 5px 10px;
+    margin: 6px 0 4px;
+    width: auto;
+  }
+  .tip-card.acceptable .tip-card-total-value { font-size: 18px; }
+
+  /* Percentage */
+  .tip-card-pct {
+    font-size: 13px;
+    color: var(--ink-2);
+    font-weight: 500;
+    margin-bottom: 3px;
+  }
+
+  /* Most common tag */
+  .most-common-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--g-dark);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: var(--g-pale);
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-top: 6px;
+  }
+
+  /* Description */
+  .tip-card-desc {
+    font-size: 12px;
+    color: var(--ink-2);
+    line-height: 1.45;
+    margin-top: 5px;
+  }
+  .tip-card.acceptable .tip-card-desc { font-size: 13px; color: var(--ink-2); }
+
+  /* ── BONUS TOGGLES ── */
+  .bonus-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  .bonus-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    border-radius: var(--r-sm);
+    border: 1.5px solid var(--rule);
+    background: #FAFAF8;
+    font-family: var(--sans);
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--ink-2);
+    cursor: pointer;
+    transition: all 0.16s;
+    text-align: left;
+    line-height: 1.3;
+  }
+  .bonus-btn .bonus-icon { font-size: 16px; flex-shrink: 0; }
+  .bonus-btn:hover { border-color: var(--g-pale-3); background: var(--g-pale); }
+  .bonus-btn.active {
+    background: var(--g-pale);
+    border-color: var(--g-soft);
+    color: var(--g-dark);
+    font-weight: 600;
+  }
+  .bonus-btn.active .bonus-icon { filter: none; }
+  .bonus-note { font-size: 11px; color: var(--ink-3); margin-top: 8px; font-style: italic; }
+  /* Year-end spans the full grid width */
+  .bonus-btn--yearend { grid-column: 1 / -1; }
+
+  /* ── BONUS RESULTS BAR ── */
+  .bonus-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--g-pale);
+    border: 1px solid var(--g-pale-3);
+    border-radius: var(--r-sm);
+    padding: 9px 14px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .bonus-bar-icons {
+    font-size: 17px;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+  .bonus-bar-text {
+    font-size: 12px;
+    color: var(--g-dark);
+    font-weight: 500;
+    flex: 1;
+  }
+  .bonus-bar-amount {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--g-dark);
+    background: var(--g-pale-2);
+    border-radius: 6px;
+    padding: 2px 8px;
+    flex-shrink: 0;
+  }
+
+
+  /* ── INSIGHT BOX ── */
+  /* Insight box ⓘ icon */
+  .insight-wrap { position: relative; }
+  .insight-info-btn {
+    position: absolute; top: 10px; right: 10px;
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 17px; height: 17px; border-radius: 50%;
+    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.6); font-size: 10px; font-weight: 700;
+    cursor: pointer; font-style: normal; font-family: var(--sans);
+    flex-shrink: 0; z-index: 2;
+  }
+  .insight-info-btn:hover { background: rgba(255,255,255,0.2); color: #fff; }
+  .insight-info-popup {
+    display: none; position: absolute; bottom: calc(100% + 8px); right: 0;
+    width: 260px; background: #1a1a1a;
+    color: rgba(253,252,250,.88); font-size: 12px; line-height: 1.6;
+    border-radius: var(--r-sm); padding: 12px 14px;
+    box-shadow: var(--shadow-lg); z-index: 100; font-weight: 400;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .insight-info-popup::after {
+    content: ""; position: absolute; top: 100%; right: 14px;
+    border: 6px solid transparent; border-top-color: #1a1a1a;
+  }
+  .insight-info-btn:hover .insight-info-popup,
+  .insight-info-btn:focus .insight-info-popup { display: block; }
+  .insight-info-popup strong { color: #A8C9B4; }
+
+  .wedding-cap-box { background:#FFFBF0; border:1px solid #E8D88A; border-radius:var(--r-sm); padding:13px 15px; margin-top:10px; font-size:12.5px; color:var(--ink-2); line-height:1.6; }
+  .wedding-cap-box strong { color:var(--ink); }
+  .wedding-cap-box-title { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:#8B7A00; margin-bottom:6px; }
+  .insight-wrap { position:relative; }
+  .insight-info-btn { position:absolute;top:10px;right:10px;display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;border-radius:50%;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.6);font-size:10px;font-weight:700;cursor:pointer;font-style:normal;font-family:var(--sans);flex-shrink:0;z-index:2; }
+  .insight-info-btn:hover { background:rgba(255,255,255,0.2);color:#fff; }
+  .insight-info-popup { display:none;position:absolute;bottom:calc(100% + 8px);right:0;width:260px;background:#1a1a1a;color:rgba(253,252,250,.88);font-size:12px;line-height:1.6;border-radius:var(--r-sm);padding:12px 14px;box-shadow:var(--shadow-lg);z-index:100;font-weight:400;border:1px solid rgba(255,255,255,0.1); }
+  .insight-info-popup::after { content:"";position:absolute;top:100%;right:14px;border:6px solid transparent;border-top-color:#1a1a1a; }
+  .insight-info-btn:hover .insight-info-popup,.insight-info-btn:focus .insight-info-popup { display:block; }
+  .insight-info-popup strong { color:#A8C9B4; }
+  .insight-box {
+    background: var(--ink);
+    border-radius: var(--r-sm);
+    padding: 16px 18px;
+    font-size: 13px;
+    color: rgba(253,252,250,0.72);
+    line-height: 1.6;
+    margin-top: 0;
+    letter-spacing: 0.01em;
+  }
+  .insight-box strong { color: var(--g-pale-3); font-weight: 600; }
+
+  /* ── RECALC BUTTON ── */
+  /* Year-end cash gift callout */
+  .yearend-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: var(--g-pale);
+    border: 1.5px solid var(--g-pale-3);
+    border-left: 4px solid var(--g-mid);
+    border-radius: var(--r-sm);
+    padding: 14px 16px;
+    margin-top: 10px;
+  }
+  .yearend-icon { font-size: 22px; flex-shrink: 0; line-height: 1.3; }
+  .yearend-text { font-size: 13px; color: var(--ink-2); line-height: 1.55; }
+  .yearend-text strong { color: var(--g-dark); font-size: 15px; display: block; margin-bottom: 3px; }
+
+  /* Adjustment breakdown */
+  .adj-breakdown { background:var(--bg); border:1px solid var(--rule); border-radius:var(--r-sm); padding:11px 14px; margin-top:10px; }
+  .adj-breakdown-title { font-size:10.5px; font-weight:700; color:var(--ink-3); text-transform:uppercase; letter-spacing:.08em; margin-bottom:7px; }
+  .adj-breakdown-row { font-size:12px; color:var(--ink-2); margin-bottom:3px; display:flex; align-items:center; gap:6px; }
+  .adj-breakdown-row:last-child { margin-bottom:0; }
+  .adj-tag { display:inline-flex; align-items:center; justify-content:center; width:15px; height:15px; border-radius:50%; font-size:9px; font-weight:700; flex-shrink:0; }
+  .adj-pos { background:var(--g-pale-2); color:var(--g-dark); }
+  .adj-neg { background:#FEF3E2; color:#92511A; }
+  /* ── INFO POPUP ── */
+  .info-trigger {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 18px; height: 18px; border-radius: 50%;
+    background: var(--g-pale-2); border: 1.5px solid var(--g-pale-3);
+    color: var(--g-mid); font-size: 10px; font-weight: 700;
+    cursor: pointer; vertical-align: middle; margin-left: 8px;
+    position: relative; font-style: normal; flex-shrink: 0;
+    font-family: var(--sans);
+  }
+  .info-trigger:hover { background: var(--g-pale-3); }
+  .info-popup {
+    display: none; position: absolute; bottom: calc(100% + 8px); left: 50%;
+    transform: translateX(-50%); width: 280px;
+    background: var(--ink); color: rgba(253,252,250,.85);
+    font-size: 12px; line-height: 1.6; border-radius: var(--r-sm);
+    padding: 12px 14px; box-shadow: var(--shadow-lg);
+    z-index: 100; font-weight: 400;
+  }
+  .info-popup::after {
+    content: ""; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+    border: 6px solid transparent; border-top-color: var(--ink);
+  }
+  .info-trigger:hover .info-popup,
+  .info-trigger:focus .info-popup { display: block; }
+  .info-popup strong { color: #A8C9B4; }
+
+  .recalc-btn {
+    width: 100%;
+    padding: 14px;
+    background: transparent;
+    color: var(--ink-2);
+    border: 1.5px solid var(--ink-2);
+    border-radius: var(--r-sm);
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+    margin-top: 12px;
+    letter-spacing: 0.01em;
+  }
+  .recalc-btn:hover {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: #fff;
+  }
+
+  /* ── MISC ── */
+  .helper { font-size: 11px; color: var(--ink-2); margin-top: 5px; }
+  input.error { border-color: #C0392B !important; }
+  .error-msg { font-size: 11px; color: #C0392B; margin-top: 4px; display: none; }
+  .error-msg.show { display: block; }
+  /* ── SEO CONTENT SECTION ── */
+  .seo-section {
+    background: var(--surface);
+    border-top: 1px solid var(--rule);
+    padding: 52px 16px 48px;
+    margin-top: 16px;
+  }
+  .seo-inner { max-width: 720px; margin: 0 auto; }
+  .seo-h2 {
+    font-family: var(--serif);
+    font-size: clamp(22px, 4vw, 32px);
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .seo-lead {
+    font-size: 15px;
+    color: var(--ink-2);
+    margin-bottom: 32px;
+    max-width: 560px;
+    line-height: 1.65;
+  }
+  .seo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .seo-card {
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-radius: var(--r-sm);
+    padding: 20px 18px;
+  }
+  .seo-card-icon { font-size: 22px; margin-bottom: 10px; display: block; }
+  .seo-card h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+  .seo-card p {
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.65;
+  }
+  .seo-card strong { color: var(--g-dark); }
+  .seo-faq { border-top: 1px solid var(--rule); padding-top: 28px; }
+  .seo-faq-title {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 18px;
+  }
+  .seo-faq-item {
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .seo-faq-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .seo-faq-item strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 5px;
+  }
+  .seo-faq-item p { font-size: 13px; color: var(--ink-2); line-height: 1.65; }
+
+  .footer-link { color: var(--g-mid); text-decoration: underline; }
+  .footer-link:hover { color: var(--g-dark); }
+  .footer {
+    text-align: center;
+    padding: 28px 20px;
+    border-top: 1px solid var(--rule);
+    margin-top: 32px;
+  }
+  .footer-data {
+    font-size: 11px;
+    color: var(--ink-3);
+    margin-bottom: 10px;
+  }
+  .footer-disclaimer {
+    font-size: 11px;
+    color: var(--ink-3);
+    line-height: 1.6;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 10px 14px;
+    background: #F0F1EE;
+    border-radius: var(--r-sm);
+    border: 1px solid var(--rule);
+  }
+  .footer-disclaimer strong { color: var(--ink-2); font-weight: 600; }
+
+  /* ── RESPONSIVE ── */
+  /* Compact 3-col on medium-small phones */
+  @media (max-width: 400px) {
+    .tip-card { padding: 11px 7px 10px; }
+    .tip-card-amount { font-size: 26px; }
+    .tip-card-label { font-size: 8.5px; padding: 2px 7px; }
+    .tip-card-total, .tip-card-pct, .tip-card-desc { font-size: 10px; }
+    .card { padding: 16px 12px; }
+  }
+  /* Smallest phones: drop to single column for 3-col row only */
+  @media (max-width: 320px) {
+    .tip-grid { grid-template-columns: 1fr; }
+    .tip-card.acceptable { flex-direction: column; align-items: flex-start; }
+    .tip-card.acceptable .tip-card-right { text-align: left; }
+  }
+
+  /* ── ADSENSE PLACEHOLDERS ── */
+  .ad-slot {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto 20px;
+    min-height: 1px; /* collapses if no ad loaded */
+  }
+  .ad-slot-top    { margin-bottom: 20px; }
+  .ad-slot-mid    { margin: 24px 0; }
+  .ad-sticky-footer {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--surface);
+    border-top: 1px solid var(--rule);
+    padding: 6px;
+    text-align: center;
+    z-index: 50;
+    display: none; /* shown only on mobile via media query */
+  }
+  @media (max-width: 600px) {
+    .ad-sticky-footer { display: block; }
+    /* Push page content up so sticky footer doesn't cover it */
+    body { padding-bottom: 70px; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much to tip a wedding makeup artist?","acceptedAnswer":{"@type":"Answer","text":"The standard tip is 15%–20% of the service cost per person. For airbrush or editorial makeup, 20%–25% is appropriate. Tip at the trial appointment too."}},{"@type":"Question","name":"Do you tip a wedding makeup artist for a trial?","acceptedAnswer":{"@type":"Answer","text":"Yes — 15%–20% of the trial fee is appropriate. It sets a good working relationship and acknowledges the skill required even for a practice run."}}]}</script>
+  <!-- ═══════════════════════════════════════════════════════
+       ADSENSE: Add your site-level script tag here (once per page)
+       Get this from your AdSense account after approval
+  ═══════════════════════════════════════════════════════ -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"GeoTipper.com","url":"https://geotipper.com","description":"Free US tip calculators calibrated to the cost of living in the area."}
+</script>
+</head>
+<body>
+
+<div style="background:rgba(0,0,0,0.18);padding:8px 20px;display:flex;gap:18px;font-size:12px;font-weight:500;letter-spacing:.03em;">
+  <a href="../index.html" style="color:rgba(255,255,255,0.8);text-decoration:none;font-family:var(--serif);font-size:13px;margin-right:auto;">GeoTipper</a>
+  <a href="../blog/index.html" style="color:rgba(255,255,255,0.65);text-decoration:none;">Blog</a>
+  <a href="../about/index.html" style="color:rgba(255,255,255,0.65);text-decoration:none;">About</a>
+</div>
+<header class="header">
+  <h1>How Much to Tip<br><em>a Wedding Makeup Artist?</em></h1>
+  <p class="header-sub">For <strong>Bridal Makeup · Trial Appointments · Full Bridal Party · Airbrush &amp; Editorial</strong></p>
+  <p class="header-answer">The standard tip for a wedding makeup artist is <strong>15%–20%</strong> of the service cost — the same as a salon. For airbrush or editorial-level work, 20%–25% is generous. Tip each artist on their individual service cost, not the group total.</p>
+</header>
+
+<main class="main">
+
+  <!-- ═══════════════════════════════════════════════════════
+       ADSENSE PLACEMENT 1: Above Calculator (Leaderboard)
+       Replace the comment below with your AdSense ad unit code
+       Best size: responsive or 728x90 desktop / 320x50 mobile
+  ═══════════════════════════════════════════════════════ -->
+  <div class="ad-slot ad-slot-top">
+    <!-- PASTE ADSENSE UNIT 1 HERE -->
+    <!-- Example:
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="XXXXXXXXXX"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    -->
+  </div>
+  <div class="card" id="formCard">
+
+    <!-- LOCATION -->
+    <div class="section-label">Your Location</div>
+    <div class="field">
+      <label for="cityInput">City &amp; State</label>
+      <div class="autocomplete-wrap"><input type="text" id="cityInput" placeholder="Start typing a city…" autocomplete="off" maxlength="80"><div class="autocomplete-list" id="autocompleteList"></div></div>
+      <p class="helper" id="cityHelper">We calibrate tips to the cost of living in the area.</p>
+      <div class="error-msg" id="cityError">Please select a city from the list.</div>
+    </div>
+    <div class="section-label">Service Cost</div>
+    <div class="field">
+      <label for="priceInput">Your Individual Service Cost (before tip)</label>
+      <div class="input-prefix-wrap"><span class="input-prefix">$</span>
+        <input type="number" id="priceInput" placeholder="0" min="1" max="10000" step="1">
+      </div>
+      <div class="error-msg" id="priceError">Please enter a valid amount.</div>
+    </div>
+    <div class="section-label">Travel <span style="font-size:10px;text-transform:none;letter-spacing:0;font-weight:400;color:var(--ink-3);">(optional)</span></div>
+    <div class="field">
+      <label>Did this vendor travel to your wedding location?</label>
+      <div class="pill-group" id="travelGroup">
+        <button class="pill selected" data-val="local">Local (under 30 miles)</button>
+        <button class="pill" data-val="regional">Regional (30–100 miles)</button>
+        <button class="pill" data-val="destination">Destination / overnight travel</button>
+      </div>
+    </div>
+    <div class="section-label">Your Experience</div>
+    <div class="field">
+      <label>How satisfied are you with your wedding makeup artist?</label>
+      <div class="star-row">
+        <div class="stars-wrap" id="starsWrap">
+          <button class="star-btn" data-star="1" aria-label="1 star">★</button>
+          <button class="star-btn" data-star="2" aria-label="2 stars">★</button>
+          <button class="star-btn" data-star="3" aria-label="3 stars">★</button>
+          <button class="star-btn" data-star="4" aria-label="4 stars">★</button>
+          <button class="star-btn" data-star="5" aria-label="5 stars">★</button>
+        </div>
+        <span class="star-label" id="starLabel"></span>
+      </div>
+      <div class="error-msg" id="starError">Please rate your experience.</div>
+    </div>
+    <div class="section-label">Bonus? <span style="font-size:10px;text-transform:none;letter-spacing:0;font-weight:400;color:var(--ink-3);">(optional)</span></div>
+    <div class="field">
+      <div class="bonus-grid" id="bonusGroup">
+        <button class="bonus-btn" data-bonus="0.05" data-key="outstanding" type="button"><span class="bonus-icon">✨</span><span>Truly Outstanding<br><small style="font-weight:400;color:var(--ink-3)">+5% suggested</small></span></button>
+      </div>
+      <p class="bonus-note" id="bonusNote" style="display:none"></p>
+    </div>
+        <button class="calc-btn" id="calcBtn">Calculate My Tip →</button>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="results" id="resultsSection">
+    <div class="card">
+      <div class="result-header">
+        <div class="city-name" id="resultCity"></div>
+        <h2>Your Tip Suggestions <span class="info-trigger" tabindex="0" role="button" aria-label="How local income affects tip suggestions">i<span class="info-popup"><strong>How your city affects these numbers</strong><br><br>Our calculator looks up the median household income for your county using US Census data. Higher local incomes mean higher tipping expectations — a 20% tip in Manhattan carries different social weight than 20% in a small rural town.<br><br><strong>Example ranges:</strong><br>Rural ($42K income) → base ~15%<br>National avg ($74K) → base ~18%<br>High cost city ($120K+) → base ~22%<br><br>The percentage itself adjusts — not just the dollar amount.</span></span></h2>
+      </div>
+      <div class="tip-grid" id="tipGrid"></div>
+      <div class="insight-wrap">
+        <div class="insight-wrap">
+        <div class="insight-box" id="insightBox"></div>
+        <span class="insight-info-btn" tabindex="0" role="button" aria-label="How income affects tip suggestions">i<span class="insight-info-popup"><strong>How your city affects these numbers</strong><br><br>We use US Census median household income for your county. Higher-income areas have higher tipping expectations — our base rate scales from ~15% in lower-income areas to ~22%+ in high cost-of-living cities.</span></span>
+      </div>
+        <span class="insight-info-btn" tabindex="0" role="button" aria-label="How income affects tip suggestions">i
+          <span class="insight-info-popup"><strong>How your city affects these numbers</strong><br><br>We look up the median household income for your county using US Census data. Higher-income areas have higher tipping expectations — our base tip rate scales from ~15% in lower-income areas to ~22%+ in high cost-of-living cities.<br><br><strong>Examples:</strong><br>Rural ($42K) → base ~15%<br>US average ($74K) → base ~18%<br>High cost city ($120K+) → base ~22%<br><br>The percentage itself adjusts — not just the dollar amount.</span>
+        </span>
+      </div>
+      <button class="recalc-btn" id="recalcBtn">← Calculate Again</button>
+    </div>
+  </div>
+</main>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       ADSENSE PLACEMENT 2: Between Results & SEO Content
+       Replace the comment below with your AdSense ad unit code
+       Best size: responsive or 336x280 rectangle
+  ═══════════════════════════════════════════════════════ -->
+  <div class="ad-slot ad-slot-mid">
+    <!-- PASTE ADSENSE UNIT 2 HERE -->
+    <!-- Example:
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="XXXXXXXXXX"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    -->
+  </div>
+<!-- SEO CONTENT: Wedding Wedding Makeup Artist Tipping -->
+<section class="seo-section" aria-label="Wedding wedding makeup artist tipping">
+  <div class="seo-inner">
+    <h2 class="seo-h2">How Much to Tip a Wedding Wedding Makeup Artist</h2>
+    <p class="seo-lead">15%–20% of the individual service cost. 20%–25% for airbrush or editorial-level work.</p>
+    <div class="seo-faq">
+      <h3 class="seo-faq-title">Frequently Asked Questions</h3>
+      <div class="seo-faq-item"><strong>How much to tip for a large bridal party?</strong><p>Tip each artist on their individual service cost. If one artist covered the full party, a consolidated extra tip of $75–$150 is a warm gesture.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <p class="footer-data">Calculations run entirely in your browser — we collect no personal data. Income figures from U.S. Census ACS 5-year estimates. City data provided by <a href="https://simplemaps.com/data/us-cities" target="_blank" rel="noopener noreferrer" class="footer-link">SimpleMaps</a>.</p>
+  <p class="footer-disclaimer"><strong>Disclaimer:</strong> Tip suggestions are estimates only, based on local income data and general tipping norms. Actual appropriate amounts may vary. We make no guarantee of accuracy — always use your own judgment when tipping.</p>
+
+  <p style="margin-top:10px;font-size:11px;"><a href="../privacy-policy/index.html" style="color:var(--ink-3);margin-right:14px;">Privacy Policy</a><a href="../terms-of-use/index.html" style="color:var(--ink-3);">Terms of Use</a></p>
+</footer>
+
+<script>
+// ── STATE ──────────────────────────────────────────────────────────────────
+let selectedCity  = null;
+let selectedStars = 0;
+let selectedTravel = 'local';
+let selectedBonuses = {};
+
+
+// ── CONSTANTS ───────────────────────────────────────────────────────────────
+const US_MEDIAN_INCOME = 74580;
+const bonusLabels = { outstanding: 'Truly Outstanding bonus included' };
+const starLabels = ['','Very disappointed','Below expectations','Satisfied','Really happy','Outstanding!'];
+
+// ── CITIES DATA (FALLBACK) ───────────────────────────────────────────────────
+const CITIES_FALLBACK = [];
+const COUNTIES_EMBEDDED = {"36061":93000,"36047":67000,"36081":72000,"36005":52000,"36085":82000,"36059":105000,"36103":111000,"36119":103000,"36087":88000,"36055":62000,"36029":56000,"36007":54000,"36019":58000,"36091":68000,"06037":81000,"06073":96000,"06059":107000,"06065":75000,"06071":68000,"06085":141000,"06075":136000,"06081":131000,"06001":117000,"06013":110000,"06067":76000,"06077":64000,"06019":58000,"06029":59000,"06083":82000,"06111":96000,"48201":65000,"48113":72000,"48439":71000,"48029":72000,"48453":80000,"48121":101000,"48085":98000,"48491":63000,"48141":58000,"48355":50000,"48375":43000,"48303":54000,"12086":63000,"12011":75000,"12099":77000,"12057":65000,"12095":63000,"12031":58000,"12009":59000,"12071":64000,"12103":55000,"12001":58000,"12073":55000,"17031":72000,"17043":91000,"17097":84000,"17089":80000,"17111":78000,"17197":74000,"17201":56000,"17113":55000,"42101":63000,"42091":89000,"42017":93000,"42045":88000,"42003":64000,"42011":60000,"42095":57000,"39049":62000,"39035":55000,"39061":58000,"39113":52000,"39153":60000,"39057":66000,"39093":61000,"13121":72000,"13089":81000,"13067":97000,"13135":95000,"13117":83000,"13151":58000,"13185":49000,"13051":52000,"37183":69000,"37119":65000,"37063":61000,"37081":58000,"37067":57000,"37021":56000,"37051":55000,"26163":58000,"26125":75000,"26099":72000,"26081":62000,"26065":58000,"26145":55000,"53033":102000,"53061":85000,"53053":78000,"53011":67000,"53063":58000,"53067":66000,"04013":72000,"04019":58000,"04021":53000,"04003":48000,"04005":55000,"08031":72000,"08005":91000,"08059":89000,"08001":86000,"08035":96000,"08069":80000,"08041":79000,"08013":86000,"47037":67000,"47157":58000,"47093":57000,"47065":61000,"47149":64000,"47187":72000,"47105":53000,"51059":126000,"51013":107000,"51510":82000,"51760":52000,"51810":57000,"51710":54000,"51041":78000,"24031":103000,"24033":97000,"24003":87000,"24005":81000,"24510":58000,"24027":86000,"24021":92000,"25025":86000,"25017":103000,"25021":101000,"25023":86000,"25027":82000,"25013":78000,"25003":74000,"34013":94000,"34017":96000,"34039":113000,"34023":97000,"34029":102000,"34003":94000,"34007":95000,"34021":115000,"34035":110000,"34027":90000,"32003":67000,"32031":62000,"32510":58000,"41051":82000,"41067":84000,"41005":75000,"41029":62000,"41039":60000,"27053":91000,"27123":84000,"27037":93000,"27163":90000,"27019":80000,"27109":67000,"55079":65000,"55025":71000,"55133":68000,"55059":66000,"55101":64000,"55087":57000,"18097":63000,"18057":75000,"18109":61000,"18089":60000,"18141":63000,"29095":61000,"29189":55000,"29510":48000,"29019":59000,"29021":54000,"22071":54000,"22033":58000,"22017":53000,"22051":55000,"22103":50000,"01073":59000,"01101":52000,"01097":53000,"01089":62000,"01117":55000,"45045":61000,"45019":60000,"45079":56000,"45007":53000,"45041":58000,"21111":62000,"21067":57000,"21117":54000,"21059":50000,"09001":83000,"09009":78000,"09003":76000,"09007":80000,"09011":74000,"49035":80000,"49049":83000,"49011":86000,"49057":81000,"49045":85000,"20091":62000,"20173":55000,"20045":56000,"20177":52000,"40109":59000,"40143":56000,"40027":54000,"40031":52000,"19153":67000,"19013":65000,"19103":66000,"19163":64000,"05119":55000,"05131":52000,"05007":50000,"35001":56000,"35049":54000,"35013":47000,"16001":66000,"16027":61000,"16055":57000,"31055":68000,"31109":66000,"31153":64000,"15003":96000,"15009":80000,"15001":78000,"15007":83000,"02020":82000,"02090":76000,"02110":78000,"28049":52000,"28047":49000,"28175":50000,"54039":52000,"54011":50000,"30049":62000,"30111":58000,"30063":56000,"56021":73000,"56025":75000,"38017":71000,"38015":68000,"46099":65000,"46013":63000,"23005":67000,"23011":60000,"33011":84000,"33015":87000,"33013":76000,"50007":72000,"50003":66000,"44007":72000,"44005":77000,"10003":74000,"10001":64000,"10005":66000,"11001":101000,"16065":55000,"16069":53000,"16057":55000,"16019":60000,"16011":52000,"16059":54000,"49021":62000,"49037":56000,"56039":85000,"56033":62000,"56029":70000,"30029":58000,"30031":68000,"30041":52000,"30015":55000,"23031":62000,"23001":59000,"23003":52000,"23009":68000,"33005":68000,"33003":62000,"54019":48000,"54069":50000,"54017":51000,"54003":56000,"38105":75000,"38033":61000,"38251":55000,"46029":60000,"46087":57000,"46135":59000,"02170":76000,"02150":68000,"02122":72000,"35009":49000,"35025":60000,"35015":54000,"35035":52000,"35055":54000,"31081":58000,"31119":60000,"31141":61000,"20169":57000,"20155":56000,"20103":60000,"20057":55000,"20067":55000,"40119":58000,"40101":51000,"40047":56000,"40147":62000,"19061":62000,"19155":61000,"05045":57000,"05069":44000,"05051":50000,"28081":53000,"28035":49000,"28087":50000,"22073":47000,"22079":48000,"22109":52000,"01049":52000,"01033":52000,"01055":49000,"01113":51000,"01001":58000,"45051":57000,"45013":78000,"45003":55000,"21227":54000,"21073":60000,"21093":57000,"21151":54000,"47141":56000,"47163":55000,"47011":55000,"47057":54000,"47119":60000,"51630":68000,"51121":62000,"51683":72000,"51590":48000,"51840":57000,"51790":52000,"37001":60000,"37133":55000,"37127":51000,"37195":52000,"37191":52000,"37035":56000,"13139":63000,"13313":57000,"13295":54000,"13113":82000,"12083":54000,"12115":72000,"12033":56000,"12021":82000,"12081":62000,"12015":60000,"39124":52000,"39003":47000,"39063":58000,"39119":50000,"39071":52000,"39089":60000,"39085":67000,"26111":68000,"26017":54000,"26121":52000,"26025":55000,"26005":62000,"26075":55000,"26147":57000,"18035":54000,"18167":50000,"18067":57000,"18011":54000,"18039":58000,"17001":54000,"17095":52000,"17199":48000,"55063":58000,"55073":60000,"55117":60000,"55039":59000,"55097":58000,"55071":57000,"27013":62000,"27087":60000,"27169":57000,"27007":55000,"27035":58000,"29097":51000,"29031":54000,"29051":60000,"08101":53000,"08077":58000,"08067":62000,"08107":68000,"08037":90000,"08097":95000,"53071":57000,"53075":60000,"53007":60000,"41043":56000,"41033":53000,"41035":52000,"41019":54000,"04025":60000,"04015":52000,"06089":58000,"06007":57000,"06101":60000,"06023":52000,"06079":74000,"06087":83000,"06047":57000,"06055":86000,"06031":55000,"48183":57000,"48485":52000,"48091":72000,"48039":87000,"48167":85000,"48441":52000,"48353":58000,"48329":75000};
+
+let countiesData = COUNTIES_EMBEDDED;
+
+// ── LOAD DATA ────────────────────────────────────────────────────────────────
+async function loadData() {
+  try {
+    const [cr, cc] = await Promise.all([
+      fetch('../cities.json').then(r => r.json()),
+      fetch('../counties.json').then(r => r.json())
+    ]);
+    window._cities = cr; countiesData = cc;
+  } catch(e) { window._cities = CITIES_FALLBACK; }
+}
+loadData();
+
+// ── AUTOCOMPLETE ─────────────────────────────────────────────────────────────
+const cityInput = document.getElementById('cityInput');
+const acList    = document.getElementById('autocompleteList');
+
+function closeAC() {
+  acList.innerHTML = '';
+  acList.style.display = 'none';
+}
+
+cityInput.addEventListener('input', () => {
+  const q = cityInput.value.trim().toLowerCase();
+  document.getElementById('cityError').classList.remove('show');
+  cityInput.classList.remove('error');
+  selectedCity = null;
+  if (q.length < 2) { closeAC(); return; }
+  const src = window._cities || CITIES_FALLBACK;
+  const hits = src.filter(c => c.c.toLowerCase().startsWith(q) || (c.c+', '+c.s).toLowerCase().startsWith(q)).slice(0,8);
+  if (!hits.length) { closeAC(); return; }
+  acList.innerHTML = hits.map((c,i) =>
+    `<div class="ac-item" data-i="${i}">${c.c}, ${c.s}</div>`
+  ).join('');
+  acList.style.display = 'block';
+  acList.querySelectorAll('.ac-item').forEach((el,i) => {
+    el.addEventListener('mousedown', e => {
+      e.preventDefault();
+      selectCity(hits[i]);
+    });
+  });
+});
+
+function selectCity(city) {
+  selectedCity = city;
+  cityInput.value = city.c + ', ' + city.s;
+  document.getElementById('cityHelper').textContent = 'Income data loaded for ' + city.c + ' area.';
+  closeAC();
+}
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('.autocomplete-wrap')) closeAC();
+});
+
+// ── PILLS ─────────────────────────────────────────────────────────────────────
+function initPills(groupId, onSelect) {
+  const grp = document.getElementById(groupId);
+  if (!grp) return;
+  grp.querySelectorAll('.pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      grp.querySelectorAll('.pill').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      if (onSelect) onSelect(btn.dataset.val);
+    });
+  });
+}
+
+// ── STARS ─────────────────────────────────────────────────────────────────────
+document.getElementById('starsWrap').querySelectorAll('.star-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    selectedStars = parseInt(btn.dataset.star);
+    document.getElementById('starsWrap').querySelectorAll('.star-btn').forEach(b => {
+      b.classList.toggle('lit', parseInt(b.dataset.star) <= selectedStars);
+    });
+    document.getElementById('starLabel').textContent = starLabels[selectedStars] || '';
+    document.getElementById('starError').classList.remove('show');
+  });
+});
+
+// ── TRAVEL ───────────────────────────────────────────────────────────────────
+initPills('travelGroup', v => { selectedTravel = v; });
+
+// ── BONUS ─────────────────────────────────────────────────────────────────────
+document.getElementById('bonusGroup').querySelectorAll('.bonus-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const key = btn.dataset.key;
+    if (selectedBonuses[key] !== undefined) {
+      delete selectedBonuses[key]; btn.classList.remove('active');
+    } else {
+      selectedBonuses[key] = parseFloat(btn.dataset.bonus) || 0;
+      btn.classList.add('active');
+    }
+    const keys = Object.keys(selectedBonuses);
+    const note = document.getElementById('bonusNote');
+    if (keys.length) {
+      note.textContent = keys.map(k => bonusLabels[k]).join(' · ');
+      note.style.display = '';
+    } else { note.style.display = 'none'; }
+  });
+});
+
+// ── EXTRA LISTENERS ───────────────────────────────────────────────────────────
+
+
+// ── CALCULATE ─────────────────────────────────────────────────────────────────
+document.getElementById('calcBtn').addEventListener('click', calculate);
+document.getElementById('recalcBtn').addEventListener('click', () => {
+  window.history.back();
+});
+
+function calculate() {
+  let valid = true;
+  if (!selectedCity) {
+    document.getElementById('cityError').classList.add('show');
+    cityInput.classList.add('error');
+    valid = false;
+  }
+  const rawPrice = document.getElementById('priceInput').value;
+  const price = parseFloat(rawPrice);
+  if (!rawPrice || isNaN(price) || price < 1) {
+    document.getElementById('priceError').classList.add('show');
+    document.getElementById('priceInput').classList.add('error');
+    valid = false;
+  } else {
+    document.getElementById('priceError').classList.remove('show');
+    document.getElementById('priceInput').classList.remove('error');
+  }
+  if (selectedStars === 0) {
+    document.getElementById('starError').classList.add('show');
+    valid = false;
+  }
+  if (!valid) return;
+
+  const fips = selectedCity.f;
+  const localIncome = (countiesData && fips && countiesData[fips]) ? countiesData[fips] : US_MEDIAN_INCOME;
+  const dataSource  = (countiesData && fips && countiesData[fips]) ? 'local' : 'national';
+  const incomeRatio = (localIncome - 40000) / (120000 - 40000);
+  const baseRate    = Math.max(0.13, Math.min(0.27, 0.15 + incomeRatio * 0.10));
+
+  let serviceAdj = 0;
+  if (selectedTravel === 'regional')    serviceAdj += 0.02;
+  if (selectedTravel === 'destination') serviceAdj += 0.04;
+
+  serviceAdj = Math.max(-0.05, Math.min(serviceAdj, 0.12));
+
+  const clientAdj = 0;
+  const bonusPctTotal = Object.values(selectedBonuses).reduce((s,v) => s + (typeof v === 'number' ? v : 0), 0);
+  const adjusted = baseRate + serviceAdj + clientAdj;
+
+  let acceptablePct, goodPct, betterPct, bestPct;
+  if (selectedStars <= 2) {
+    const u = Math.max(0.10, Math.min(0.15, baseRate - 0.05));
+    acceptablePct = u; goodPct = Math.max(u+0.03, adjusted-0.06); betterPct = adjusted-0.02; bestPct = adjusted+0.01;
+  } else if (selectedStars === 3) {
+    acceptablePct = Math.max(0.12, adjusted-0.05); goodPct = adjusted-0.02; betterPct = adjusted+0.02; bestPct = adjusted+0.05;
+  } else {
+    acceptablePct = Math.max(0.12, adjusted-0.04); goodPct = adjusted; betterPct = adjusted+0.04; bestPct = adjusted+0.08;
+  }
+  acceptablePct += bonusPctTotal; goodPct += bonusPctTotal; betterPct += bonusPctTotal; bestPct += bonusPctTotal;
+
+  const fmt    = pct => "$" + Math.round(price * pct);
+  const fmtPct = pct => Math.round(pct * 100) + "%";
+  const fmtTotal = pct => "$" + (price + Math.round(price * pct)).toLocaleString();
+
+  const grid = document.getElementById("tipGrid");
+  grid.innerHTML = "";
+  const prevBar = grid.parentNode.querySelector(".bonus-bar");
+  if (prevBar) prevBar.remove();
+
+  if (Object.keys(selectedBonuses).length) {
+    const bar = document.createElement("div"); bar.className = "bonus-bar";
+    const ic = document.createElement("span"); ic.className = "bonus-bar-icons"; ic.textContent = "✨";
+    const tx = document.createElement("span"); tx.className = "bonus-bar-text"; tx.textContent = "Truly Outstanding bonus included";
+    bar.appendChild(ic); bar.appendChild(tx);
+    grid.parentNode.insertBefore(bar, grid);
+  }
+
+  const cards = [
+    {cls:"good",    label:"Good",    tipAmt:fmt(goodPct),   total:fmtTotal(goodPct),   pct:fmtPct(goodPct),   mostCommon:false,           isAcceptable:false, desc:"A solid tip that shows real appreciation."},
+    {cls:"better",  label:"Better",  tipAmt:fmt(betterPct), total:fmtTotal(betterPct), pct:fmtPct(betterPct), mostCommon:selectedStars>=3, isAcceptable:false, desc:"The wedding vendor sweet spot for this city."},
+    {cls:"best",    label:"Best",    tipAmt:fmt(bestPct),   total:fmtTotal(bestPct),   pct:fmtPct(bestPct),   mostCommon:false,            isAcceptable:false, desc:"Exceptional — above and beyond for your big day."},
+    {cls:"minimum", label:selectedStars<=2?"If Unhappy":"Minimum", tipAmt:fmt(acceptablePct), total:fmtTotal(acceptablePct), pct:fmtPct(acceptablePct), mostCommon:false, isAcceptable:true, desc:"Acknowledges the effort."}
+  ];
+
+  cards.forEach(card => {
+    const div = document.createElement("div"); div.className = "tip-card " + card.cls + (card.isAcceptable?" acceptable":"");
+    const lbl = document.createElement("div"); lbl.className = "tip-card-label"; lbl.textContent = card.label;
+    const amt = document.createElement("div"); amt.className = "tip-card-amount"; amt.textContent = card.tipAmt;
+    const tot = document.createElement("div"); tot.className = "tip-card-total";
+    const tl  = document.createElement("div"); tl.className = "tip-card-total-label"; tl.textContent = "New Total";
+    const tv  = document.createElement("div"); tv.className = "tip-card-total-value"; tv.textContent = card.total;
+    tot.appendChild(tl); tot.appendChild(tv);
+    const pct  = document.createElement("div"); pct.className = "tip-card-pct"; pct.textContent = card.pct + " tip";
+    const mc   = document.createElement("div"); mc.className = "most-common-tag"; mc.textContent = card.mostCommon ? "★ Most Common" : "";
+    const desc = document.createElement("div"); desc.className = "tip-card-desc"; desc.textContent = card.desc;
+    if (card.isAcceptable) {
+      const body  = document.createElement("div"); body.className = "tip-card-body"; body.appendChild(lbl); body.appendChild(desc);
+      const right = document.createElement("div"); right.className = "tip-card-right"; right.appendChild(amt); right.appendChild(pct); right.appendChild(tot);
+      div.appendChild(body); div.appendChild(right);
+    } else { div.appendChild(lbl); div.appendChild(amt); div.appendChild(tot); div.appendChild(pct); if(card.mostCommon)div.appendChild(mc); div.appendChild(desc); }
+    grid.appendChild(div);
+  });
+
+  // Wedding cap guidance box
+  const prevCapBox = document.getElementById('weddingCapBox');
+  if (prevCapBox) prevCapBox.remove();
+  const capBox = document.createElement("div"); capBox.id = "weddingCapBox"; capBox.className = "wedding-cap-box"; capBox.innerHTML = '<div class=\\"wedding-cap-box-title\\">💡 Wedding Makeup Artist Tip — Best Practice</div><p><strong>15%–20% of the service cost per person</strong> follows the same norms as a salon or spa. For the full bridal party, tip each artist on their individual service cost — not the grand total.</p>'; document.getElementById("insightBox").parentNode.insertBefore(capBox, document.getElementById("insightBox"));
+
+  const fmtIncome = "$" + localIncome.toLocaleString();
+  const incomeDesc = localIncome>=100000?"high":localIncome>=74000?"above the national average":localIncome>=55000?"near the national average":"below the national average";
+  const fallbackNote = dataSource==="national"?" (National average used.)":"";
+  
+  const svcNoteText = (typeof svcNote !== 'undefined') ? svcNote : 'Calibrated for this wedding vendor in this area.';
+
+  const insight = document.getElementById("insightBox");
+  insight.textContent = "";
+  const strong = document.createElement("strong"); strong.textContent = selectedCity.c + ", " + selectedCity.s + ":";
+  insight.appendChild(strong);
+  insight.appendChild(document.createTextNode(" The local cost of living here (based on median household income) is " + fmtIncome + " — " + incomeDesc + ". " + svcNoteText + fallbackNote));
+
+  const _adjItems = [];
+  const _ie = localIncome>=100000?"+"+fmtIncome+" median income — high cost-of-living area":localIncome>=74000?"+"+fmtIncome+" median income — above national average":"."+fmtIncome+" median income — near national average";
+  _adjItems.push(_ie);
+  if (selectedTravel==='regional')    _adjItems.push("+Vendor traveled regionally — +2%");
+  if (selectedTravel==='destination') _adjItems.push("+Destination/overnight travel — +4%");
+  if (bonusPctTotal > 0)              _adjItems.push("+Truly Outstanding bonus");
+  if (selectedStars <= 2)             _adjItems.push("-Low rating — minimum applied");
+
+
+  const prevBD = document.getElementById("adjBreakdown");
+  if (prevBD) prevBD.remove();
+  if (_adjItems.length) {
+    const bd = document.createElement("div"); bd.id = "adjBreakdown"; bd.className = "adj-breakdown";
+    const t = document.createElement("div"); t.className = "adj-breakdown-title"; t.textContent = "What affected your suggestion:";
+    bd.appendChild(t);
+    _adjItems.forEach(item => {
+      const row = document.createElement("div"); row.className = "adj-breakdown-row";
+      const isPos = item.startsWith("+");
+      const tag = document.createElement("span"); tag.className = "adj-tag " + (isPos?"adj-pos":"adj-neg"); tag.textContent = isPos?"↑":"↓";
+      row.appendChild(tag);
+      row.appendChild(document.createTextNode(item.slice(1).trim()));
+      bd.appendChild(row);
+    });
+    insight.parentNode.insertBefore(bd, insight.nextSibling);
+  }
+
+  document.getElementById("resultCity").textContent = selectedCity.c.toUpperCase() + ", " + selectedCity.s;
+  document.getElementById("formCard").style.display = "none";
+  const results = document.getElementById("resultsSection");
+  results.classList.add("show");
+  results.scrollIntoView({ behavior:"smooth", block:"start" });
+}
+</script>
+
+<!-- ═══════════════════════════════════════════════════════
+     ADSENSE PLACEMENT 3: Sticky Mobile Footer
+     Shows only on screens under 600px wide
+     Replace the comment below with your AdSense ad unit code
+     Best size: 320x50 or smart banner
+═══════════════════════════════════════════════════════ -->
+<div class="ad-sticky-footer">
+  <!-- PASTE ADSENSE UNIT 3 HERE -->
+  <!-- Example:
+  <ins class="adsbygoogle"
+       style="display:inline-block;width:320px;height:50px"
+       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+       data-ad-slot="XXXXXXXXXX"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  -->
+</div>
+
+</body>
+</html>
