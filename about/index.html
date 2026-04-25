@@ -7,32 +7,42 @@
   <meta name="description" content="GeoTipper.com calibrates US tip suggestions to local cost of living using US Census ACS income data for 439 counties. Learn how the calculation works.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://geotipper.com/about/">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "AboutPage",
     "name": "How GeoTipper Works — Methodology & Data Sources",
-    "description": "GeoTipper.com calibrates US tip suggestions to local cost of living using US Census Bureau ACS 5-year estimates for 439 US counties.",
+    "description": "GeoTipper.com calibrates US tip suggestions to the cost of living in the area using US Census Bureau ACS 5-year estimates for 439 US counties.",
     "url": "https://geotipper.com/about/",
     "publisher": {
       "@type": "Organization",
-      "name": "Verdant Web Solutions, LLC",
+      "name": "GeoTipper.com",
       "url": "https://geotipper.com",
+      "description": "Free US tip calculators calibrated to the cost of living in the area",
+      "sameAs": ["https://twitter.com/geotipper"],
       "email": "verdantwebsolutions@gmail.com",
-      "description": "GeoTipper.com — Free US tip calculators calibrated to local cost of living"
+      "legalName": "Verdant Web Solutions, LLC",
+      "foundingDate": "2025",
+      "areaServed": "US",
+      "knowsAbout": ["tipping etiquette", "US cost of living", "service industry wages", "gratuity norms"]
+    },
+    "mainEntity": {
+      "@type": "SoftwareApplication",
+      "name": "GeoTipper Tip Calculator",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+      "description": "Free US tip calculators that adjust suggestions based on the cost of living in your specific city and county, using US Census Bureau data."
     }
   }
   </script>
   <style>
     *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
     :root {
-      --sans:'Inter',system-ui,sans-serif; --serif:'DM Serif Display',Georgia,serif;
+      --sans:'Montserrat',system-ui,sans-serif; --serif:'Cormorant Garamond',Georgia,serif;
       --ink:#1A1A18; --ink-2:#3D3D38; --ink-3:#6B6B65;
       --bg:#F2F1ED; --surface:#FDFCFA;
-      --g-dark:#1E4D35; --g-mid:#2E6B4A; --g-pale:#EBF3EE;
+      --g-dark:#1E4D35; --g-mid:#2E6B4A; --g-pale:#E7F1EC;
       --rule:#E4E3DF; --r:12px;
     }
     body { font-family:var(--sans); background:var(--bg); color:var(--ink); font-size:16px; line-height:1.75; }
@@ -41,7 +51,7 @@
     nav a { color:rgba(253,252,250,.75); text-decoration:none; font-size:13px; }
     nav a.home { font-family:var(--serif); font-size:15px; color:#FDFCFA; margin-right:auto; }
     .hero { background:var(--g-dark); color:#FDFCFA; padding:48px 20px 40px; text-align:center; }
-    .hero h1 { font-family:var(--serif); font-size:clamp(24px,5vw,38px); font-weight:400; margin-bottom:12px; }
+    .hero h1 { font-family:var(--serif); font-size:clamp(24px,5vw,38px); font-weight: 300; margin-bottom:12px; }
     .hero p { color:rgba(253,252,250,.7); max-width:560px; margin:0 auto; font-size:15px; }
     main { max-width:720px; margin:0 auto; padding:48px 20px 72px; }
     h2 { font-family:var(--serif); font-size:22px; font-weight:400; color:var(--g-dark); margin:40px 0 12px; }
@@ -63,6 +73,9 @@
     footer a { color:var(--ink-3); margin:0 8px; text-decoration:none; }
     footer a:hover { color:var(--ink-2); }
   </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=IM+Fell+DW+Pica:ital@0;1&family=Lora:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -76,6 +89,29 @@
   <h1>How GeoTipper Works</h1>
   <p>Why a flat percentage is not good enough — and how we calculate a tip that actually fits where you are.</p>
 </div>
+
+<div style="background:#fff;border-bottom:1px solid #E4E3DF;padding:20px 0;">
+  <div style="max-width:720px;margin:0 auto;padding:0 20px;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
+      <div style="padding:16px;background:#EBF3EE;border-radius:10px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.07em;color:#1E4D35;text-transform:uppercase;margin-bottom:6px;">Step 1</div>
+        <div style="font-weight:600;font-size:14px;color:#1A1A18;margin-bottom:4px;">You enter a city</div>
+        <div style="font-size:13px;color:#3D3D38;">GeoTipper looks up the county median household income from US Census ACS data.</div>
+      </div>
+      <div style="padding:16px;background:#EBF3EE;border-radius:10px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.07em;color:#1E4D35;text-transform:uppercase;margin-bottom:6px;">Step 2</div>
+        <div style="font-weight:600;font-size:14px;color:#1A1A18;margin-bottom:4px;">Income sets the base rate</div>
+        <div style="font-size:13px;color:#3D3D38;">Higher income = higher local expectations. Base rate scales from 13% to 27%.</div>
+      </div>
+      <div style="padding:16px;background:#EBF3EE;border-radius:10px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.07em;color:#1E4D35;text-transform:uppercase;margin-bottom:6px;">Step 3</div>
+        <div style="font-weight:600;font-size:14px;color:#1A1A18;margin-bottom:4px;">Service + quality adjust it</div>
+        <div style="font-size:13px;color:#3D3D38;">Session type, travel, satisfaction rating, and any bonus circumstances refine the final number.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <main>
 

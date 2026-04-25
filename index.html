@@ -22,78 +22,92 @@
   :root {
     --bg:#F2F1ED; --surface:#FDFCFA; --ink:#111111; --ink-2:#2A2A2A; --ink-3:#4A4A4A;
     --rule:#DEDAD5; --g-dark:#1E4D35; --g-mid:#2E6B4A; --g-soft:#3D8A5F;
-    --g-pale:#E6F2EC; --g-pale-2:#D0E9DA; --g-pale-3:#B8DCCA;
+    --g-pale:#E7F1EC; --g-pale-2:#D0E9DA; --g-pale-3:#B8DCCA;
     --shadow-sm:0 1px 4px rgba(0,0,0,0.06); --shadow-md:0 4px 20px rgba(0,0,0,0.09);
     --r:14px; --r-sm:9px;
-    --serif:"DM Serif Display",Georgia,serif; --sans:"Inter",system-ui,sans-serif;
+    --serif:"Cormorant Garamond",Georgia,serif;
+    --serif-body:"Lora",Georgia,serif;
+    --sans:"Montserrat",system-ui,sans-serif;
+    --fell:"IM Fell DW Pica",Georgia,serif;
   }
-  body { background:var(--bg); color:var(--ink); font-family:var(--sans); font-size:15px; line-height:1.6; min-height:100vh; -webkit-font-smoothing:antialiased; }
+  body { background:var(--bg); color:var(--ink); font-family:'Montserrat',sans-serif; font-size:15px; line-height:1.6; min-height:100vh; -webkit-font-smoothing:antialiased; }
 
   /* HEADER */
-  .header { background:var(--ink); padding:56px 24px 48px; text-align:center; position:relative; overflow:hidden; }
+  .header { background:var(--g-dark); padding:56px 24px 48px; text-align:center; position:relative; overflow:hidden; }
   .header::after { content:""; position:absolute; inset:0; background:radial-gradient(ellipse 60% 80% at 15% 50%,rgba(61,107,79,.18) 0%,transparent 70%),radial-gradient(ellipse 50% 60% at 85% 25%,rgba(61,107,79,.10) 0%,transparent 60%); pointer-events:none; }
   .header-icon { font-size:26px; margin-bottom:16px; display:block; letter-spacing:.08em; }
-  .header h1 { font-family:var(--serif); font-size:clamp(28px,6vw,52px); color:#FDFCFA; line-height:1.12; margin-bottom:16px; letter-spacing:-.01em; }
+  .header h1 { font-family:"Cormorant Garamond",serif; font-size:clamp(32px,6vw,58px); font-weight:300; color:#FDFCFA; line-height:1.0; margin-bottom:16px; letter-spacing:.01em; }
+  .header h1 em { font-style:italic; font-weight:600; color:#A8C9B4; }
+  .header-rule { border:none; border-top:1px solid rgba(168,201,180,0.3); margin:16px auto 18px; max-width:520px; position:relative; }
+  .header-rule::after { content:''; display:block; border-top:1px solid rgba(168,201,180,0.12); margin-top:3px; }
+  .header-deco-top { position:absolute; top:9px; left:0; right:0; height:1px; background:rgba(168,201,180,0.15); pointer-events:none; }
+  .header-deco-top2 { position:absolute; top:12px; left:0; right:0; height:1px; background:rgba(168,201,180,0.07); pointer-events:none; }
+  .header-deco-bot { position:absolute; bottom:9px; left:0; right:0; height:1px; background:rgba(168,201,180,0.15); pointer-events:none; }
+  .header-deco-bot2 { position:absolute; bottom:12px; left:0; right:0; height:1px; background:rgba(168,201,180,0.07); pointer-events:none; }
   .header h1 em { font-style:italic; color:#A8C9B4; font-weight:400; }
-  .header-tagline { color:rgba(253,252,250,.82); font-size:15px; max-width:520px; margin:0 auto 20px; line-height:1.65; }
+  .header-tagline { font-family:"IM Fell DW Pica",serif; font-style:italic; color:rgba(253,252,250,.55); font-size:14px; max-width:520px; margin:0 auto 20px; line-height:1.65; }
   .header-tagline strong { color:#A8C9B4; font-weight:600; }
   .header-note { display:inline-block; font-size:12px; color:rgba(253,252,250,.45); border:1px solid rgba(253,252,250,.15); border-radius:20px; padding:4px 14px; letter-spacing:.04em; }
 
   /* LAYOUT */
   .main { max-width:880px; margin:0 auto; padding:40px 16px 72px; }
-  .section-title { font-family:var(--serif); font-size:clamp(20px,3vw,28px); color:var(--ink); margin-bottom:6px; letter-spacing:-.01em; }
+  .section-title { font-family:'Cormorant Garamond',serif; font-size:clamp(20px,3vw,28px); color:var(--ink); margin-bottom:6px; letter-spacing:-.01em; }
   .section-sub { font-size:14px; color:var(--ink-3); margin-bottom:24px; line-height:1.6; }
 
   /* DIFFERENTIATOR BOX */
   .diff-box { background:var(--ink); border-radius:var(--r); padding:28px 28px 24px; margin-bottom:48px; position:relative; overflow:hidden; }
   .diff-box::after { content:""; position:absolute; inset:0; background:radial-gradient(ellipse 60% 100% at 0% 50%,rgba(61,107,79,.2) 0%,transparent 60%); pointer-events:none; }
-  .diff-box h2 { font-family:var(--serif); font-size:clamp(18px,3vw,24px); color:#FDFCFA; margin-bottom:10px; line-height:1.25; position:relative; }
+  .diff-box h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(18px,3vw,24px); color:#FDFCFA; margin-bottom:10px; line-height:1.25; position:relative; }
   .diff-box h2 em { color:#A8C9B4; font-style:italic; }
   .diff-box p { font-size:14px; color:rgba(253,252,250,.70); line-height:1.65; max-width:640px; position:relative; }
   .diff-box strong { color:#A8C9B4; }
 
   /* CALCULATOR GRID */
   .calc-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px; margin-bottom:56px; }
-  .calc-card { background:var(--surface); border:1px solid var(--rule); border-radius:var(--r); overflow:hidden; box-shadow:var(--shadow-sm); transition:transform .2s,box-shadow .2s,border-color .2s; display:flex; flex-direction:column; text-decoration:none; color:inherit; }
+  .calc-card { background:var(--surface); border:1px solid #B8A878; border-radius:4px; overflow:hidden; display:flex; flex-direction:column; position:relative; transition:transform .15s,box-shadow .15s; }
   .calc-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-md); border-color:var(--g-pale-3); }
-  .card-visual { height:110px; width:100%; display:flex; flex-direction:column; justify-content:flex-end; padding:10px 14px 12px; position:relative; overflow:hidden; flex-shrink:0; }
+  .card-visual { height:100px; width:100%; display:flex; flex-direction:column; justify-content:flex-end; padding:10px 14px 12px; position:relative; overflow:hidden; flex-shrink:0; }
+  .card-visual::before { content:''; position:absolute; inset:0; background:repeating-linear-gradient(0deg,transparent,transparent 1px,rgba(0,0,0,0.07) 1px,rgba(0,0,0,0.07) 2px); pointer-events:none; z-index:0; }
+  .card-visual::after { content:''; position:absolute; inset:0; background:repeating-linear-gradient(45deg,transparent,transparent 4px,rgba(255,255,255,0.04) 4px,rgba(255,255,255,0.04) 5px); pointer-events:none; z-index:0; }
+  .card-visual-wbar { position:absolute; top:0; left:0; right:0; height:5px; background:rgba(255,255,255,0.1); border-bottom:0.5px solid rgba(255,255,255,0.2); z-index:2; }
+  .card-visual-frame { position:absolute; inset:6px; border:0.5px solid rgba(255,255,255,0.2); z-index:2; pointer-events:none; }
   /* ── CARD VISUAL GRADIENTS — pure, no shapes ── */
   /* Hair Stylist — warm dusty rose */
-  .vis-hair { background: linear-gradient(145deg, #3D1A28 0%, #8B3A5E 35%, #D4748A 70%, #F0B8C4 100%); }
+  .vis-hair { background:linear-gradient(160deg,#163D52 0%,#1E5C45 100%); }
   /* Barber — bold red to blue diagonal */
-  .vis-barber { background: linear-gradient(135deg, #CC0000 0%, #990033 40%, #330099 75%, #1A4FA8 100%); }
+  .vis-barber { background:linear-gradient(160deg,#1E4D35 0%,#265E3E 100%); }
   /* Restaurant — deep amber to warm gold */
-  .vis-restaurant { background: linear-gradient(150deg, #2C1000 0%, #7A3800 30%, #D4751A 65%, #F5C842 100%); }
+  .vis-restaurant { background:linear-gradient(160deg,#2A5C20 0%,#1E4D35 100%); }
   /* Massage — deep teal to seafoam */
-  .vis-massage { background: linear-gradient(135deg, #003D3D 0%, #006B6B 40%, #00A896 70%, #7FDBCF 100%); }
+  .vis-massage { background:linear-gradient(160deg,#0F3A28 0%,#1E4D35 100%); }
   /* Nail Salon — vivid fuchsia to soft orchid */
-  .vis-nail { background: linear-gradient(140deg, #1A0030 0%, #6A0080 35%, #CC00CC 68%, #F080E0 100%); }
+  .vis-nail { background:linear-gradient(160deg,#1A3A50 0%,#0F3A28 100%); }
   /* Tattoo — near black to electric indigo */
-  .vis-tattoo { background: linear-gradient(135deg, #05050F 0%, #12124A 40%, #2E2E9E 72%, #6464D8 100%); }
+  .vis-tattoo { background:linear-gradient(160deg,#0A2A1E 0%,#163D2A 100%); }
   /* Hotel — deep midnight sapphire to pale powder blue */
-  .vis-hotel { background: linear-gradient(145deg, #030A1A 0%, #0A2550 35%, #1565C0 68%, #90CAF9 100%); }
+  .vis-hotel { background:linear-gradient(160deg,#163040 0%,#1E4D35 100%); }
   /* Movers — rich burnt sienna to cream */
-  .vis-movers { background: linear-gradient(130deg, #1A0800 0%, #6B2500 30%, #C84B00 62%, #F4A460 100%); }
+  .vis-movers { background:linear-gradient(160deg,#1E4D35 0%,#2E6B20 100%); }
   /* Rideshare — charcoal to electric cyan */
-  .vis-rideshare { background: linear-gradient(135deg, #050D15 0%, #0D2535 40%, #006080 68%, #00C8D8 100%); }
+  .vis-rideshare { background:linear-gradient(160deg,#0F2E3A 0%,#1E4A30 100%); }
   /* Valet — road charcoal to traffic yellow */
-  .vis-valet { background: linear-gradient(135deg, #0A0A0A 0%, #1C1C1C 35%, #4A4A00 68%, #F5D800 100%); }
+  .vis-valet { background:linear-gradient(160deg,#1A3A20 0%,#2A5520 100%); }
   /* Food Delivery (UberEats/DoorDash) — deep plum to warm orange */
-  .vis-delivery { background: linear-gradient(135deg, #1A0520 0%, #4A1040 35%, #A03000 68%, #F06000 100%); }
+  .vis-delivery { background:linear-gradient(160deg,#1E4D35 0%,#163828 100%); }
   /* Grocery Delivery — deep navy to fresh produce green */
-  .vis-grocery { background: linear-gradient(135deg, #001A10 0%, #00401A 35%, #007A30 68%, #40C060 100%); }
+  .vis-grocery { background:linear-gradient(160deg,#1A4A18 0%,#2A5C20 100%); }
   /* House Cleaner — navy to bright sky */
-  .vis-cleaner { background: linear-gradient(140deg, #000C24 0%, #003080 35%, #0070CC 68%, #56B4F5 100%); }
+  .vis-cleaner { background:linear-gradient(160deg,#163040 0%,#1E4D35 100%); }
   .card-visual-label { display:none; } /* category text removed */
-  .card-visual-title { position:relative; z-index:1; font-family:var(--serif); font-size:17px; font-weight:600; color:#fff; line-height:1.2; text-shadow:0 1px 6px rgba(0,0,0,0.55); margin-bottom:3px; }
-  .card-visual-range { position:relative; z-index:1; font-size:11px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:rgba(255,255,255,0.8); text-shadow:0 1px 4px rgba(0,0,0,0.5); }
-  .card-body { padding:16px 16px 14px;display:flex;flex-direction:column;flex:1; }
+  .card-visual-title { position:relative; z-index:3; font-family:"Cormorant Garamond",serif; font-size:16px; font-weight:600; color:#fff; line-height:1.2; letter-spacing:.04em; margin-bottom:3px; }
+  .card-visual-range { position:relative; z-index:3; font-family:"Montserrat",sans-serif; font-size:9px; font-weight:500; letter-spacing:.05em; color:rgba(255,255,255,0.65); }
+  .card-body { padding:0; display:flex; flex-direction:column; flex:1; }
   .calc-card-title { display:none; } /* title moved into card-visual */
   .calc-card-range { display:none; } /* range moved into card-visual */
-  .calc-card-desc { font-size:12.5px;color:var(--ink-3);line-height:1.55;flex:1;margin-bottom:12px; }
-  .card-sub { font-size:10.5px; color:var(--ink-3); margin-bottom:8px; font-style:italic; line-height:1.4; }
-  .calc-card-btn { display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--g-dark);padding:6px 13px;background:var(--g-pale);border-radius:50px;border:1px solid var(--g-pale-3);transition:background .15s;align-self:flex-start; }
-  .calc-card-tagline { font-size:11px;color:var(--ink-3);margin-bottom:7px;font-style:italic; }
+  .calc-card-desc { font-family:"Lora",serif; font-size:12px; color:var(--ink-2); line-height:1.5; flex:1; padding:0 11px 8px; }
+  .card-sub { font-family:"Montserrat",sans-serif; font-size:9px; color:#8B7A50; letter-spacing:.04em; padding:8px 11px 3px; }
+  .calc-card-btn { display:block; font-family:"Cormorant Garamond",serif; font-size:13px; font-weight:700; color:var(--g-dark); letter-spacing:.03em; padding:7px 11px 8px; background:#E7F1EC; border-top:1px solid rgba(30,77,53,0.12); margin-top:auto; }
+  .calc-card-tagline { font-family:"IM Fell DW Pica",serif; font-size:10px; color:var(--ink-3); font-style:italic; padding:0 11px 6px; }
   .calc-card:hover .calc-card-btn { background:var(--g-pale-2); }
   .calc-card.soon { opacity:.65;pointer-events:none; }
   .soon-badge { font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);background:var(--bg);border:1px solid var(--rule);border-radius:20px;padding:3px 9px;align-self:flex-start; }
@@ -162,12 +176,17 @@
     .diff-box { padding:22px 18px 18px; }
   }
   @media(max-width:340px){ .calc-grid { grid-template-columns:1fr; } }
-  .vis-photographer { background: linear-gradient(135deg, #001A2C 0%, #1B6CA8 100%); }
-  .vis-colorist { background: linear-gradient(135deg, #1A0030 0%, #D4648C 100%); }
-  .vis-furniture { background: linear-gradient(135deg, #0A0A00 0%, #8B6914 100%); }
-  .vis-dog     { background: linear-gradient(135deg, #1A0A30 0%, #8B4513 100%); }
-  .vis-caterer { background: linear-gradient(135deg, #1A0A00 0%, #C0702A 100%); }
-  .vis-wedding { background: linear-gradient(135deg, #2A0030 0%, #D4A0C8 100%); }
+  .vis-photographer { background:linear-gradient(160deg,#0F3025 0%,#1E4D35 100%); }
+  .vis-colorist { background:linear-gradient(160deg,#1A3A3A 0%,#1E4D35 100%); }
+  .vis-furniture { background:linear-gradient(160deg,#1E3A18 0%,#2A5020 100%); }
+  .vis-dog { background:linear-gradient(160deg,#1E4D35 0%,#2A4A18 100%); }
+  .vis-caterer { background:linear-gradient(160deg,#1A4520 0%,#2E6B2E 100%); }
+  .vis-wedding { background:linear-gradient(160deg,#1E4D35 0%,#265545 100%); }
+
+  .calc-card::before { content:''; position:absolute; inset:3px; border:0.5px solid rgba(184,168,120,0.38); border-radius:2px; pointer-events:none; z-index:5; }
+  .calc-card::after  { content:''; position:absolute; inset:6px; border:0.5px dashed rgba(184,168,120,0.13); border-radius:1px; pointer-events:none; z-index:5; }
+  .calc-card:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(0,0,0,0.1); }
+  .card-body-inner { padding:8px 11px 0; flex:1; display:flex; flex-direction:column; }
 </style>
   <!-- ═══════════════════════════════════════════════════════
        ADSENSE: Add your site-level script tag here (once per page)
@@ -180,12 +199,12 @@
   "@type": "Organization",
   "name": "GeoTipper.com",
   "url": "https://geotipper.com",
-  "description": "Free US tip calculators calibrated to the cost of living in your area, using US Census county income data.",
+  "description": "Free US tip calculators calibrated to the cost of living in the area, using US Census county income data.",
   "email": "verdantwebsolutions@gmail.com",
   "foundingDate": "2025",
   "areaServed": "US",
   "knowsAbout": ["tipping etiquette","service industry wages","US cost of living","gratuity"],
-  "sameAs": []
+  "sameAs": ["https://twitter.com/geotipper", "https://geotipper.com/about/"]
 }
 </script>
 <script type="application/ld+json">
@@ -208,15 +227,20 @@
 </head>
 <body>
 
-<div style="background:rgba(0,0,0,0.18);padding:8px 20px;display:flex;gap:18px;font-size:12px;font-weight:500;letter-spacing:.03em;">
-  <span style="color:rgba(255,255,255,0.5);margin-right:auto;font-family:var(--serif);font-size:13px;color:rgba(255,255,255,0.8);">GeoTipper</span>
+<div style="background:rgba(0,0,0,0.18);padding:8px 20px;display:flex;gap:18px;font-size:11px;font-weight:500;font-family:'Montserrat',sans-serif;letter-spacing:.06em;letter-spacing:.03em;">
+  <span style="color:rgba(255,255,255,0.5);margin-right:auto;font-family:'Cormorant Garamond',serif;font-size:15px;color:rgba(255,255,255,0.9);font-weight:600;letter-spacing:.06em;">GeoTipper</span>
   <a href="blog/index.html" style="color:rgba(255,255,255,0.65);text-decoration:none;">Blog</a>
   <a href="about/index.html" style="color:rgba(255,255,255,0.65);text-decoration:none;">About</a>
 </div>
 <header class="header">
-  <span style="font-size:11px;letter-spacing:.18em;color:rgba(168,201,180,.65);display:block;margin-bottom:20px;text-transform:uppercase;font-weight:600">United States Tip Calculators</span>
+  <div class="header-deco-top"></div>
+  <div class="header-deco-top2"></div>
+  <div class="header-deco-bot"></div>
+  <div class="header-deco-bot2"></div>
+  <span style="font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:.2em;color:rgba(168,201,180,.55);display:block;margin-bottom:16px;text-transform:uppercase;font-weight:600;">United States Tip Calculators</span>
   <h1>How Much<br>Should You <em>Tip?</em></h1>
-  <p class="header-tagline">Tip suggestions <strong>calibrated to your city</strong> &#x2014; not a national average that ignores where you are. Every calculator uses real US Census income data for your specific area.</p>
+  <hr class="header-rule">
+  <p class="header-tagline">Tip suggestions <strong style="font-style:normal;color:rgba(255,255,255,0.75);font-weight:500;">calibrated to the cost of living in the area</strong> &#x2014; not a national average that ignores where you are.</p>
   <span class="header-note">United States &middot; Free &middot; No signup</span>
 </header>
   <!-- SEARCH BAR -->
@@ -231,12 +255,13 @@
   </div>
 
   <style>
-  .tip-search-wrap { background:var(--g-dark); padding:0 20px 28px; }
-  .tip-search-inner { max-width:600px; margin:0 auto; }
+  .tip-search-wrap { background:#111; padding:18px 20px; display:flex; align-items:center; }
+  .tip-search-inner { max-width:600px; margin:0 auto; width:100%; }
   .tip-search-field { position:relative; }
-  .tip-search-icon { position:absolute; left:14px; top:50%; transform:translateY(-50%); font-size:16px; pointer-events:none; z-index:2; }
-  #tipSearchInput { width:100%; padding:13px 16px 13px 42px; border-radius:50px; border:none; font-size:15px; font-family:var(--sans); background:#fff; color:var(--ink); outline:none; box-shadow:0 2px 12px rgba(0,0,0,0.18); }
-  #tipSearchInput::placeholder { color:var(--ink-3); }
+  .tip-search-icon { position:absolute; left:14px; top:50%; transform:translateY(-50%); font-size:16px; pointer-events:none; z-index:2; filter:invert(1) opacity(0.5); }
+  #tipSearchInput { width:100%; padding:13px 16px 13px 42px; border-radius:50px; border:1px solid rgba(255,255,255,0.15); font-size:15px; font-family:var(--sans); background:rgba(255,255,255,0.08); color:#fff; outline:none; box-shadow:0 2px 12px rgba(0,0,0,0.3); }
+  #tipSearchInput::placeholder { color:rgba(255,255,255,0.4); }
+  #tipSearchInput:focus { background:rgba(255,255,255,0.12); border-color:rgba(255,255,255,0.3); }
   .tip-search-dropdown { position:absolute; top:calc(100% + 6px); left:0; right:0; background:#fff; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,0.15); z-index:100; overflow:hidden; display:none; max-height:320px; overflow-y:auto; }
   .tip-search-item { display:flex; align-items:center; padding:11px 16px; text-decoration:none; color:var(--ink); font-size:14px; border-bottom:1px solid var(--rule); transition:background .1s; }
   .tip-search-item:last-child { border-bottom:none; }
@@ -312,231 +337,318 @@
   <div class="calc-grid">
     <a class="calc-card" href="bellhop-tip-calculator/index.html">
       <div class="card-visual vis-hotel">
+        <div class="card-visual-wbar"></div>
+        <div class="card-visual-frame"></div>
         <div class="card-visual-title">Bellhop</div>
         <div class="card-visual-range">$1 &ndash; $5 / bag</div>
       </div>
       <div class="card-body">
+        <div class="card-body-inner">
         <p class="card-sub">Hotel Bellhops &middot; Bellmen &middot; Hotel Porters &middot; Bell Staff</p>
         <p class="calc-card-desc">Per-bag tip calibrated to hotel type and number of bags.</p>
-        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p>
+        </div>
+        <span class="calc-card-btn">Calculate my tip &rarr;</span>
       </div>
     </a>
 
     <a class="calc-card" href="barber-tip-calculator/index.html">
       <div class="card-visual vis-barber">
+        <div class="card-visual-wbar"></div>
+        <div class="card-visual-frame"></div>
         <div class="card-visual-title">Barber</div>
         <div class="card-visual-range">15% &ndash; 20%</div>
       </div>
       <div class="card-body">
+        <div class="card-body-inner">
         <p class="card-sub">Haircut · Beard Trim · Straight Razor Shave · Color &amp; Tint</p>
         <p class="calc-card-desc">Service type, regularity as a client, and local norms for your area &mdash; because a great barber deserves more than a flat 15%.</p>
-        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p>
+        </div>
+        <span class="calc-card-btn">Calculate my tip &rarr;</span>
       </div>
     </a>
     <a class="calc-card" href="caterer-tip-calculator/index.html">
       <div class="card-visual vis-caterer">
+        <div class="card-visual-wbar"></div>
+        <div class="card-visual-frame"></div>
         <div class="card-visual-title">Caterer</div>
         <div class="card-visual-range">10% &ndash; 20%</div>
       </div>
       <div class="card-body">
+        <div class="card-body-inner">
         <p class="card-sub">Wedding · Corporate · Food Truck · Taco Bar · Buffet</p>
         <p class="calc-card-desc">Always check your contract for included gratuity before adding a tip.</p>
-        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p>
+        </div>
+        <span class="calc-card-btn">Calculate my tip &rarr;</span>
       </div>
     </a>
     <a class="calc-card" href="dog-groomer-tip-calculator/index.html">
       <div class="card-visual vis-dog">
+        <div class="card-visual-wbar"></div>
+        <div class="card-visual-frame"></div>
         <div class="card-visual-title">Dog Groomer</div>
         <div class="card-visual-range">15% &ndash; 25%</div>
       </div>
       <div class="card-body">
+        <div class="card-body-inner">
         <p class="card-sub">PetSmart · Petco · Private Salons · Mobile Groomers</p>
         <p class="calc-card-desc">Tip based on dog size, coat complexity, and whether they traveled to you.</p>
-        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p>
+        </div>
+        <span class="calc-card-btn">Calculate my tip &rarr;</span>
       </div>
     </a>
     <a class="calc-card" href="furniture-delivery-tip-calculator/index.html">
       <div class="card-visual vis-furniture">
+        <div class="card-visual-wbar"></div>
+        <div class="card-visual-frame"></div>
         <div class="card-visual-title">Furniture Delivery</div>
         <div class="card-visual-range">$5 &ndash; $25 / person</div>
       </div>
       <div class="card-body">
+        <div class="card-body-inner">
         <p class="card-sub">Curbside &middot; Room-of-Choice &middot; White Glove &middot; Assembly &middot; Haul-Away</p>
         <p class="calc-card-desc">Tip by service type, crew size, stairs, and heavy items.</p>
-        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p>
+        </div>
+        <span class="calc-card-btn">Calculate my tip &rarr;</span>
       </div>
     </a>
 
     <a class="calc-card" href="food-delivery-tip-calculator/index.html">
       <div class="card-visual vis-delivery">
+        <div class="card-visual-wbar"></div>
+        <div class="card-visual-frame"></div>
         <div class="card-visual-title">Food Delivery</div>
         <div class="card-visual-range">15% &ndash; 20% (min $3)</div>
       </div>
       <div class="card-body">
+        <div class="card-body-inner">
         <p class="card-sub">DoorDash · Uber Eats · Grubhub · Pizza Delivery · Any App</p>
         <p class="calc-card-desc">Order size, distance, weather, and accuracy. UberEats, DoorDash, and similar &mdash; always with a fair minimum.</p>
-        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p>
+        </div>
+        <span class="calc-card-btn">Calculate my tip &rarr;</span>
       </div>
     </a>
     <a class="calc-card" href="grocery-delivery-tip-calculator/index.html">
       <div class="card-visual vis-grocery">
+        <div class="card-visual-wbar"></div>
+        <div class="card-visual-frame"></div>
         <div class="card-visual-title">Grocery Delivery</div>
         <div class="card-visual-range">10% &ndash; 15% (min $5)</div>
       </div>
       <div class="card-body">
+        <div class="card-body-inner">
         <p class="card-sub">Instacart · Shipt · Walmart · Whole Foods · Kroger · Target · Amazon Fresh</p>
         <p class="calc-card-desc">Large grocery orders involve real effort &mdash; size of order, handling of cold items, delivery accuracy, and weather.</p>
-        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p>
+        </div>
+        <span class="calc-card-btn">Calculate my tip &rarr;</span>
       </div>
     </a>
     <a class="calc-card" href="hair-colorist-tip-calculator/index.html">
       <div class="card-visual vis-colorist">
+        <div class="card-visual-wbar"></div>
+        <div class="card-visual-frame"></div>
         <div class="card-visual-title">Hair Colorist</div>
         <div class="card-visual-range">18% &ndash; 25%</div>
       </div>
       <div class="card-body">
+        <div class="card-body-inner">
         <p class="card-sub">Balayage &middot; Highlights &middot; Color Correction &middot; Root Touch-Ups &middot; Fashion Color</p>
         <p class="calc-card-desc">Fair tips even for unsatisfying results — color correction is a multi-session process.</p>
-        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p>
+        </div>
+        <span class="calc-card-btn">Calculate my tip &rarr;</span>
       </div>
     </a>
 
     <a class="calc-card" href="hair-stylist-tip-calculator/index.html">
       <div class="card-visual vis-hair">
+        <div class="card-visual-wbar"></div>
+        <div class="card-visual-frame"></div>
         <div class="card-visual-title">Hair Stylist</div>
         <div class="card-visual-range">15% &ndash; 25%</div>
       </div>
       <div class="card-body">
+        <div class="card-body-inner">
         <p class="card-sub">Cuts · Color · Balayage · Highlights · Blowouts · Treatments</p>
         <p class="calc-card-desc">Factors in your city&rsquo;s income data, how long you were in the chair, whether you&rsquo;re a regular, and how happy you are with the results.</p>
-        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p>
+        </div>
+        <span class="calc-card-btn">Calculate my tip &rarr;</span>
       </div>
     </a>
     <a class="calc-card" href="house-cleaner-tip-calculator/index.html">
       <div class="card-visual vis-cleaner">
+        <div class="card-visual-wbar"></div>
+        <div class="card-visual-frame"></div>
         <div class="card-visual-title">House Cleaner</div>
         <div class="card-visual-range">15% &ndash; 20%</div>
       </div>
       <div class="card-body">
+        <div class="card-body-inner">
         <p class="card-sub">Regular · Deep Clean · Move-In/Out · Airbnb Turnovers</p>
         <p class="calc-card-desc">One-time vs. recurring, home size, quality of clean, whether your specific instructions were followed.</p>
-        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p>
+        </div>
+        <span class="calc-card-btn">Calculate my tip &rarr;</span>
       </div>
     </a>
     <a class="calc-card" href="hotel-housekeeping-tip-calculator/index.html">
       <div class="card-visual vis-hotel">
+        <div class="card-visual-wbar"></div>
+        <div class="card-visual-frame"></div>
         <div class="card-visual-title">Housekeeping</div>
         <div class="card-visual-range">$2 &ndash; $10 / night</div>
       </div>
       <div class="card-body">
+        <div class="card-body-inner">
         <p class="card-sub">Hotels · Motels · Resorts · Airbnbs · Cabins · All-Inclusive</p>
         <p class="calc-card-desc">Number of nights, room type, guests, and quality of service. Includes checkout etiquette so they know what helps.</p>
-        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p>
+        </div>
+        <span class="calc-card-btn">Calculate my tip &rarr;</span>
       </div>
     </a>
     <a class="calc-card" href="massage-therapist-tip-calculator/index.html">
       <div class="card-visual vis-massage">
+        <div class="card-visual-wbar"></div>
+        <div class="card-visual-frame"></div>
         <div class="card-visual-title">Massage Therapist</div>
         <div class="card-visual-range">15% &ndash; 20%</div>
       </div>
       <div class="card-body">
+        <div class="card-body-inner">
         <p class="card-sub">Spa · Independent · In-Home · Chiropractor · Sports &amp; Deep Tissue</p>
         <p class="calc-card-desc">Session length, massage type, spa vs. independent therapist, and whether it&rsquo;s your first visit or you&rsquo;re a regular.</p>
-        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p>
+        </div>
+        <span class="calc-card-btn">Calculate my tip &rarr;</span>
       </div>
     </a>
     <a class="calc-card" href="movers-tip-calculator/index.html">
       <div class="card-visual vis-movers">
+        <div class="card-visual-wbar"></div>
+        <div class="card-visual-frame"></div>
         <div class="card-visual-title">Movers</div>
         <div class="card-visual-range">$20 &ndash; $50 / mover</div>
       </div>
       <div class="card-body">
+        <div class="card-body-inner">
         <p class="card-sub">Local · Short Distance · Long Distance · Cross-Country Moves</p>
         <p class="calc-card-desc">Home size, hours, difficulty, care with your belongings, and whether they followed your instructions.</p>
-        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p>
+        </div>
+        <span class="calc-card-btn">Calculate my tip &rarr;</span>
       </div>
     </a>
     <a class="calc-card" href="nail-salon-tip-calculator/index.html">
       <div class="card-visual vis-nail">
+        <div class="card-visual-wbar"></div>
+        <div class="card-visual-frame"></div>
         <div class="card-visual-title">Nail Salon</div>
         <div class="card-visual-range">15% &ndash; 20%</div>
       </div>
       <div class="card-body">
+        <div class="card-body-inner">
         <p class="card-sub">Manicure · Pedicure · Gel · Acrylics · Dip Powder · Nail Art</p>
         <p class="calc-card-desc">Covers mani, pedi, gel, acrylics, and nail art &mdash; complexity of the service matters as much as the total.</p>
-        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p>
+        </div>
+        <span class="calc-card-btn">Calculate my tip &rarr;</span>
       </div>
     </a>
     <a class="calc-card" href="photographer-tip-calculator/index.html">
       <div class="card-visual vis-photographer">
+        <div class="card-visual-wbar"></div>
+        <div class="card-visual-frame"></div>
         <div class="card-visual-title">Photographer</div>
         <div class="card-visual-range">15% &ndash; 20%</div>
       </div>
       <div class="card-body">
+        <div class="card-body-inner">
         <p class="card-sub">Family &middot; Engagement &middot; Senior &middot; Newborn &middot; Event &middot; Birth Story</p>
         <p class="calc-card-desc">Optional but appreciated — tip based on session type, travel, and how happy you are with the results.</p>
-        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p>
+        </div>
+        <span class="calc-card-btn">Calculate my tip &rarr;</span>
       </div>
     </a>
 
     <a class="calc-card" href="restaurant-tip-calculator/index.html">
       <div class="card-visual vis-restaurant">
+        <div class="card-visual-wbar"></div>
+        <div class="card-visual-frame"></div>
         <div class="card-visual-title">Restaurant Server</div>
         <div class="card-visual-range">18% &ndash; 22%</div>
       </div>
       <div class="card-body">
+        <div class="card-body-inner">
         <p class="card-sub">Sit-Down Dining · Fine Dining · Casual Restaurants · Any Table Service</p>
         <p class="calc-card-desc">Food quality, drink refills, timing, and accuracy &mdash; with a note that tips are often shared with kitchen staff.</p>
-        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p>
+        </div>
+        <span class="calc-card-btn">Calculate my tip &rarr;</span>
       </div>
     </a>
     <a class="calc-card" href="rideshare-tip-calculator/index.html">
       <div class="card-visual vis-rideshare">
+        <div class="card-visual-wbar"></div>
+        <div class="card-visual-frame"></div>
         <div class="card-visual-title">Rideshare Driver</div>
         <div class="card-visual-range">10% &ndash; 20%</div>
       </div>
       <div class="card-body">
+        <div class="card-body-inner">
         <p class="card-sub">Uber · Lyft · Via · and all rideshare apps</p>
         <p class="calc-card-desc">Car cleanliness, friendliness, ride smoothness, on-time pickup, and amenities &mdash; not just a flat percentage.</p>
-        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p>
+        </div>
+        <span class="calc-card-btn">Calculate my tip &rarr;</span>
       </div>
     </a>
     <a class="calc-card" href="tattoo-tip-calculator/index.html">
       <div class="card-visual vis-tattoo">
+        <div class="card-visual-wbar"></div>
+        <div class="card-visual-frame"></div>
         <div class="card-visual-title">Tattoo Artist</div>
         <div class="card-visual-range">15% &ndash; 25%</div>
       </div>
       <div class="card-body">
+        <div class="card-body-inner">
         <p class="card-sub">Simple · Medium · Complex · Custom · Single &amp; Multi-Session</p>
         <p class="calc-card-desc">Session length, design complexity, ongoing project vs. first visit &mdash; including final-session completion tip guidance.</p>
-        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p>
+        </div>
+        <span class="calc-card-btn">Calculate my tip &rarr;</span>
       </div>
     </a>
     <a class="calc-card" href="valet-tip-calculator/index.html">
       <div class="card-visual vis-valet">
+        <div class="card-visual-wbar"></div>
+        <div class="card-visual-frame"></div>
         <div class="card-visual-title">Valet</div>
         <div class="card-visual-range">$3 &ndash; $10 flat</div>
       </div>
       <div class="card-body">
+        <div class="card-body-inner">
         <p class="card-sub">Restaurant · Hotel · Hospital · Event · Casino</p>
         <p class="calc-card-desc">Wait time, how your car was handled, friendliness, and venue type. A flat-dollar suggestion, not a percentage.</p>
-        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
-      </div>
-    </a>
-    <a class="calc-card" href="wedding-server-tip-calculator/index.html">
-      <div class="card-visual vis-wedding">
-        <div class="card-visual-title">Wedding Servers</div>
-        <div class="card-visual-range">$25 &ndash; $50 / server</div>
-      </div>
-      <div class="card-body">
-        <p class="card-sub">Plated Service · Buffet Staff · Cocktail Hour · Catering Crews</p>
-        <p class="calc-card-desc">Per-server and total crew tips — includes whether to tip individually or through the captain.</p>
-        <p class="calc-card-tagline">Local tip suggestions in seconds</p><span class="calc-card-btn">Calculate my tip &rarr;</span>
+        <p class="calc-card-tagline">Local tip suggestions in seconds</p>
+        </div>
+        <span class="calc-card-btn">Calculate my tip &rarr;</span>
       </div>
     </a>
 
+
     <a class="calc-card" href="wedding-tip-calculators/index.html">
       <div class="card-visual vis-wedding">
+        <div class="card-visual-wbar"></div>
+        <div class="card-visual-frame"></div>
         <div class="card-visual-title">Wedding Vendors</div>
         <div class="card-visual-range">14 calculators</div>
       </div>
