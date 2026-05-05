@@ -1,126 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How GeoTipper Works — Methodology & Data Sources</title>
-  <meta name="description" content="GeoTipper.com calibrates US tip suggestions to local cost of living using US Census ACS income data for 439 counties. Learn how the calculation works.">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://geotipper.com/about/">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "AboutPage",
-    "name": "How GeoTipper Works — Methodology & Data Sources",
-    "description": "GeoTipper.com calibrates US tip suggestions to the cost of living in the area using US Census Bureau ACS 5-year estimates for 439 US counties.",
-    "url": "https://geotipper.com/about/",
-    "publisher": {
-      "@type": "Organization",
-      "name": "GeoTipper.com",
-      "url": "https://geotipper.com",
-      "description": "Free US tip calculators calibrated to the cost of living in the area",
-      "sameAs": ["https://twitter.com/geotipper"],
-      "email": "verdantwebsolutions@gmail.com",
-      "legalName": "Verdant Web Solutions, LLC",
-      "foundingDate": "2025",
-      "areaServed": "US",
-      "knowsAbout": ["tipping etiquette", "US cost of living", "service industry wages", "gratuity norms"]
-    },
-    "mainEntity": {
-      "@type": "SoftwareApplication",
-      "name": "GeoTipper Tip Calculator",
-      "applicationCategory": "UtilitiesApplication",
-      "operatingSystem": "Web",
-      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
-      "description": "Free US tip calculators that adjust suggestions based on the cost of living in your specific city and county, using US Census Bureau data."
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How GeoTipper Works — About</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0D0D0F;color:#E8E8E4;font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased;}
+a{color:#4ade80;text-decoration:none;}a:hover{color:#22c55e;}
+img{max-width:100%;height:auto;}
+
+/* ── NAV ── */
+.site-nav{display:flex;align-items:center;justify-content:space-between;padding:0 28px;height:56px;background:rgba(13,13,15,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.07);position:sticky;top:0;z-index:1000;}
+.site-logo{font-family:'Syne',sans-serif!important;font-size:17px;font-weight:800;color:#fff!important;letter-spacing:-.02em;text-decoration:none;}
+.site-logo em{font-style:normal;color:#4ade80;}
+.site-nav-links{display:flex;gap:20px;align-items:center;}
+.site-nav-links a{font-size:13px;color:rgba(255,255,255,0.45);font-weight:500;text-decoration:none;transition:color .15s;}
+.site-nav-links a:hover{color:rgba(255,255,255,0.9);}
+
+/* ── PAGE HERO ── */
+.page-hero{background:rgba(255,255,255,0.02);border-bottom:1px solid rgba(255,255,255,0.07);padding:52px 28px 44px;max-width:none;}
+.page-hero-inner{max-width:760px;margin:0 auto;}
+.page-hero .meta,.page-hero p.meta{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(74,222,128,0.65);margin-bottom:14px;display:block;}
+.page-hero h1,.hero h1{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:800;color:#fff;line-height:1.05;letter-spacing:-.025em;margin-bottom:12px;}
+.page-hero p:not(.meta),.hero p{font-size:16px;color:rgba(255,255,255,0.55);line-height:1.65;max-width:600px;}
+
+/* ── MAIN CONTENT ── */
+.main,.page-body,.blog-body,.post-body,.content{max-width:760px;margin:0 auto;padding:52px 28px 80px;}
+
+/* ── TYPOGRAPHY ── */
+h1,h2,h3,h4{font-family:'Syne',sans-serif;font-weight:700;color:#fff;line-height:1.15;letter-spacing:-.015em;margin-top:40px;margin-bottom:14px;}
+h2{font-size:clamp(20px,3vw,26px);}
+h3{font-size:clamp(16px,2.5vw,20px);color:rgba(255,255,255,0.9);}
+h4{font-size:16px;color:rgba(255,255,255,0.85);}
+p{font-size:15px;color:rgba(255,255,255,0.68);line-height:1.75;margin-bottom:18px;}
+p strong,strong{color:rgba(255,255,255,0.92);}
+ul,ol{padding-left:22px;margin-bottom:20px;}
+li{font-size:15px;color:rgba(255,255,255,0.65);line-height:1.7;margin-bottom:8px;}
+li strong{color:rgba(255,255,255,0.88);}
+blockquote{border-left:3px solid #4ade80;padding:12px 20px;margin:24px 0;background:rgba(74,222,128,0.05);border-radius:0 8px 8px 0;}
+blockquote p{color:rgba(255,255,255,0.75);margin:0;}
+hr{border:none;border-top:1px solid rgba(255,255,255,0.08);margin:36px 0;}
+em{font-style:italic;}
+
+/* ── BLOG GRID ── */
+.blog-grid,.post-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-top:28px;}
+.blog-card,.post-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:12px;padding:22px;display:flex;flex-direction:column;transition:border-color .15s,transform .15s;}
+.blog-card:hover,.post-card:hover{border-color:rgba(255,255,255,0.2);transform:translateY(-2px);}
+.blog-card h2,.blog-card h3,.post-card h2,.post-card h3{font-size:16px;margin:0 0 8px;color:#fff;}
+.blog-card p,.post-card p{font-size:13px;color:rgba(255,255,255,0.5);margin:0;line-height:1.6;}
+.blog-card a,.post-card a{text-decoration:none;color:inherit;}
+
+/* ── SECTION GROUPS ── */
+.section-group{margin-bottom:48px;}
+.section-eyebrow{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(74,222,128,0.65);display:block;margin-bottom:12px;}
+
+/* ── HOW IT WORKS STEPS ── */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0 40px;}
+.step{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:12px;padding:20px;}
+.step-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(74,222,128,0.65);margin-bottom:8px;display:block;}
+.step h3{font-size:15px;font-weight:700;color:#fff;margin:0 0 8px;}
+.step p{font-size:13px;color:rgba(255,255,255,0.55);margin:0;line-height:1.6;}
+@media(max-width:600px){.steps{grid-template-columns:1fr;}}
+
+/* ── FOOTER ── */
+.site-footer,footer{background:rgba(255,255,255,0.02);border-top:1px solid rgba(255,255,255,0.07);padding:24px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.footer-links{display:flex;gap:16px;}
+.footer-links a{font-size:11px;color:rgba(255,255,255,0.3);text-decoration:none;}
+.footer-links a:hover{color:rgba(255,255,255,0.65);}
+footer p,footer small{font-size:11px;color:rgba(255,255,255,0.3);}
+
+@media(max-width:600px){.site-nav{padding:0 16px;}.main,.page-body,.blog-body,.post-body,.content{padding:36px 18px 60px;}.blog-grid,.post-grid{grid-template-columns:1fr;}}
+
+  /* NAV right-align fix */
+  .site-nav {
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    padding:0 24px!important;
+    height:56px!important;
+    background:rgba(13,13,15,0.97)!important;
+    backdrop-filter:blur(12px)!important;
+    border-bottom:1px solid rgba(255,255,255,0.07)!important;
+    position:sticky!important;
+    top:0!important;
+    z-index:1000!important;
+    width:100%!important;
+    box-sizing:border-box!important;
   }
-  </script>
-  <style>
-    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
-    :root {
-      --sans:'Montserrat',system-ui,sans-serif; --serif:'Cormorant Garamond',Georgia,serif;
-      --ink:#1A1A18; --ink-2:#3D3D38; --ink-3:#6B6B65;
-      --bg:#F2F1ED; --surface:#FDFCFA;
-      --g-dark:#1E4D35; --g-mid:#2E6B4A; --g-pale:#E7F1EC;
-      --rule:#E4E3DF; --r:12px;
-    }
-    body { font-family:var(--sans); background:var(--bg); color:var(--ink); font-size:16px; line-height:1.75; }
-    a { color:var(--g-mid); }
-    nav { background:var(--g-dark); padding:12px 20px; display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
-    nav a { color:rgba(253,252,250,.75); text-decoration:none; font-size:13px; }
-    nav a.home { font-family:var(--serif); font-size:15px; color:#FDFCFA; margin-right:auto; }
-    .hero { background:var(--g-dark); color:#FDFCFA; padding:48px 20px 40px; text-align:center; }
-    .hero h1 { font-family:var(--serif); font-size:clamp(24px,5vw,38px); font-weight: 300; margin-bottom:12px; }
-    .hero p { color:rgba(253,252,250,.7); max-width:560px; margin:0 auto; font-size:15px; }
-    main { max-width:720px; margin:0 auto; padding:48px 20px 72px; }
-    h2 { font-family:var(--serif); font-size:22px; font-weight:400; color:var(--g-dark); margin:40px 0 12px; }
-    h2:first-of-type { margin-top:0; }
-    h3 { font-size:16px; font-weight:600; color:var(--ink); margin:24px 0 8px; }
-    p { color:var(--ink-2); margin-bottom:16px; }
-    ul, ol { color:var(--ink-2); padding-left:22px; margin-bottom:16px; }
-    li { margin-bottom:8px; }
-    strong { color:var(--ink); font-weight:600; }
-    .formula-box { background:var(--surface); border:1px solid var(--rule); border-radius:var(--r); padding:20px 24px; margin:20px 0; font-family:monospace; font-size:14px; color:var(--ink-2); line-height:2.2; }
-    .formula-box .label { font-family:var(--sans); font-size:12px; color:var(--ink-3); text-transform:uppercase; letter-spacing:.05em; margin-bottom:8px; font-weight:600; display:block; }
-    .example-table { width:100%; border-collapse:collapse; font-size:14px; margin:20px 0; }
-    .example-table th { background:var(--g-dark); color:#FDFCFA; padding:9px 12px; text-align:left; font-size:12px; font-weight:600; letter-spacing:.04em; }
-    .example-table td { padding:8px 12px; border-bottom:1px solid var(--rule); color:var(--ink-2); }
-    .example-table tr:nth-child(even) td { background:#F7F7F5; }
-    .cta { background:var(--g-pale); border:1px solid #B8D9C4; border-radius:var(--r); padding:20px 22px; margin-top:40px; }
-    .cta p { margin-bottom:8px; }
-    footer { text-align:center; padding:24px 20px; border-top:1px solid var(--rule); font-size:12px; color:var(--ink-3); }
-    footer a { color:var(--ink-3); margin:0 8px; text-decoration:none; }
-    footer a:hover { color:var(--ink-2); }
-  </style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=IM+Fell+DW+Pica:ital@0;1&family=Lora:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  .site-nav-links {
+    display:flex!important;
+    gap:20px!important;
+    align-items:center!important;
+    margin-left:auto!important;
+  }
+  .site-nav-links a {
+    font-size:13px!important;
+    color:rgba(255,255,255,0.45)!important;
+    font-weight:500!important;
+    text-decoration:none!important;
+  }
+  .site-nav-links a:hover { color:rgba(255,255,255,0.9)!important; }
+  .site-logo {
+    font-family:'Syne',sans-serif!important;
+    font-size:17px!important;
+    font-weight:800!important;
+    color:#fff!important;
+    letter-spacing:-.02em!important;
+    text-decoration:none!important;
+    flex-shrink:0!important;
+  }
+  .site-logo em { font-style:normal!important; color:#4ade80!important; }
+
+</style>
 </head>
 <body>
-
-<nav>
-  <a href="../index.html" class="home">GeoTipper.com</a>
-  <a href="../blog/index.html">Blog</a>
-  <a href="index.html">About</a>
+<nav class="site-nav">
+  <a href="../index.html" class="site-logo">Geo<em>Tipper</em></a>
+  <div class="site-nav-links">
+    <a href="../blog/index.html">Blog</a>
+    <a href="index.html">About</a>
+  </div>
 </nav>
 
-<div class="hero">
-  <h1>How GeoTipper Works</h1>
-  <p>Why a flat percentage is not good enough — and how we calculate a tip that actually fits where you are.</p>
-</div>
-
-<div style="background:#fff;border-bottom:1px solid #E4E3DF;padding:20px 0;">
-  <div style="max-width:720px;margin:0 auto;padding:0 20px;">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
-      <div style="padding:16px;background:#EBF3EE;border-radius:10px;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.07em;color:#1E4D35;text-transform:uppercase;margin-bottom:6px;">Step 1</div>
-        <div style="font-weight:600;font-size:14px;color:#1A1A18;margin-bottom:4px;">You enter a city</div>
-        <div style="font-size:13px;color:#3D3D38;">GeoTipper looks up the county median household income from US Census ACS data.</div>
-      </div>
-      <div style="padding:16px;background:#EBF3EE;border-radius:10px;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.07em;color:#1E4D35;text-transform:uppercase;margin-bottom:6px;">Step 2</div>
-        <div style="font-weight:600;font-size:14px;color:#1A1A18;margin-bottom:4px;">Income sets the base rate</div>
-        <div style="font-size:13px;color:#3D3D38;">Higher income = higher local expectations. Base rate scales from 13% to 27%.</div>
-      </div>
-      <div style="padding:16px;background:#EBF3EE;border-radius:10px;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.07em;color:#1E4D35;text-transform:uppercase;margin-bottom:6px;">Step 3</div>
-        <div style="font-weight:600;font-size:14px;color:#1A1A18;margin-bottom:4px;">Service + quality adjust it</div>
-        <div style="font-size:13px;color:#3D3D38;">Session type, travel, satisfaction rating, and any bonus circumstances refine the final number.</div>
-      </div>
-    </div>
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <span class="meta">About GeoTipper</span>
+    <h1>How GeoTipper Works</h1>
+    <p>Why a flat percentage is not good enough — and how we calculate a tip that actually fits where you are.</p>
   </div>
 </div>
 
-
-<main>
+<div class="main">
+  <div class="steps">
+    <div class="step"><span class="step-label">Step 1</span><h3>You enter a city</h3><p>GeoTipper looks up the county median household income from US Census ACS data.</p></div>
+    <div class="step"><span class="step-label">Step 2</span><h3>Income sets the base rate</h3><p>Higher income = higher local expectations. Base rate scales from 13% to 27%.</p></div>
+    <div class="step"><span class="step-label">Step 3</span><h3>Service + quality adjust it</h3><p>Session type, travel, satisfaction rating, and any bonus circumstances refine the final number.</p></div>
+  </div>
 
   <h2>The Problem With Generic Tip Calculators</h2>
-  <p>Every other tip calculator gives you the same number regardless of where you live. Type in $60 and they say $12 (20%). Whether you are in rural Mississippi or midtown Manhattan, the answer is identical.</p>
+<p>Every other tip calculator gives you the same number regardless of where you live. Type in $60 and they say $12 (20%). Whether you are in rural Mississippi or midtown Manhattan, the answer is identical.</p>
   <p>That is not how tipping actually works. A 20% tip means something very different when the median household income in a county is $42,000 versus $136,000. Local cost of living shapes what service workers earn, what they expect, and what feels genuinely fair. GeoTipper accounts for that.</p>
 
   <h2>The Data We Use</h2>
-  <p>GeoTipper uses <strong>US Census Bureau American Community Survey (ACS) 5-year estimates</strong> for median household income at the county level. We have income data for <strong>439 US counties</strong>, covering the vast majority of the US population.</p>
+<p>GeoTipper uses <strong>US Census Bureau American Community Survey (ACS) 5-year estimates</strong> for median household income at the county level. We have income data for <strong>439 US counties</strong>, covering the vast majority of the US population.</p>
   <p>When you type a city name, GeoTipper identifies the county that city is in using FIPS county codes and retrieves the local median household income for that county. We use median household income as the primary signal for local cost of living because:</p>
   <ul>
     <li>It is the most consistent, widely available, and regularly updated measure of local economic conditions in the US</li>
@@ -131,9 +155,9 @@
   <p>All data is embedded directly in each calculator page — no server requests required. Everything runs in your browser. We never see your inputs.</p>
 
   <h2>The Formula</h2>
-  <p>The core calculation converts local income into a base tip rate, then adjusts for service type, quality, and any bonus circumstances.</p>
+<p>The core calculation converts local income into a base tip rate, then adjusts for service type, quality, and any bonus circumstances.</p>
 
-  <div class="formula-box">
+  
     <span class="label">Step 1 — Income Ratio</span>
     incomeRatio = (localCountyIncome &minus; $40,000) &divide; ($120,000 &minus; $40,000)
     <br><br>
@@ -143,7 +167,7 @@
     <br><br>
     <span class="label">Step 3 — Adjustments</span>
     finalRate = baseRate + serviceAdj + qualityAdj + bonuses
-  </div>
+  
 
   <p>In plain terms:</p>
   <ul>
@@ -159,7 +183,7 @@
   <p>Your star rating shifts the suggested range. A 5-star experience shows the full generous range. A 2-star rating applies a reduced floor that still acknowledges the service worker's effort. Optional bonus toggles — holidays, year-end gifts, exceptional service — add specific percentages on top of the base suggestion.</p>
 
   <h2>Example: Same $80 Service, Five Cities</h2>
-  <table class="example-table">
+<table class="example-table">
     <thead>
       <tr><th>Location</th><th>County Median Income</th><th>Base Rate</th><th>Suggested Tip</th></tr>
     </thead>
@@ -173,7 +197,7 @@
   </table>
 
   <h2>What We Do Not Do</h2>
-  <ul>
+<ul>
     <li><strong>No accounts or user tracking.</strong> All calculations run in your browser. We never see your inputs — not the bill amount, not the city, not the star rating.</li>
     <li><strong>No server-side processing.</strong> City, county, and income data are embedded in each calculator page. The site works without any API calls.</li>
     <li><strong>No selling user data.</strong> GeoTipper is ad-supported through Google AdSense. We do not sell or share user data with any third parties.</li>
@@ -181,19 +205,19 @@
   </ul>
 
   <h2>Data Freshness</h2>
-  <p>We update our county income data annually following the US Census Bureau's ACS 5-year estimate release, typically each December. The data currently embedded reflects the most recent available ACS estimates at the time of the last site update.</p>
+<p>We update our county income data annually following the US Census Bureau's ACS 5-year estimate release, typically each December. The data currently embedded reflects the most recent available ACS estimates at the time of the last site update.</p>
 
   <h2>Coverage</h2>
-  <p>We have county-level income data for 439 US counties covering approximately 85% of the US population. For cities not covered by our county data, we fall back to the US national median household income ($74,580), which produces a standard 18%–20% suggestion range consistent with general US norms.</p>
+<p>We have county-level income data for 439 US counties covering approximately 85% of the US population. For cities not covered by our county data, we fall back to the US national median household income ($74,580), which produces a standard 18%–20% suggestion range consistent with general US norms.</p>
 
   <h2>Who Built This</h2>
-  <p>GeoTipper.com is owned and operated by <strong>Verdant Web Solutions, LLC</strong>, based in Idaho. We built GeoTipper because existing tip calculators ignore the single most important variable in tipping: where you are. A flat 20% is not the right answer everywhere — and we wanted to build a tool that knows that.</p>
+<p>GeoTipper.com is owned and operated by <strong>Verdant Web Solutions, LLC</strong>, based in Idaho. We built GeoTipper because existing tip calculators ignore the single most important variable in tipping: where you are. A flat 20% is not the right answer everywhere — and we wanted to build a tool that knows that.</p>
   <p>Questions, corrections, or feedback: <strong>verdantwebsolutions@gmail.com</strong></p>
 
-  <div class="cta">
+  
     <p><strong>Ready to calculate a tip that fits your city?</strong></p>
     <p><a href="../index.html">Browse all 33 tip calculators</a> &nbsp;&middot;&nbsp; <a href="../blog/index.html">Read our tipping guides</a></p>
-  </div>
+  
 
 </main>
 
@@ -201,10 +225,22 @@
   <a href="../index.html">Home</a>
   <a href="../blog/index.html">Blog</a>
   <a href="index.html">About</a>
-  <a href="../privacy-policy/index.html">Privacy Policy</a>
+  <a href="../pricing/index.html" style="color:rgba(255,255,255,0.3);">Wedding Pro</a> &middot; <a href="../privacy-policy/index.html">Privacy Policy</a>
   <a href="../terms-of-use/index.html">Terms of Use</a>
   <span style="display:block;margin-top:8px;">© 2026 Verdant Web Solutions, LLC · GeoTipper.com</span>
 </footer>
 
+</body>
+</html>
+
+</div>
+<footer>
+  <p>&#169; 2025 GeoTipper.com &mdash; Verdant Web Solutions, LLC &middot; Idaho &middot; <a href="mailto:verdantwebsolutions@gmail.com" style="color:rgba(255,255,255,0.3);">verdantwebsolutions@gmail.com</a></p>
+  <div class="footer-links">
+    <a href="../index.html" style="color:rgba(255,255,255,0.3);">Home</a>
+    <a href="privacy-policy/../index.html" style="color:rgba(255,255,255,0.3);">Privacy</a>
+    <a href="terms-of-use/../index.html" style="color:rgba(255,255,255,0.3);">Terms</a>
+  </div>
+</footer>
 </body>
 </html>
