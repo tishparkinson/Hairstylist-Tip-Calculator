@@ -29,7 +29,7 @@ a{color:#4ade80;text-decoration:none;}
 .site-nav-links{display:flex;gap:20px;}
 .site-nav-links a{font-size:11px;color:rgba(255,255,255,0.5);font-weight:600;letter-spacing:.07em;text-transform:uppercase;transition:color .15s;}
 .site-nav-links a:hover{color:rgba(255,255,255,0.85);}
-.hero{background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(74,222,128,0.07) 0%,transparent 70%);padding:56px 24px 80px;text-align:center;position:relative;overflow:visible;z-index:10;}
+.hero{overflow:hidden;position:relative;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(74,222,128,0.07) 0%,transparent 70%);padding:56px 24px 80px;text-align:center;position:relative;overflow:visible;z-index:10;}
 .hero-photo{position:absolute;inset:0;z-index:0;background-image:url('../tip-cash-1900.jpg');background-size:cover;background-position:center 40%;opacity:0.88;}
 .hero-tint{position:absolute;inset:0;z-index:1;background:rgba(4,8,6,0.62);}
 .hero-vignette{position:absolute;inset:0;z-index:2;background:radial-gradient(ellipse 80% 70% at 50% 50%,rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 100%);pointer-events:none;}
@@ -258,6 +258,7 @@ body{background:#0D0D0F!important;color:#FAFAF8!important;font-family:var(--sans
   </div>
 </nav>
 <div class="hero">
+  <canvas id="heroDotsCanvas" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
   <a href="../index.html" class="back-link" style="position:relative;z-index:5;">&#x2190; All Calculators</a>
   
   <h1 style="position:relative;z-index:5;">Wedding Vendor<br><em>Tip Calculators</em></h1>
@@ -465,5 +466,38 @@ const WEDDING_VENDORS=[
     </div>
   </div>
 </footer>
+<script>
+(function(){
+  var cv=document.getElementById('heroDotsCanvas');
+  if(!cv)return;
+  var ctx=cv.getContext('2d');
+  var W,H,t=0;
+  var STEP=28;
+  function resize(){W=cv.width=cv.offsetWidth;H=cv.height=cv.offsetHeight;}
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    t+=0.007;
+    var cx=W/2,cy=H/2;
+    for(var x=STEP/2;x<W;x+=STEP){
+      for(var y=STEP/2;y<H;y+=STEP){
+        var dx=(x-cx)/W,dy=(y-cy)/H;
+        var dist=Math.sqrt(dx*dx+dy*dy);
+        var w1=Math.sin(dist*6-t*1.4)*0.5+0.5;
+        var w2=Math.sin(dist*9+t*0.9+1.5)*0.5+0.5;
+        var combined=(w1+w2)*0.5;
+        var r=combined*2.5+0.3;
+        var alpha=(0.05+combined*0.22)*0.5;
+        ctx.beginPath();
+        ctx.arc(x,y,r,0,Math.PI*2);
+        ctx.fillStyle='rgba(80,80,85,'+alpha+')';
+        ctx.fill();
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  resize();draw();
+  window.addEventListener('resize',resize);
+})();
+</script>
 </body>
 </html>
