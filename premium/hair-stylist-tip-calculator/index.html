@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How Much to Tip for a Rideshare? (2025 Uber, Lyft & Rideshare Tip Calculator)</title>
-<meta name="description" content="How much to tip for Uber, Lyft, or any rideshare in the US? Get a tip based on ride quality, trip type, and your city's local income data. Free, no signup.">
+<title>How Much to Tip Hairdresser? (2025 Hair Stylist Tip Calculator)</title>
+<meta name="description" content="US hair stylist tip calculator. Find the right tip for your hairdresser based on your city's local income data. Covers every US city — fast, free, no signup.">
 <style>
   /* Hero photo — matches homepage */
   .header-photo { position:absolute;inset:0;z-index:0;background-image:none;background-size:cover;background-position:center 40%;opacity:0.82; }
@@ -97,15 +97,8 @@
     margin: 0 auto;
     letter-spacing: 0.01em;
   }
-  .header-sub { font-family:'Inter',system-ui,sans-serif; font-style:italic;
-    font-size: 12px;
-    color: rgba(253,252,250,0.55);
-    font-weight: 400;
-    letter-spacing: 0.02em;
-    margin: 0 auto 10px;
-    max-width: 520px;
-  }
-  .header-sub strong { color: rgba(253,252,250,0.8); font-weight: 600; }
+  .header-sub { font-family:'Inter',system-ui,sans-serif; font-style:italic; font-size:12px; color:rgba(253,252,250,0.55); font-weight:400; letter-spacing:0.02em; margin:0 auto 10px; max-width:520px; }
+  .header-sub strong { color:rgba(253,252,250,0.8); font-weight:600; }
   .header-answer { font-family:'Inter',system-ui,sans-serif; font-style:italic;
     color: rgba(253,252,250,0.82) !important;
     font-size: 14px !important;
@@ -609,31 +602,12 @@
   .adj-pos { background:var(--g-pale-2); color:var(--g-dark); }
   .adj-neg { background:#FEF3E2; color:#92511A; }
   /* ── INFO POPUP ── */
-  .info-trigger {
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 18px; height: 18px; border-radius: 50%;
-    background: var(--g-pale-2); border: 1.5px solid var(--g-pale-3);
-    color: var(--g-mid); font-size: 10px; font-weight: 700;
-    cursor: pointer; vertical-align: middle; margin-left: 8px;
-    position: relative; font-style: normal; flex-shrink: 0;
-    font-family: var(--sans);
-  }
-  .info-trigger:hover { background: var(--g-pale-3); }
-  .info-popup {
-    display: none; position: absolute; bottom: calc(100% + 8px); left: 50%;
-    transform: translateX(-50%); width: 280px;
-    background: var(--ink); color: rgba(253,252,250,.85);
-    font-size: 12px; line-height: 1.6; border-radius: var(--r-sm);
-    padding: 12px 14px; box-shadow: var(--shadow-lg);
-    z-index: 100; font-weight: 400;
-  }
-  .info-popup::after {
-    content: ""; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
-    border: 6px solid transparent; border-top-color: var(--ink);
-  }
-  .info-trigger:hover .info-popup,
-  .info-trigger:focus .info-popup { display: block; }
-  .info-popup strong { color: #A8C9B4; }
+  .info-trigger { display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:var(--g-pale-2);border:1.5px solid var(--g-pale-3);color:var(--g-mid);font-size:10px;font-weight:700;cursor:pointer;vertical-align:middle;margin-left:8px;position:relative;font-style:normal;flex-shrink:0;font-family:var(--sans); }
+  .info-trigger:hover { background:var(--g-pale-3); }
+  .info-popup { display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);width:280px;background:var(--ink);color:rgba(253,252,250,.85);font-size:12px;line-height:1.6;border-radius:var(--r-sm);padding:12px 14px;box-shadow:var(--shadow-lg);z-index:100;font-weight:400; }
+  .info-popup::after { content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--ink); }
+  .info-trigger:hover .info-popup, .info-trigger:focus .info-popup { display:block; }
+  .info-popup strong { color:#A8C9B4; }
 
   .recalc-btn {
     width: 100%;
@@ -2944,21 +2918,180 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type":"Question","name":"How much to tip an Uber driver?","acceptedAnswer":{"@type":"Answer","text":"The standard tip for an Uber driver in the United States is 15%–20% of the fare. For airport trips, long rides, or exceptional service, 20%–25% is appropriate. Uber allows you to tip in the app up to 30 days after your ride."}},
-    {"@type":"Question","name":"How much to tip a Lyft driver?","acceptedAnswer":{"@type":"Answer","text":"The same norms apply to Lyft as Uber — 15%–20% is standard, with 20%–25% for airport trips or excellent service. Lyft allows in-app tipping after your ride completes."}},
-    {"@type":"Question","name":"How much gratuity for Uber?","acceptedAnswer":{"@type":"Answer","text":"The standard gratuity for Uber is 15%–20% of the fare. On a $12 ride, that's $1.80–$2.40. Many riders round up to the nearest dollar or leave a flat $2–$3 for shorter rides. For airport pickups or long rides, 20% is a stronger norm."}},
-    {"@type":"Question","name":"How much gratuity for rideshare?","acceptedAnswer":{"@type":"Answer","text":"Standard rideshare gratuity in the US is 15%–20% of the fare. For exceptional drivers — clean car, on time, smooth ride, amenities like water or phone chargers — 20%–25% is a meaningful show of appreciation."}},
-    {"@type":"Question","name":"How much do I tip a limo driver?","acceptedAnswer":{"@type":"Answer","text":"For a limousine or black car service, 20%–25% is the standard tip. Limo drivers operate at a premium service level and the higher tip percentage is expected. For exceptional service on a special occasion, 25%–30% is a strong show of appreciation."}},
-    {"@type":"Question","name":"How much to tip a driver to the airport?","acceptedAnswer":{"@type":"Answer","text":"For an airport ride, 20% is the standard tip. Airport trips often involve early morning pickups, heavy luggage, and time pressure. Many riders tip 20%–25% for a smooth airport experience, particularly on departure trips where timing is critical."}},
-    {"@type":"Question","name":"How much to tip an Uber driver to the airport?","acceptedAnswer":{"@type":"Answer","text":"For an Uber to or from the airport, 20% is the widely accepted standard. Airport rides involve longer distances, traffic navigation, and often luggage assistance. If the driver helped with bags or arrived precisely on time, 20%–25% is a well-regarded tip."}},
-    {"@type":"Question","name":"How much do you tip your Uber driver?","acceptedAnswer":{"@type":"Answer","text":"Most US riders tip their Uber driver 15%–20% of the fare. The average tip left through the Uber app is around 18%. For excellent service — clean car, professional driver, smooth ride — 20%–25% is appropriate."}},
-    {"@type":"Question","name":"How much do you tip your Lyft driver?","acceptedAnswer":{"@type":"Answer","text":"The same as Uber — 15%–20% is standard. Lyft encourages tipping through its app with suggested amounts. For excellent service, 20%–25% is appreciated."}},
-    {"@type":"Question","name":"How much to tip a private airport shuttle driver?","acceptedAnswer":{"@type":"Answer","text":"For a private airport shuttle (not a shared shuttle), 15%–20% is standard. If the driver assisted with luggage or went out of their way to accommodate your schedule, 20%–25% is appropriate."}},
-    {"@type":"Question","name":"How much to tip a private shuttle driver?","acceptedAnswer":{"@type":"Answer","text":"For private shuttle services, 15%–20% is the US standard tip. For a shuttle driver who manages a group, handles luggage, and maintains a schedule, 20% is well-received and appropriate."}},
-    {"@type":"Question","name":"How much to tip an Uber driver for returning a lost item?","acceptedAnswer":{"@type":"Answer","text":"If a driver returns a lost item to you, a generous cash tip of $20–$50 is appropriate and widely recommended. The driver went out of their way — often requiring additional driving and lost earning time — to return your belongings. This warrants a notably higher tip than a standard ride."}},
-    {"@type":"Question","name":"How much to tip an Uber driver on a long trip?","acceptedAnswer":{"@type":"Answer","text":"For a long Uber trip (30 minutes or more), 20%–25% of the fare is appropriate. Long trips represent more of the driver's time and are less efficient in terms of earnings per mile. Tipping at the higher end on long rides is a well-regarded practice."}},
-    {"@type":"Question","name":"Rideshare tipping — what you should know?","acceptedAnswer":{"@type":"Answer","text":"Rideshare drivers in the US are independent contractors who pay for their own fuel, vehicle maintenance, and insurance. Tipping is a meaningful portion of their earnings. The standard is 15%–20%, with 20%–25% for excellent service. You can tip in the app after your ride."}}
-  ]
+    {
+      "@type": "Question",
+      "name": "How much to tip a hairdresser in the United States?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The standard tip for a hair stylist in the United States is 15% to 25% of the total service cost. For excellent service or complex color treatments, 20% is the widely accepted baseline. Tipping norms also vary by city — areas with a higher cost of living tend to have higher tipping expectations. Our calculator adjusts this recommendation based on the median household income in your specific city and county."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much do you tip on a $150 hair service in the United States?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For a $150 hair service at a US salon, a standard 20% tip is $30. For balayage, toning, or any service involving significant time and product, $35–$45 is a generous amount that reflects the additional skill and effort involved. Local income norms in your city may also influence what feels appropriate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much do you tip on a $200 hair service in the United States?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "At $200, a standard 20% tip for a US hair stylist is $40. For full-day color work or complex treatments, many clients tip toward $50–$60 to reflect the hours and expertise involved. The service type and your satisfaction level should guide where in that range you land."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much do you tip on a $300 hair service in the United States?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "At $300, a standard 20% tip is $60. For premium services like balayage, keratin treatments, or color correction, $70–$90 is not uncommon among regular clients who want to show meaningful appreciation for the time and skill involved."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much do you tip a $350 hairdresser in the United States?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For a $350 hair service in the United States, $70 is the 20% baseline tip. For exceptional work or a multi-hour appointment, $85–$105 is a generous and well-regarded amount. If you had a senior or highly experienced stylist, erring toward the higher end is appropriate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much do you tip a $400 hairdresser in the United States?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "At $400, a standard tip is $80 (20%). For complex, high-skill work such as full color corrections, extensions, or multi-service appointments, $90–$120 is common among satisfied clients. A $400 service typically reflects advanced expertise that warrants a thoughtful and generous tip."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much should I tip my hair stylist at Christmas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The most widely cited guideline for a Christmas or holiday tip for a regular hairdresser is the equivalent of one full service, or a 25%–30% tip on your last visit of the year. If you see your stylist monthly, a separate cash bonus of $20–$50 on top of your regular tip is a meaningful way to show appreciation for the full year. Holiday tipping is not required, but it is a deeply appreciated gesture among clients who have an ongoing relationship with their stylist."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should you tip extra for a holiday, a new baby, or being squeezed in last minute?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — these are all common and genuine reasons to tip above your normal amount. For the holidays or Christmas, adding 5%–10% to your regular tip is a warm gesture. If your stylist just had a new baby, a little extra cash shows you care beyond the appointment. If they rearranged their schedule to fit you in at the last minute, especially before a big event, acknowledging that effort with an extra $10–$20 is considered good etiquette. Our calculator includes a bonus toggle for each of these situations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you tip the salon owner?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, in most cases. The old etiquette rule that said you do not need to tip the salon owner is widely considered outdated. Most modern salon owners work the chair alongside their staff and provide the same skilled service. Tipping 15%–20% is appropriate and appreciated. If the owner provides exceptional service or a complex treatment, tip as you would any skilled professional — there is no reason to treat them differently."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much do you tip on a $100 haircut?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For a $100 haircut, a standard 18%–20% tip is $18–$20. If you were very happy with the results, or the appointment was longer or more complex than a basic trim, $20–$25 is a generous and appreciated amount. In high cost-of-living cities like New York or San Francisco, tipping 20%–25% on a $100 service is the local norm."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much do you tip on a $200 or $300 hair service?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "At $200, a standard 20% tip is $40. At $300, it is $60. For full-day services like color corrections or balayage that involve multiple hours of skilled work, many clients tip toward the higher end of the range — $50–$75 on a $200 service, and $70–$90 on a $300 service. The time and expertise involved in complex color work generally warrants a more generous tip than a simple cut at the same price."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it rude not to tip your hairdresser in the United States?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In the United States, not tipping your hairdresser is generally considered impolite unless you had a genuinely poor experience. Hair stylists often rely on tips as a meaningful portion of their take-home income. Even if you are disappointed with the results, a minimum 10%–15% tip acknowledges the time and effort your stylist invested — though local norms and your specific situation may suggest a higher floor. If you have a serious concern, it is better to speak with your stylist or the salon manager than to skip the tip without explanation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you tip for every person who touches your hair?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, it is considered good etiquette to tip each person who provides a service during your appointment. If a shampoo assistant washes and conditions your hair, a $3–$10 tip is customary depending on the salon. If a separate colorist, toner specialist, or blowout technician assisted your main stylist, a small individual tip for each is appreciated, particularly at upscale salons. You can ask the front desk how tips are distributed if you are unsure."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it better to tip your US hair stylist in cash or on a card?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most hair stylists prefer cash tips. Cash is received immediately, in full, with no processing fees or delays. Card tips are still very much appreciated when cash is not available, but some salons charge processing fees that reduce the amount the stylist actually receives. If you know you will be tipping, coming prepared with cash is a thoughtful habit. Some salons also offer digital tipping through apps or payment terminals, which typically go directly to the stylist."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do tipping norms vary by city?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tipping norms in US hair salons vary by city primarily because of differences in cost of living, local wages, and what clients in a given area are accustomed to. In cities like New York, San Francisco, and Seattle, where the cost of living and stylist wages are both higher, a 20%–25% tip is considered standard. In smaller cities or rural areas where both prices and local incomes are lower, 15%–18% may be entirely appropriate and generous. Our calculator uses US Census median household income data for your specific county to calibrate what feels right for where you are."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much to tip for a last-minute squeeze-in at a hair salon?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When a hair stylist rearranges their schedule or stays late to fit you in at the last minute — especially before a big event like a wedding, graduation, or holiday party — an additional tip of $10–$20 on top of your normal percentage is considered good etiquette. Many clients add a 3%–5% bonus on top of their regular tip to acknowledge the inconvenience the stylist absorbed on their behalf. Our calculator includes a 'Squeezed Me In' toggle that automatically adds this to your tip suggestion."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hair stylist Christmas tip vs. regular service tip — what's the difference?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A regular service tip is a percentage of that day's bill — typically 18%–22% in the United States — given at the end of every appointment. A Christmas or holiday tip is a separate, additional gesture given once a year to a stylist you see regularly, meant to express gratitude for the whole year's relationship, not just that single visit. The holiday tip is typically the cost of one service, or a cash bonus of $20–$50 given on top of your normal visit tip. You can think of the regular tip as payment for the service and the Christmas tip as a thank-you for the relationship."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "First-time client vs. regular client tipping etiquette at a US hair salon",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "First-time clients in the US typically tip 15%–20%, which is considered polite and appropriate when you don't yet have an established relationship with the stylist. Regular clients often tip 20%–25% or more, reflecting the ongoing relationship, the stylist's familiarity with their hair, and appreciation for consistent quality. If you love your first appointment and plan to return, tipping closer to 20%–22% signals that you valued the experience. Long-term regulars sometimes give higher tips around the holidays or when the stylist has gone above and beyond for them."
+      }
+    }
+    ,
+    {
+      "@type": "Question",
+      "name": "How much tip at a hair salon?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The standard tip at a hair salon in the United States is 15%–20% of the service cost. For excellent results or a complex service, 20%–25% is appropriate. Most clients tip directly to their stylist in cash or by adding to the card payment at checkout." }
+    },
+    {
+      "@type": "Question",
+      "name": "How much to tip a stylist?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Tipping your hair stylist 15%–20% of the service cost is the standard US practice. For your regular stylist, 20% or slightly more is common. For a first-time visit, 20% is a strong starting point that sets a good relationship." }
+    },
+    {
+      "@type": "Question",
+      "name": "How much to tip a colorist?",
+      "acceptedAnswer": { "@type": "Answer", "text": "For a hair colorist in the US, 18%–20% is the standard tip — and 20%–25% for complex color work like balayage, highlights, or color correction. Color services require significant product knowledge and technical skill that justifies the higher end of the tipping range. Our calculator adjusts for your city's local income norms." }
+    },
+    {
+      "@type": "Question",
+      "name": "How much to tip for hair?",
+      "acceptedAnswer": { "@type": "Answer", "text": "For any hair service in the US — cut, color, blowout, or treatment — the standard tip is 15%–20% of the service cost. For a $50 haircut, that's $7.50–$10. For a $150 color service, $22–$30. Complex color or specialty services warrant 20%–25%." }
+    },
+    {
+      "@type": "Question",
+      "name": "How much should you tip your hairdresser?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The widely accepted US standard for tipping your hairdresser is 15%–20%. For a regular hairdresser you see frequently, 20% is considered the norm. For exceptional work — a great color result, a flattering cut that exceeded expectations, or a stylist who squeezed you in — 20%–25% is a meaningful and appreciated gesture." }
+    }
+    ,{"@type":"Question","name":"How much do I tip my hairdresser?","acceptedAnswer":{"@type":"Answer","text":"The standard tip for your hairdresser in the US is 15%–20% of the service cost. Cash handed directly to your hairdresser is preferred. For a regular hairdresser, 20% is the norm. For exceptional results, 20%–25%."}}
+  ,
+    {"@type":"Question","name":"How much do I tip my hair stylist?","acceptedAnswer":{"@type":"Answer","text":"The standard tip for a hair stylist in the US is 15%–20% of the service cost. For a $60 cut that is $9–$12. For a $150 color service, $22–$30. For regulars or exceptional results, 20%–25% is appropriate."}},
+    {"@type":"Question","name":"How much to tip a hair stylist for balayage?","acceptedAnswer":{"@type":"Answer","text":"For balayage or multi-hour color services, 18%–22% on a $200–$400 service is the typical range — $36–$88. For exceptional results on complex color, 25% is well-regarded."}}]
 }
 </script>
   <!-- ═══════════════════════════════════════════════════════
@@ -2976,20 +3109,20 @@
 <body>
 
 <nav class="site-nav">
-  <a href="../index.html" class="site-logo">Geo<em>Tipper</em></a>
+  <a href="../../index.html" class="site-logo">Geo<em>Tipper</em></a>
   <div class="site-nav-links">
-    <a href="../blog/index.html">Blog</a>
-    <a href="../about/index.html">About</a>
+    <a href="../../blog/index.html">Blog</a>
+    <a href="../../about/index.html">About</a>
   </div>
 </nav>
 <header class="header">
-  <h1 class="hero-anim-1">How Much to Tip<br><em>Your Rideshare Driver?</em></h1>
-  <p class="header-sub hero-anim-2">Works for <strong>Uber · Lyft · Via · Curb</strong> and all other rideshare apps</p>
+  <h1 class="hero-anim-1">How Much to Tip<br><em>Your Hairdresser?</em></h1>
+  <p class="header-sub hero-anim-2">For <strong>Cuts · Color · Balayage · Highlights · Blowouts · Treatments</strong> at any salon</p>
   <div class="header-psych-wrap">
-    <p class="header-psych-line1">They got you there safely.</p>
-    <p class="header-psych-line2">Accounts for city income, trip distance, ride type, and service quality.</p>
+    <p class="header-psych-line1">Years of training. One appointment.</p>
+    <p class="header-psych-line2">Accounts for city income, chair time, service complexity, your regularity, and satisfaction.</p>
   </div>
-  <p class="header-answer">The US standard tip for rideshare is <strong>15%–20%</strong> of the fare. For airport trips, long rides, or a particularly clean and professional experience, <strong>20%–25%</strong> is appropriate. Use the calculator below for a suggestion calibrated to your city and ride type.</p>
+  <p class="header-answer">Most clients in the United States tip <strong>15%–25%</strong> for a hair stylist. For holiday tipping, the most common gesture is a 20%–25% tip on your last visit of the year, plus an optional separate cash gift of $20–$50. Use the calculator below for a tip calibrated to your city.</p>
 </header>
 
 <main class="main">
@@ -3013,70 +3146,94 @@
   </div>
   <div class="card" id="formCard">
 
+    <!-- LOCATION -->
     <div class="section-label">Your Location</div>
     <div class="field">
       <label for="cityInput">City &amp; State</label>
-      <div class="autocomplete-wrap"><input type="text" id="cityInput" placeholder="Start typing a city…" autocomplete="off" maxlength="80"><div class="autocomplete-list" id="autocompleteList"></div></div>
-      <p class="helper" id="cityHelper">Tip norms vary by city — we use local income data.</p>
+      <div class="autocomplete-wrap">
+        <input type="text" id="cityInput" placeholder="Start typing a city…" autocomplete="off" maxlength="80">
+        <div class="autocomplete-list" id="autocompleteList"></div>
+      </div>
+      <p class="helper" id="cityHelper">We use your area's median household income to calibrate tip expectations.</p>
       <div class="error-msg" id="cityError">Please select a city from the list.</div>
     </div>
-    <div class="section-label">Your Fare</div>
+
+    <!-- PRICE -->
+    <div class="section-label">Your Bill</div>
     <div class="field">
-      <label for="priceInput">Total Ride Fare (before tip)</label>
-      <div class="input-prefix-wrap"><span class="input-prefix">$</span>
-        <input type="number" id="priceInput" placeholder="0" min="1" max="500" step="1">
+      <label for="priceInput">Total Service Cost (before tip)</label>
+      <div class="input-prefix-wrap">
+        <span class="input-prefix">$</span>
+        <input type="number" id="priceInput" placeholder="0" min="1" max="5000" step="1">
       </div>
-      <div class="error-msg" id="priceError">Please enter a valid fare amount.</div>
+      <div class="error-msg" id="priceError">Please enter a valid service cost.</div>
     </div>
-    <div class="section-label">Ride Type <span class="optional-label">(optional)</span></div>
+
+    <!-- DURATION -->
+    <div class="section-label">Appointment Length <span class="optional-label">(optional)</span></div>
     <div class="field">
-      <label>What kind of trip was this?</label>
-      <div class="pill-group" id="rideTripGroup">
-        <button class="pill selected" data-val="standard">Standard rideshare</button>
-        <button class="pill" data-val="veryshort">Very short trip (&lt;5 min)</button>
-        <button class="pill" data-val="short">Short trip (5–15 min)</button>
-        <button class="pill" data-val="medium">Medium trip (15–30 min)</button>
-        <button class="pill" data-val="airport">Rideshare to/from airport</button>
-        <button class="pill" data-val="long">Long trip (30+ min)</button>
-        <button class="pill" data-val="limo">Limo / Black car</button>
-        <button class="pill" data-val="shuttle">Private shuttle</button>
-        <button class="pill" data-val="hotel_shuttle">Hotel shuttle</button>
-        <button class="pill" data-val="lost_item">Driver returned lost item</button>
-      </div>
+      <div class="duration-display" id="durationDisplay">30 <span>minutes</span></div>
+      <input type="range" id="durationSlider" min="15" max="240" step="15" value="30">
+      <div class="range-labels"><span>15 min</span><span style="margin-left:auto">4 hrs</span></div>
+      <p class="helper">Longer appointments mean more time and skill — that's factored in.</p>
     </div>
-    <div class="section-label">Driver Quality</div>
+
+    <!-- CLIENT TYPE -->
+    <div class="section-label">Visit Type <span class="optional-label">(optional)</span></div>
     <div class="field">
-      <label>How was your driver?</label>
-      <div class="star-row">
-        <div class="stars-wrap" id="starsWrap">
-          <button class="star-btn" data-star="1" aria-label="1 star">★</button>
-          <button class="star-btn" data-star="2" aria-label="2 stars">★</button>
-          <button class="star-btn" data-star="3" aria-label="3 stars">★</button>
-          <button class="star-btn" data-star="4" aria-label="4 stars">★</button>
-          <button class="star-btn" data-star="5" aria-label="5 stars">★</button>
-        </div>
-        <span class="star-label" id="starLabel"></span>
-      </div>
-      <div class="error-msg" id="starError">Please rate your driver.</div>
-    </div>
-    <div class="section-label">Driver Details (optional) <span class="optional-label">(optional)</span></div>
-    <div class="field">
-      <label>Select anything that applies.</label>
-      <div class="bonus-grid" id="rideDetailsGroup">
-        <button class="bonus-btn" data-rd="clean" type="button"><span class="bonus-icon">✨</span><span>Very clean car<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Spotless interior</small></span></button>
-        <button class="bonus-btn" data-rd="amenities" type="button"><span class="bonus-icon">🎁</span><span>Offered amenities<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Water, charger, etc.</small></span></button>
-        <button class="bonus-btn" data-rd="ontime" type="button"><span class="bonus-icon">⏱️</span><span>On time / no waiting<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Arrived promptly</small></span></button>
-        <button class="bonus-btn" data-rd="smooth" type="button"><span class="bonus-icon">🛣️</span><span>Very smooth ride<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Safe, steady driving</small></span></button>
+      <label>Are you a regular or first-time client?</label>
+      <div class="pill-group" id="clientGroup">
+        <button class="pill selected" data-val="regular">Regular client</button>
+        <button class="pill" data-val="first">First time</button>
       </div>
     </div>
-    <div class="section-label">Extra? <span class="optional-label">(optional)</span></div>
+
+    <!-- QUALITY -->
+    <div class="section-label">Your Experience</div>
     <div class="field">
+      <label>How satisfied are you with the results?</label>
+      <div class="stars-wrap" id="starsWrap">
+        <button class="star-btn" data-star="1" aria-label="1 star">★</button>
+        <button class="star-btn" data-star="2" aria-label="2 stars">★</button>
+        <button class="star-btn" data-star="3" aria-label="3 stars">★</button>
+        <button class="star-btn" data-star="4" aria-label="4 stars">★</button>
+        <button class="star-btn" data-star="5" aria-label="5 stars">★</button>
+      </div>
+      <div class="star-label" id="starLabel">Tap to rate your experience</div>
+      <div class="error-msg" id="starError">Please rate your experience.</div>
+    </div>
+
+    <!-- BONUS OCCASION -->
+    <div class="section-label">Special Occasion? <span class="optional-label">(optional)</span></div>
+    <div class="field">
+      <label>Tip a little extra for any of these? Tap to toggle.</label>
       <div class="bonus-grid" id="bonusGroup">
-        <button class="bonus-btn" data-bonus="0.05" data-key="outstanding" type="button"><span class="bonus-icon">✨</span><span>Truly Outstanding<br><small class="bonus-sub" style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+5% suggested</small></span></button>
+        <button class="bonus-btn" data-bonus="0.05" data-key="holiday" type="button">
+          <span class="bonus-icon">🎄</span>
+          <span>Holiday / Christmas<br><small class="bonus-sub" style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+5% suggested</small></span>
+        </button>
+        <button class="bonus-btn" data-bonus="0.05" data-key="baby" type="button">
+          <span class="bonus-icon">👶</span>
+          <span>Stylist's New Baby<br><small class="bonus-sub" style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+5% suggested</small></span>
+        </button>
+        <button class="bonus-btn" data-bonus="0.03" data-key="squeeze" type="button">
+          <span class="bonus-icon">⏰</span>
+          <span>Squeezed Me In<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+3% suggested</small></span>
+        </button>
+        <button class="bonus-btn" data-bonus="0.05" data-key="outstanding" type="button">
+          <span class="bonus-icon">✨</span>
+          <span>Truly Outstanding<br><small class="bonus-sub" style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+5% suggested</small></span>
+        </button>
+        <button class="bonus-btn bonus-btn--yearend" data-key="yearend" type="button" id="yearendBtn">
+          <span class="bonus-icon">🎁</span>
+          <span>Year-End Bonus<br><small id="yearendLabel" style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">= 1 full service</small></span>
+        </button>
+
       </div>
       <p class="bonus-note" id="bonusNote" style="display:none"></p>
     </div>
-        <button class="calc-btn" id="calcBtn">Calculate My Tip →</button>
+
+    <button class="calc-btn" id="calcBtn">Calculate My Tip →</button>
   </div>
 
   <!-- RESULTS -->
@@ -3084,7 +3241,7 @@
     <div class="card">
       <div class="result-header">
         <div class="city-name" id="resultCity"></div>
-        <h2>Your Tip Suggestions <span class="info-trigger" tabindex="0" role="button" aria-label="How local income affects tip suggestions">i<span class="info-popup"><strong>How your city affects these numbers</strong><br><br>Our calculator looks up the median household income for your county using US Census data. Higher local incomes mean higher tipping expectations — a 20% tip in Manhattan carries different social weight than 20% in a small rural town.<br><br><strong>Example ranges:</strong><br>Rural ($42K income) → base ~15%<br>National avg ($74K) → base ~18%<br>High cost city ($120K+) → base ~22%<br><br>The percentage itself adjusts — not just the dollar amount.</span></span></h2>
+        <h2>Your Tip Suggestions <span class="info-trigger" tabindex="0" role="button" aria-label="How local income affects tip suggestions">i<span class="info-popup"><strong>How your city affects these numbers</strong><br><br>We look up the median household income for your county using US Census data. Higher local incomes mean higher tipping expectations — a 20% tip in Manhattan carries different social weight than 20% in a small rural town.<br><br><strong>Example ranges:</strong><br>Rural ($42K income) → base ~15%<br>National avg ($74K) → base ~18%<br>High cost city ($120K+) → base ~22%<br><br>The percentage itself adjusts — not just the dollar amount.</span></span></h2>
       </div>
       <div class="tip-grid" id="tipGrid"></div>
       <div class="insight-wrap">
@@ -3118,24 +3275,108 @@
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     -->
   </div>
-<!-- SEO CONTENT: Rideshare Tipping Guide -->
-<section class="seo-section" aria-label="Rideshare tipping guide">
+<!-- SEO CONTENT: Common Tipping Etiquette in US Salons -->
+<section class="seo-section" aria-label="Hair salon tipping guide">
   <div class="seo-inner">
-    <h2 class="seo-h2">How Much to Tip Uber and Lyft Drivers</h2>
-    <p class="seo-lead">Rideshare drivers are independent contractors who cover their own costs. Here's what's standard across every trip type.</p>
+    <h2 class="seo-h2">United States Hair Stylist Tipping Guide</h2>
+    <p class="seo-lead">Not sure what's normal for US salon tipping? Here's what most Americans actually do — and why local norms matter more than any single national rule.</p>
+
     <div class="seo-grid">
-      <div class="seo-card"><h3>The Standard Range</h3><p>Most US riders tip their Uber or Lyft driver <strong>15%–20%</strong> of the fare. For excellent service — clean car, smooth ride, professional attitude — 20%–25% is appropriate. The average tip left through the Uber app is around 18%..</p></div>
-      <div class="seo-card"><h3>Airport Trips</h3><p>Airport trips warrant 20% at minimum. They involve longer distances, luggage, traffic, and often early morning or late night timing. If the driver helped with bags or arrived precisely on time before a flight, 20%–25% is well-regarded.</p></div>
-      <div class="seo-card"><h3>Lost Item Returns</h3><p>If a driver goes out of their way to return a lost item, tip $20–$50 in addition to any in-app tip. This is significantly above the standard rate because returning an item requires extra driving, time, and coordination — none of which is compensated by the app.</p></div>
-      <div class="seo-card"><h3>Limo and Black Car Service</h3><p>For limousine or black car services, 20%–25% is the standard tip. These premium services operate at a higher price point with higher service expectations. Many limo and black car operators suggest 20% as the baseline gratuity.</p></div>
+      <div class="seo-card">
+        
+        <h3>The Standard Range</h3>
+        <p>The widely accepted tip for a hair stylist in the US is <strong>15%–20%</strong> of the total service cost. For exceptional work — precise cuts, complex color, or creative styling — <strong>20%–25%</strong> is common and appreciated. Going below 15% is generally considered low by industry standards.</p>
+      </div>
+
+      <div class="seo-card">
+        
+        <h3>How Much Should I Tip My Hair Stylist at Christmas?</h3>
+        <p>For regular clients, a <strong>holiday tip equivalent to the cost of one service</strong> is the most common guideline — or a generous 25%–30% on your last appointment of the year. A $20–$50 cash bonus on top of your normal tip is a warm, meaningful gesture your stylist will remember.</p>
+      </div>
+
+      <div class="seo-card">
+        
+        <h3>Why Tips Vary by City</h3>
+        <p>Tipping norms in New York City, San Francisco, or Seattle naturally run higher than in rural areas — cost of living, stylist wages, and local income all affect what feels appropriate. A 20% tip in Manhattan is table stakes; the same percentage in a small Midwestern town may be genuinely above and beyond.</p>
+      </div>
+
+      <div class="seo-card">
+        
+        <h3>Does Appointment Length Matter?</h3>
+        <p>Yes. A 30-minute trim and a 3-hour balayage both show on your bill as a dollar amount — but the longer appointment demands significantly more of your stylist's time, skill, and energy. Tipping based on time as well as price is increasingly considered the thoughtful approach.</p>
+      </div>
+
+      <div class="seo-card">
+        
+        <h3>Should You Tip the Salon Owner?</h3>
+        <p>The old etiquette rule that said "don't tip the owner" is largely outdated. Most salon owners today work the chair just like their staff, and tipping <strong>15%–20%</strong> is appropriate and appreciated. If the owner provides exceptional service, tip as you would any skilled professional.</p>
+      </div>
+
+      <div class="seo-card">
+        
+        <h3>Cash vs. Card Tips</h3>
+        <p>Stylists almost universally prefer cash tips — they receive the full amount immediately, with no processing delay or card fees. If cash isn't an option, card tips are still very much appreciated. Some salons use digital tip prompts at checkout; these go directly to the stylist.</p>
+      </div>
     </div>
+
     <div class="seo-faq">
-      <h3 class="seo-faq-title">Frequently Asked Questions — Rideshare Tips</h3>
-      <div class="seo-faq-item"><strong>Should I tip Uber and Lyft drivers?</strong><p>Yes — rideshare drivers are independent contractors who pay for fuel, vehicle maintenance, and insurance out of pocket. Tipping is a meaningful portion of their take-home income. 15%–20% is the standard US tip.</p></div>
-      <div class="seo-faq-item"><strong>How much to tip for an airport Uber?</strong><p>20% is the widely accepted standard for airport Uber rides. Airport trips involve longer distances, traffic, and luggage — and the driver often waited in a staging area. 20%–25% is appreciated for a smooth airport experience.</p></div>
-      <div class="seo-faq-item"><strong>How much to tip for a long Uber ride?</strong><p>For a long ride (30+ minutes), tip 20%–25%. Long rides are less efficient for drivers per mile and represent more of their time. Tipping at the higher end recognizes this.</p></div>
-      <div class="seo-faq-item"><strong>Do I tip Uber for returning a lost item?</strong><p>Yes — and generously. $20–$50 is the widely cited range for lost item returns. The driver went out of their way and likely lost earning time to return your belongings. This warrants a notably higher tip than a standard ride.</p></div>
-    </div>
+      <h3 class="seo-faq-title">Frequently Asked Questions — US Hair Stylist Tips</h3>
+      <div class="seo-faq-item">
+        <strong>How much do you tip on a $100 haircut?</strong>
+        <p>For a $100 haircut in the United States, $18–$20 is standard (18%–20%). If you were very happy, or the appointment was long or complex, $20–$25 is generous and appreciated. In high cost-of-living cities like New York or San Francisco, 20%–25% is the local norm.</p>
+      </div>
+      <div class="seo-faq-item">
+        <strong>How much do you tip on a $150 hair service?</strong>
+        <p>At $150, a standard 20% tip is $30. For balayage, toning, or any service involving significant time and product, $35–$45 (23%–30%) reflects the extra skill involved. Use our calculator above to get a figure calibrated to your specific city.</p>
+      </div>
+      <div class="seo-faq-item">
+        <strong>How much do you tip on a $200 hair service?</strong>
+        <p>At $200, a 20% tip is $40. For full-day color work or complex treatments, many US clients tip toward $50–$60 (25%–30%) to reflect the hours and expertise involved. The service type and your satisfaction level should guide where you land in that range.</p>
+      </div>
+      <div class="seo-faq-item">
+        <strong>How much do you tip on a $300 hair service?</strong>
+        <p>At $300, a standard 20% tip is $60. For premium services like balayage, keratin treatments, or color correction, $70–$90 (23%–30%) is not uncommon among regular clients who want to show meaningful appreciation for the time and skill involved.</p>
+      </div>
+      <div class="seo-faq-item">
+        <strong>How much do you tip on a $350 hair service?</strong>
+        <p>For a $350 service in a US salon, $70 is the 20% baseline. For exceptional work or a multi-hour appointment, $85–$105 (24%–30%) is a generous and well-regarded tip. If you had a senior or highly experienced stylist, erring toward the higher end is appropriate.</p>
+      </div>
+      <div class="seo-faq-item">
+        <strong>How much do you tip on a $400 hair service?</strong>
+        <p>At $400, a standard tip is $80 (20%). For complex, high-skill work — full color corrections, extensions, or multi-service appointments — $90–$120 (22%–30%) is common among satisfied clients. A $400 service typically reflects advanced expertise that merits a thoughtful tip.</p>
+      </div>
+      <div class="seo-faq-item">
+        <strong>Is it rude not to tip your hairdresser in the United States?</strong>
+        <p>In the US, not tipping is generally considered impolite unless you had a genuinely poor experience. Stylists often rely on tips as a meaningful part of their income. Even if you're disappointed, a minimum 10%–15% tip acknowledges the time and effort involved — though local norms and your specific situation may suggest a higher floor in the calculator results.</p>
+      </div>
+      <div class="seo-faq-item">
+        <strong>Do you tip for every person who touches your hair?</strong>
+        <p>Yes — if a shampoo assistant washes and conditions your hair, a $3–$10 tip is customary in US salons. If a separate colorist or blowout technician assisted, a small individual tip for each is a thoughtful practice, especially at upscale salons. Ask the front desk how tips are distributed if you're unsure.</p>
+      </div>
+      <div class="seo-faq-item">
+        <strong>Is it better to tip cash or card at a US hair salon?</strong>
+        <p>Most US hair stylists prefer cash — it's received immediately and in full, with no card processing fees. Card tips are still appreciated when cash isn't available, but some salons take a small processing fee that reduces what the stylist actually receives. Coming prepared with cash is a thoughtful habit, especially for regular appointments.</p>
+      </div>
+      <div class="seo-faq-item">
+        <strong>How much should I tip my hair stylist at Christmas in the US?</strong>
+        <p>The most common US guideline for a Christmas or holiday tip is the cost of one full service, or a 25%–30% tip on your last appointment of the year. A separate cash bonus of $20–$50 on top of your regular tip is a warm way to show appreciation for the whole year. Use the Holiday toggle in our calculator above to see how this affects your total.</p>
+      </div>
+      <div class="seo-faq-item">
+        <strong>How much to tip for a last-minute squeeze-in?</strong>
+        <p>When a stylist rearranges their schedule or stays late to fit you in — especially before a wedding, holiday party, or other big event — an extra $10–$20 on top of your regular tip is considered thoughtful etiquette. Many clients add a 3%–5% bonus to their normal percentage to acknowledge the inconvenience the stylist absorbed. Our calculator's "Squeezed Me In" toggle automatically factors this in.</p>
+      </div>
+      <div class="seo-faq-item">
+        <strong>Hair stylist Christmas tip vs. regular service tip — what's the difference?</strong>
+        <p>A regular tip is a percentage of that day's bill — typically 18%–22% — given at every appointment. A Christmas or holiday tip is a separate, once-a-year gesture for stylists you see regularly, meant to express gratitude for the whole relationship, not just one visit. Think of the regular tip as payment for the service and the holiday tip as a thank-you for the year. The holiday amount is typically the cost of one service, or $20–$50 cash on top of your normal visit tip.</p>
+      </div>
+      <div class="seo-faq-item">
+        <strong>First-time client vs. regular client — how does tipping etiquette differ?</strong>
+        <p>First-time clients in US salons typically tip 15%–20%, which is polite and appropriate when there's no established relationship yet. Regular clients often tip 20%–25% or more, reflecting ongoing loyalty, the stylist's deep familiarity with their hair, and appreciation for consistent quality. If you love your first appointment and plan to return, tipping closer to 20%–22% signals that to your stylist. Long-term regulars often give more around the holidays or when the stylist has gone above and beyond.</p>
+      </div>
+    
+      <div class="seo-faq-item"><strong>How much do I tip my hair stylist?</strong><p>The standard tip for a hair stylist in the US is 15%–20% of the service cost. For a $60 cut, that's $9–$12. For a $150 color service, $22–$30. If you're very happy or you're a regular, 20%–25% is a warm and appreciated gesture.</p></div>
+      <div class="seo-faq-item"><strong>How much to tip a hair stylist at a salon?</strong><p>At a salon, 15%–20% is the standard. Many clients who are regulars tip 20%–25% to show appreciation for the ongoing relationship. Cash handed directly to your stylist is preferred over adding it to the card payment.</p></div>
+      <div class="seo-faq-item"><strong>How much to tip a hair stylist for balayage?</strong><p>For balayage or other multi-hour color services, tip based on the time and skill involved. 18%–22% on a $200–$400 service is the typical range — $36–$88. For exceptional results on complex color, 25% is a meaningful gesture.</p></div></div>
   </div>
 </section>
 
@@ -3143,7 +3384,7 @@
   <p class="footer-data">Calculations run entirely in your browser — we collect no personal data. Income figures from U.S. Census ACS 5-year estimates. City data provided by <a href="https://simplemaps.com/data/us-cities" target="_blank" rel="noopener noreferrer" class="footer-link">SimpleMaps</a>.</p>
   <p class="footer-disclaimer"><strong>Disclaimer:</strong> Tip suggestions are estimates only, based on local income data and general tipping norms. Actual appropriate amounts may vary. We make no guarantee of accuracy — always use your own judgment when tipping.</p>
 
-  <p style="margin-top:10px;font-size:11px;"><a href="../pricing/index.html" style="color:rgba(255,255,255,0.3);">GeoTipper Premium</a> &middot; <a href="../privacy-policy/index.html" style="color:var(--ink-3);margin-right:14px;">Privacy Policy</a><a href="../terms-of-use/index.html" style="color:var(--ink-3);">Terms of Use</a></p>
+  <p style="margin-top:10px;font-size:11px;"><a href="../../pricing/index.html" style="color:rgba(255,255,255,0.3);">GeoTipper Premium</a> &middot; <a href="../../privacy-policy/index.html" style="color:var(--ink-3);margin-right:14px;">Privacy Policy</a><a href="../../terms-of-use/"index.html" style="color:var(--ink-3);">Terms of Use</a></p>
 
   <p style="margin-top:12px;font-size:11px;color:rgba(255,255,255,0.3);">&#169; 2025 <a href="https://geotipper.com" style="color:rgba(255,255,255,0.3);">GeoTipper.com</a> &mdash; Verdant Web Solutions, LLC &middot; Idaho &middot; <a href="mailto:verdantwebsolutions@gmail.com" style="color:rgba(255,255,255,0.3);">verdantwebsolutions@gmail.com</a></p>
 </footer>
@@ -3156,7 +3397,7 @@ let _cd = COUNTIES_EMBEDDED;
 let dataReady = true;
 (async () => {
 try {
-const base = '../';
+const base = document.querySelector('base')?.href || '';
 const [cr, kr] = await Promise.all([
 fetch(base + 'cities.json'),
 fetch(base + 'counties.json')
@@ -3174,8 +3415,7 @@ document.getElementById('cityInput').dispatchEvent(new Event('input'));
 })();
 let selectedCity = null;
 let selectedStars = 0;
-let selectedRideTrip = 'standard';
-let selectedRideDetails = new Set();
+let selectedClient = 'regular';
 let selectedBonuses = {};
 const cityInput = document.getElementById('cityInput');
 const acList = document.getElementById('autocompleteList');
@@ -3288,8 +3528,8 @@ acList.classList.remove('open');
 acList.innerHTML = '';
 acActiveIdx = -1;
 }
-const slider = document.getElementById('durationSlider') || { value: '30', addEventListener: ()=>{}, style:{setProperty:()=>{}} };
-const durationDisplay = document.getElementById('durationDisplay') || { innerHTML: '' };
+const slider = document.getElementById('durationSlider');
+const durationDisplay = document.getElementById('durationDisplay');
 function updateSlider() {
 const val = parseInt(slider.value);
 const hrs = Math.floor(val / 60);
@@ -3304,10 +3544,16 @@ slider.style.setProperty('--range-pct', pct + '%');
 }
 slider.addEventListener('input', updateSlider);
 updateSlider();
-const bonusLabels = { outstanding: "Truly Outstanding service bonus included" };
+const bonusLabels = {
+holiday: 'Holiday / Christmas bonus included',
+baby: 'New baby celebration bonus included',
+squeeze: 'Last-minute squeeze-in bonus included',
+outstanding: 'Truly Outstanding results bonus included',
+yearend: 'Year-end bonus (1 full service) included'
+};
 function updateYearendLabel() {
 const price = parseFloat(document.getElementById('priceInput').value);
-const lbl = document.getElementById('yearendLabel') || {textContent:''};
+const lbl = document.getElementById('yearendLabel');
 if (lbl) {
 lbl.textContent = price >= 1 ? '+ $' + Math.round(price) + ' cash bonus' : '= 1 full service';
 }
@@ -3337,30 +3583,15 @@ note.style.display = 'none';
 }
 });
 });
-const rtGrp = document.getElementById('rideTripGroup');
-if (rtGrp) rtGrp.querySelectorAll('.pill').forEach(btn => {
+document.getElementById('clientGroup').querySelectorAll('.pill').forEach(btn => {
 btn.addEventListener('click', () => {
-rtGrp.querySelectorAll('.pill').forEach(b => b.classList.remove('selected'));
-btn.classList.add('selected'); selectedRideTrip = btn.dataset.val;
-});
-});
-const rdGrp = document.getElementById('rideDetailsGroup');
-if (rdGrp) rdGrp.querySelectorAll('.bonus-btn').forEach(btn => {
-btn.addEventListener('click', () => {
-const k = btn.dataset.rd;
-if (selectedRideDetails.has(k)) { selectedRideDetails.delete(k); btn.classList.remove('active'); }
-else { selectedRideDetails.add(k); btn.classList.add('active'); }
-});
-});
-const _clientGrp = document.getElementById('clientGroup');
-if (_clientGrp) _clientGrp.querySelectorAll('.pill').forEach(btn => {
-btn.addEventListener('click', () => {
-_clientGrp.querySelectorAll('.pill').forEach(b => b.classList.remove('selected'));
+document.getElementById('clientGroup').querySelectorAll('.pill')
+.forEach(b => b.classList.remove('selected'));
 btn.classList.add('selected');
 selectedClient = btn.dataset.val;
 });
 });
-const starLabels = ['','Poor driver','Below average','Acceptable ride','Good driver','Excellent driver'];
+const starLabels = ['','Not happy with results','Below expectations','Satisfied','Really happy','Blown away!'];
 document.getElementById('starsWrap').querySelectorAll('.star-btn').forEach(btn => {
 btn.addEventListener('click', () => {
 selectedStars = parseInt(btn.dataset.star);
@@ -3389,116 +3620,211 @@ history.pushState({page: 'form'}, '', '');
 });
 function calculate() {
 let valid = true;
-if (!selectedCity) { document.getElementById('cityError').classList.add('show'); cityInput.classList.add('error'); valid = false; }
-const rawPrice = document.getElementById('priceInput') ? document.getElementById('priceInput').value : '1';
+if (!selectedCity) {
+document.getElementById('cityError').classList.add('show');
+cityInput.classList.add('error');
+valid = false;
+}
+const rawPrice = document.getElementById('priceInput').value;
 const price = parseFloat(rawPrice);
-if (!rawPrice || isNaN(price) || price < 1) {
-if (document.getElementById('priceError')) document.getElementById('priceError').classList.add('show');
+if (!rawPrice || isNaN(price) || price < 1 || price > 5000) {
+document.getElementById('priceError').classList.add('show');
+document.getElementById('priceInput').classList.add('error');
 valid = false;
 } else {
-if (document.getElementById('priceError')) { document.getElementById('priceError').classList.remove('show'); document.getElementById('priceInput').classList.remove('error'); }
+document.getElementById('priceError').classList.remove('show');
+document.getElementById('priceInput').classList.remove('error');
 }
-if (selectedStars === 0) { if (document.getElementById('starError')) document.getElementById('starError').classList.add('show'); valid = false; }
+if (selectedStars === 0) {
+document.getElementById('starError').classList.add('show');
+valid = false;
+}
 if (!valid) return;
 const fips = selectedCity.f;
-const _li = (_cd && fips && _cd[fips]) ? _cd[fips] : _umi;
+const _li = (_cd && fips && _cd[fips])
+? _cd[fips]
+: _umi;
 const dataSource = (_cd && fips && _cd[fips]) ? 'local' : 'national';
 const _i1 = (_li - 40000) / (120000 - 40000);
 const _b0 = Math.max(0.13, Math.min(0.27, 0.15 + _i1 * 0.10));
-let _s2 = 0;
-if (selectedRideTrip === 'veryshort') _s2 += 0.04;
-if (selectedRideTrip === 'short') _s2 += 0.02;
-if (selectedRideTrip === 'medium') _s2 += 0.01;
-if (selectedRideTrip === 'airport') _s2 += 0.03;
-if (selectedRideTrip === 'long') _s2 += 0.02;
-if (selectedRideTrip === 'limo') _s2 += 0.05;
-if (selectedRideTrip === 'shuttle') _s2 += 0.03;
-if (selectedRideTrip === 'hotel_shuttle') _s2 += 0.02;
-if (selectedRideTrip === 'lost_item') _s2 += 0.10;
-if (selectedRideDetails.has('clean')) _s2 += 0.02;
-if (selectedRideDetails.has('amenities')) _s2 += 0.02;
-if (selectedRideDetails.has('ontime')) _s2 += 0.01;
-if (selectedRideDetails.has('smooth')) _s2 += 0.01;
-_s2 = Math.min(_s2, 0.14);
-const _c3 = (typeof selectedClient !== "undefined" && selectedClient === "regular") ? 0.015 : 0;
-const _a5 = _b0 + _s2 + _c3;
-const _p4 = Object.entries(selectedBonuses).filter(([k]) => k !== "yearend").reduce((s,[,v]) => s+v, 0);
-const yearendFlat = selectedBonuses["yearend"] === "YEAREND" ? price : 0;
+const duration = parseInt(slider.value);
+let durationAdj = 0;
+if (duration >= 150) durationAdj = 0.03;
+else if (duration >= 90) durationAdj = 0.015;
+else if (duration <= 20) durationAdj = -0.02;
+const _c3 = selectedClient === 'regular' ? 0.015 : 0;
+const _a5 = _b0 + durationAdj + _c3;
+const _p4 = Object.entries(selectedBonuses)
+.filter(([k]) => k !== 'yearend')
+.reduce((s, [, v]) => s + v, 0);
+const yearendFlat = selectedBonuses['yearend'] === 'YEAREND' ? price : 0;
 const bonusTotal = _p4;
 let _ac6, _g7, _bt8, _bs9;
 if (selectedStars <= 2) {
 const unhappyBase = Math.max(0.10, Math.min(0.15, _b0 - 0.05));
-_ac6 = unhappyBase; _g7 = Math.max(unhappyBase + 0.03, _a5 - 0.06);
-_bt8 = _a5 - 0.02; _bs9 = _a5 + 0.01;
+_ac6 = unhappyBase;
+_g7 = Math.max(unhappyBase + 0.03, _a5 - 0.06);
+_bt8 = _a5 - 0.02;
+_bs9 = _a5 + 0.01;
 } else if (selectedStars === 3) {
-_ac6 = Math.max(0.12, _a5 - 0.05); _g7 = _a5 - 0.02;
-_bt8 = _a5 + 0.02; _bs9 = _a5 + 0.05;
+_ac6 = Math.max(0.12, _a5 - 0.05);
+_g7 = _a5 - 0.02;
+_bt8 = _a5 + 0.02;
+_bs9 = _a5 + 0.05;
 } else {
-_ac6 = Math.max(0.12, _a5 - 0.04); _g7 = _a5;
-_bt8 = _a5 + 0.04; _bs9 = _a5 + 0.08;
+_ac6 = Math.max(0.12, _a5 - 0.04);
+_g7 = _a5;
+_bt8 = _a5 + 0.04;
+_bs9 = _a5 + 0.08;
 }
-_ac6 += bonusTotal; _g7 += bonusTotal; _bt8 += bonusTotal; _bs9 += bonusTotal;
-const fmt = pct => "$" + Math.round(price * pct);
-const fmtPct = pct => Math.round(pct * 100) + "%";
-const fmtTotal = pct => "$" + (price + Math.round(price * pct)).toLocaleString();
-const grid = document.getElementById("tipGrid");
-grid.innerHTML = "";
-const prevBar = grid.parentNode.querySelector(".bonus-bar");
+_ac6 += bonusTotal;
+_g7 += bonusTotal;
+_bt8 += bonusTotal;
+_bs9 += bonusTotal;
+const fmt = pct => '$' + Math.round(price * pct);
+const fmtPct = pct => Math.round(pct * 100) + '%';
+const grid = document.getElementById('tipGrid');
+grid.innerHTML = '';
+const prevBar = grid.parentNode.querySelector('.bonus-bar');
 if (prevBar) prevBar.remove();
-const bonusIcons = { holiday:"🎄", squeeze:"⏰", outstanding:"✨", yearend:"🎁" };
-const bonusFriendly = { holiday:"Holiday", squeeze:"Squeezed Me In", outstanding:"Truly Outstanding", yearend:"Year-End Bonus" };
+const fmtTotal = (pct) => '$' + (price + Math.round(price * pct)).toLocaleString();
+const cards = [
+{
+cls: 'good',
+label: 'Good',
+tipAmt: fmt(_g7),
+total: fmtTotal(_g7),
+pct: fmtPct(_g7),
+mostCommon: false,
+isAcceptable: false,
+desc: 'A solid, respectful tip for standard service.'
+},
+{
+cls: 'better',
+label: 'Better',
+tipAmt: fmt(_bt8),
+total: fmtTotal(_bt8),
+pct: fmtPct(_bt8),
+mostCommon: selectedStars >= 3,
+isAcceptable: false,
+desc: 'The local sweet spot. Shows real appreciation.'
+},
+{
+cls: 'best',
+label: 'Best',
+tipAmt: fmt(_bs9),
+total: fmtTotal(_bs9),
+pct: fmtPct(_bs9),
+mostCommon: false,
+isAcceptable: false,
+desc: selectedStars === 5 ? 'You loved it — make their day.' : 'For exceptional work above and beyond.'
+},
+{
+cls: 'minimum',
+label: selectedStars <= 2 ? 'If Unhappy' : 'Minimum',
+tipAmt: fmt(_ac6),
+total: fmtTotal(_ac6),
+pct: fmtPct(_ac6),
+mostCommon: false,
+isAcceptable: true,
+desc: selectedStars <= 2
+? 'Not thrilled, but the stylist put in time and effort. This acknowledges that.'
+: 'Disappointed with results — still acknowledges the effort.'
+}
+];
+const bonusIcons = { holiday: '🎄', baby: '👶', squeeze: '⏰', outstanding: '✨', yearend: '🎁' };
+const bonusFriendly = { holiday: 'Holiday', baby: 'New Baby', squeeze: 'Squeezed Me In', outstanding: 'Truly Outstanding', yearend: 'Year-End Bonus' };
 const activeKeys = Object.keys(selectedBonuses);
-const bonusIconString = activeKeys.map(k => bonusIcons[k]).join("");
-const pctDollar = _p4 > 0 ? "+$" + Math.round(price * _p4) : "";
-const yearDollar = yearendFlat > 0 ? "+$" + Math.round(yearendFlat) + " cash" : "";
-const bonusDollar = [pctDollar, yearDollar].filter(Boolean).join(" · ") || "";
+const bonusIconString = activeKeys.map(k => bonusIcons[k]).join('');
+const pctDollar = _p4 > 0 ? '+$' + Math.round(price * _p4) : '';
+const yearDollar = yearendFlat > 0 ? '+$' + Math.round(yearendFlat) + ' cash' : '';
+const bonusDollar = [pctDollar, yearDollar].filter(Boolean).join(' · ') || '';
 if (activeKeys.length) {
-const bar = document.createElement("div"); bar.className = "bonus-bar";
-const iconsSpan = document.createElement("span"); iconsSpan.className = "bonus-bar-icons"; iconsSpan.textContent = bonusIconString;
-const textSpan = document.createElement("span"); textSpan.className = "bonus-bar-text"; textSpan.textContent = activeKeys.map(k => bonusFriendly[k]).join(" + ") + " bonus included in each tip suggestion";
-const amtSpan = document.createElement("span"); amtSpan.className = "bonus-bar-amount"; amtSpan.textContent = bonusDollar;
-bar.appendChild(iconsSpan); bar.appendChild(textSpan); bar.appendChild(amtSpan);
+const bar = document.createElement('div');
+bar.className = 'bonus-bar';
+const iconsSpan = document.createElement('span');
+iconsSpan.className = 'bonus-bar-icons';
+iconsSpan.textContent = bonusIconString;
+const textSpan = document.createElement('span');
+textSpan.className = 'bonus-bar-text';
+textSpan.textContent = activeKeys.map(k => bonusFriendly[k]).join(' + ') + ' bonus included in each tip suggestion';
+const amtSpan = document.createElement('span');
+amtSpan.className = 'bonus-bar-amount';
+amtSpan.textContent = bonusDollar;
+bar.appendChild(iconsSpan);
+bar.appendChild(textSpan);
+bar.appendChild(amtSpan);
 grid.parentNode.insertBefore(bar, grid);
 }
-const cards = [
-{ cls:"good", label:"Good", tipAmt:fmt(_g7), total:fmtTotal(_g7), pct:fmtPct(_g7), mostCommon:false, isAcceptable:false, desc:"A solid tip for a reliable ride." },
-{ cls:"better", label:"Better", tipAmt:fmt(_bt8), total:fmtTotal(_bt8), pct:fmtPct(_bt8), mostCommon:selectedStars>=3, isAcceptable:false, desc:"The local sweet spot for good rideshare service." },
-{ cls:"best", label:"Best", tipAmt:fmt(_bs9), total:fmtTotal(_bs9), pct:fmtPct(_bs9), mostCommon:false, isAcceptable:false, desc:"Exceptional driver — make their day." },
-{ cls:"minimum", label:selectedStars<=2?"If Unhappy":"Minimum", tipAmt:fmt(_ac6), total:fmtTotal(_ac6), pct:fmtPct(_ac6), mostCommon:false, isAcceptable:true, desc:selectedStars<=2?"Not what you expected — still acknowledges the effort.":"Disappointed — still acknowledges the effort." }
-];
 cards.forEach(card => {
-const div = document.createElement("div");
-div.className = "tip-card " + card.cls + (card.isAcceptable ? " acceptable" : "");
-const lbl = document.createElement("div"); lbl.className = "tip-card-label"; lbl.textContent = card.label;
-const amt = document.createElement("div"); amt.className = "tip-card-amount"; amt.textContent = card.tipAmt;
-const tot = document.createElement("div"); tot.className = "tip-card-total";
-const totLbl = document.createElement("div"); totLbl.className = "tip-card-total-label"; totLbl.textContent = "New Total";
-const totVal = document.createElement("div"); totVal.className = "tip-card-total-value"; totVal.textContent = card.total;
-tot.appendChild(totLbl); tot.appendChild(totVal);
-const pct = document.createElement("div"); pct.className = "tip-card-pct"; pct.textContent = card.pct + " tip";
-const mcTag = document.createElement("div"); mcTag.className = "most-common-tag"; mcTag.textContent = card.mostCommon ? "★ Most Common" : "";
-const desc = document.createElement("div"); desc.className = "tip-card-desc"; desc.textContent = card.desc;
-if (card.isAcceptable) {
-const body = document.createElement("div"); body.className = "tip-card-body";
-const right = document.createElement("div"); right.className = "tip-card-right"; right.appendChild(amt); right.appendChild(pct); right.appendChild(tot);
-body.appendChild(desc); body.appendChild(right);
-div.appendChild(lbl); div.appendChild(body);
+const div = document.createElement('div');
+div.className = 'tip-card ' + card.cls + (card.isAcceptable ? ' acceptable' : '');
+const isAcceptable = card.isAcceptable === true;
+const lbl = document.createElement('div');
+lbl.className = 'tip-card-label';
+lbl.textContent = card.label;
+const amt = document.createElement('div');
+amt.className = 'tip-card-amount';
+amt.textContent = card.tipAmt;
+const tot = document.createElement('div');
+tot.className = 'tip-card-total';
+const totLbl = document.createElement('div');
+totLbl.className = 'tip-card-total-label';
+totLbl.textContent = 'New Total';
+const totVal = document.createElement('div');
+totVal.className = 'tip-card-total-value';
+totVal.textContent = card.total;
+tot.appendChild(totLbl);
+tot.appendChild(totVal);
+const pct = document.createElement('div');
+pct.className = 'tip-card-pct';
+pct.textContent = card.pct + ' tip';
+const mcTag = document.createElement('div');
+mcTag.className = 'most-common-tag';
+mcTag.textContent = card.mostCommon ? '★ Most Common' : '';
+const desc = document.createElement('div');
+desc.className = 'tip-card-desc';
+desc.textContent = card.desc;
+if (isAcceptable) {
+const body = document.createElement('div');
+body.className = 'tip-card-body';
+const right = document.createElement('div');
+right.className = 'tip-card-right';
+right.appendChild(amt);
+right.appendChild(pct);
+right.appendChild(tot);
+body.appendChild(desc);
+body.appendChild(right);
+div.appendChild(lbl);
+div.appendChild(body);
 } else {
-div.appendChild(lbl); div.appendChild(amt); div.appendChild(tot); div.appendChild(pct);
+div.appendChild(lbl);
+div.appendChild(amt);
+div.appendChild(tot);
+div.appendChild(pct);
 if (card.mostCommon) div.appendChild(mcTag);
 div.appendChild(desc);
 }
 grid.appendChild(div);
 });
-const fmtIncome = "$" + _li.toLocaleString();
-const incomeDesc = _li >= 100000 ? "high" : _li >= 74000 ? "above the national average" : _li >= 55000 ? "near the national average" : "below the national average";
-const bonusNames = { holiday:"holiday", squeeze:"last-minute squeeze-in", outstanding:"truly outstanding", yearend:"year-end bonus" };
+const fmtIncome = '$' + _li.toLocaleString();
+const incomeDesc = _li >= 100000 ? 'high'
+: _li >= 74000 ? 'above the national average'
+: _li >= 55000 ? 'near the national average'
+: 'below the national average';
+const bonusNames = { holiday: 'holiday', baby: 'new baby', squeeze: 'last-minute squeeze-in', outstanding: 'truly outstanding results', yearend: 'year-end service bonus' };
 const bonusKeys = Object.keys(selectedBonuses);
-const pctKeys = bonusKeys.filter(k => k !== "yearend");
-const bonusInsight = bonusKeys.length ? (pctKeys.length ? " A " + pctKeys.map(k => bonusNames[k]).join(" + ") + " bonus has been added." : "") + (yearendFlat > 0 ? " Year-end cash gift: $" + Math.round(yearendFlat) + "." : "") : "";
-const fallbackNote = dataSource === "national" ? " (Using national average — local data unavailable.)" : "";
-const tripLabels = {standard:'standard rideshare',veryshort:'very short trip',short:'short trip',medium:'medium trip',airport:'airport rideshare',long:'long trip',limo:'limo/black car',shuttle:'private shuttle',hotel_shuttle:'hotel shuttle',lost_item:'lost item return'};
-const svcNote = ' Calibrated for a ' + tripLabels[selectedRideTrip] + ' in this city.';
+const pctKeys = bonusKeys.filter(k => k !== 'yearend');
+const bonusInsight = bonusKeys.length
+? (pctKeys.length ? ' A ' + pctKeys.map(k => bonusNames[k]).join(' + ') + ' bonus has been added to all tip suggestions.' : '')
++ (yearendFlat > 0 ? ' A separate year-end cash gift of $' + Math.round(yearendFlat) + ' (one full service) is also shown below.' : '')
+: '';
+const durationNote = duration >= 120 ? ' Your long appointment is factored in.'
+: duration >= 90 ? ' Time in the chair is reflected in your suggestions.'
+: '';
+const fallbackNote = dataSource === 'national'
+? ' (Using national average — local data not available for this city.)'
+: '';
 const _incomeEffect = _li >= 100000
 ? '+' + fmtIncome + ' median income — well above average, higher tip norms'
 : _li >= 74000
@@ -3510,45 +3836,53 @@ const _incomeEffect = _li >= 100000
 : '-' + fmtIncome + ' median income — significantly below average, _a5 down';
 const _adjItems = [];
 _adjItems.push(_incomeEffect);
-if (selectedBonuses['outstanding'] !== undefined && selectedBonuses['outstanding'] !== 'YEAREND') _adjItems.push('+Truly Outstanding +5%');
-if (selectedBonuses['yearend'] === 'YEAREND') _adjItems.push('+Year-end bonus — ' + '$' + Math.round(price||0) + ' cash gift (1 full service)');
 if (selectedStars > 0) {
-const _starLabels = ['', 'Poor driver', 'Below average', 'Acceptable ride', 'Good driver', 'Excellent driver'];
+const _starLabels = ['', 'Not happy', 'Below expectations', 'Satisfied', 'Really pleased', 'Outstanding'];
 const _starEffects = {
-1: '-1 star (Poor driver) — minimum floor applied, suggestions at low end',
-2: '-2 stars (Below average) — below average, suggestions reduced',
-3: '·3 stars (Acceptable ride) — standard suggestions',
-4: '+4 stars (Good driver) — good rating, generous range shown',
-5: '+5 stars (Excellent driver) — top rating, full generous range'
+1: '-1 star (Not happy) — minimum floor applied, suggestions at low end',
+2: '-2 stars (Below expectations) — below average, suggestions reduced',
+3: '·3 stars (Satisfied) — standard suggestions',
+4: '+4 stars (Really pleased) — good rating, generous range shown',
+5: '+5 stars (Outstanding) — top rating, full generous range'
 };
 _adjItems.push(_starEffects[selectedStars] || ('·' + selectedStars + ' stars'));
 }
-if (_li > 90000) _adjItems.push('+High cost-of-living city');
-if (selectedRideTrip === 'airport') _adjItems.push('+Airport trip — +3%');
-if (selectedRideTrip === 'long') _adjItems.push('+Long trip — +2%');
-if (selectedRideTrip === 'veryshort') _adjItems.push('+Very short trip — higher % appropriate');
-if (selectedRideTrip === 'limo') _adjItems.push('+Limo/black car — +5%');
-if (selectedRideTrip === 'shuttle') _adjItems.push('+Private shuttle — +3%');
-if (selectedRideTrip === 'lost_item') _adjItems.push('+Returned lost item — major bonus applied');
-if (selectedRideDetails.has('clean')) _adjItems.push('+Very clean car — +2%');
-if (selectedRideDetails.has('amenities')) _adjItems.push('+Offered amenities — +2%');
-if (selectedRideDetails.has('ontime')) _adjItems.push('+On time — +1%');
-if (selectedRideDetails.has('smooth')) _adjItems.push('+Smooth ride — +1%');
-if (selectedStars <= 2) _adjItems.push('-Low rating — minimum applied');
-const insight = document.getElementById("insightBox");
-insight.textContent = "";
-const strong = document.createElement("strong"); strong.textContent = selectedCity.c + ", " + selectedCity.s + ":";
+if (durationAdj > 0) _adjItems.push('+Long appointment — duration factored in');
+if (durationAdj < 0) _adjItems.push('-Very short appointment — _a5 down');
+if (_c3 > 0) _adjItems.push('+Regular client — loyalty bonus added');
+if (selectedBonuses['holiday'] !== undefined && selectedBonuses['holiday'] !== 'YEAREND') _adjItems.push('+Holiday/Christmas bonus +5%');
+if (selectedBonuses['baby'] !== undefined && selectedBonuses['baby'] !== 'YEAREND') _adjItems.push('+New baby bonus +5%');
+if (selectedBonuses['squeeze'] !== undefined && selectedBonuses['squeeze'] !== 'YEAREND') _adjItems.push('+Squeezed me in +3%');
+if (selectedBonuses['outstanding'] !== undefined && selectedBonuses['outstanding'] !== 'YEAREND') _adjItems.push('+Truly Outstanding +5%');
+if (selectedBonuses['yearend'] === 'YEAREND') _adjItems.push('+Year-end bonus — ' + '$' + Math.round(price||0) + ' cash gift (1 full service)');
+const insight = document.getElementById('insightBox');
+insight.textContent = '';
+const strong = document.createElement('strong');
+strong.textContent = selectedCity.c + ', ' + selectedCity.s + ':';
 insight.appendChild(strong);
-insight.appendChild(document.createTextNode(" The local cost of living here (based on median household income) is " + fmtIncome + " — " + incomeDesc + ". Calibrated for your ride type and city." + svcNote + bonusInsight + fallbackNote));
-const prevYearBox = document.getElementById("yearendBox");
+insight.appendChild(document.createTextNode(
+' The local cost of living here (based on median household income) is ' + fmtIncome + ' — ' + incomeDesc +
+'. Your suggestions are calibrated to what feels appropriate in this area.' +
+durationNote + bonusInsight + fallbackNote
+));
+const prevYearBox = document.getElementById('yearendBox');
 if (prevYearBox) prevYearBox.remove();
 if (yearendFlat > 0) {
-const yBox = document.createElement("div"); yBox.id = "yearendBox"; yBox.className = "yearend-box";
-const yIcon = document.createElement("span"); yIcon.className = "yearend-icon"; yIcon.textContent = "🎁";
-const yText = document.createElement("div"); yText.className = "yearend-text";
-const yStrong = document.createElement("strong"); yStrong.textContent = "Year-End Cash Gift: $" + Math.round(yearendFlat);
-const yDesc = document.createTextNode(" — Give this separately from your visit tip to your driver.");
-yText.appendChild(yStrong); yText.appendChild(yDesc); yBox.appendChild(yIcon); yBox.appendChild(yText);
+const yBox = document.createElement('div');
+yBox.id = 'yearendBox';
+yBox.className = 'yearend-box';
+const yIcon = document.createElement('span');
+yIcon.className = 'yearend-icon';
+yIcon.textContent = '🎁';
+const yText = document.createElement('div');
+yText.className = 'yearend-text';
+const yStrong = document.createElement('strong');
+yStrong.textContent = 'Year-End Cash Gift: $' + Math.round(yearendFlat);
+const yDesc = document.createTextNode(' — Give this directly to your stylist, separate from your visit tip. This is in addition to whichever tip above you choose.');
+yText.appendChild(yStrong);
+yText.appendChild(yDesc);
+yBox.appendChild(yIcon);
+yBox.appendChild(yText);
 insight.parentNode.insertBefore(yBox, insight.nextSibling);
 }
 const prevBD = document.getElementById('adjBreakdown');
@@ -3568,11 +3902,12 @@ bd.appendChild(row);
 });
 insight.parentNode.insertBefore(bd, insight.nextSibling);
 }
-document.getElementById("resultCity").textContent = selectedCity.c.toUpperCase() + ", " + selectedCity.s;
-document.getElementById("formCard").style.display = "none";
-const results = document.getElementById("resultsSection");
-results.classList.add("show");
-results.scrollIntoView({ behavior:"smooth", block:"start" });
+document.getElementById('resultCity').textContent =
+selectedCity.c.toUpperCase() + ', ' + selectedCity.s;
+document.getElementById('formCard').style.display = 'none';
+const results = document.getElementById('resultsSection');
+results.classList.add('show');
+results.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }</script>
 
 <!-- ═══════════════════════════════════════════════════════
