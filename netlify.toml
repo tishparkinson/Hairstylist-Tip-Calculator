@@ -11,8 +11,10 @@
   from = "/activate"
   to = "/.netlify/functions/activate"
   status = 200
+  force = true
 
 [[redirects]]
-  from = "/checkout"
-  to = "/.netlify/functions/checkout"
+  from = "/activate/*"
+  to = "/.netlify/functions/activate"
   status = 200
+  force = true
