@@ -4,16 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>GeoTipper Premium — $4.99/month</title>
-<meta name="description" content="Unlock all 23 premium tip calculators. City-calibrated for every service and every vendor on your wedding day.">
+<meta name="description" content="Unlock all 23 premium tip calculators. City-calibrated for every service.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-body{background:#0D0D0F;color:#E8E8E4;font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;}
+body{background:#0D0D0F;color:#E8E8E4;font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased;}
 a{color:#4ade80;text-decoration:none;}
 
-/* NAV */
 .site-nav{display:flex;align-items:center;justify-content:space-between;padding:0 28px;height:56px;background:rgba(13,13,15,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.07);position:sticky;top:0;z-index:1000;}
 .site-logo{font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:#fff;letter-spacing:-.02em;text-decoration:none;}
 .site-logo em{font-style:normal;color:#4ade80;}
@@ -21,69 +20,86 @@ a{color:#4ade80;text-decoration:none;}
 .site-nav-links a{font-size:13px;color:rgba(255,255,255,0.45);font-weight:500;text-decoration:none;}
 .site-nav-links a:hover{color:rgba(255,255,255,0.9);}
 
-/* LAYOUT */
-.page{max-width:960px;margin:0 auto;padding:48px 24px 64px;}
+.page{max-width:1000px;margin:0 auto;padding:40px 24px 64px;}
 
-/* TOP SECTION — two columns: left hero, right card */
-.top{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-bottom:40px;}
+/* ── ABOVE FOLD ── */
+.above-fold{display:grid;grid-template-columns:1fr 320px;gap:36px;align-items:start;margin-bottom:36px;}
 
-/* LEFT — hero */
-.hero-eyebrow{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(74,222,128,0.65);display:block;margin-bottom:14px;}
-.hero h1{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,40px);font-weight:800;color:#fff;line-height:1.05;letter-spacing:-.025em;margin-bottom:16px;}
+/* Left hero */
+.hero-eyebrow{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(74,222,128,0.65);display:block;margin-bottom:12px;}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(26px,3.5vw,36px);font-weight:800;color:#fff;line-height:1.05;letter-spacing:-.025em;margin-bottom:12px;}
 .hero h1 em{font-style:normal;color:#4ade80;}
-.hero p{font-size:14px;color:rgba(255,255,255,0.52);line-height:1.7;margin-bottom:20px;}
-.feature-list{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:0;}
-.feature-list li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:rgba(255,255,255,0.72);line-height:1.5;}
-.ck{color:#4ade80;font-weight:700;flex-shrink:0;margin-top:1px;}
+.hero p{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:16px;}
+.hero-features{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.hero-features li{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:rgba(255,255,255,0.7);line-height:1.45;}
+.ck{color:#4ade80;font-weight:700;flex-shrink:0;}
 
-/* RIGHT — plan card */
-.plan-card{border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.5);}
-.plan-top{background:linear-gradient(145deg,#16A34A 0%,#22C55E 55%,#4ADE80 100%);padding:24px 24px 20px;}
-.plan-tier{font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:rgba(5,46,22,0.65);display:block;margin-bottom:8px;}
-.plan-name{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:#fff;margin-bottom:4px;}
-.plan-tagline{font-size:13px;color:rgba(5,46,22,0.65);margin-bottom:16px;}
-.plan-price-row{display:flex;align-items:baseline;gap:6px;}
-.plan-amount{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;color:#fff;line-height:1;}
-.plan-period{font-size:13px;color:rgba(5,46,22,0.6);}
-.plan-body{background:#161618;padding:20px 24px 24px;}
-.plan-cta{display:block;background:#4ade80;color:#052e16;font-family:'Inter',sans-serif;font-weight:700;font-size:15px;text-align:center;padding:13px 28px;border-radius:10px;margin-bottom:16px;text-decoration:none;transition:background .15s;}
+/* Plan card */
+.plan-card{border-radius:14px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.5);}
+.plan-top{background:linear-gradient(145deg,#16A34A 0%,#22C55E 55%,#4ADE80 100%);padding:20px 22px 18px;}
+.plan-tier{font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:rgba(5,46,22,0.6);display:block;margin-bottom:6px;}
+.plan-name{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:#fff;line-height:1.1;margin-bottom:3px;}
+.plan-tagline{font-size:12px;color:rgba(5,46,22,0.65);margin-bottom:14px;display:block;}
+.plan-price-row{display:flex;align-items:baseline;gap:4px;}
+.plan-amount{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:#fff;line-height:1;}
+.plan-period{font-size:13px;color:rgba(5,46,22,0.6);font-weight:500;}
+.plan-body{background:#161618;padding:18px 22px 20px;}
+.plan-cta{display:block;background:#4ade80;color:#052e16;font-family:'Inter',sans-serif;font-weight:700;font-size:14px;text-align:center;padding:12px 24px;border-radius:9px;margin-bottom:10px;text-decoration:none;transition:background .15s;}
 .plan-cta:hover{background:#22c55e;color:#052e16;}
-.plan-note{font-size:12px;color:rgba(255,255,255,0.3);text-align:center;margin-bottom:16px;}
-.plan-divider{border:none;border-top:1px solid rgba(255,255,255,0.07);margin:16px 0;}
-.plan-includes{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:10px;}
-.plan-chips{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
-.chip{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:6px;padding:6px 10px;font-size:11px;color:rgba(255,255,255,0.6);}
+.plan-note{font-size:11px;color:rgba(255,255,255,0.32);text-align:center;margin-bottom:14px;}
+hr.divider{border:none;border-top:1px solid rgba(255,255,255,0.08);margin:14px 0;}
+.plan-includes-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:8px;display:block;}
+.mini-chips{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+.mini-chip{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:5px;padding:5px 8px;font-size:10px;color:rgba(255,255,255,0.6);}
+.mini-chip.highlight{border-color:rgba(74,222,128,0.3);color:rgba(74,222,128,0.85);}
 
-/* FREE TIER — thin banner */
-.free-banner{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:40px;flex-wrap:wrap;}
-.free-left{display:flex;align-items:center;gap:14px;}
-.free-badge{background:linear-gradient(135deg,#4B5563 0%,#9CA3AF 40%,#D1D5DB 65%,#9CA3AF 100%);border-radius:4px;padding:3px 10px;font-size:9px;font-weight:800;letter-spacing:.12em;color:#111;white-space:nowrap;}
-.free-text{font-size:14px;color:rgba(255,255,255,0.65);}
+/* ── CALCULATOR TABLES ── */
+.section-heading{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:#fff;margin:36px 0 16px;display:flex;align-items:center;gap:10px;}
+.section-badge{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:4px;}
+.badge-free{background:linear-gradient(135deg,#4B5563 0%,#9CA3AF 40%,#D1D5DB 65%,#9CA3AF 100%);color:#111;}
+.badge-premium{background:rgba(74,222,128,0.15);color:#4ade80;border:1px solid rgba(74,222,128,0.3);}
+
+.calc-table{width:100%;border-collapse:collapse;margin-bottom:12px;}
+.calc-table th{text-align:left;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.08);}
+.calc-table td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.05);vertical-align:top;font-size:12px;}
+.calc-table tr:last-child td{border-bottom:none;}
+.calc-table tr:hover td{background:rgba(255,255,255,0.02);}
+.calc-name{font-weight:600;color:rgba(255,255,255,0.9);font-size:13px;white-space:nowrap;}
+.calc-link{display:inline-block;margin-top:3px;font-size:11px;color:#4ade80;text-decoration:none;}
+.calc-link:hover{color:#22c55e;}
+.factors{color:rgba(255,255,255,0.55);line-height:1.6;}
+.bonuses{color:rgba(74,222,128,0.75);font-size:11px;line-height:1.6;}
+.bonus-tag{display:inline-block;background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.2);border-radius:3px;padding:1px 6px;font-size:10px;margin:1px 2px 1px 0;color:rgba(74,222,128,0.85);white-space:nowrap;}
+
+/* FREE BANNER */
+.free-banner{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:32px;flex-wrap:wrap;}
+.free-badge-big{background:linear-gradient(135deg,#4B5563 0%,#9CA3AF 40%,#D1D5DB 65%,#9CA3AF 100%);border-radius:4px;padding:3px 10px;font-size:9px;font-weight:800;letter-spacing:.12em;color:#111;white-space:nowrap;}
+.free-text{font-size:13px;color:rgba(255,255,255,0.65);flex:1;}
 .free-text strong{color:#fff;}
-.free-link{font-size:13px;font-weight:600;color:rgba(255,255,255,0.45);text-decoration:none;white-space:nowrap;}
-.free-link:hover{color:#4ade80;}
+.free-btn{font-size:12px;font-weight:600;color:rgba(255,255,255,0.45);text-decoration:none;white-space:nowrap;}
+.free-btn:hover{color:#4ade80;}
 
 /* FAQ */
-.faq-heading{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:20px;}
-.faq-item{border-bottom:1px solid rgba(255,255,255,0.07);padding:14px 0;}
+.faq-heading{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;color:#fff;margin:36px 0 16px;}
+.faq-item{border-bottom:1px solid rgba(255,255,255,0.07);padding:12px 0;}
 .faq-item:last-child{border-bottom:none;}
-.faq-q{font-size:14px;font-weight:600;color:rgba(255,255,255,0.88);margin-bottom:6px;}
-.faq-a{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;}
+.faq-q{font-size:13px;font-weight:600;color:rgba(255,255,255,0.88);margin-bottom:5px;}
+.faq-a{font-size:12px;color:rgba(255,255,255,0.48);line-height:1.7;}
 
 /* FOOTER */
-.site-footer{background:rgba(255,255,255,0.02);border-top:1px solid rgba(255,255,255,0.09);padding:52px 0 0;}
-.site-footer .footer-inner{max-width:960px;margin:0 auto;padding:0 20px;}
+.site-footer{background:rgba(255,255,255,0.02);border-top:1px solid rgba(255,255,255,0.09);padding:52px 0 0;margin-top:48px;}
+.site-footer .footer-inner{max-width:1000px;margin:0 auto;padding:0 24px;}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:40px;}
 .footer-col{display:flex;flex-direction:column;gap:10px;}
 .footer-col-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:4px;}
-.footer-col a{font-size:13px;color:rgba(255,255,255,0.65);text-decoration:none;transition:color .15s;width:fit-content;}
+.footer-col a{font-size:13px;color:rgba(255,255,255,0.65);text-decoration:none;transition:color .15s;}
 .footer-col a:hover{color:#4ade80;}
 .footer-bottom{border-top:1px solid rgba(255,255,255,0.07);padding:20px 0 28px;display:flex;gap:24px;flex-wrap:wrap;}
 .footer-bottom p{font-size:11px;color:rgba(255,255,255,0.28);line-height:1.65;flex:1;min-width:200px;}
 
-@media(max-width:700px){
-  .top{grid-template-columns:1fr;}
-  .plan-chips{grid-template-columns:1fr;}
+@media(max-width:720px){
+  .above-fold{grid-template-columns:1fr;}
+  .calc-table th:nth-child(3),.calc-table td:nth-child(3){display:none;}
   .footer-grid{grid-template-columns:1fr 1fr;gap:24px;}
   .footer-grid .footer-col:first-child{grid-column:1/-1;}
 }
@@ -101,73 +117,264 @@ a{color:#4ade80;text-decoration:none;}
 
 <div class="page">
 
-  <!-- TOP: hero left, plan card right -->
-  <div class="top">
+  <!-- ABOVE FOLD -->
+  <div class="above-fold">
     <div class="hero">
       <span class="hero-eyebrow">GeoTipper Premium</span>
-      <h1>Tip every service <em>fairly.</em></h1>
-      <p>23 premium calculators — calibrated to your city's actual cost of living, not a national guess. Every service. Every vendor.</p>
-      <ul class="feature-list">
-        <li><span class="ck">&#10003;</span>All 23 premium tip calculators</li>
-        <li><span class="ck">&#10003;</span>City-calibrated using US Census income data</li>
-        <li><span class="ck">&#10003;</span>Satisfaction, travel &amp; service complexity</li>
-        <li><span class="ck">&#10003;</span>All 15 wedding vendor calculators included</li>
-        <li><span class="ck">&#10003;</span>Works for any city or town in the US</li>
-        <li><span class="ck">&#10003;</span>No ads. No tracking. Runs in your browser.</li>
+      <h1>Every factor.<br>Every service.<br><em>Every city.</em></h1>
+      <p>23 premium calculators that account for city income, service details, satisfaction, and more — so every tip you leave is fair and considered.</p>
+      <ul class="hero-features">
+        <li><span class="ck">✓</span>City-calibrated using US Census income data</li>
+        <li><span class="ck">✓</span>Satisfaction, travel &amp; service complexity factored in</li>
+        <li><span class="ck">✓</span>Holiday, year-end &amp; last-minute bonus options</li>
+        <li><span class="ck">✓</span>All 15 wedding vendor calculators included</li>
+        <li><span class="ck">✓</span>No ads. No tracking. Runs in your browser.</li>
       </ul>
     </div>
 
     <div class="plan-card">
       <div class="plan-top">
-        <span class="plan-tier">Most Popular</span>
-        <div class="plan-name">GeoTipper Premium</div>
-        <div class="plan-tagline">All 23 premium calculators included</div>
-        <div class="plan-price-row">
-          <span class="plan-amount">$4.99</span>
-          <span class="plan-period">/ month</span>
-        </div>
+        <span class="plan-tier">GeoTipper Premium</span>
+        <div class="plan-name">$4.99<span style="font-size:15px;font-weight:500;color:rgba(5,46,22,0.65);"> / month</span></div>
+        <span class="plan-tagline">All 23 premium calculators included</span>
       </div>
       <div class="plan-body">
         <a href="/.netlify/functions/checkout" class="plan-cta">Unlock Premium &rarr;</a>
         <p class="plan-note">Cancel anytime &middot; No contracts</p>
-        <hr class="plan-divider">
-        <div class="plan-includes">Includes</div>
-        <div class="plan-chips">
-          <div class="chip">Hair Stylist</div>
-          <div class="chip">Hair Colorist</div>
-          <div class="chip">Massage Therapist</div>
-          <div class="chip">Tattoo Artist</div>
-          <div class="chip">Photographer</div>
-          <div class="chip">Furniture Delivery</div>
-          <div class="chip">Caterer</div>
-          <div class="chip">+ 15 Wedding Vendors</div>
+        <hr class="divider">
+        <span class="plan-includes-label">Highlights</span>
+        <div class="mini-chips">
+          <div class="mini-chip highlight">Holiday bonus</div>
+          <div class="mini-chip highlight">Year-end bonus</div>
+          <div class="mini-chip highlight">Last-minute squeeze</div>
+          <div class="mini-chip highlight">Outstanding service</div>
+          <div class="mini-chip">First visit vs regular</div>
+          <div class="mini-chip">Travel adjustment</div>
+          <div class="mini-chip">Service complexity</div>
+          <div class="mini-chip">+ 15 wedding vendors</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- FREE TIER BANNER -->
+  <!-- FREE BANNER -->
   <div class="free-banner">
-    <div class="free-left">
-      <span class="free-badge">FREE</span>
-      <span class="free-text"><strong>13 free calculators</strong> — restaurant, barber, rideshare, movers, dog groomer &amp; more</span>
-    </div>
-    <a href="../index.html" class="free-link">Browse free calculators &rarr;</a>
+    <span class="free-badge-big">FREE</span>
+    <span class="free-text"><strong>13 free calculators</strong> — restaurant, barber, rideshare, movers, dog groomer, nail salon &amp; more. No account needed.</span>
+    <a href="../index.html" class="free-btn">Browse free &rarr;</a>
   </div>
+
+  <!-- PREMIUM CALCULATORS TABLE -->
+  <div class="section-heading"><span class="section-badge badge-premium">Premium</span> What each calculator accounts for</div>
+  <table class="calc-table">
+    <thead>
+      <tr>
+        <th>Calculator</th>
+        <th>Factors taken into account</th>
+        <th>Bonus options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="calc-name">Hair Stylist</span><br><a class="calc-link" href="../premium/hair-stylist-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Bill amount · Appointment length · First visit vs regular · Satisfaction</td>
+        <td class="bonuses"><span class="bonus-tag">Holiday / Christmas</span><span class="bonus-tag">Squeezed me in</span><span class="bonus-tag">Truly outstanding</span><span class="bonus-tag">Year-end bonus</span></td>
+      </tr>
+      <tr>
+        <td><span class="calc-name">Hair Colorist</span><br><a class="calc-link" href="../premium/hair-colorist-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Service cost · Color type · Multiple services · Time in chair · First visit vs regular · Results satisfaction</td>
+        <td class="bonuses"><span class="bonus-tag">Holiday / Christmas</span><span class="bonus-tag">Squeezed me in</span><span class="bonus-tag">Truly outstanding</span><span class="bonus-tag">Year-end bonus</span></td>
+      </tr>
+      <tr>
+        <td><span class="calc-name">Massage Therapist</span><br><a class="calc-link" href="../premium/massage-therapist-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Bill amount · Session length · Massage type · Spa vs mobile vs clinic · Number of therapists · First visit vs regular · Satisfaction</td>
+        <td class="bonuses"><span class="bonus-tag">Holiday / Christmas</span><span class="bonus-tag">Squeezed me in</span><span class="bonus-tag">Truly outstanding</span><span class="bonus-tag">Year-end bonus</span></td>
+      </tr>
+      <tr>
+        <td><span class="calc-name">Tattoo Artist</span><br><a class="calc-link" href="../premium/tattoo-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Session cost · Session length · Design complexity · Custom vs flash · First visit vs regular · Satisfaction</td>
+        <td class="bonuses"><span class="bonus-tag">Holiday / Christmas</span><span class="bonus-tag">Squeezed me in</span><span class="bonus-tag">Truly outstanding</span><span class="bonus-tag">Year-end bonus</span></td>
+      </tr>
+      <tr>
+        <td><span class="calc-name">Photographer</span><br><a class="calc-link" href="../premium/photographer-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Service cost · Session type · Solo vs studio · Travel distance · Satisfaction</td>
+        <td class="bonuses"><span class="bonus-tag">Truly outstanding</span><span class="bonus-tag">Squeezed me in</span></td>
+      </tr>
+      <tr>
+        <td><span class="calc-name">Furniture Delivery</span><br><a class="calc-link" href="../premium/furniture-delivery-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Delivery type · Retailer · Number of delivery people · Difficulty · Satisfaction</td>
+        <td class="bonuses"><span class="bonus-tag">Truly outstanding</span></td>
+      </tr>
+      <tr>
+        <td><span class="calc-name">Caterer</span><br><a class="calc-link" href="../premium/caterer-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Service cost · Event type · Service style · Staffing level · Guest count · Satisfaction</td>
+        <td class="bonuses"><span class="bonus-tag">Holiday / Christmas</span><span class="bonus-tag">Squeezed me in</span><span class="bonus-tag">Truly outstanding</span><span class="bonus-tag">Year-end bonus</span></td>
+      </tr>
+      <tr>
+        <td><span class="calc-name">Wedding Photographer</span><br><a class="calc-link" href="../premium/wedding-photographer-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Package cost · Travel distance · Satisfaction</td>
+        <td class="bonuses"><span class="bonus-tag">Truly outstanding</span><span class="bonus-tag">Went above &amp; beyond</span></td>
+      </tr>
+      <tr>
+        <td><span class="calc-name">Wedding DJ</span><br><a class="calc-link" href="../premium/wedding-dj-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Service cost · Travel · Satisfaction</td>
+        <td class="bonuses"><span class="bonus-tag">Truly outstanding</span></td>
+      </tr>
+      <tr>
+        <td><span class="calc-name">Wedding Band</span><br><a class="calc-link" href="../premium/wedding-band-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Service cost · Travel · Satisfaction</td>
+        <td class="bonuses"><span class="bonus-tag">Truly outstanding</span></td>
+      </tr>
+      <tr>
+        <td><span class="calc-name">Wedding Planner</span><br><a class="calc-link" href="../premium/wedding-planner-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Service cost · Travel · Satisfaction</td>
+        <td class="bonuses"><span class="bonus-tag">Truly outstanding</span></td>
+      </tr>
+      <tr>
+        <td><span class="calc-name">Day-of Coordinator</span><br><a class="calc-link" href="../premium/wedding-coordinator-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Service cost · Travel · Satisfaction</td>
+        <td class="bonuses"><span class="bonus-tag">Truly outstanding</span></td>
+      </tr>
+      <tr>
+        <td><span class="calc-name">Florist</span><br><a class="calc-link" href="../premium/wedding-florist-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Service cost · Travel · Satisfaction</td>
+        <td class="bonuses"><span class="bonus-tag">Truly outstanding</span></td>
+      </tr>
+      <tr>
+        <td><span class="calc-name">Makeup Artist</span><br><a class="calc-link" href="../premium/wedding-makeup-artist-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Service cost · Travel · Satisfaction</td>
+        <td class="bonuses"><span class="bonus-tag">Truly outstanding</span></td>
+      </tr>
+      <tr>
+        <td><span class="calc-name">Wedding Hair Stylist</span><br><a class="calc-link" href="../premium/wedding-hair-stylist-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Service cost · Travel · Satisfaction</td>
+        <td class="bonuses"><span class="bonus-tag">Truly outstanding</span></td>
+      </tr>
+      <tr>
+        <td><span class="calc-name">Officiant</span><br><a class="calc-link" href="../premium/wedding-officiant-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Service cost · Travel · Satisfaction</td>
+        <td class="bonuses"><span class="bonus-tag">Truly outstanding</span></td>
+      </tr>
+      <tr>
+        <td><span class="calc-name">Wedding Bartender</span><br><a class="calc-link" href="../premium/wedding-bartender-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Service cost · Travel · Satisfaction</td>
+        <td class="bonuses"><span class="bonus-tag">Truly outstanding</span></td>
+      </tr>
+      <tr>
+        <td><span class="calc-name">Limo Driver</span><br><a class="calc-link" href="../premium/wedding-limo-driver-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Service cost · Travel · Satisfaction</td>
+        <td class="bonuses"><span class="bonus-tag">Truly outstanding</span></td>
+      </tr>
+      <tr>
+        <td><span class="calc-name">Shuttle Driver</span><br><a class="calc-link" href="../premium/wedding-shuttle-driver-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Service cost · Travel · Satisfaction</td>
+        <td class="bonuses"><span class="bonus-tag">Truly outstanding</span></td>
+      </tr>
+      <tr>
+        <td><span class="calc-name">Bridal Consultant</span><br><a class="calc-link" href="../premium/bridal-dress-consultant-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Service cost · Travel · Satisfaction</td>
+        <td class="bonuses"><span class="bonus-tag">Truly outstanding</span></td>
+      </tr>
+      <tr>
+        <td><span class="calc-name">Wedding Server</span><br><a class="calc-link" href="../premium/wedding-server-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Number of servers · Service type · Hours worked · Contract details · Satisfaction</td>
+        <td class="bonuses"><span class="bonus-tag">Truly outstanding</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- FREE CALCULATORS TABLE -->
+  <div class="section-heading" style="margin-top:40px;"><span class="section-badge badge-free">Free</span> Free calculators — always included</div>
+  <table class="calc-table">
+    <thead>
+      <tr>
+        <th>Calculator</th>
+        <th>Factors taken into account</th>
+        <th>Bonus options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="calc-name">Restaurant / Server</span><br><a class="calc-link" href="../restaurant-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Bill amount · Food quality · Service quality · Party size · Large party · Pre-fix meal</td>
+        <td class="bonuses"><span class="bonus-tag">Holiday / Christmas</span><span class="bonus-tag">Truly outstanding</span><span class="bonus-tag">Year-end bonus</span></td>
+      </tr>
+      <tr>
+        <td><span class="calc-name">Barber</span><br><a class="calc-link" href="../barber-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Bill amount · Service type (cut, beard, shave, color) · First visit vs regular</td>
+        <td class="bonuses"><span class="bonus-tag">Holiday / Christmas</span><span class="bonus-tag">Squeezed me in</span><span class="bonus-tag">Truly outstanding</span><span class="bonus-tag">Year-end bonus</span></td>
+      </tr>
+      <tr>
+        <td><span class="calc-name">Nail Salon</span><br><a class="calc-link" href="../nail-salon-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Bill amount · Service type · Satisfaction</td>
+        <td class="bonuses"><span class="bonus-tag">Holiday / Christmas</span><span class="bonus-tag">Squeezed me in</span><span class="bonus-tag">Truly outstanding</span><span class="bonus-tag">Year-end bonus</span></td>
+      </tr>
+      <tr>
+        <td><span class="calc-name">Rideshare</span><br><a class="calc-link" href="../rideshare-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Fare amount · Ride type · Driver quality · Helped with bags · Long wait</td>
+        <td class="bonuses"><span class="bonus-tag">Holiday / Christmas</span><span class="bonus-tag">Truly outstanding</span></td>
+      </tr>
+      <tr>
+        <td><span class="calc-name">Food Delivery</span><br><a class="calc-link" href="../food-delivery-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Order total · Delivery app · Weather conditions · On-time · Contact-free · Satisfaction</td>
+        <td class="bonuses"><span class="bonus-tag">Year-end bonus</span></td>
+      </tr>
+      <tr>
+        <td><span class="calc-name">Grocery Delivery</span><br><a class="calc-link" href="../grocery-delivery-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Order total · Delivery service · Substitutions handled · Satisfaction</td>
+        <td class="bonuses"><span class="bonus-tag">Year-end bonus</span></td>
+      </tr>
+      <tr>
+        <td><span class="calc-name">Dog Groomer</span><br><a class="calc-link" href="../dog-groomer-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Service cost · Mobile vs salon · Dog size · Coat difficulty · First visit vs regular</td>
+        <td class="bonuses"><span class="bonus-tag">Holiday / Christmas</span><span class="bonus-tag">Squeezed me in</span><span class="bonus-tag">Truly outstanding</span><span class="bonus-tag">Year-end bonus</span></td>
+      </tr>
+      <tr>
+        <td><span class="calc-name">House Cleaner</span><br><a class="calc-link" href="../house-cleaner-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Service cost · Service type · Home size · Crew size · Satisfaction</td>
+        <td class="bonuses"><span class="bonus-tag">Holiday / Christmas</span><span class="bonus-tag">Truly outstanding</span><span class="bonus-tag">Year-end bonus</span></td>
+      </tr>
+      <tr>
+        <td><span class="calc-name">Movers</span><br><a class="calc-link" href="../movers-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Move duration · Local vs long distance · Crew size · Stairs · Heavy items · Satisfaction</td>
+        <td class="bonuses"><span class="bonus-tag">Truly outstanding</span></td>
+      </tr>
+      <tr>
+        <td><span class="calc-name">Hotel Housekeeping</span><br><a class="calc-link" href="../hotel-housekeeping-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Property type · Room type · Stay duration · Service quality · Extra requests</td>
+        <td class="bonuses"><span class="bonus-tag">Year-end bonus</span></td>
+      </tr>
+      <tr>
+        <td><span class="calc-name">Bellhop</span><br><a class="calc-link" href="../bellhop-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Property type · Number of bags · Service type (room delivery, storage, retrieval)</td>
+        <td class="bonuses">&mdash;</td>
+      </tr>
+      <tr>
+        <td><span class="calc-name">Valet</span><br><a class="calc-link" href="../valet-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Venue type · Wait time · Service quality · When you tip</td>
+        <td class="bonuses">&mdash;</td>
+      </tr>
+      <tr>
+        <td><span class="calc-name">DJ</span><br><a class="calc-link" href="../dj-tip-calculator/">Calculate &rarr;</a></td>
+        <td class="factors">City income · Service cost · Event type · Travel · Satisfaction</td>
+        <td class="bonuses"><span class="bonus-tag">Truly outstanding</span></td>
+      </tr>
+    </tbody>
+  </table>
 
   <!-- FAQ -->
   <div class="faq-heading">Common Questions</div>
   <div class="faq-item">
-    <div class="faq-q">Why does location matter?</div>
-    <div class="faq-a">A 15% tip in Manhattan carries different weight than 15% in rural Idaho. Our calculators use US Census median household income data for your county — so the suggestion reflects what's actually fair where you live.</div>
+    <div class="faq-q">Why does location matter for tips?</div>
+    <div class="faq-a">A 15% tip in Manhattan carries different weight than 15% in rural Idaho. Our calculators use US Census median household income data for your county — so the suggestion reflects what's actually fair where you live, not a national average that ignores your area.</div>
   </div>
   <div class="faq-item">
     <div class="faq-q">Can I cancel anytime?</div>
-    <div class="faq-a">Yes. Cancel from your <a href="https://billing.stripe.com/p/login/8x25kE7Mq8T7edH8341RC00" target="_blank">Subscription Portal</a> in one click. Access continues until the end of your billing period.</div>
+    <div class="faq-a">Yes. Cancel from your <a href="https://billing.stripe.com/p/login/8x25kE7Mq8T7edH8341RC00" target="_blank">Subscription Portal</a> in one click. Access continues until the end of your billing period. No refunds for partial months.</div>
   </div>
   <div class="faq-item">
     <div class="faq-q">What if I only need it for one month?</div>
-    <div class="faq-a">That's what it's built for. Subscribe, use all 23 calculators, then cancel. $4.99 for complete confidence on every tip.</div>
+    <div class="faq-a">That's exactly what it's built for. Subscribe, use all 23 calculators, then cancel. $4.99 for complete confidence on every tip.</div>
   </div>
   <div class="faq-item">
     <div class="faq-q">Is my data stored?</div>
@@ -197,7 +404,7 @@ a{color:#4ade80;text-decoration:none;}
       <div class="footer-col">
         <div class="footer-col-label">Account</div>
         <a href="https://billing.stripe.com/p/login/8x25kE7Mq8T7edH8341RC00" target="_blank">Manage Subscription</a>
-        <a href="pricing/index.html">Subscribe</a>
+        <a href="index.html">Subscribe</a>
       </div>
       <div class="footer-col">
         <div class="footer-col-label">Legal</div>
