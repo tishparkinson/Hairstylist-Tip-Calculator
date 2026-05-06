@@ -94,6 +94,20 @@ li strong{color:rgba(255,255,255,0.85);}
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=IM+Fell+DW+Pica:ital@0;1&family=Lora:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+<style>
+.site-footer{background:rgba(255,255,255,0.02);border-top:1px solid rgba(255,255,255,0.09);padding:52px 0 0;}
+.site-footer .footer-inner{max-width:960px;margin:0 auto;padding:0 20px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:40px;}
+.footer-col{display:flex;flex-direction:column;gap:10px;}
+.footer-col-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:4px;}
+.footer-col a{font-size:13px;color:rgba(255,255,255,0.65);text-decoration:none;transition:color .15s;width:fit-content;}
+.footer-col a:hover{color:#4ade80;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.07);padding:20px 0 28px;display:flex;gap:24px;flex-wrap:wrap;}
+.footer-bottom p{font-size:11px;color:rgba(255,255,255,0.28);line-height:1.65;flex:1;min-width:200px;}
+@media(max-width:700px){.footer-grid{grid-template-columns:1fr 1fr;gap:24px;}.footer-grid .footer-col:first-child{grid-column:1/-1;}}
+</style>
+
 </head>
 
 <body>
@@ -157,12 +171,43 @@ li strong{color:rgba(255,255,255,0.85);}
 <a class="related-link" href="../blog/how-to-calculate-tip/index.html">How to calculate a tip</a></div>
   </div>
 </div>
-<footer>
-  <a href="../index.html">Home</a>
-  <a href="../blog/index.html">Blog</a>
-  <a href="../about/index.html">About</a> · <a href="../privacy-policy/index.html">Privacy Policy</a>
-  <a href="../terms-of-use/index.html">Terms of Use</a>
-  <span style="display:block;margin-top:8px;">© 2026 Verdant Web Solutions, LLC · GeoTipper.com</span>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="../../index.html" class="site-logo" style="font-size:20px;margin-bottom:10px;display:block;">Geo<em>Tipper</em></a>
+        <p style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.7;margin-bottom:14px;">The right tip says: the effort was seen,<br>and the person behind it matters.</p>
+        <p style="font-size:12px;color:rgba(255,255,255,0.3);line-height:1.7;">&#169; 2025 Verdant Web Solutions, LLC<br>Idaho &middot; <a href="mailto:verdantwebsolutions@gmail.com" style="color:rgba(255,255,255,0.4);text-decoration:none;">verdantwebsolutions@gmail.com</a></p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Calculators</div>
+        <a href="../../index.html">Free Calculators</a>
+        <a href="../../premium/index.html">Premium Calculators</a>
+        <a href="../../wedding-tip-calculators/index.html">Wedding Vendors</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Learn</div>
+        <a href="../../blog/index.html">Tipping Guides</a>
+        <a href="../../about/index.html">How It Works</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Account</div>
+        <a href="https://billing.stripe.com/p/login/8x25kE7Mq8T7edH8341RC00" target="_blank">Manage Subscription</a>
+        <a href="../../pricing/index.html">Subscribe</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Legal</div>
+        <a href="../../privacy-policy/index.html">Privacy Policy</a>
+        <a href="../../terms-of-use/index.html">Terms of Use</a>
+        <a href="../../sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>All calculations run in your browser — we collect no personal data. Income data from US Census Bureau ACS 5-year estimates.</p>
+      <p><strong>Disclaimer:</strong> Tip suggestions are estimates only. Always use your own judgment.</p>
+    </div>
+  </div>
 </footer>
 </body>
 </html>

@@ -401,6 +401,14 @@
     .footer-bottom { flex-direction:column; gap:8px; }
   }
   @media(max-width:400px) { .footer-grid { grid-template-columns:1fr; } }
+
+  /* Hero vertical alignment fix */
+  .hero-split { display:flex; flex-direction:column; align-items:center; }
+  .header-eyebrow { margin-bottom:20px; }
+  .header h1 { margin-bottom:20px; }
+  .site-tagline-heading { margin-bottom:10px; }
+  .header-psych-home { margin-bottom:28px; }
+  .tip-search-wrap { margin-top:0; }
 </style>
   <!-- ═══════════════════════════════════════════════════════
        ADSENSE: Add your site-level script tag here (once per page)
@@ -455,7 +463,6 @@
     <div class="hero-left">
       <a href="pricing/index.html" class="header-eyebrow hero-anim-1" style="text-decoration:none;cursor:pointer;"><span class="header-eyebrow-dot"></span>13 free · 23 premium</a>
       <h1 class="hero-anim-2">How Much<br>Should You <em>Tip?</em></h1>
-      <p class="header-tagline hero-anim-3">Tip suggestions <strong style="font-style:normal;color:rgba(255,255,255,0.82);font-weight:500;">calibrated to the cost of living in the area</strong> &#x2014; not a national average that ignores where you are.</p>
       <span class="site-tagline-heading hero-anim-3">The Right Tip Matters</span>
       <div class="header-psych-home hero-anim-4">
         <p class="home-psych-1">A fair tip says: the effort was noticed, the service was considered, and what&#x2019;s right for this area was honored.</p>
@@ -951,7 +958,7 @@
     <div class="footer-grid">
       <div class="footer-col">
         <a href="index.html" class="footer-logo">Geo<em>Tipper</em></a>
-        <p class="footer-tagline">Fair tips. Every city.<br>Calibrated to where you are.</p>
+        <p class="footer-tagline">The right tip says: the effort was seen,<br>and the person behind it matters.</p>
         <p class="footer-copy">&#169; 2025 Verdant Web Solutions, LLC<br>Idaho &middot; <a href="mailto:verdantwebsolutions@gmail.com">verdantwebsolutions@gmail.com</a></p>
       </div>
       <div class="footer-col">
