@@ -3476,6 +3476,13 @@ const flatCards = isAirbnb ? [
 const propLabels = {hotel:'hotel',motel:'motel',luxury:'luxury hotel',resort:'resort',extended:'extended stay',airbnb:'Airbnb',cabin:'cabin rental',allinclusive:'all-inclusive resort'};
 const dailyNote = isAirbnb ? '' : ' Tip daily in cash with a note saying \'housekeeping\' — different staff may clean your room each day, so daily tipping ensures everyone is recognized.';
 const svcNote = ' Tips _a5 for a ' + (selectedNights===1?'1-night':selectedNights+'-night') + ' stay at a ' + propLabels[selectedProp] + ' in this city.' + dailyNote;
+
+  // ── DOLLAR CAPS ─────────────────────────────────────────
+  const _CAP_BEST   = 75;
+  const _CAP_BETTER = 50;
+  const _CAP_GOOD   = 30;
+  const _CAP_MIN    = 15;
+
 const fmt = n => '$' + Math.round(n);
 const grid = document.getElementById('tipGrid');
 grid.innerHTML = '';

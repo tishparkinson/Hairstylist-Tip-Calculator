@@ -3436,6 +3436,13 @@ const flatCards = [
 const venueLabels = {restaurant:'restaurant valet',hotel:'hotel valet',hospital:'hospital/medical valet',event:'event/wedding valet',casino:'casino valet',upscale:'upscale dining valet'};
 const whenLabels = {dropoff:'drop-off tip',pickup:'pick-up tip',both:'both drop-off and pick-up tip'};
 const svcNote = ' Suggestion for ' + whenLabels[selectedValetWhen] + ' at ' + venueLabels[selectedVenue] + ' in this city.';
+
+  // ── DOLLAR CAPS ─────────────────────────────────────────
+  const _CAP_BEST   = 25;
+  const _CAP_BETTER = 15;
+  const _CAP_GOOD   = 10;
+  const _CAP_MIN    = 5;
+
 const fmt = n => '$' + Math.round(n);
 const grid = document.getElementById('tipGrid');
 grid.innerHTML = '';

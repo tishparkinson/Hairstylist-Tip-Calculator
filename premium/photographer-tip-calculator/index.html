@@ -3370,7 +3370,18 @@ function calculate() {
   }
   acceptablePct += bonusPctTotal; goodPct += bonusPctTotal; betterPct += bonusPctTotal; bestPct += bonusPctTotal;
 
-  const fmt    = pct => "$" + Math.round(price * pct);
+  
+  // ── DOLLAR CAPS ────────────────────────────────────────────────────────────
+  acceptablePct = Math.min(acceptablePct, 75 / price);
+  goodPct       = Math.min(goodPct,       150 / price);
+  betterPct     = Math.min(betterPct,     250 / price);
+  bestPct       = Math.min(bestPct,       400 / price);
+  // Ensure ordering is maintained after capping
+  goodPct   = Math.max(goodPct,   acceptablePct + 0.01);
+  betterPct = Math.max(betterPct, goodPct + 0.01);
+  bestPct   = Math.max(bestPct,   betterPct + 0.01);
+
+const fmt    = pct => "$" + Math.round(price * pct);
   const fmtPct = pct => Math.round(pct * 100) + "%";
   const fmtTotal = pct => "$" + (price + Math.round(price * pct)).toLocaleString();
 

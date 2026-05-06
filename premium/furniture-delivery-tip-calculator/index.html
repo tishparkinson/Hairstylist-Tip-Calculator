@@ -3473,6 +3473,13 @@ const _p4 = Object.entries(selectedBonuses).filter(([k]) => k !== "yearend").red
 perPerson = perPerson * (1 + _p4);
 perPerson = Math.max(3, Math.round(perPerson));
 const totalTip = perPerson * selectedDeliveryCrew;
+
+  // ── DOLLAR CAPS ─────────────────────────────────────────
+  const _CAP_BEST   = 150;
+  const _CAP_BETTER = 100;
+  const _CAP_GOOD   = 60;
+  const _CAP_MIN    = 30;
+
 const fmt = n => "$" + Math.round(n);
 const grid = document.getElementById("tipGrid");
 grid.innerHTML = "";

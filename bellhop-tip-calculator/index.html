@@ -3437,6 +3437,13 @@ const svcMult = {room:1.0, lobby:0.8, car:1.1, concierge:1.2}[selectedBellhopSer
 const qualMult = {poor:0.6, ok:0.85, good:1.0, great:1.2}[selectedBellhopQual] || 1.0;
 let tip = bagBase * propMult * svcMult * qualMult * incomeMult;
 tip = Math.max(2, Math.round(tip));
+
+  // ── DOLLAR CAPS ─────────────────────────────────────────
+  const _CAP_BEST   = 50;
+  const _CAP_BETTER = 35;
+  const _CAP_GOOD   = 20;
+  const _CAP_MIN    = 10;
+
 const fmt = n => "$" + Math.round(n);
 const grid = document.getElementById("tipGrid");
 grid.innerHTML = "";

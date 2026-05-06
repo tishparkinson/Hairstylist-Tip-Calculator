@@ -3453,6 +3453,13 @@ const flatCards = [
 const moveLabels = {short5:'short (under 5 miles)',medium:'medium (5–25 miles)',medlong:'medium-long (26–50 miles)',long:'long distance (50+ miles)',extralong:'extra long (100+ miles)',crosscountry:'cross-country'};
 const packedNote = selectedMoverDetails.has('packed') ? ' Includes an adjustment for full packing service — movers who pack deserve meaningfully more.' : '';
 const svcNote = ' Tip calculated for a ' + hours + '-hour ' + moveLabels[selectedMoveType] + ' move with a ' + estimatedCrew + '-person crew.' + packedNote;
+
+  // ── DOLLAR CAPS ─────────────────────────────────────────
+  const _CAP_BEST   = 250;
+  const _CAP_BETTER = 175;
+  const _CAP_GOOD   = 125;
+  const _CAP_MIN    = 75;
+
 const fmt = n => '$' + Math.round(n);
 const grid = document.getElementById('tipGrid');
 grid.innerHTML = '';
