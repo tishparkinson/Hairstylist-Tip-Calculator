@@ -1,11 +1,206 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0;url=https://geotipper.com/wedding-tip-calculators/">
-<title>GeoTipper Premium</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GeoTipper Premium Calculators</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0D0D0F;color:#E8E8E4;font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;}
+a{color:#4ade80;text-decoration:none;}
+.site-nav{display:flex;align-items:center;justify-content:space-between;padding:0 28px;height:56px;background:rgba(13,13,15,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.07);position:sticky;top:0;z-index:1000;}
+.site-logo{font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:#fff;letter-spacing:-.02em;text-decoration:none;}
+.site-logo em{font-style:normal;color:#4ade80;}
+.site-nav-links{display:flex;gap:20px;align-items:center;}
+.site-nav-links a{font-size:13px;color:rgba(255,255,255,0.45);font-weight:500;text-decoration:none;}
+.site-nav-links a:hover{color:rgba(255,255,255,0.9);}
+.page-hero{background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(74,222,128,0.07) 0%,transparent 70%);padding:56px 28px 44px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.07);}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(74,222,128,0.65);display:block;margin-bottom:16px;}
+.page-hero h1{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:800;color:#fff;line-height:1.05;letter-spacing:-.025em;margin-bottom:12px;}
+.page-hero h1 em{font-style:normal;color:#4ade80;}
+.page-hero p{font-size:15px;color:rgba(255,255,255,0.5);max-width:480px;margin:0 auto;}
+.main{max-width:960px;margin:0 auto;padding:48px 20px 80px;}
+.section-label{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(74,222,128,0.65);margin-bottom:16px;display:block;}
+.calc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:48px;}
+.calc-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:#E8E8E4;transition:transform .2s,box-shadow .2s,border-color .2s;}
+.calc-card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.5);border-color:rgba(255,255,255,0.2);}
+.card-visual{height:80px;position:relative;display:flex;align-items:flex-end;padding:10px 14px;}
+.card-body{padding:12px 14px 14px;display:flex;flex-direction:column;flex:1;}
+.card-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:#fff;margin-bottom:4px;}
+.card-sub{font-size:11px;color:rgba(255,255,255,0.45);margin-bottom:6px;}
+.card-cta{font-size:12px;font-weight:700;color:#4ade80;margin-top:auto;padding-top:8px;border-top:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:space-between;}
+.card-cta::after{content:"→";}
+/* Card gradients */
+.vis-hair{background:linear-gradient(135deg,#7C3AED 0%,#4F46E5 100%);}
+.vis-colorist{background:linear-gradient(135deg,#C026D3 0%,#EC4899 100%);}
+.vis-massage{background:linear-gradient(135deg,#0EA5E9 0%,#06B6D4 100%);}
+.vis-tattoo{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);}
+.vis-photographer{background:linear-gradient(135deg,#F59E0B 0%,#EF4444 100%);}
+.vis-furniture{background:linear-gradient(135deg,#64748B 0%,#4F46E5 100%);}
+.vis-caterer{background:linear-gradient(135deg,#84CC16 0%,#4ade80 100%);}
+.vis-wedding-photo{background:linear-gradient(135deg,#C026D3 0%,#EC4899 100%);}
+.vis-wedding-dj{background:linear-gradient(135deg,#6366F1 0%,#A855F7 100%);}
+.vis-wedding-band{background:linear-gradient(135deg,#0EA5E9 0%,#06B6D4 100%);}
+.vis-wedding-planner{background:linear-gradient(135deg,#F59E0B 0%,#EF4444 100%);}
+.vis-wedding-coord{background:linear-gradient(135deg,#4F46E5 0%,#A855F7 100%);}
+.vis-wedding-florist{background:linear-gradient(135deg,#22C55E 0%,#4ade80 100%);}
+.vis-wedding-makeup{background:linear-gradient(135deg,#D946EF 0%,#F43F5E 100%);}
+.vis-wedding-hair{background:linear-gradient(135deg,#7C3AED 0%,#4F46E5 100%);}
+.vis-wedding-officiant{background:linear-gradient(135deg,#FACC15 0%,#F97316 100%);}
+.vis-wedding-bartender{background:linear-gradient(135deg,#2563EB 0%,#06B6D4 100%);}
+.vis-wedding-limo{background:linear-gradient(135deg,#64748B 0%,#4F46E5 100%);}
+.vis-wedding-shuttle{background:linear-gradient(135deg,#22D3EE 0%,#6366F1 100%);}
+.vis-bridal{background:linear-gradient(135deg,#F43F5E 0%,#F97316 100%);}
+.vis-wedding-server{background:linear-gradient(135deg,#84CC16 0%,#4ade80 100%);}
+footer{background:rgba(255,255,255,0.02);border-top:1px solid rgba(255,255,255,0.07);padding:24px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+footer small{font-size:11px;color:rgba(255,255,255,0.3);}
+footer a{color:rgba(255,255,255,0.3);}
+@media(max-width:700px){.calc-grid{grid-template-columns:1fr;}.main{padding:36px 16px 60px;}}
+</style>
 </head>
 <body>
-<script>window.location.href = 'https://geotipper.com/wedding-tip-calculators/';</script>
+<nav class="site-nav">
+  <a href="../index.html" class="site-logo">Geo<em>Tipper</em></a>
+  <div class="site-nav-links">
+    <a href="../index.html">Free Calculators</a>
+    <a href="../blog/index.html">Blog</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <span class="eyebrow">GeoTipper Premium</span>
+  <h1>All <em>Premium</em> Calculators</h1>
+  <p>City-calibrated tip suggestions for every service — adjusted for your local cost of living.</p>
+</div>
+
+<div class="main">
+  <span class="section-label">Everyday Premium Services</span>
+  <div class="calc-grid">
+    <a class="calc-card" href="hair-stylist-tip-calculator/index.html">
+      <div class="card-visual vis-hair"></div>
+      <div class="card-body">
+        <div class="card-title">Hair Stylist</div>
+        <div class="card-sub">City income · Chair time · Complexity · Satisfaction</div>
+        <span class="card-cta">Get my local tip</span>
+      </div>
+    </a>
+    <a class="calc-card" href="hair-colorist-tip-calculator/index.html">
+      <div class="card-visual vis-colorist"></div>
+      <div class="card-body">
+        <div class="card-title">Hair Colorist</div>
+        <div class="card-sub">City income · Service type · Time · Satisfaction</div>
+        <span class="card-cta">Get my local tip</span>
+      </div>
+    </a>
+    <a class="calc-card" href="massage-therapist-tip-calculator/index.html">
+      <div class="card-visual vis-massage"></div>
+      <div class="card-body">
+        <div class="card-title">Massage Therapist</div>
+        <div class="card-sub">City income · Session length · Type · Satisfaction</div>
+        <span class="card-cta">Get my local tip</span>
+      </div>
+    </a>
+    <a class="calc-card" href="tattoo-tip-calculator/index.html">
+      <div class="card-visual vis-tattoo"></div>
+      <div class="card-body">
+        <div class="card-title">Tattoo Artist</div>
+        <div class="card-sub">City income · Session length · Complexity · Satisfaction</div>
+        <span class="card-cta">Get my local tip</span>
+      </div>
+    </a>
+    <a class="calc-card" href="photographer-tip-calculator/index.html">
+      <div class="card-visual vis-photographer"></div>
+      <div class="card-body">
+        <div class="card-title">Photographer</div>
+        <div class="card-sub">City income · Session type · Hours · Travel</div>
+        <span class="card-cta">Get my local tip</span>
+      </div>
+    </a>
+    <a class="calc-card" href="furniture-delivery-tip-calculator/index.html">
+      <div class="card-visual vis-furniture"></div>
+      <div class="card-body">
+        <div class="card-title">Furniture Delivery</div>
+        <div class="card-sub">City income · Service level · Assembly · Stairs</div>
+        <span class="card-cta">Get my local tip</span>
+      </div>
+    </a>
+    <a class="calc-card" href="caterer-tip-calculator/index.html">
+      <div class="card-visual vis-caterer"></div>
+      <div class="card-body">
+        <div class="card-title">Caterer</div>
+        <div class="card-sub">City income · Event type · Guest count · Satisfaction</div>
+        <span class="card-cta">Get my local tip</span>
+      </div>
+    </a>
+  </div>
+
+  <span class="section-label">Wedding Vendors</span>
+  <div class="calc-grid">
+    <a class="calc-card" href="wedding-photographer-tip-calculator/index.html">
+      <div class="card-visual vis-wedding-photo"></div>
+      <div class="card-body"><div class="card-title">Wedding Photographer</div><div class="card-sub">Package cost · Hours · Travel · Satisfaction</div><span class="card-cta">Get my local tip</span></div>
+    </a>
+    <a class="calc-card" href="wedding-dj-tip-calculator/index.html">
+      <div class="card-visual vis-wedding-dj"></div>
+      <div class="card-body"><div class="card-title">Wedding DJ</div><div class="card-sub">Hours · Travel · Event type · Satisfaction</div><span class="card-cta">Get my local tip</span></div>
+    </a>
+    <a class="calc-card" href="wedding-band-tip-calculator/index.html">
+      <div class="card-visual vis-wedding-band"></div>
+      <div class="card-body"><div class="card-title">Wedding Band</div><div class="card-sub">Musicians · Hours · Satisfaction</div><span class="card-cta">Get my local tip</span></div>
+    </a>
+    <a class="calc-card" href="wedding-planner-tip-calculator/index.html">
+      <div class="card-visual vis-wedding-planner"></div>
+      <div class="card-body"><div class="card-title">Wedding Planner</div><div class="card-sub">Scope · Involvement · Satisfaction</div><span class="card-cta">Get my local tip</span></div>
+    </a>
+    <a class="calc-card" href="wedding-coordinator-tip-calculator/index.html">
+      <div class="card-visual vis-wedding-coord"></div>
+      <div class="card-body"><div class="card-title">Day-of Coordinator</div><div class="card-sub">Hours · Scope · Satisfaction</div><span class="card-cta">Get my local tip</span></div>
+    </a>
+    <a class="calc-card" href="wedding-florist-tip-calculator/index.html">
+      <div class="card-visual vis-wedding-florist"></div>
+      <div class="card-body"><div class="card-title">Florist</div><div class="card-sub">Design scope · Delivery · Setup</div><span class="card-cta">Get my local tip</span></div>
+    </a>
+    <a class="calc-card" href="wedding-makeup-artist-tip-calculator/index.html">
+      <div class="card-visual vis-wedding-makeup"></div>
+      <div class="card-body"><div class="card-title">Makeup Artist</div><div class="card-sub">Service time · Complexity · Satisfaction</div><span class="card-cta">Get my local tip</span></div>
+    </a>
+    <a class="calc-card" href="wedding-hair-stylist-tip-calculator/index.html">
+      <div class="card-visual vis-wedding-hair"></div>
+      <div class="card-body"><div class="card-title">Hair Stylist</div><div class="card-sub">Service time · Complexity · Satisfaction</div><span class="card-cta">Get my local tip</span></div>
+    </a>
+    <a class="calc-card" href="wedding-officiant-tip-calculator/index.html">
+      <div class="card-visual vis-wedding-officiant"></div>
+      <div class="card-body"><div class="card-title">Officiant</div><div class="card-sub">Ceremony type · Preparation · City</div><span class="card-cta">Get my local tip</span></div>
+    </a>
+    <a class="calc-card" href="wedding-bartender-tip-calculator/index.html">
+      <div class="card-visual vis-wedding-bartender"></div>
+      <div class="card-body"><div class="card-title">Bartender</div><div class="card-sub">Hours · Service type · City</div><span class="card-cta">Get my local tip</span></div>
+    </a>
+    <a class="calc-card" href="wedding-limo-driver-tip-calculator/index.html">
+      <div class="card-visual vis-wedding-limo"></div>
+      <div class="card-body"><div class="card-title">Limo Driver</div><div class="card-sub">Distance · Duration · Vehicle type</div><span class="card-cta">Get my local tip</span></div>
+    </a>
+    <a class="calc-card" href="wedding-shuttle-driver-tip-calculator/index.html">
+      <div class="card-visual vis-wedding-shuttle"></div>
+      <div class="card-body"><div class="card-title">Shuttle Driver</div><div class="card-sub">Runs · Hours · City</div><span class="card-cta">Get my local tip</span></div>
+    </a>
+    <a class="calc-card" href="bridal-dress-consultant-tip-calculator/index.html">
+      <div class="card-visual vis-bridal"></div>
+      <div class="card-body"><div class="card-title">Bridal Consultant</div><div class="card-sub">Time · Appointments · City</div><span class="card-cta">Get my local tip</span></div>
+    </a>
+    <a class="calc-card" href="wedding-server-tip-calculator/index.html">
+      <div class="card-visual vis-wedding-server"></div>
+      <div class="card-body"><div class="card-title">Wedding Server</div><div class="card-sub">Hours · Service style · City</div><span class="card-cta">Get my local tip</span></div>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <small>&#169; 2025 GeoTipper.com &mdash; Verdant Web Solutions, LLC &middot; Idaho &middot; <a href="mailto:verdantwebsolutions@gmail.com">verdantwebsolutions@gmail.com</a></small>
+  <small><a href="../pricing/index.html">GeoTipper Premium</a> &middot; <a href="../privacy-policy/index.html">Privacy</a> &middot; <a href="https://billing.stripe.com/p/login/8x25kE7Mq8T7edH8341RC00" target="_blank">Manage Subscription</a> &middot; <a href="../terms-of-use/index.html">Terms</a> &middot; <a href="https://billing.stripe.com/p/login/8x25kE7Mq8T7edH8341RC00" target="_blank" style="color:rgba(255,255,255,0.3);">Manage Subscription</a></small>
+</footer>
 </body>
 </html>
