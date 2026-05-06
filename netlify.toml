@@ -1,6 +1,7 @@
 [build]
   publish = "/"
   functions = "netlify/functions"
+  edge_functions = "netlify/edge-functions"
 
 [[edge_functions]]
   function = "gate"
