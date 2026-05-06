@@ -50,8 +50,8 @@ a{color:#4ade80;text-decoration:none;}
 hr.divider{border:none;border-top:1px solid rgba(255,255,255,0.08);margin:14px 0;}
 .plan-includes-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:8px;display:block;}
 .mini-chips{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
-.mini-chip{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:5px;padding:5px 8px;font-size:10px;color:rgba(255,255,255,0.6);}
-.mini-chip.highlight{border-color:rgba(74,222,128,0.3);color:rgba(74,222,128,0.85);}
+.mini-chip{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.2);border-radius:5px;padding:6px 10px;font-size:12px;color:rgba(255,255,255,0.82);}
+.mini-chip.highlight{border-color:rgba(74,222,128,0.4);color:#4ade80;font-weight:600;background:rgba(74,222,128,0.1);}
 
 /* ── CALCULATOR TABLES ── */
 .section-heading{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:#fff;margin:36px 0 16px;display:flex;align-items:center;gap:10px;}
@@ -134,9 +134,9 @@ hr.divider{border:none;border-top:1px solid rgba(255,255,255,0.08);margin:14px 0
 
     <div class="plan-card">
       <div class="plan-top">
-        <span class="plan-tier">GeoTipper Premium</span>
-        <div class="plan-name">$4.99<span style="font-size:15px;font-weight:500;color:rgba(5,46,22,0.65);"> / month</span></div>
-        <span class="plan-tagline">All 23 premium calculators included</span>
+        <span class="plan-tier" style="color:rgba(5,46,22,0.85);">GeoTipper Premium</span>
+        <div class="plan-name">$4.99<span style="font-size:15px;font-weight:500;color:#fff;"> / month</span></div>
+        <span class="plan-tagline" style="color:rgba(5,46,22,0.85);">All 23 premium calculators included</span>
       </div>
       <div class="plan-body">
         <a href="/.netlify/functions/checkout" class="plan-cta">Unlock Premium &rarr;</a>
@@ -148,10 +148,10 @@ hr.divider{border:none;border-top:1px solid rgba(255,255,255,0.08);margin:14px 0
           <div class="mini-chip highlight">Year-end bonus</div>
           <div class="mini-chip highlight">Last-minute squeeze</div>
           <div class="mini-chip highlight">Outstanding service</div>
-          <div class="mini-chip">First visit vs regular</div>
-          <div class="mini-chip">Travel adjustment</div>
-          <div class="mini-chip">Service complexity</div>
-          <div class="mini-chip">+ 15 wedding vendors</div>
+          <div class="mini-chip" style="color:rgba(255,255,255,0.82);border-color:rgba(255,255,255,0.2);background:rgba(255,255,255,0.07);">First visit vs regular</div>
+          <div class="mini-chip" style="color:rgba(255,255,255,0.82);border-color:rgba(255,255,255,0.2);background:rgba(255,255,255,0.07);">Travel adjustment</div>
+          <div class="mini-chip" style="color:rgba(255,255,255,0.82);border-color:rgba(255,255,255,0.2);background:rgba(255,255,255,0.07);">Service complexity</div>
+          <div class="mini-chip" style="color:rgba(255,255,255,0.82);border-color:rgba(255,255,255,0.2);background:rgba(255,255,255,0.07);">+ 15 wedding vendors</div>
         </div>
       </div>
     </div>
@@ -177,107 +177,107 @@ hr.divider{border:none;border-top:1px solid rgba(255,255,255,0.08);margin:14px 0
     <tbody>
       <tr>
         <td><span class="calc-name">Hair Stylist</span><br><a class="calc-link" href="../premium/hair-stylist-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Bill amount · Appointment length · First visit vs regular · Satisfaction</td>
+        <td class="factors">Local cost of living · Bill amount · Appointment length · First visit vs regular · Satisfaction</td>
         <td class="bonuses"><span class="bonus-tag">Holiday / Christmas</span><span class="bonus-tag">Squeezed me in</span><span class="bonus-tag">Truly outstanding</span><span class="bonus-tag">Year-end bonus</span></td>
       </tr>
       <tr>
         <td><span class="calc-name">Hair Colorist</span><br><a class="calc-link" href="../premium/hair-colorist-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Service cost · Color type · Multiple services · Time in chair · First visit vs regular · Results satisfaction</td>
+        <td class="factors">Local cost of living · Service cost · Color type · Multiple services · Time in chair · First visit vs regular · Results satisfaction</td>
         <td class="bonuses"><span class="bonus-tag">Holiday / Christmas</span><span class="bonus-tag">Squeezed me in</span><span class="bonus-tag">Truly outstanding</span><span class="bonus-tag">Year-end bonus</span></td>
       </tr>
       <tr>
         <td><span class="calc-name">Massage Therapist</span><br><a class="calc-link" href="../premium/massage-therapist-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Bill amount · Session length · Massage type · Spa vs mobile vs clinic · Number of therapists · First visit vs regular · Satisfaction</td>
+        <td class="factors">Local cost of living · Bill amount · Session length · Massage type · Spa vs mobile vs clinic · Number of therapists · First visit vs regular · Satisfaction</td>
         <td class="bonuses"><span class="bonus-tag">Holiday / Christmas</span><span class="bonus-tag">Squeezed me in</span><span class="bonus-tag">Truly outstanding</span><span class="bonus-tag">Year-end bonus</span></td>
       </tr>
       <tr>
         <td><span class="calc-name">Tattoo Artist</span><br><a class="calc-link" href="../premium/tattoo-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Session cost · Session length · Design complexity · Custom vs flash · First visit vs regular · Satisfaction</td>
+        <td class="factors">Local cost of living · Session cost · Session length · Design complexity · Custom vs flash · First visit vs regular · Satisfaction</td>
         <td class="bonuses"><span class="bonus-tag">Holiday / Christmas</span><span class="bonus-tag">Squeezed me in</span><span class="bonus-tag">Truly outstanding</span><span class="bonus-tag">Year-end bonus</span></td>
       </tr>
       <tr>
         <td><span class="calc-name">Photographer</span><br><a class="calc-link" href="../premium/photographer-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Service cost · Session type · Solo vs studio · Travel distance · Satisfaction</td>
+        <td class="factors">Local cost of living · Service cost · Session type · Solo vs studio · Travel distance · Satisfaction</td>
         <td class="bonuses"><span class="bonus-tag">Truly outstanding</span><span class="bonus-tag">Squeezed me in</span></td>
       </tr>
       <tr>
         <td><span class="calc-name">Furniture Delivery</span><br><a class="calc-link" href="../premium/furniture-delivery-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Delivery type · Retailer · Number of delivery people · Difficulty · Satisfaction</td>
+        <td class="factors">Local cost of living · Delivery type · Retailer · Number of delivery people · Difficulty · Satisfaction</td>
         <td class="bonuses"><span class="bonus-tag">Truly outstanding</span></td>
       </tr>
       <tr>
         <td><span class="calc-name">Caterer</span><br><a class="calc-link" href="../premium/caterer-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Service cost · Event type · Service style · Staffing level · Guest count · Satisfaction</td>
+        <td class="factors">Local cost of living · Service cost · Event type · Service style · Staffing level · Guest count · Satisfaction</td>
         <td class="bonuses"><span class="bonus-tag">Holiday / Christmas</span><span class="bonus-tag">Squeezed me in</span><span class="bonus-tag">Truly outstanding</span><span class="bonus-tag">Year-end bonus</span></td>
       </tr>
       <tr>
         <td><span class="calc-name">Wedding Photographer</span><br><a class="calc-link" href="../premium/wedding-photographer-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Package cost · Travel distance · Satisfaction</td>
+        <td class="factors">Local cost of living · Package cost · Travel distance · Satisfaction</td>
         <td class="bonuses"><span class="bonus-tag">Truly outstanding</span><span class="bonus-tag">Went above &amp; beyond</span></td>
       </tr>
       <tr>
         <td><span class="calc-name">Wedding DJ</span><br><a class="calc-link" href="../premium/wedding-dj-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Service cost · Travel · Satisfaction</td>
+        <td class="factors">Local cost of living · Service cost · Travel · Satisfaction</td>
         <td class="bonuses"><span class="bonus-tag">Truly outstanding</span></td>
       </tr>
       <tr>
         <td><span class="calc-name">Wedding Band</span><br><a class="calc-link" href="../premium/wedding-band-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Service cost · Travel · Satisfaction</td>
+        <td class="factors">Local cost of living · Service cost · Travel · Satisfaction</td>
         <td class="bonuses"><span class="bonus-tag">Truly outstanding</span></td>
       </tr>
       <tr>
         <td><span class="calc-name">Wedding Planner</span><br><a class="calc-link" href="../premium/wedding-planner-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Service cost · Travel · Satisfaction</td>
+        <td class="factors">Local cost of living · Service cost · Travel · Satisfaction</td>
         <td class="bonuses"><span class="bonus-tag">Truly outstanding</span></td>
       </tr>
       <tr>
         <td><span class="calc-name">Day-of Coordinator</span><br><a class="calc-link" href="../premium/wedding-coordinator-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Service cost · Travel · Satisfaction</td>
+        <td class="factors">Local cost of living · Service cost · Travel · Satisfaction</td>
         <td class="bonuses"><span class="bonus-tag">Truly outstanding</span></td>
       </tr>
       <tr>
         <td><span class="calc-name">Florist</span><br><a class="calc-link" href="../premium/wedding-florist-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Service cost · Travel · Satisfaction</td>
+        <td class="factors">Local cost of living · Service cost · Travel · Satisfaction</td>
         <td class="bonuses"><span class="bonus-tag">Truly outstanding</span></td>
       </tr>
       <tr>
         <td><span class="calc-name">Makeup Artist</span><br><a class="calc-link" href="../premium/wedding-makeup-artist-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Service cost · Travel · Satisfaction</td>
+        <td class="factors">Local cost of living · Service cost · Travel · Satisfaction</td>
         <td class="bonuses"><span class="bonus-tag">Truly outstanding</span></td>
       </tr>
       <tr>
         <td><span class="calc-name">Wedding Hair Stylist</span><br><a class="calc-link" href="../premium/wedding-hair-stylist-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Service cost · Travel · Satisfaction</td>
+        <td class="factors">Local cost of living · Service cost · Travel · Satisfaction</td>
         <td class="bonuses"><span class="bonus-tag">Truly outstanding</span></td>
       </tr>
       <tr>
         <td><span class="calc-name">Officiant</span><br><a class="calc-link" href="../premium/wedding-officiant-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Service cost · Travel · Satisfaction</td>
+        <td class="factors">Local cost of living · Service cost · Travel · Satisfaction</td>
         <td class="bonuses"><span class="bonus-tag">Truly outstanding</span></td>
       </tr>
       <tr>
         <td><span class="calc-name">Wedding Bartender</span><br><a class="calc-link" href="../premium/wedding-bartender-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Service cost · Travel · Satisfaction</td>
+        <td class="factors">Local cost of living · Service cost · Travel · Satisfaction</td>
         <td class="bonuses"><span class="bonus-tag">Truly outstanding</span></td>
       </tr>
       <tr>
         <td><span class="calc-name">Limo Driver</span><br><a class="calc-link" href="../premium/wedding-limo-driver-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Service cost · Travel · Satisfaction</td>
+        <td class="factors">Local cost of living · Service cost · Travel · Satisfaction</td>
         <td class="bonuses"><span class="bonus-tag">Truly outstanding</span></td>
       </tr>
       <tr>
         <td><span class="calc-name">Shuttle Driver</span><br><a class="calc-link" href="../premium/wedding-shuttle-driver-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Service cost · Travel · Satisfaction</td>
+        <td class="factors">Local cost of living · Service cost · Travel · Satisfaction</td>
         <td class="bonuses"><span class="bonus-tag">Truly outstanding</span></td>
       </tr>
       <tr>
         <td><span class="calc-name">Bridal Consultant</span><br><a class="calc-link" href="../premium/bridal-dress-consultant-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Service cost · Travel · Satisfaction</td>
+        <td class="factors">Local cost of living · Service cost · Travel · Satisfaction</td>
         <td class="bonuses"><span class="bonus-tag">Truly outstanding</span></td>
       </tr>
       <tr>
         <td><span class="calc-name">Wedding Server</span><br><a class="calc-link" href="../premium/wedding-server-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Number of servers · Service type · Hours worked · Contract details · Satisfaction</td>
+        <td class="factors">Local cost of living · Number of servers · Service type · Hours worked · Contract details · Satisfaction</td>
         <td class="bonuses"><span class="bonus-tag">Truly outstanding</span></td>
       </tr>
     </tbody>
@@ -296,67 +296,67 @@ hr.divider{border:none;border-top:1px solid rgba(255,255,255,0.08);margin:14px 0
     <tbody>
       <tr>
         <td><span class="calc-name">Restaurant / Server</span><br><a class="calc-link" href="../restaurant-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Bill amount · Food quality · Service quality · Party size · Large party · Pre-fix meal</td>
+        <td class="factors">Local cost of living · Bill amount · Food quality · Service quality · Party size · Large party · Pre-fix meal</td>
         <td class="bonuses"><span class="bonus-tag">Holiday / Christmas</span><span class="bonus-tag">Truly outstanding</span><span class="bonus-tag">Year-end bonus</span></td>
       </tr>
       <tr>
         <td><span class="calc-name">Barber</span><br><a class="calc-link" href="../barber-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Bill amount · Service type (cut, beard, shave, color) · First visit vs regular</td>
+        <td class="factors">Local cost of living · Bill amount · Service type (cut, beard, shave, color) · First visit vs regular</td>
         <td class="bonuses"><span class="bonus-tag">Holiday / Christmas</span><span class="bonus-tag">Squeezed me in</span><span class="bonus-tag">Truly outstanding</span><span class="bonus-tag">Year-end bonus</span></td>
       </tr>
       <tr>
         <td><span class="calc-name">Nail Salon</span><br><a class="calc-link" href="../nail-salon-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Bill amount · Service type · Satisfaction</td>
+        <td class="factors">Local cost of living · Bill amount · Service type · Satisfaction</td>
         <td class="bonuses"><span class="bonus-tag">Holiday / Christmas</span><span class="bonus-tag">Squeezed me in</span><span class="bonus-tag">Truly outstanding</span><span class="bonus-tag">Year-end bonus</span></td>
       </tr>
       <tr>
         <td><span class="calc-name">Rideshare</span><br><a class="calc-link" href="../rideshare-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Fare amount · Ride type · Driver quality · Helped with bags · Long wait</td>
+        <td class="factors">Local cost of living · Fare amount · Ride type · Driver quality · Helped with bags · Long wait</td>
         <td class="bonuses"><span class="bonus-tag">Holiday / Christmas</span><span class="bonus-tag">Truly outstanding</span></td>
       </tr>
       <tr>
         <td><span class="calc-name">Food Delivery</span><br><a class="calc-link" href="../food-delivery-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Order total · Delivery app · Weather conditions · On-time · Contact-free · Satisfaction</td>
+        <td class="factors">Local cost of living · Order total · Delivery app · Weather conditions · On-time · Contact-free · Satisfaction</td>
         <td class="bonuses"><span class="bonus-tag">Year-end bonus</span></td>
       </tr>
       <tr>
         <td><span class="calc-name">Grocery Delivery</span><br><a class="calc-link" href="../grocery-delivery-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Order total · Delivery service · Substitutions handled · Satisfaction</td>
+        <td class="factors">Local cost of living · Order total · Delivery service · Substitutions handled · Satisfaction</td>
         <td class="bonuses"><span class="bonus-tag">Year-end bonus</span></td>
       </tr>
       <tr>
         <td><span class="calc-name">Dog Groomer</span><br><a class="calc-link" href="../dog-groomer-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Service cost · Mobile vs salon · Dog size · Coat difficulty · First visit vs regular</td>
+        <td class="factors">Local cost of living · Service cost · Mobile vs salon · Dog size · Coat difficulty · First visit vs regular</td>
         <td class="bonuses"><span class="bonus-tag">Holiday / Christmas</span><span class="bonus-tag">Squeezed me in</span><span class="bonus-tag">Truly outstanding</span><span class="bonus-tag">Year-end bonus</span></td>
       </tr>
       <tr>
         <td><span class="calc-name">House Cleaner</span><br><a class="calc-link" href="../house-cleaner-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Service cost · Service type · Home size · Crew size · Satisfaction</td>
+        <td class="factors">Local cost of living · Service cost · Service type · Home size · Crew size · Satisfaction</td>
         <td class="bonuses"><span class="bonus-tag">Holiday / Christmas</span><span class="bonus-tag">Truly outstanding</span><span class="bonus-tag">Year-end bonus</span></td>
       </tr>
       <tr>
         <td><span class="calc-name">Movers</span><br><a class="calc-link" href="../movers-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Move duration · Local vs long distance · Crew size · Stairs · Heavy items · Satisfaction</td>
+        <td class="factors">Local cost of living · Move duration · Local vs long distance · Crew size · Stairs · Heavy items · Satisfaction</td>
         <td class="bonuses"><span class="bonus-tag">Truly outstanding</span></td>
       </tr>
       <tr>
         <td><span class="calc-name">Hotel Housekeeping</span><br><a class="calc-link" href="../hotel-housekeeping-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Property type · Room type · Stay duration · Service quality · Extra requests</td>
+        <td class="factors">Local cost of living · Property type · Room type · Stay duration · Service quality · Extra requests</td>
         <td class="bonuses"><span class="bonus-tag">Year-end bonus</span></td>
       </tr>
       <tr>
         <td><span class="calc-name">Bellhop</span><br><a class="calc-link" href="../bellhop-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Property type · Number of bags · Service type (room delivery, storage, retrieval)</td>
+        <td class="factors">Local cost of living · Property type · Number of bags · Service type (room delivery, storage, retrieval)</td>
         <td class="bonuses">&mdash;</td>
       </tr>
       <tr>
         <td><span class="calc-name">Valet</span><br><a class="calc-link" href="../valet-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Venue type · Wait time · Service quality · When you tip</td>
+        <td class="factors">Local cost of living · Venue type · Wait time · Service quality · When you tip</td>
         <td class="bonuses">&mdash;</td>
       </tr>
       <tr>
         <td><span class="calc-name">DJ</span><br><a class="calc-link" href="../dj-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">City income · Service cost · Event type · Travel · Satisfaction</td>
+        <td class="factors">Local cost of living · Service cost · Event type · Travel · Satisfaction</td>
         <td class="bonuses"><span class="bonus-tag">Truly outstanding</span></td>
       </tr>
     </tbody>
