@@ -6,3 +6,13 @@
 [[edge_functions]]
   function = "gate"
   path = "/premium/*"
+
+[[redirects]]
+  from = "/activate"
+  to = "/.netlify/functions/activate"
+  status = 200
+
+[[redirects]]
+  from = "/checkout"
+  to = "/.netlify/functions/checkout"
+  status = 200
