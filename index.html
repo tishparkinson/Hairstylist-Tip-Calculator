@@ -378,6 +378,29 @@
   .header-tagline { margin-left:auto !important; margin-right:auto !important; }
   .header-psych-home { margin-left:auto !important; margin-right:auto !important; border-top:none !important; padding-top:0 !important; }
   .tip-search-wrap { margin-left:auto !important; margin-right:auto !important; }
+
+  /* ── FOOTER REDESIGN ── */
+  .footer { background:rgba(255,255,255,0.02); border-top:1px solid rgba(255,255,255,0.09); padding:52px 0 0; }
+  .footer .footer-inner { max-width:960px; margin:0 auto; padding:0 20px; }
+  .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr 1fr; gap:32px; margin-bottom:40px; }
+  .footer-logo { font-family:'Syne',sans-serif; font-size:20px; font-weight:800; color:#fff; text-decoration:none; letter-spacing:-.02em; display:block; margin-bottom:12px; }
+  .footer-logo em { font-style:normal; color:#4ade80; }
+  .footer-tagline { font-size:13px; color:rgba(255,255,255,0.45); line-height:1.65; margin-bottom:16px; }
+  .footer-copy { font-size:12px; color:rgba(255,255,255,0.3); line-height:1.7; }
+  .footer-copy a { color:rgba(255,255,255,0.4); text-decoration:none; }
+  .footer-copy a:hover { color:#4ade80; }
+  .footer-col { display:flex; flex-direction:column; gap:10px; }
+  .footer-col-label { font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:4px; }
+  .footer-col a { font-size:13px; color:rgba(255,255,255,0.65); text-decoration:none; transition:color .15s; width:fit-content; }
+  .footer-col a:hover { color:#4ade80; }
+  .footer-bottom { border-top:1px solid rgba(255,255,255,0.07); padding:20px 0 28px; display:flex; gap:24px; flex-wrap:wrap; }
+  .footer-bottom p { font-size:11px; color:rgba(255,255,255,0.28); line-height:1.65; flex:1; min-width:200px; }
+  @media(max-width:700px) {
+    .footer-grid { grid-template-columns:1fr 1fr; gap:28px; }
+    .footer-grid .footer-col:first-child { grid-column:1/-1; }
+    .footer-bottom { flex-direction:column; gap:8px; }
+  }
+  @media(max-width:400px) { .footer-grid { grid-template-columns:1fr; } }
 </style>
   <!-- ═══════════════════════════════════════════════════════
        ADSENSE: Add your site-level script tag here (once per page)
@@ -923,14 +946,45 @@
   </div>
 
 </div>
-<footer class="footer"><div class="footer-inner">
-  <p class="footer-data">All calculations run in your browser &#x2014; we collect no personal data. Income data from US Census Bureau ACS 5-year estimates. City data by <a href="https://simplemaps.com/data/us-cities" target="_blank" rel="noopener noreferrer" class="flink">SimpleMaps</a>.</p>
-  <p class="footer-disc"><strong>Disclaimer:</strong> Tip suggestions are estimates based on local income data and general US tipping norms. Actual appropriate amounts may vary. Always use your own judgment.</p>
-
-  <p style="margin-top:10px;font-size:11px;"><a href="pricing/index.html" style="color:rgba(255,255,255,0.3);">GeoTipper Premium</a> &middot; <a href="privacy-policy/index.html" style="color:var(--ink-3);margin-right:14px;">Privacy Policy</a><a href="terms-of-use/index.html" style="color:var(--ink-3);">Terms of Use</a> &middot; <a href="https://billing.stripe.com/p/login/8x25kE7Mq8T7edH8341RC00" target="_blank" style="color:var(--ink-3);">Manage Subscription</a></p>
-
-  <p style="margin-top:12px;font-size:11px;color:rgba(255,255,255,0.3);">&#169; 2025 <a href="https://geotipper.com" style="color:rgba(255,255,255,0.3);">GeoTipper.com</a> &mdash; Verdant Web Solutions, LLC &middot; Idaho &middot; <a href="mailto:verdantwebsolutions@gmail.com" style="color:rgba(255,255,255,0.3);">verdantwebsolutions@gmail.com</a></p>
-</div></footer>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo">Geo<em>Tipper</em></a>
+        <p class="footer-tagline">Fair tips. Every city.<br>Calibrated to where you are.</p>
+        <p class="footer-copy">&#169; 2025 Verdant Web Solutions, LLC<br>Idaho &middot; <a href="mailto:verdantwebsolutions@gmail.com">verdantwebsolutions@gmail.com</a></p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Calculators</div>
+        <a href="index.html">Free Calculators</a>
+        <a href="premium/index.html">Premium Calculators</a>
+        <a href="wedding-tip-calculators/index.html">Wedding Vendors</a>
+        <a href="pricing/index.html">GeoTipper Premium</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Learn</div>
+        <a href="blog/index.html">Tipping Guides</a>
+        <a href="about/index.html">How It Works</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Account</div>
+        <a href="https://billing.stripe.com/p/login/8x25kE7Mq8T7edH8341RC00" target="_blank">Manage Subscription</a>
+        <a href="https://billing.stripe.com/p/login/8x25kE7Mq8T7edH8341RC00" target="_blank">Cancel Subscription</a>
+        <a href="pricing/index.html">Subscribe</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Legal</div>
+        <a href="privacy-policy/index.html">Privacy Policy</a>
+        <a href="terms-of-use/index.html">Terms of Use</a>
+        <a href="sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>All calculations run in your browser — we collect no personal data. Income data from US Census Bureau ACS 5-year estimates.</p>
+      <p><strong>Disclaimer:</strong> Tip suggestions are estimates only. Always use your own judgment.</p>
+    </div>
+  </div>
+</footer>
 
 
 <!-- ═══════════════════════════════════════════════════════
