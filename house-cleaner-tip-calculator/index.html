@@ -48,7 +48,7 @@
 </nav>
 <header class="header">
   <h1 class="hero-anim-1">How Much to Tip<br><em>a House Cleaner?</em></h1>
-  <p class="header-sub hero-anim-2">For <strong>Regular Scheduled Cleaning · Deep Cleans · Move-In / Move-Out · Airbnb Turnovers</strong> and one-time cleaners</p>
+  <p class="header-sub hero-anim-2">Regular Scheduled Cleaning · Deep Cleans · Move-In / Move-Out · Airbnb Turnovers</p>
   <p class="header-answer">The US standard tip for a house cleaner is <strong>15%–20%</strong> of the session cost. For deep cleans or move-in/out cleans, 20%–25% better reflects the additional effort. Regular cleaners also often receive a <strong>year-end bonus equal to one full session</strong> around the holidays. Use the calculator below for a suggestion calibrated to your city.</p>
 </header>
 
@@ -559,10 +559,10 @@ if (price > 0) {
 _ac6  = Math.min(_ac6,  50    / price * price) / price;
 _g7   = Math.min(_g7,   100   / price * price) / price;
 _bt8  = Math.min(_bt8,  150 / price * price) / price;
-_bst9 = Math.min(_bst9, 200   / price * price) / price;
+_bs9  = Math.min(_bs9,  200   / price * price) / price;
 _g7   = Math.max(_g7,   _ac6  + 0.005);
 _bt8  = Math.max(_bt8,  _g7   + 0.005);
-_bst9 = Math.max(_bst9, _bt8  + 0.005);
+_bs9  = Math.max(_bs9,  _bt8  + 0.005);
 }
 
 const fmt = pct => "$" + Math.round(price * pct);

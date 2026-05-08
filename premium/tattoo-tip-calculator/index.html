@@ -45,7 +45,7 @@
 </nav>
 <header class="header">
   <h1 class="hero-anim-1">How Much to Tip<br><em>a Tattoo Artist?</em></h1>
-  <p class="header-sub hero-anim-2">For <strong>Simple · Medium · Complex · Custom · Single &amp; Multi-Session</strong> tattoos</p>
+  <p class="header-sub hero-anim-2">Simple · Medium · Complex · Custom · Single &amp; Multi-Session</p>
   <p class="header-answer">Most clients in the United States tip their tattoo artist <strong>15%–20%</strong> of the session cost. For custom designs, complex color work, or the final session of a large piece, 20%–25% better reflects the artistry involved. Use the calculator below for a suggestion calibrated to your city.</p>
 </header>
 
@@ -540,10 +540,10 @@ if (price > 0) {
 _ac6  = Math.min(_ac6,  75    / price * price) / price;
 _g7   = Math.min(_g7,   150   / price * price) / price;
 _bt8  = Math.min(_bt8,  250 / price * price) / price;
-_bst9 = Math.min(_bst9, 350   / price * price) / price;
+_bs9 = Math.min(_bs9, 350   / price * price) / price;
 _g7   = Math.max(_g7,   _ac6  + 0.005);
 _bt8  = Math.max(_bt8,  _g7   + 0.005);
-_bst9 = Math.max(_bst9, _bt8  + 0.005);
+_bs9 = Math.max(_bs9, _bt8  + 0.005);
 }
 
 const fmt = pct => '$' + Math.round(price * pct);

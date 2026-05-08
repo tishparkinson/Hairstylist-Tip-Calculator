@@ -46,7 +46,7 @@
 </nav>
 <header class="header">
   <h1 class="hero-anim-1">How Much to Tip<br><em>for Food Delivery?</em></h1>
-  <p class="header-sub hero-anim-2">For <strong>DoorDash · Uber Eats · Grubhub · Pizza Delivery</strong> and all other delivery apps</p>
+  <p class="header-sub hero-anim-2">DoorDash · Uber Eats · Grubhub · Pizza Delivery</p>
   <p class="header-answer">The US standard for food delivery is <strong>15%–20%</strong> of the order total — with a <strong>minimum of $3–$5</strong> on any order regardless of size. For bad weather, long distances, or great service, 20%–25% is appreciated. Use the calculator below for a suggestion calibrated to your city.</p>
 </header>
 
@@ -514,10 +514,10 @@ if (price > 0) {
 _ac6  = Math.min(_ac6,  10    / price * price) / price;
 _g7   = Math.min(_g7,   20   / price * price) / price;
 _bt8  = Math.min(_bt8,  35 / price * price) / price;
-_bst9 = Math.min(_bst9, 50   / price * price) / price;
+_bs9 = Math.min(_bs9, 50   / price * price) / price;
 _g7   = Math.max(_g7,   _ac6  + 0.005);
 _bt8  = Math.max(_bt8,  _g7   + 0.005);
-_bst9 = Math.max(_bst9, _bt8  + 0.005);
+_bs9 = Math.max(_bs9, _bt8  + 0.005);
 }
 
 const fmt = pct => "$" + Math.round(price * pct);

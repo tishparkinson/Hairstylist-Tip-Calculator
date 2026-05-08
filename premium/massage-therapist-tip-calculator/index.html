@@ -50,7 +50,7 @@
 </nav>
 <header class="header">
   <h1 class="hero-anim-1">How Much to Tip<br><em>a Massage Therapist?</em></h1>
-  <p class="header-sub hero-anim-2">For <strong>Spa · Independent · In-Home · Chiropractor · Sports &amp; Deep Tissue</strong> massage</p>
+  <p class="header-sub hero-anim-2">Spa · Independent · In-Home · Chiropractor · Sports &amp; Deep Tissue</p>
   <p class="header-answer">Most clients in the United States tip <strong>15%–20%</strong> for a massage. For a 90-minute or specialty session, 20%–25% is common. Whether to tip at all depends on the setting — medical and insurance-billed massage follows different norms. Use the calculator below for a suggestion calibrated to your city.</p>
 </header>
 
@@ -619,10 +619,10 @@ if (price > 0) {
 _ac6  = Math.min(_ac6,  30    / price * price) / price;
 _g7   = Math.min(_g7,   75   / price * price) / price;
 _bt8  = Math.min(_bt8,  125 / price * price) / price;
-_bst9 = Math.min(_bst9, 175   / price * price) / price;
+_bs9 = Math.min(_bs9, 175   / price * price) / price;
 _g7   = Math.max(_g7,   _ac6  + 0.005);
 _bt8  = Math.max(_bt8,  _g7   + 0.005);
-_bst9 = Math.max(_bst9, _bt8  + 0.005);
+_bs9 = Math.max(_bs9, _bt8  + 0.005);
 }
 
 const fmt = pct => '$' + Math.round(price * pct);

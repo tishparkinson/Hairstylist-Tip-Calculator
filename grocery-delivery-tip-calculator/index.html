@@ -48,7 +48,7 @@
 </nav>
 <header class="header">
   <h1 class="hero-anim-1">How Much to Tip<br><em>for Grocery Delivery?</em></h1>
-  <p class="header-sub hero-anim-2">Works for <strong>Instacart · Shipt · Walmart · Whole Foods · Kroger · Target · Amazon Fresh</strong> and all other grocery services</p>
+  <p class="header-sub hero-anim-2">Instacart · Shipt · Walmart · Whole Foods · Kroger · Target · Amazon Fresh</p>
   <p class="header-answer">The US standard for grocery delivery is <strong>10%–15%</strong> of the order total, with a <strong>minimum of $5</strong> on any order. For Instacart and Shipt shoppers who do the full shopping themselves, <strong>15%–20%</strong> better reflects the extra work involved. Use the calculator below for a suggestion calibrated to your city.</p>
 </header>
 
@@ -521,10 +521,10 @@ if (price > 0) {
 _ac6  = Math.min(_ac6,  10    / price * price) / price;
 _g7   = Math.min(_g7,   20   / price * price) / price;
 _bt8  = Math.min(_bt8,  35 / price * price) / price;
-_bst9 = Math.min(_bst9, 50   / price * price) / price;
+_bs9 = Math.min(_bs9, 50   / price * price) / price;
 _g7   = Math.max(_g7,   _ac6  + 0.005);
 _bt8  = Math.max(_bt8,  _g7   + 0.005);
-_bst9 = Math.max(_bst9, _bt8  + 0.005);
+_bs9 = Math.max(_bs9, _bt8  + 0.005);
 }
 
 const fmt = pct => "$" + Math.round(price * pct);

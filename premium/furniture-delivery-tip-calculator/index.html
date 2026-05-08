@@ -44,7 +44,7 @@
 </nav>
 <header class="header">
   <h1 class="hero-anim-1">How Much to Tip<br><em>Furniture Delivery?</em></h1>
-  <p class="header-sub hero-anim-2">For <strong>Curbside · Room-of-Choice · White Glove · Assembly · Haul-Away</strong> furniture deliveries</p>
+  <p class="header-sub hero-anim-2">Curbside · Room-of-Choice · White Glove · Assembly · Haul-Away</p>
   <p class="header-answer">The US standard tip for furniture delivery is <strong>$5–$10 per person</strong> for standard delivery and <strong>$15–$25 per person</strong> for white glove or assembly service. Tip each delivery person individually in cash. Use the calculator below for a suggestion based on your service type and city.</p>
 </header>
 
@@ -553,7 +553,7 @@ const amt = document.createElement("div"); amt.className = "tip-card-amount"; am
 const desc = document.createElement("div"); desc.className = "tip-card-desc"; desc.textContent = card.desc;
 if (card.isAcceptable) {
 const body = document.createElement('div'); body.className = 'tip-card-body';
-const right = document.createElement('div'); right.className = 'tip-card-right'; right.appendChild(amt); right.appendChild(pct); right.appendChild(tot);
+const right = document.createElement('div'); right.className = 'tip-card-right'; right.appendChild(amt);
 body.appendChild(desc); body.appendChild(right);
 div.appendChild(lbl); div.appendChild(body);
 } else {

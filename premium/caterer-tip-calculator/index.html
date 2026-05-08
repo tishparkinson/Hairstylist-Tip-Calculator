@@ -43,7 +43,7 @@
 </nav>
 <header class="header">
   <h1 class="hero-anim-1">How Much to Tip<br><em>a Caterer?</em></h1>
-  <p class="header-sub hero-anim-2">For <strong>Wedding Caterers · Corporate Events · Food Trucks · Taco Catering · Buffets · Drop-Off Catering</strong></p>
+  <p class="header-sub hero-anim-2">Wedding Caterers · Corporate Events · Food Trucks · Taco Catering · Buffets · Drop-Off Catering</p>
   <p class="header-answer">The US standard tip for a caterer is <strong>15%–20%</strong> — but always check your contract first. Many catering contracts include an 18%–22% service charge. Use the calculator below for a suggestion calibrated to your event type and city.</p>
 </header>
 
@@ -568,10 +568,10 @@ if (price > 0) {
 _ac6  = Math.min(_ac6,  100    / price * price) / price;
 _g7   = Math.min(_g7,   200   / price * price) / price;
 _bt8  = Math.min(_bt8,  350 / price * price) / price;
-_bst9 = Math.min(_bst9, 500   / price * price) / price;
+_bs9 = Math.min(_bs9, 500   / price * price) / price;
 _g7   = Math.max(_g7,   _ac6  + 0.005);
 _bt8  = Math.max(_bt8,  _g7   + 0.005);
-_bst9 = Math.max(_bst9, _bt8  + 0.005);
+_bs9 = Math.max(_bs9, _bt8  + 0.005);
 }
 
 const fmt = pct => "$" + Math.round(price * pct);
