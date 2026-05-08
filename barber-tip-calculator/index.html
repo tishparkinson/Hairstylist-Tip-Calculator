@@ -759,7 +759,8 @@ bd.appendChild(t);
 _adjItems.forEach(item => {
 const row = document.createElement('div'); row.className = 'adj-breakdown-row';
 const isPos = item.startsWith('+');
-const tag = document.createElement('span'); tag.className = 'adj-tag ' + (isPos ? 'adj-pos' : 'adj-neg'); tag.textContent = isPos ? '↑' : '↓';
+const isNeg = item.startsWith('-');
+const tag = document.createElement('span'); tag.className = 'adj-tag ' + (isPos ? 'adj-pos' : isNeg ? 'adj-neg' : ''); tag.textContent = isPos ? '↑' : isNeg ? '↓' : '·';
 row.appendChild(tag);
 row.appendChild(document.createTextNode(item.slice(1).trim()));
 bd.appendChild(row);

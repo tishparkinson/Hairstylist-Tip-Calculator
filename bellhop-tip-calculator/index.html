@@ -531,6 +531,38 @@ insight.textContent = "";
 const strong = document.createElement("strong"); strong.textContent = selectedCity.c + ", " + selectedCity.s + ":";
 insight.appendChild(strong);
 insight.appendChild(document.createTextNode(" The local cost of living here (based on median household income) is " + fmtIncome + " — " + incomeDesc + "." + svcNote + fallbackNote));
+
+const _adjItems = [];
+const _incomeEffect = _li>=100000?"+"+fmtIncome+" median income — well above average, higher tip norms":_li>=74000?"+"+fmtIncome+" median income — above the national average ($74,580)":"·"+fmtIncome+" median income — near or below the national average";
+_adjItems.push(_incomeEffect);
+const bagCount = {1:1,2:2,3:3,4:4,6:'5–6',8:'7+'}[selectedBags] || selectedBags;
+_adjItems.push("·" + bagCount + " bag(s) — base rate per bag applied");
+const propLabelsAdj = {hotel:"Standard hotel",luxury:"Luxury/4–5 star hotel",resort:"Resort",motel:"Budget hotel/motel",casino:"Casino hotel"};
+const propMultAdj = {hotel:"standard rate (1.0×)",luxury:"luxury premium (+50%)",resort:"resort premium (+30%)",motel:"budget/motel discount (−30%)",casino:"casino premium (+10%)"};
+_adjItems.push("·Property type: " + propLabelsAdj[selectedBellhopProp] + " — " + (propMultAdj[selectedBellhopProp] || ""));
+const svcLabelsAdj = {room:"Bags to room (standard)",lobby:"Bell stand storage (−20%)",car:"Retrieved from car (+10%)",concierge:"Concierge + bags (+20%)"};
+_adjItems.push("·Service: " + (svcLabelsAdj[selectedBellhopService] || selectedBellhopService));
+const qualLabelsAdj = {poor:"Poor service — minimum applied (−40%)",ok:"OK service — slightly below standard (−15%)",good:"Good service — standard rate",great:"Great service — generous tip (+20%)"};
+_adjItems.push((selectedBellhopQual==="poor"||selectedBellhopQual==="ok"?"-":"+") + "Service quality: " + (qualLabelsAdj[selectedBellhopQual] || ""));
+
+const prevBD = document.getElementById("adjBreakdown");
+if (prevBD) prevBD.remove();
+if (_adjItems.length) {
+const bd = document.createElement("div"); bd.id = "adjBreakdown"; bd.className = "adj-breakdown";
+const t = document.createElement("div"); t.className = "adj-breakdown-title"; t.textContent = "What affected your suggestion:";
+bd.appendChild(t);
+_adjItems.forEach(item => {
+const row = document.createElement("div"); row.className = "adj-breakdown-row";
+const isPos = item.startsWith("+");
+const isNeg = item.startsWith("-");
+const tag = document.createElement("span"); tag.className = "adj-tag " + (isPos?"adj-pos":isNeg?"adj-neg":""); tag.textContent = isPos?"↑":isNeg?"↓":"·";
+row.appendChild(tag);
+row.appendChild(document.createTextNode(item.slice(1).trim()));
+bd.appendChild(row);
+});
+insight.parentNode.insertBefore(bd, insight.nextSibling);
+}
+
 document.getElementById("resultCity").textContent = selectedCity.c.toUpperCase() + ", " + selectedCity.s;
 document.getElementById("formCard").style.display = "none";
 const results = document.getElementById("resultsSection");

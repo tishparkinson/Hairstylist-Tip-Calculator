@@ -438,10 +438,11 @@ insight.appendChild(document.createTextNode(" The local cost of living here (bas
 const _adjItems = [];
 const _ie = localIncome>=100000?"+"+fmtIncome+" median income — high cost-of-living area":localIncome>=74000?"+"+fmtIncome+" median income — above national average":"."+fmtIncome+" median income — near national average";
 _adjItems.push(_ie);
-if (selectedTravel==='regional')    _adjItems.push("+Vendor traveled regionally — +2%");
-if (selectedTravel==='destination') _adjItems.push("+Destination/overnight travel — +4%");
-if (bonusPctTotal > 0)              _adjItems.push("+Truly Outstanding bonus");
-if (selectedStars <= 2)             _adjItems.push("-Low rating — minimum applied");
+const _starLabelsAdj = {1:'-1 star (Very disappointed) — minimum applied, tips at low end',2:'-2 stars (Below expectations) — tips reduced',3:'·3 stars (Satisfied) — standard suggestions',4:'+4 stars (Really pleased) — generous range shown',5:'+5 stars (Outstanding!) — top-end suggestions'};
+if (selectedStars > 0) _adjItems.push(_starLabelsAdj[selectedStars] || ('·'+selectedStars+' stars'));
+const _travelLabels = {local:'·No travel — local event (standard rate)',regional:'+Vendor traveled regionally — +2%',destination:'+Destination/overnight travel — +4%'};
+_adjItems.push(_travelLabels[selectedTravel] || ('·Travel: '+selectedTravel));
+if (bonusPctTotal > 0)              _adjItems.push("+Truly Outstanding bonus included");
 
 const prevBD = document.getElementById("adjBreakdown");
 if (prevBD) prevBD.remove();
@@ -452,7 +453,8 @@ bd.appendChild(t);
 _adjItems.forEach(item => {
 const row = document.createElement("div"); row.className = "adj-breakdown-row";
 const isPos = item.startsWith("+");
-const tag = document.createElement("span"); tag.className = "adj-tag " + (isPos?"adj-pos":"adj-neg"); tag.textContent = isPos?"↑":"↓";
+const isNeg = item.startsWith("-");
+const tag = document.createElement("span"); tag.className = "adj-tag " + (isPos?"adj-pos":isNeg?"adj-neg":""); tag.textContent = isPos?"↑":isNeg?"↓":"·";
 row.appendChild(tag);
 row.appendChild(document.createTextNode(item.slice(1).trim()));
 bd.appendChild(row);

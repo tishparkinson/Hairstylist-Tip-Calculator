@@ -96,6 +96,15 @@
         <button class="pill" data-val="xlarge">Extra large (80+ lbs)</button>
       </div>
     </div>
+    <div class="section-label">Coat Type <span class="optional-label">(optional)</span></div>
+    <div class="field">
+      <label>What type of coat does your dog have?</label>
+      <div class="pill-group" id="coatTypeGroup">
+        <button class="pill selected" data-val="easy">Easy coat — short, smooth, or low-maintenance</button>
+        <button class="pill" data-val="difficult">Difficult coat — long, curly, double-coated, or matted</button>
+      </div>
+      <p class="helper">Difficult coats take significantly more time and skill — doodles, poodles, double-coated breeds, and matted dogs fall here.</p>
+    </div>
     <div class="section-label">Visit Type <span class="optional-label">(optional)</span></div>
     <div class="field">
       <label>Is this a regular appointment or first visit?</label>
@@ -278,6 +287,7 @@ let selectedClient = 'regular';
 let selectedGroomerType = 'salon';
 let selectedDogSize = 'medium';
 let selectedDogDetails = new Set();
+let selectedDogCoat = 'easy';
 let selectedBonuses = {};
 const cityInput = document.getElementById('cityInput');
 const acList = document.getElementById('autocompleteList');
@@ -457,6 +467,14 @@ _dogSizeGroup.querySelectorAll('.pill').forEach(b => b.classList.remove('selecte
 btn.classList.add('selected'); selectedDogSize = btn.dataset.val;
 });
 });
+const _coatTypeGroup = document.getElementById('coatTypeGroup');
+if (_coatTypeGroup) _coatTypeGroup.querySelectorAll('.pill').forEach(btn => {
+btn.addEventListener('click', () => {
+_coatTypeGroup.querySelectorAll('.pill').forEach(b => b.classList.remove('selected'));
+btn.classList.add('selected'); selectedDogCoat = btn.dataset.val;
+if (selectedDogCoat === 'difficult') { if (!selectedDogDetails.has('complex_coat')) { selectedDogDetails.add('complex_coat'); const cb = document.querySelector('#dogDetailsGroup [data-dg="complex_coat"]'); if(cb) cb.classList.add('active'); } } else { selectedDogDetails.delete('complex_coat'); const cb = document.querySelector('#dogDetailsGroup [data-dg="complex_coat"]'); if(cb) cb.classList.remove('active'); }
+});
+});
 const _dogDet = document.getElementById('dogDetailsGroup');
 if (_dogDet) _dogDet.querySelectorAll('.bonus-btn').forEach(btn => {
 btn.addEventListener('click', () => {
@@ -553,10 +571,10 @@ if (price > 0) {
 _ac6  = Math.min(_ac6,  30    / price * price) / price;
 _g7   = Math.min(_g7,   60   / price * price) / price;
 _bt8  = Math.min(_bt8,  90 / price * price) / price;
-_bst9 = Math.min(_bst9, 125   / price * price) / price;
+_bs9 = Math.min(_bs9, 125   / price * price) / price;
 _g7   = Math.max(_g7,   _ac6  + 0.005);
 _bt8  = Math.max(_bt8,  _g7   + 0.005);
-_bst9 = Math.max(_bst9, _bt8  + 0.005);
+_bs9 = Math.max(_bs9, _bt8  + 0.005);
 }
 
 const fmt = pct => "$" + Math.round(price * pct);
@@ -608,12 +626,21 @@ const fallbackNote = dataSource==="national"?" (Using national average — local
 const typeLabels = {salon:'private grooming salon',petsmart:'PetSmart',petco:'Petco Grooming',mobile:'mobile/at-home groomer',selfemployed:'independent groomer',vet:'veterinary office'};
 const svcNote = 'Calibrated for a ' + typeLabels[selectedGroomerType] + ' groom in this area.';
 const _incomeEffect = _li>=100000?"+"+fmtIncome+" median income — well above average, higher tip norms":_li>=74000?"+"+fmtIncome+" median income — above the national average ($74,580)":_li>=60000?"·"+fmtIncome+" median income — near the national average ($74,580)":"-"+fmtIncome+" median income — below the national average, lower base rate";
+const _starEffects = {1:'-1 star (Very disappointed) — minimum applied',2:'-2 stars (Below expectations) — tips reduced',3:'·3 stars (Satisfied) — standard suggestions',4:'+4 stars (Really pleased) — generous range shown',5:'+5 stars (Outstanding!) — top-end suggestions'};
 const _adjItems = [];
 _adjItems.push(_incomeEffect);
+_adjItems.push(_starEffects[selectedStars] || ('·'+selectedStars+' stars'));
+if (selectedGroomerType==='mobile') _adjItems.push('+Mobile / at-home groomer — +3% (travel overhead)');
+if (selectedGroomerType==='selfemployed') _adjItems.push('+Self-employed / independent groomer — +2%');
+if (selectedDogSize==='large') _adjItems.push('+Large dog (50–80 lbs) — +2% (more effort)');
+if (selectedDogSize==='xlarge') _adjItems.push('+Extra large dog (80+ lbs) — +3% (significantly more effort)');
+if (selectedDogDetails.has('difficult')) _adjItems.push('+Anxious or difficult dog — +3%');
+if (selectedDogDetails.has('complex_coat')) _adjItems.push('+Complex coat / breed cut (doodle, poodle, etc.) — +2%');
+if (selectedDogDetails.has('full_service')) _adjItems.push('+Full service (bath + cut + nails) — +1%');
+if (typeof selectedClient !== "undefined" && selectedClient === "regular") _adjItems.push('+Regular client — loyalty bonus added');
 if (selectedBonuses["holiday"]!==undefined) _adjItems.push("+Holiday/Christmas bonus +5%");
 if (selectedBonuses["outstanding"]!==undefined) _adjItems.push("+Truly Outstanding +5%");
 if (selectedBonuses["yearend"]==="YEAREND") _adjItems.push("+Year-end bonus — $"+Math.round(price||0)+" cash gift");
-if (selectedStars<=2) _adjItems.push("-Low satisfaction — minimum applied");
 const insight = document.getElementById("insightBox");
 insight.textContent = "";
 const strong = document.createElement("strong"); strong.textContent = selectedCity.c + ", " + selectedCity.s + ":";
