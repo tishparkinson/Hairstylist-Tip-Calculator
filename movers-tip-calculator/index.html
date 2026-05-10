@@ -632,20 +632,31 @@ if (selectedMoverDetails.has('damaged')) perMoverPerHour *= 0.75;
 if (selectedMoverDetails.has('walls')) perMoverPerHour *= 0.80;
 const tipPerMover = Math.max(15, Math.round(perMoverPerHour * hours));
 const totalTip = tipPerMover * estimatedCrew;
-const flatCards = [
-{cls:'good', label:'Per Mover', tipAmt:tipPerMover, desc:'Per mover — give this amount to each person on the crew individually.', isAcceptable:false},
-{cls:'better', label:'Generous', tipAmt:Math.round(tipPerMover * 1.25), desc:'Above standard — for a smooth, efficient move.', isAcceptable:false},
-{cls:'best', label:'Best (per mover)', tipAmt:Math.round(tipPerMover * 1.25), desc:'Outstanding work — a generous tip each mover will remember.', isAcceptable:false},
-{cls:'minimum', label:'Minimum', tipAmt:Math.max(15, Math.round(tipPerMover * 0.6)), desc:'Below standard — only if there were significant problems.', isAcceptable:true},
-];
-const moveLabels = {short5:'short (under 5 miles)',medium:'medium (5–25 miles)',medlong:'medium-long (26–50 miles)',long:'long distance (50+ miles)',extralong:'extra long (100+ miles)',crosscountry:'cross-country'};
-const packedNote = selectedMoverDetails.has('packed') ? ' Includes an adjustment for full packing service — movers who pack deserve meaningfully more.' : '';
-const svcNote = ' Tip calculated for a ' + hours + '-hour ' + moveLabels[selectedMoveType] + ' move with a ' + estimatedCrew + '-person crew.' + packedNote;
-
 const _CAP_BEST   = 250;
 const _CAP_BETTER = 175;
 const _CAP_GOOD   = 125;
 const _CAP_MIN    = 75;
+
+const _goodAmt    = Math.min(tipPerMover,                        _CAP_GOOD);
+const _betterAmt  = Math.min(Math.round(tipPerMover * 1.25),     _CAP_BETTER);
+const _bestAmt    = Math.min(Math.round(tipPerMover * 1.6),      _CAP_BEST);
+const _minAmt     = Math.min(Math.max(10, Math.round(tipPerMover * 0.55)), _CAP_MIN);
+
+// Ensure strict ordering with at least $5 gaps
+const _b2 = Math.max(_betterAmt, _goodAmt + 5);
+const _b3 = Math.max(_bestAmt,   _b2 + 5);
+const _b0 = Math.min(_minAmt,    _goodAmt - 5);
+
+const _perLabel = estimatedCrew > 1 ? ' per mover (' + estimatedCrew + ' movers)' : '';
+const flatCards = [
+{cls:'good',    label:'Standard',  tipAmt:_goodAmt,   desc:'Standard tip' + _perLabel + ' — hand cash to each mover individually.',                    isAcceptable:false},
+{cls:'better',  label:'Generous',  tipAmt:_b2,         desc:'Above standard' + _perLabel + ' — for a smooth, efficient, careful move.',                  isAcceptable:false},
+{cls:'best',    label:'Excellent', tipAmt:_b3,          desc:'Outstanding' + _perLabel + ' — for a crew that truly went above and beyond.',               isAcceptable:false},
+{cls:'minimum', label:'Minimum',   tipAmt:Math.max(10, _b0), desc:'Below standard' + _perLabel + ' — only if there were significant problems.',          isAcceptable:true},
+];
+const moveLabels = {short5:'short (under 5 miles)',medium:'medium (5–25 miles)',medlong:'medium-long (26–50 miles)',long:'long distance (50+ miles)',extralong:'extra long (100+ miles)',crosscountry:'cross-country'};
+const packedNote = selectedMoverDetails.has('packed') ? ' Includes an adjustment for full packing service — movers who pack deserve meaningfully more.' : '';
+const svcNote = ' Tip calculated for a ' + hours + '-hour ' + moveLabels[selectedMoveType] + ' move with a ' + estimatedCrew + '-person crew.' + packedNote;
 
 const fmt = n => '$' + Math.round(n);
 const grid = document.getElementById('tipGrid');
