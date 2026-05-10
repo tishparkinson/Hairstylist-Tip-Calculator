@@ -691,10 +691,10 @@ _ac6 = Math.max(0.12, _a5-0.04); _g7 = _a5; _bt8 = _a5+0.04; _bs9 = _a5+0.08;
 _ac6 += _p4; _g7 += _p4; _bt8 += _p4; _bs9 += _p4;
 
 if (price > 0) {
-_ac6  = Math.min(_ac6,  50    / price * price) / price;
-_g7   = Math.min(_g7,   100   / price * price) / price;
-_bt8  = Math.min(_bt8,  175 / price * price) / price;
-_bs9 = Math.min(_bs9, 250   / price * price) / price;
+_ac6 = Math.min(_ac6 * price, 50) / price;
+_g7 = Math.min(_g7 * price, 100) / price;
+_bt8 = Math.min(_bt8 * price, 175) / price;
+_bs9 = Math.min(_bs9 * price, 250) / price;
 _g7   = Math.max(_g7,   _ac6  + 0.005);
 _bt8  = Math.max(_bt8,  _g7   + 0.005);
 _bs9 = Math.max(_bs9, _bt8  + 0.005);

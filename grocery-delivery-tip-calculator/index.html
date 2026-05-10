@@ -641,10 +641,10 @@ _bt8 = _a5 + 0.04; _bs9 = _a5 + 0.08;
 _ac6 += bonusTotal; _g7 += bonusTotal; _bt8 += bonusTotal; _bs9 += bonusTotal;
 
 if (price > 0) {
-_ac6  = Math.min(_ac6,  10    / price * price) / price;
-_g7   = Math.min(_g7,   20   / price * price) / price;
-_bt8  = Math.min(_bt8,  35 / price * price) / price;
-_bs9 = Math.min(_bs9, 50   / price * price) / price;
+_ac6 = Math.min(_ac6 * price, 10) / price;
+_g7 = Math.min(_g7 * price, 20) / price;
+_bt8 = Math.min(_bt8 * price, 35) / price;
+_bs9 = Math.min(_bs9 * price, 50) / price;
 _g7   = Math.max(_g7,   _ac6  + 0.005);
 _bt8  = Math.max(_bt8,  _g7   + 0.005);
 _bs9 = Math.max(_bs9, _bt8  + 0.005);
