@@ -710,11 +710,13 @@ const amtSpan = document.createElement("span"); amtSpan.className = "bonus-bar-a
 bar.appendChild(iconsSpan); bar.appendChild(textSpan); bar.appendChild(amtSpan);
 grid.parentNode.insertBefore(bar, grid);
 }
+const _crewSuffix = selectedCleanerCrew > 1 ? " Total — split equally between " + selectedCleanerCrew + " cleaners." : " for your cleaner.";
+const _crewSuffixMin = selectedCleanerCrew > 1 ? " Total — split between " + selectedCleanerCrew + " cleaners." : "";
 const cards = [
-{ cls:"good", label:"Good", tipAmt:fmt(_g7), total:fmtTotal(_g7), pct:fmtPct(_g7), mostCommon:false, isAcceptable:false, desc:"A solid tip for a quality clean." },
-{ cls:"better", label:"Better", tipAmt:fmt(_bt8), total:fmtTotal(_bt8), pct:fmtPct(_bt8), mostCommon:selectedStars>=3, isAcceptable:false, desc:"The local sweet spot — shows real appreciation." },
-{ cls:"best", label:"Best", tipAmt:fmt(_bs9), total:fmtTotal(_bs9), pct:fmtPct(_bs9), mostCommon:false, isAcceptable:false, desc:"Exceptional — the cleanest your home has ever been." },
-{ cls:"minimum", label:selectedStars<=2?"If Unhappy":"Minimum", tipAmt:fmt(_ac6), total:fmtTotal(_ac6), pct:fmtPct(_ac6), mostCommon:false, isAcceptable:true, desc:selectedStars<=2?"Not what you expected — still acknowledges the effort.":"Disappointed — still acknowledges the effort." }
+{ cls:"good", label:"Good", tipAmt:fmt(_g7), total:fmtTotal(_g7), pct:fmtPct(_g7), mostCommon:false, isAcceptable:false, desc:"A solid tip" + _crewSuffix },
+{ cls:"better", label:"Better", tipAmt:fmt(_bt8), total:fmtTotal(_bt8), pct:fmtPct(_bt8), mostCommon:selectedStars>=3, isAcceptable:false, desc:"The local sweet spot — shows real appreciation." + (selectedCleanerCrew > 1 ? " Split equally." : "") },
+{ cls:"best", label:"Best", tipAmt:fmt(_bs9), total:fmtTotal(_bs9), pct:fmtPct(_bs9), mostCommon:false, isAcceptable:false, desc:"Exceptional — the cleanest your home has ever been." + (selectedCleanerCrew > 1 ? " Split equally." : "") },
+{ cls:"minimum", label:selectedStars<=2?"If Unhappy":"Minimum", tipAmt:fmt(_ac6), total:fmtTotal(_ac6), pct:fmtPct(_ac6), mostCommon:false, isAcceptable:true, desc:(selectedStars<=2?"Not what you expected — still acknowledges the effort.":"Disappointed — still acknowledges the effort.") + _crewSuffixMin }
 ];
 cards.forEach(card => {
 const div = document.createElement("div");

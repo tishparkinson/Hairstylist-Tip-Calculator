@@ -207,6 +207,7 @@
         <button class="pill" data-val="event">Event / Wedding</button>
         <button class="pill" data-val="casino">Casino</button>
         <button class="pill" data-val="upscale">Upscale Fine Dining</button>
+        <button class="pill" data-val="other">Other</button>
       </div>
     </div>
     <div class="section-label">Wait Time <span class="optional-label">(optional)</span></div>
@@ -591,7 +592,7 @@ const _li = (_cd && fips && _cd[fips]) ? _cd[fips] : _umi;
 const dataSource = (_cd && fips && _cd[fips]) ? 'local' : 'national';
 const _i1 = (_li - 40000) / (120000 - 40000);
 const incomeMult = 0.7 + _i1 * 0.6;
-const baseTip = {restaurant:3, hotel:4, hospital:2, event:4, casino:4, upscale:6}[selectedVenue] || 3;
+const baseTip = {restaurant:3, hotel:4, hospital:2, event:4, casino:4, upscale:6, other:3}[selectedVenue] || 3;
 const waitMult = {fast:1.1, ok:1.0, slow:0.85, very_slow:0.7}[selectedWait] || 1;
 const qualMult = {poor:0.6, ok:0.85, good:1.0, great:1.25}[selectedValetQual] || 1;
 const whenMult = selectedValetWhen === 'both' ? 2 : 1;
@@ -603,7 +604,7 @@ const flatCards = [
 {cls:'best', label:'Very Generous', tipAmt:Math.round(perTip * 2) * whenMult, desc:'For exceptional service, very fast retrieval, or a special occasion.', isAcceptable:false},
 {cls:'minimum', label:'Minimum', tipAmt:Math.max(2, Math.round(perTip * 0.6)) * whenMult, desc:'Below standard — only for disappointing service or very long waits.', isAcceptable:true},
 ];
-const venueLabels = {restaurant:'restaurant valet',hotel:'hotel valet',hospital:'hospital/medical valet',event:'event/wedding valet',casino:'casino valet',upscale:'upscale dining valet'};
+const venueLabels = {restaurant:'restaurant valet',hotel:'hotel valet',hospital:'hospital/medical valet',event:'event/wedding valet',casino:'casino valet',upscale:'upscale dining valet',other:'valet service'};
 const whenLabels = {dropoff:'drop-off tip',pickup:'pick-up tip',both:'both drop-off and pick-up tip'};
 const svcNote = ' Suggestion for ' + whenLabels[selectedValetWhen] + ' at ' + venueLabels[selectedVenue] + ' in this city.';
 

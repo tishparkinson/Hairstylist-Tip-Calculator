@@ -635,7 +635,7 @@ const totalTip = tipPerMover * estimatedCrew;
 const flatCards = [
 {cls:'good', label:'Per Mover', tipAmt:tipPerMover, desc:'Per mover — give this amount to each person on the crew individually.', isAcceptable:false},
 {cls:'better', label:'Generous', tipAmt:Math.round(tipPerMover * 1.25), desc:'Above standard — for a smooth, efficient move.', isAcceptable:false},
-{cls:'best', label:'Best (per mover)', tipAmt:Math.round(perMover * 1.25), desc:'Outstanding work — a generous tip each mover will remember.', isAcceptable:false},
+{cls:'best', label:'Best (per mover)', tipAmt:Math.round(tipPerMover * 1.25), desc:'Outstanding work — a generous tip each mover will remember.', isAcceptable:false},
 {cls:'minimum', label:'Minimum', tipAmt:Math.max(15, Math.round(tipPerMover * 0.6)), desc:'Below standard — only if there were significant problems.', isAcceptable:true},
 ];
 const moveLabels = {short5:'short (under 5 miles)',medium:'medium (5–25 miles)',medlong:'medium-long (26–50 miles)',long:'long distance (50+ miles)',extralong:'extra long (100+ miles)',crosscountry:'cross-country'};
