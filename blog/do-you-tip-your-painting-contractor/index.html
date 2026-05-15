@@ -18,67 +18,108 @@
 
 <style>.site-footer{background:rgba(255,255,255,0.02);border-top:1px solid rgba(255,255,255,0.09);padding:52px 0 0}.site-footer .footer-inner{max-width:960px;margin:0 auto;padding:0 20px}.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:40px}.footer-col{display:flex;flex-direction:column;gap:10px}.footer-col-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:4px}.footer-col a{font-size:13px;color:rgba(255,255,255,0.65);text-decoration:none;transition:color .15s;width:fit-content}.footer-col a:hover{color:#4ade80}.footer-bottom{border-top:1px solid rgba(255,255,255,0.07);padding:20px 0 28px;display:flex;gap:24px;flex-wrap:wrap}.footer-bottom p{font-size:11px;color:rgba(255,255,255,0.28);line-height:1.65;flex:1;min-width:200px}@media(max-width:700px){.footer-grid{grid-template-columns:1fr 1fr;gap:24px}.footer-grid .footer-col:first-child{grid-column:1/-1}}
 
-/* ── Mobile overflow fix v2 ── */
-html { overflow-x: hidden }
-body { overflow-x: hidden; max-width: 100vw }
 
-/* Orbs cause the main overflow — clip them at source */
+/* ── Mobile overflow fix v3 ── */
+html, body { overflow-x: hidden }
+
+/* Clip orbs so they never expand the page */
 .header { overflow: hidden !important }
 .header-orbs-clip { overflow: hidden !important }
 .header-orb-a, .header-orb-b { pointer-events: none }
 
-/* ref table: allow horizontal scroll within its container, never expand page */
-.ref-wrap { overflow-x: auto; max-width: 100% }
-.ref-wrap table { min-width: 0 }
+/* Ref table scrolls horizontally within its wrapper - never expands page */
+.ref-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch }
 
 @media (max-width: 640px) {
-  /* Hero */
-  .hero-split { padding: 36px 16px 40px !important; box-sizing: border-box !important; width: 100% !important; max-width: 100% !important; overflow: hidden !important }
-  .header { padding: 36px 16px 32px !important }
-  .header h1 { font-size: clamp(28px, 8vw, 44px) !important; word-break: break-word }
-  .header-tagline, .home-psych-1, .home-psych-2, .header-psych, .header-psych-home { max-width: 100% !important; padding-left: 0 !important; padding-right: 0 !important }
-  .tip-search-wrap { max-width: 100% !important; width: 100% !important; box-sizing: border-box !important }
-  .tip-search-inner { border-radius: 14px !important }
 
-  /* Orbs: shrink dramatically on mobile */
-  .header-orb-a { width: 200px !important; height: 200px !important; left: -40px !important }
-  .header-orb-b { width: 160px !important; height: 160px !important; right: -30px !important }
+  /* ── Header / Hero ── */
+  .header {
+    padding: 40px 20px 36px !important;
+  }
+  .hero-split {
+    padding: 40px 20px 44px !important;
+    width: 100% !important;
+  }
+  .header-orb-a { width: 180px !important; height: 180px !important; left: -40px !important; top: -40px !important }
+  .header-orb-b { width: 140px !important; height: 140px !important; right: -30px !important }
 
-  /* Main content */
-  .main { padding: 20px 16px 60px !important; box-sizing: border-box !important; max-width: 100% !important }
-  .section-wrap, .ref-section, .diff-section { max-width: 100% !important; padding-left: 16px !important; padding-right: 16px !important; box-sizing: border-box !important }
+  /* ── Search bar ── */
+  .tip-search-wrap { width: 100% !important }
+  .tip-search-inner { border-radius: 12px !important }
+  .tip-search-btn { padding: 10px 14px !important; font-size: 12px !important }
 
-  /* Ref table: make it scroll horizontally inside its box, never expand */
-  .ref-wrap { overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; max-width: 100% !important }
-  .ref-wrap table { white-space: nowrap }
+  /* ── Main content area ── */
+  .main {
+    padding: 24px 20px 60px !important;
+  }
 
-  /* Diff/info box */
-  .diff-box { padding: 16px !important; box-sizing: border-box !important; max-width: 100% !important }
-  .diff-items { grid-template-columns: 1fr 1fr !important }
-  .diff-item { min-width: 0 !important }
+  /* ── Section wrappers (ref, diff) ── */
+  .ref-section, .diff-section, .section-wrap {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
 
-  /* Footer */
-  .site-footer { padding: 16px !important; flex-direction: column !important; align-items: flex-start !important; gap: 12px !important }
-  .footer-links { flex-wrap: wrap !important; gap: 12px !important }
-  .footer { padding: 28px 0 0 !important }
-  .footer-inner { padding: 0 16px !important; box-sizing: border-box !important }
-  .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 20px !important }
+  /* ── Info / diff box ── */
+  .diff-box {
+    padding: 20px !important;
+  }
+  .diff-items {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* ── SEO info sections on calc pages ── */
+  .seo-section {
+    padding: 40px 20px !important;
+  }
+  .seo-inner {
+    padding: 0 !important;
+  }
+  .seo-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* ── Site footer (simple flex version) ── */
+  .site-footer {
+    padding: 20px !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+  .footer-links {
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+  }
+
+  /* ── Multi-column footer (index / premium pages) ── */
+  .footer { padding: 32px 0 0 !important }
+  .footer-inner { padding: 0 20px !important }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 24px !important;
+  }
   .footer-grid .footer-col:first-child { grid-column: 1 / -1 !important }
-  .footer-bottom { flex-direction: column !important; gap: 8px !important }
+  .footer-bottom { flex-direction: column !important; gap: 8px !important; padding: 16px 0 24px !important }
 
-  /* SEO / info sections on calc pages */
-  .seo-section { padding: 36px 16px 40px !important; box-sizing: border-box !important }
-  .seo-inner { max-width: 100% !important; padding: 0 !important; box-sizing: border-box !important }
-  .seo-grid { grid-template-columns: 1fr !important }
-  .seo-card { max-width: 100% !important; box-sizing: border-box !important }
+  /* ── Nav ── */
+  .site-nav { padding: 0 20px !important }
 
-  /* Nav */
+  /* ── Calc page form cards ── */
+  .card { padding: 20px !important }
+}
+
+@media (max-width: 390px) {
+  /* iPhone SE / mini — tighten slightly more */
+  .header { padding: 32px 16px 28px !important }
+  .hero-split { padding: 32px 16px 36px !important }
+  .main { padding: 20px 16px 60px !important }
+  .ref-section, .diff-section, .section-wrap { padding-left: 16px !important; padding-right: 16px !important }
+  .diff-box { padding: 16px !important }
+  .seo-section { padding: 32px 16px !important }
+  .site-footer { padding: 16px !important }
+  .footer-inner { padding: 0 16px !important }
   .site-nav { padding: 0 16px !important }
-  .site-nav-links { gap: 12px !important }
-
-  /* Generic safety net */
-  * { max-width: 100% !important; box-sizing: border-box }
-  img, video, iframe, table { max-width: 100% }
+  .card { padding: 16px !important }
+  .tip-search-btn { padding: 8px 10px !important; font-size: 11px !important }
 }
 </style>
 
