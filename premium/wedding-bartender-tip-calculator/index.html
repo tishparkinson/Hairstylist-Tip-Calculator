@@ -141,6 +141,26 @@
   border: none !important;
   font-size: 12px !important;
 }
+
+/* ── Mobile overflow fix ── */
+html,body{overflow-x:hidden;max-width:100%}
+@media(max-width:600px){
+  .hero-split{padding:40px 16px 44px!important}
+  .header{padding:40px 16px 36px!important}
+  .site-footer,.footer{padding:20px 16px!important}
+  .footer-inner{padding:0 16px!important}
+  .footer-grid{grid-template-columns:1fr 1fr!important;gap:20px!important;padding:0!important}
+  .seo-section{padding:36px 16px 40px!important}
+  .seo-inner{padding:0!important;max-width:100%!important}
+  .main{padding:20px 14px 60px!important}
+  .diff-box{padding:18px 16px!important}
+  .page-hero{padding:40px 16px 36px!important}
+  .page,.above-fold{padding-left:16px!important;padding-right:16px!important}
+  .hero{padding-left:16px!important;padding-right:16px!important}
+  .plan-card{margin-left:0!important;margin-right:0!important}
+  .faq-section,.faq-wrap{padding-left:16px!important;padding-right:16px!important}
+  .card{margin-left:0!important;margin-right:0!important}
+}
 </style>
 
 <meta name="description" content="How much do you tip a wedding bartender? Our calculator checks for contract gratuity, then accounts for hours, guest count, signature cocktails, number of bartenders, and your local cost of living.">
