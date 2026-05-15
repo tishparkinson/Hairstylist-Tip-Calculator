@@ -23,6 +23,19 @@
   </div>
 </nav>
 
+<!-- Welcome banner + license key (shown only on first login via ?welcome=1&key=...) -->
+<div id="welcomeBanner" style="display:none;background:rgba(74,222,128,0.08);border-bottom:1px solid rgba(74,222,128,0.2);padding:14px 24px;text-align:center;">
+  <p style="font-size:14px;color:rgba(255,255,255,0.85);margin-bottom:6px;">🎉 <strong style="color:#fff">Welcome to GeoTipper Premium!</strong> Your license key is below — save it to use on other devices.</p>
+  <div id="keyDisplay" style="display:inline-block;background:rgba(0,0,0,0.3);border:1px solid rgba(74,222,128,0.3);border-radius:8px;padding:8px 20px;font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:#4ade80;letter-spacing:.14em;margin:4px 0 8px;cursor:pointer;" title="Click to copy"></div>
+  <br>
+  <span style="font-size:11px;color:rgba(255,255,255,0.4);">Click the key to copy it &nbsp;·&nbsp; It was also emailed to you &nbsp;·&nbsp; <a href="../redeem/index.html" style="color:rgba(74,222,128,0.7);">Use on another device</a></span>
+</div>
+
+<!-- Persistent "use on another device" link for existing subscribers -->
+<div id="redeemLink" style="display:none;text-align:center;padding:10px 24px;border-bottom:1px solid rgba(255,255,255,0.06);">
+  <span style="font-size:12px;color:rgba(255,255,255,0.35);">Using a new device? <a href="../redeem/index.html" style="color:rgba(74,222,128,0.6);">Enter your license key</a> to unlock premium here too.</span>
+</div>
+
 <div class="page-hero">
   <span class="eyebrow">GeoTipper Premium</span>
   <h1>All <em>Premium</em> Calculators</h1>
@@ -188,5 +201,30 @@
     </div>
   </div>
 </footer>
+<script>
+(function() {
+  var params = new URLSearchParams(location.search);
+  var key = params.get('key');
+  var welcome = params.get('welcome');
+
+  if (welcome === '1' && key) {
+    var banner = document.getElementById('welcomeBanner');
+    var keyEl = document.getElementById('keyDisplay');
+    banner.style.display = 'block';
+    keyEl.textContent = key;
+    keyEl.addEventListener('click', function() {
+      navigator.clipboard.writeText(key).then(function() {
+        keyEl.textContent = 'Copied!';
+        setTimeout(function() { keyEl.textContent = key; }, 1800);
+      });
+    });
+    // Clean URL without reloading
+    history.replaceState({}, '', location.pathname);
+  } else {
+    // Show the subtle "use on another device" link for existing subscribers
+    document.getElementById('redeemLink').style.display = 'block';
+  }
+})();
+</script>
 </body>
 </html>

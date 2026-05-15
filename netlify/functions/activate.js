@@ -3,42 +3,124 @@ import Stripe from "stripe";
 import { getStore } from "@netlify/blobs";
 import crypto from "crypto";
 
+function generateLicenseKey() {
+  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; // no 0/O/1/I
+  let key = "";
+  for (let i = 0; i < 16; i++) {
+    if (i > 0 && i % 4 === 0) key += "-";
+    key += chars[Math.floor(Math.random() * chars.length)];
+  }
+  return key;
+}
+
+async function sendLicenseEmail(toEmail, licenseKey) {
+  // Uses Resend (resend.com) — free up to 3,000 emails/month
+  // Set RESEND_API_KEY in your Netlify environment variables
+  // Set RESEND_FROM_EMAIL to something like "GeoTipper <noreply@geotipper.com>"
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${process.env.RESEND_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      from: process.env.RESEND_FROM_EMAIL || "GeoTipper <noreply@geotipper.com>",
+      to: [toEmail],
+      subject: "Your GeoTipper Premium License Key",
+      html: `
+        <div style="font-family:system-ui,sans-serif;max-width:480px;margin:0 auto;padding:32px 20px;background:#0D0D0F;color:#FAFAF8;">
+          <div style="margin-bottom:24px;">
+            <span style="font-family:Georgia,serif;font-size:20px;font-weight:800;color:#fff;letter-spacing:-.02em;">
+              Geo<span style="color:#4ade80">Tipper</span>
+            </span>
+          </div>
+
+          <h1 style="font-size:22px;font-weight:800;color:#fff;margin:0 0 8px;">You're in. 🎉</h1>
+          <p style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.7;margin:0 0 28px;">
+            Thanks for subscribing to GeoTipper Premium. Below is your license key — 
+            save it somewhere safe. You can use it to unlock Premium on any device or browser.
+          </p>
+
+          <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(74,222,128,0.3);border-radius:10px;padding:20px;text-align:center;margin-bottom:28px;">
+            <p style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin:0 0 10px;">Your License Key</p>
+            <p style="font-family:Georgia,serif;font-size:26px;font-weight:800;color:#4ade80;letter-spacing:.14em;margin:0;">${licenseKey}</p>
+          </div>
+
+          <p style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;margin:0 0 8px;">
+            <strong style="color:rgba(255,255,255,0.8);">Using a new device?</strong><br>
+            Go to <a href="https://geotipper.com/redeem/" style="color:#4ade80;">geotipper.com/redeem</a>, 
+            enter your key, and Premium unlocks instantly.
+          </p>
+
+          <p style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;margin:0 0 28px;">
+            <strong style="color:rgba(255,255,255,0.8);">Manage your subscription:</strong><br>
+            <a href="https://billing.stripe.com/p/login/8x25kE7Mq8T7edH8341RC00" style="color:#4ade80;">billing.stripe.com</a>
+          </p>
+
+          <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:0 0 20px;">
+          <p style="font-size:11px;color:rgba(255,255,255,0.25);line-height:1.65;margin:0;">
+            Questions? Reply to this email or contact 
+            <a href="mailto:verdantwebsolutions@gmail.com" style="color:rgba(255,255,255,0.4);">verdantwebsolutions@gmail.com</a><br>
+            © 2025 Verdant Web Solutions, LLC
+          </p>
+        </div>
+      `,
+    }),
+  });
+
+  if (!res.ok) {
+    const err = await res.text();
+    console.error("Resend error:", err);
+    // Don't throw — email failure shouldn't block the user from accessing premium
+  } else {
+    console.log(`License key email sent to ${toEmail}`);
+  }
+}
+
 export default async (req) => {
   try {
     const url = new URL(req.url);
     const sessionId = url.searchParams.get("session_id");
 
-    console.log("Activate called, session_id:", sessionId);
-
     if (!sessionId) {
-      console.log("No session_id found, redirecting to pricing");
       return Response.redirect("https://geotipper.com/pricing", 302);
     }
 
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
     const session = await stripe.checkout.sessions.retrieve(sessionId);
 
-    console.log("Session status:", session.payment_status);
-
     if (session.payment_status !== "paid") {
       return Response.redirect("https://geotipper.com/pricing", 302);
     }
 
     const token = crypto.randomBytes(32).toString("hex");
+    const licenseKey = generateLicenseKey();
+    const email = session.customer_details?.email;
     const store = getStore("geo-access-tokens");
+
     await store.set(token, JSON.stringify({
-      email: session.customer_details?.email,
+      email,
       customerId: session.customer,
       subscriptionId: session.subscription,
+      licenseKey,
       created: Date.now(),
     }));
 
-    console.log("Token created, redirecting to premium");
+    await store.set(`lk:${licenseKey}`, token);
+
+    console.log(`Token created for ${email}, key: ${licenseKey}`);
+
+    // Send the license key email (non-blocking — failure won't affect the redirect)
+    if (email) {
+      sendLicenseEmail(email, licenseKey).catch(err =>
+        console.error("Email send failed (non-fatal):", err)
+      );
+    }
 
     return new Response(null, {
       status: 302,
       headers: {
-        "Location": "https://geotipper.com/premium/",
+        "Location": `https://geotipper.com/premium/?welcome=1&key=${encodeURIComponent(licenseKey)}`,
         "Set-Cookie": `geo_token=${token}; Path=/; Max-Age=31536000; SameSite=Lax; Secure; HttpOnly`,
       },
     });

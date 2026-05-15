@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enter License Key — GeoTipper Premium</title>
+  <link rel="preload" href="/fonts/fonts.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/fonts/fonts.css"></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#0D0D0F;--surface:#161618;--surface-2:#1E1E22;--ink:#FAFAF8;--ink-2:rgba(255,255,255,0.75);--ink-3:rgba(255,255,255,0.45);--rule:rgba(255,255,255,0.08);--green:#4ade80;--green-dim:rgba(74,222,128,0.8);--green-pale:rgba(74,222,128,0.1);--r:12px;--sans:'Inter',system-ui,sans-serif}
+    body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+    .site-nav{display:flex;align-items:center;justify-content:space-between;padding:0 28px;height:56px;background:rgba(13,13,15,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);position:sticky;top:0;z-index:100}
+    .site-logo{font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:#fff;letter-spacing:-.02em;text-decoration:none}
+    .site-logo em{font-style:normal;color:var(--green)}
+    .site-nav-links{display:flex;gap:20px;align-items:center}
+    .site-nav-links a{font-size:13px;color:rgba(255,255,255,0.45);font-weight:500;transition:color .15s;text-decoration:none}
+    .site-nav-links a:hover{color:rgba(255,255,255,0.9)}
+
+    .page{flex:1;display:flex;align-items:center;justify-content:center;padding:48px 20px}
+    .card{background:var(--surface);border:1px solid var(--rule);border-radius:16px;padding:40px;max-width:440px;width:100%}
+    .card-icon{font-size:32px;margin-bottom:16px;display:block}
+    .card h1{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:#fff;margin-bottom:8px;letter-spacing:-.02em}
+    .card p{font-size:13px;color:var(--ink-3);line-height:1.7;margin-bottom:24px}
+    .card p a{color:var(--green);text-decoration:none}
+    label{display:block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:8px}
+    .key-input{width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:14px 16px;font-size:16px;color:#fff;font-family:'Syne',sans-serif;font-weight:700;letter-spacing:.12em;text-transform:uppercase;outline:none;transition:border-color .2s;text-align:center}
+    .key-input::placeholder{color:rgba(255,255,255,0.2);font-weight:400;letter-spacing:0;text-transform:none;font-family:var(--sans)}
+    .key-input:focus{border-color:rgba(74,222,128,0.5);background:rgba(255,255,255,0.08)}
+    .submit-btn{width:100%;margin-top:16px;background:var(--green);border:none;padding:14px;border-radius:10px;font-size:14px;font-weight:700;color:#052e16;cursor:pointer;font-family:var(--sans);transition:background .15s;letter-spacing:.01em}
+    .submit-btn:hover{background:#22c55e}
+    .submit-btn:active{background:#16a34a}
+    .error-msg{display:none;margin-top:16px;background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.25);border-radius:8px;padding:12px 16px;font-size:13px;color:#fca5a5;line-height:1.5}
+    .error-msg.show{display:block}
+    .divider{border:none;border-top:1px solid var(--rule);margin:28px 0}
+    .alt-text{font-size:12px;color:var(--ink-3);text-align:center}
+    .alt-text a{color:var(--green);text-decoration:none}
+
+    footer{padding:24px 28px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+    footer p{font-size:11px;color:rgba(255,255,255,0.3)}
+    .footer-links{display:flex;gap:20px}
+    .footer-links a{font-size:11px;color:rgba(255,255,255,0.3);text-decoration:none}
+    .footer-links a:hover{color:rgba(255,255,255,0.65)}
+    @media(max-width:480px){.card{padding:28px 20px}.site-nav{padding:0 16px}}
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="../index.html" class="site-logo">Geo<em>Tipper</em></a>
+  <div class="site-nav-links">
+    <a href="../index.html">Free Calculators</a>
+    <a href="../pricing/index.html">Pricing</a>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="card">
+    <span class="card-icon">🔑</span>
+    <h1>Enter your license key</h1>
+    <p>Use your license key to unlock GeoTipper Premium on any device or browser. Your key was shown on screen after purchase and emailed to you.</p>
+
+    <form method="POST" action="/.netlify/functions/redeem" id="redeemForm">
+      <label for="keyInput">License Key</label>
+      <input
+        type="text"
+        id="keyInput"
+        name="key"
+        class="key-input"
+        placeholder="XXXX-XXXX-XXXX-XXXX"
+        maxlength="19"
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="characters"
+        spellcheck="false"
+      >
+      <div class="error-msg" id="errorMsg">
+        That key wasn't recognized. Double-check for typos — the key uses only letters and numbers (no 0, O, 1, or I). If you're still stuck, <a href="mailto:verdantwebsolutions@gmail.com">contact support</a>.
+      </div>
+      <div class="error-msg" id="errorExpired" style="display:none">
+        This key is no longer active. It may belong to a cancelled subscription. <a href="mailto:verdantwebsolutions@gmail.com">Contact support</a> if you think this is an error.
+      </div>
+      <div class="error-msg" id="errorServer" style="display:none">
+        Something went wrong on our end. Please try again in a moment or <a href="mailto:verdantwebsolutions@gmail.com">contact support</a>.
+      </div>
+      <button type="submit" class="submit-btn">Unlock Premium →</button>
+    </form>
+
+    <hr class="divider">
+    <p class="alt-text">Don't have a license key? <a href="../pricing/index.html">Subscribe to GeoTipper Premium</a></p>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 Verdant Web Solutions, LLC</p>
+  <div class="footer-links">
+    <a href="../privacy-policy/index.html">Privacy</a>
+    <a href="../terms-of-use/index.html">Terms</a>
+    <a href="mailto:verdantwebsolutions@gmail.com">Support</a>
+  </div>
+</footer>
+
+<script>
+  // Auto-format key input as user types: insert dashes at positions 4,9,14
+  const inp = document.getElementById('keyInput');
+  inp.addEventListener('input', function() {
+    let val = this.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+    let formatted = '';
+    for (let i = 0; i < val.length && i < 16; i++) {
+      if (i > 0 && i % 4 === 0) formatted += '-';
+      formatted += val[i];
+    }
+    this.value = formatted;
+  });
+
+  // Show appropriate error based on URL param
+  const params = new URLSearchParams(location.search);
+  const err = params.get('error');
+  if (err === 'invalid' || err === 'empty') {
+    document.getElementById('errorMsg').classList.add('show');
+  } else if (err === 'expired') {
+    document.getElementById('errorExpired').style.display = 'block';
+  } else if (err === 'server') {
+    document.getElementById('errorServer').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
