@@ -212,7 +212,7 @@ document.getElementById('billAmt').addEventListener('keydown',e=>{if(e.key==='En
       <div class="footer-col">
         <a href="../../index.html" class="site-logo" style="font-size:20px;margin-bottom:10px;display:block;"><img src="../../logo.png" alt="GeoTipper" class="site-logo-img"><span>Geo<em>Tipper</em></span></a>
         <p style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.7;margin-bottom:14px;">The right tip says: the effort was seen,<br>and the person behind it matters.</p>
-        <p style="font-size:12px;color:rgba(255,255,255,0.3);line-height:1.7;">&#169; 2025 Verdant Web Solutions, LLC<br>Idaho &middot; <a href="mailto:verdantwebsolutions@gmail.com" style="color:rgba(255,255,255,0.4);text-decoration:none;">verdantwebsolutions@gmail.com</a></p>
+        <p style="font-size:12px;color:rgba(255,255,255,0.3);line-height:1.7;">&#169; <span id="copy-year">2025</span> Verdant Web Solutions, LLC<br>Idaho &middot; <a href="mailto:verdantwebsolutions@gmail.com" style="color:rgba(255,255,255,0.4);text-decoration:none;">verdantwebsolutions@gmail.com</a></p>
       </div>
       <div class="footer-col">
         <div class="footer-col-label">Calculators</div>
@@ -243,5 +243,6 @@ document.getElementById('billAmt').addEventListener('keydown',e=>{if(e.key==='En
     </div>
   </div>
 </footer>
+<script>var y=document.getElementById("copy-year");if(y)y.textContent=new Date().getFullYear();</script>
 </body>
 </html>

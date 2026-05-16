@@ -136,7 +136,7 @@ html, body { overflow-x: hidden }
 <nav class="site-nav">
   <a href="../index.html" class="site-logo"><img src="../logo.png" alt="GeoTipper" class="site-logo-img"><span>Geo<em>Tipper</em></span></a>
   <div class="site-nav-links">
-    <a href="../index.html">Free Calculators</a>
+    <a href="../pricing/index.html#free">Free Calculators</a>
     <a href="../blog/index.html">Blog</a>
   </div>
 </nav>
@@ -183,16 +183,7 @@ html, body { overflow-x: hidden }
       </div>
     </div>
   </div>
-
-  
-  <div class="free-banner">
-    <span class="free-badge-big">FREE</span>
-    <span class="free-text"><strong>13 free calculators</strong> — restaurant, barber, rideshare, movers, dog groomer, nail salon &amp; more. No account needed.</span>
-    <a href="../index.html" class="free-btn">Browse free &rarr;</a>
-  </div>
-
-  
-  <div class="section-heading"><span class="section-badge badge-premium">Premium</span> What each calculator accounts for</div>
+<div class="section-heading"><span class="section-badge badge-premium">Premium</span> What each calculator accounts for</div>
   <table class="calc-table">
     <thead>
       <tr>
@@ -328,7 +319,8 @@ html, body { overflow-x: hidden }
       </tr>
       <tr>
         <td><span class="calc-name">Barber</span><br><a class="calc-link" href="../barber-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">Local cost of living · Bill amount · Service type (cut, beard, shave, color) · First visit vs regular</td>
+        <td class="factors">Local cost of living · Bill amount · Service type (cut, beard, shave, color) · First visit vs regular · Satisfaction</td>
+        <td class="bonuses"><span class="bonus-tag">🎄 Holiday / Christmas</span><span class="bonus-tag">⏰ Squeezed me in</span><span class="bonus-tag">✨ Truly outstanding</span><span class="bonus-tag">🎁 Year-end bonus</span></td>
         <td class="bonuses"><span class="bonus-tag">Holiday / Christmas</span><span class="bonus-tag">Squeezed me in</span><span class="bonus-tag">Truly outstanding</span><span class="bonus-tag">Year-end bonus</span></td>
       </tr>
       <tr>
@@ -353,7 +345,7 @@ html, body { overflow-x: hidden }
       </tr>
       <tr>
         <td><span class="calc-name">Dog Groomer</span><br><a class="calc-link" href="../dog-groomer-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">Local cost of living · Service cost · Mobile vs salon · Dog size · Coat difficulty · First visit vs regular</td>
+        <td class="factors">Local cost of living · Service cost · Groomer type (mobile/salon/corporate) · Dog size · Coat type (easy/difficult) · Difficult dog behavior · Full service · First visit vs regular · Satisfaction</td>
         <td class="bonuses"><span class="bonus-tag">Holiday / Christmas</span><span class="bonus-tag">Squeezed me in</span><span class="bonus-tag">Truly outstanding</span><span class="bonus-tag">Year-end bonus</span></td>
       </tr>
       <tr>
@@ -373,12 +365,12 @@ html, body { overflow-x: hidden }
       </tr>
       <tr>
         <td><span class="calc-name">Bellhop</span><br><a class="calc-link" href="../bellhop-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">Local cost of living · Property type · Number of bags · Service type (room delivery, storage, retrieval)</td>
+        <td class="factors">Local cost of living · Number of bags · Property type (hotel/luxury/resort/movers/casino) · Service type (room/lobby/car/concierge) · Service quality</td>
         <td class="bonuses">&mdash;</td>
       </tr>
       <tr>
         <td><span class="calc-name">Valet</span><br><a class="calc-link" href="../valet-tip-calculator/">Calculate &rarr;</a></td>
-        <td class="factors">Local cost of living · Venue type · Wait time · Service quality · When you tip</td>
+        <td class="factors">Local cost of living · Venue type (restaurant/hotel/hospital/event/casino/upscale/other) · Wait time · Service quality</td>
         <td class="bonuses">&mdash;</td>
       </tr>
       <tr>
@@ -415,12 +407,12 @@ html, body { overflow-x: hidden }
       <div class="footer-col">
         <a href="../index.html" class="site-logo" style="font-size:20px;margin-bottom:10px;display:block;">Geo<em>Tipper</em></a>
         <p style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.7;margin-bottom:14px;">The right tip says: the effort was seen,<br>and the person behind it matters.</p>
-        <p style="font-size:12px;color:rgba(255,255,255,0.3);line-height:1.7;">&#169; 2025 Verdant Web Solutions, LLC<br>Idaho &middot; <a href="mailto:verdantwebsolutions@gmail.com" style="color:rgba(255,255,255,0.4);text-decoration:none;">verdantwebsolutions@gmail.com</a></p>
+        <p style="font-size:12px;color:rgba(255,255,255,0.3);line-height:1.7;">&#169; <span id="copy-year">2025</span> Verdant Web Solutions, LLC<br>Idaho &middot; <a href="mailto:verdantwebsolutions@gmail.com" style="color:rgba(255,255,255,0.4);text-decoration:none;">verdantwebsolutions@gmail.com</a></p>
       </div>
       <div class="footer-col">
         <div class="footer-col-label">Calculators</div>
-        <a href="../index.html">Free Calculators</a>
-        <a href="../premium/index.html">Premium Calculators</a>
+        <a href="../pricing/index.html#free">Free Calculators</a>
+        <a href="../pricing/index.html#premium">Premium Calculators</a>
         <a href="../wedding-tip-calculators/index.html">Wedding Vendors</a>
       </div>
       <div class="footer-col">
@@ -447,5 +439,6 @@ html, body { overflow-x: hidden }
   </div>
 </footer>
 
+<script>var y=document.getElementById("copy-year");if(y)y.textContent=new Date().getFullYear();</script>
 </body>
 </html>

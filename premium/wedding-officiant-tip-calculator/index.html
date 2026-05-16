@@ -436,7 +436,7 @@ html, body { overflow-x: hidden }
       <div style="display:flex;flex-direction:column;gap:10px;">
         <a href="../index.html" class="site-logo" style="font-size:20px;"><img src="../../logo.png" alt="GeoTipper" class="site-logo-img"><span>Geo<em>Tipper</em></span></a>
         <p style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.7;">The right tip says: the effort was seen,<br>and the person behind it matters.</p>
-        <p style="font-size:12px;color:rgba(255,255,255,0.3);line-height:1.7;">&#169; 2025 Verdant Web Solutions, LLC<br>Idaho &middot; <a href="mailto:verdantwebsolutions@gmail.com" style="color:rgba(255,255,255,0.4);text-decoration:none;">verdantwebsolutions@gmail.com</a></p>
+        <p style="font-size:12px;color:rgba(255,255,255,0.3);line-height:1.7;">&#169; <span id="copy-year">2025</span> Verdant Web Solutions, LLC<br>Idaho &middot; <a href="mailto:verdantwebsolutions@gmail.com" style="color:rgba(255,255,255,0.4);text-decoration:none;">verdantwebsolutions@gmail.com</a></p>
       </div>
       <div style="display:flex;flex-direction:column;gap:10px;">
         <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:4px;">Calculators</div>
@@ -741,7 +741,7 @@ else starMod=
 <div style="display:flex;flex-direction:column;gap:10px;">
 <a href="../index.html" class="site-logo" style="font-size:20px;"><img src="../../logo.png" alt="GeoTipper" class="site-logo-img"><span>Geo<em>Tipper</em></span></a>
 <p style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.7;">The right tip says: the effort was seen,<br>and the person behind it matters.</p>
-<p style="font-size:12px;color:rgba(255,255,255,0.3);line-height:1.7;">&#169; 2025 Verdant Web Solutions, LLC<br>Idaho &middot; <a href="mailto:verdantwebsolutions@gmail.com" style="color:rgba(255,255,255,0.4);text-decoration:none;">verdantwebsolutions@gmail.com</a></p>
+<p style="font-size:12px;color:rgba(255,255,255,0.3);line-height:1.7;">&#169; <span id="copy-year">2025</span> Verdant Web Solutions, LLC<br>Idaho &middot; <a href="mailto:verdantwebsolutions@gmail.com" style="color:rgba(255,255,255,0.4);text-decoration:none;">verdantwebsolutions@gmail.com</a></p>
 </div>
 <div style="display:flex;flex-direction:column;gap:10px;">
 <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:4px;">Calculators</div>
@@ -1222,5 +1222,6 @@ buildInsight(selectedCity,li,ds,adjItems,'Many officiants invest far more time t
 }
 
 document.getElementById('calcBtn').addEventListener('click',calculate);</script>
+<script>var y=document.getElementById("copy-year");if(y)y.textContent=new Date().getFullYear();</script>
 </body>
 </html>

@@ -627,7 +627,7 @@ body::before {
       <div class="footer-col">
         <a href="index.html" class="footer-logo">Geo<em>Tipper</em></a>
         <p class="footer-tagline">The right tip says: the effort was seen,<br>and the person behind it matters.</p>
-        <p class="footer-copy">&#169; 2025 Verdant Web Solutions, LLC<br>Idaho &middot; <a href="mailto:verdantwebsolutions@gmail.com">verdantwebsolutions@gmail.com</a></p>
+        <p class="footer-copy">&#169; <span id="copy-year">2025</span> Verdant Web Solutions, LLC<br>Idaho &middot; <a href="mailto:verdantwebsolutions@gmail.com">verdantwebsolutions@gmail.com</a></p>
       </div>
       <div class="footer-col">
         <div class="footer-col-label">Calculators</div>
@@ -756,5 +756,6 @@ var hit=CALCS.find(function(c){return c.n.toLowerCase().includes(q);});
 if(hit)window.location.href=hit.u;
 });
 })();</script>
+<script>var y=document.getElementById("copy-year");if(y)y.textContent=new Date().getFullYear();</script>
 </body>
 </html>
