@@ -42,7 +42,27 @@ html,body{overflow-x:hidden}
   .footer-bottom{flex-direction:column!important;gap:8px!important}
   .site-nav{padding:0 16px!important}
 }
-.vis-hair{background:linear-gradient(135deg,#1e3a5f 0%,#4ade80 100%)}.vis-barber{background:linear-gradient(135deg,#be185d 0%,#4ade80 100%)}.vis-restaurant{background:linear-gradient(135deg,#4c1d95 0%,#4ade80 100%)}.vis-massage{background:linear-gradient(135deg,#92400e 0%,#4ade80 100%)}.vis-nail{background:linear-gradient(135deg,#713f12 0%,#4ade80 100%)}.vis-tattoo{background:linear-gradient(135deg,#14532d 0%,#4ade80 100%)}.vis-hotel{background:linear-gradient(135deg,#1e3a5f 0%,#4ade80 100%)}.vis-movers{background:linear-gradient(135deg,#be185d 0%,#4ade80 100%)}.vis-rideshare{background:linear-gradient(135deg,#4c1d95 0%,#4ade80 100%)}.vis-valet{background:linear-gradient(135deg,#92400e 0%,#4ade80 100%)}.vis-delivery{background:linear-gradient(135deg,#713f12 0%,#4ade80 100%)}.vis-grocery{background:linear-gradient(135deg,#14532d 0%,#4ade80 100%)}.vis-cleaner{background:linear-gradient(135deg,#1e3a5f 0%,#4ade80 100%)}.vis-dj{background:linear-gradient(135deg,#be185d 0%,#4ade80 100%)}.vis-photographer{background:linear-gradient(135deg,#4c1d95 0%,#4ade80 100%)}.vis-colorist{background:linear-gradient(135deg,#92400e 0%,#4ade80 100%)}.vis-furniture{background:linear-gradient(135deg,#713f12 0%,#4ade80 100%)}.vis-dog{background:linear-gradient(135deg,#14532d 0%,#4ade80 100%)}.vis-caterer{background:linear-gradient(135deg,#1e3a5f 0%,#4ade80 100%)}.vis-wedding{background:linear-gradient(135deg,#be185d 0%,#4ade80 100%)}.vis-bellhop{background:linear-gradient(135deg,#4c1d95 0%,#4ade80 100%)}</style>
+.vis-hair{background:linear-gradient(135deg,#C026D3 0%,#EC4899 100%)}.vis-barber{background:linear-gradient(135deg,#0EA5E9 0%,#06B6D4 100%)}.vis-restaurant{background:linear-gradient(135deg,#F59E0B 0%,#EF4444 100%)}.vis-massage{background:linear-gradient(135deg,#4F46E5 0%,#A855F7 100%)}.vis-nail{background:linear-gradient(135deg,#EC4899 0%,#EF4444 100%)}.vis-tattoo{background:linear-gradient(135deg,#FACC15 0%,#F97316 100%)}.vis-hotel{background:linear-gradient(135deg,#C026D3 0%,#EC4899 100%)}.vis-movers{background:linear-gradient(135deg,#0EA5E9 0%,#06B6D4 100%)}.vis-rideshare{background:linear-gradient(135deg,#F59E0B 0%,#EF4444 100%)}.vis-valet{background:linear-gradient(135deg,#4F46E5 0%,#A855F7 100%)}.vis-delivery{background:linear-gradient(135deg,#EC4899 0%,#EF4444 100%)}.vis-grocery{background:linear-gradient(135deg,#FACC15 0%,#F97316 100%)}.vis-cleaner{background:linear-gradient(135deg,#C026D3 0%,#EC4899 100%)}.vis-dj{background:linear-gradient(135deg,#0EA5E9 0%,#06B6D4 100%)}.vis-photographer{background:linear-gradient(135deg,#F59E0B 0%,#EF4444 100%)}.vis-colorist{background:linear-gradient(135deg,#4F46E5 0%,#A855F7 100%)}.vis-furniture{background:linear-gradient(135deg,#EC4899 0%,#EF4444 100%)}.vis-dog{background:linear-gradient(135deg,#FACC15 0%,#F97316 100%)}.vis-caterer{background:linear-gradient(135deg,#C026D3 0%,#EC4899 100%)}.vis-wedding{background:linear-gradient(135deg,#0EA5E9 0%,#06B6D4 100%)}.vis-bellhop{background:linear-gradient(135deg,#F59E0B 0%,#EF4444 100%)}
+/* Page-wide floating orbs */
+.page-orbs{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.page-orb{position:absolute;border-radius:50%;pointer-events:none}
+.page-orb-1{width:600px;height:600px;background:radial-gradient(circle,rgba(74,222,128,0.07) 0%,transparent 70%);top:10%;left:-150px;animation:orb-drift-a 18s ease-in-out infinite}
+.page-orb-2{width:500px;height:500px;background:radial-gradient(circle,rgba(74,222,128,0.05) 0%,transparent 70%);top:40%;right:-120px;animation:orb-drift-b 22s ease-in-out infinite}
+.page-orb-3{width:400px;height:400px;background:radial-gradient(circle,rgba(74,222,128,0.06) 0%,transparent 70%);top:70%;left:20%;animation:orb-drift-a 26s ease-in-out infinite reverse}
+.page-orb-4{width:350px;height:350px;background:radial-gradient(circle,rgba(74,222,128,0.04) 0%,transparent 70%);bottom:10%;right:10%;animation:orb-drift-b 20s ease-in-out infinite reverse}
+@keyframes orb-drift-a{0%,100%{transform:translate(0,0)}33%{transform:translate(30px,-40px)}66%{transform:translate(-20px,25px)}}
+@keyframes orb-drift-b{0%,100%{transform:translate(0,0)}33%{transform:translate(-35px,30px)}66%{transform:translate(25px,-20px)}}
+
+.info-section{margin-top:48px}
+.info-grid{display:grid;gap:24px}
+.info-card{padding:24px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px}
+
+.swipe-hint{display:none}
+@media(max-width:640px){
+  .swipe-hint{display:flex;align-items:center;gap:6px;font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:8px}
+  .swipe-hint::before{content:'←  →';font-size:14px;color:rgba(74,222,128,0.6);letter-spacing:2px}
+}
+</style>
   
   
 <script type="application/ld+json">
@@ -473,7 +493,7 @@ html,body{overflow-x:hidden}
   <div class="ref-section">
     <div class="section-title">US Tipping Quick Reference</div>
     <p class="section-sub">Ranges reflect national norms. Your city&#x2019;s calculator may suggest slightly different amounts based on local income data.</p>
-    <div class="ref-wrap">
+    <p class="swipe-hint">Swipe left to see all columns</p><div class="ref-wrap">
       <table>
         <thead>
           <tr>
