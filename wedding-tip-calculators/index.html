@@ -181,7 +181,7 @@ html, body { overflow-x: hidden }
   </div>
 </nav>
 <div class="hero">
-  <canvas id="heroDotsCanvas" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+  
   <a href="../index.html" class="back-link" style="position:relative;z-index:5;">&#x2190; All Calculators</a>
   
   <h1 style="position:relative;z-index:5;">Wedding Vendor<br><em>Tip Calculators</em></h1>
@@ -387,36 +387,6 @@ document.addEventListener('click',function(e){if(!e.target.closest('.search-wrap
     </div>
   </div>
 </footer>
-<script>(function(){
-var cv=document.getElementById('heroDotsCanvas');
-if(!cv)return;
-var ctx=cv.getContext('2d');
-var W,H,t=0;
-var STEP=28;
-function resize(){W=cv.width=cv.offsetWidth;H=cv.height=cv.offsetHeight;}
-function draw(){
-ctx.clearRect(0,0,W,H);
-t+=0.007;
-var cx=W/2,cy=H/2;
-for(var x=STEP/2;x<W;x+=STEP){
-for(var y=STEP/2;y<H;y+=STEP){
-var dx=(x-cx)/W,dy=(y-cy)/H;
-var dist=Math.sqrt(dx*dx+dy*dy);
-var w1=Math.sin(dist*6-t*1.4)*0.5+0.5;
-var w2=Math.sin(dist*9+t*0.9+1.5)*0.5+0.5;
-var combined=(w1+w2)*0.5;
-var r=combined*2.5+0.3;
-var alpha=(0.05+combined*0.22)*0.5;
-ctx.beginPath();
-ctx.arc(x,y,r,0,Math.PI*2);
-ctx.fillStyle='rgba(80,80,85,'+alpha+')';
-ctx.fill();
-}
-}
-requestAnimationFrame(draw);
-}
-resize();draw();
-window.addEventListener('resize',resize);
-})();</script>
+
 </body>
 </html>
