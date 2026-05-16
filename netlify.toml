@@ -19,11 +19,6 @@
   status = 200
   force = true
 
-[[redirects]]
-  from = "/.netlify/functions/redeem"
-  to = "/.netlify/functions/redeem"
-  status = 200
-  force = true
 
 # Cache static assets aggressively
 [[headers]]
