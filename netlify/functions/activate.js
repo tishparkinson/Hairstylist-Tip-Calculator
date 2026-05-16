@@ -16,7 +16,7 @@ function generateLicenseKey() {
 async function sendLicenseEmail(toEmail, licenseKey) {
   // Uses Resend (resend.com) — free up to 3,000 emails/month
   // Set RESEND_API_KEY in your Netlify environment variables
-  // Set RESEND_FROM_EMAIL to something like "GeoTipper <noreply@geotipper.com>"
+  // Set RESEND_FROM_EMAIL in Netlify environment variables
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -24,7 +24,7 @@ async function sendLicenseEmail(toEmail, licenseKey) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: process.env.RESEND_FROM_EMAIL || "GeoTipper <noreply@geotipper.com>",
+      from: process.env.RESEND_FROM_EMAIL,
       to: [toEmail],
       subject: "Your GeoTipper Premium License Key",
       html: `
