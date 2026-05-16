@@ -385,83 +385,145 @@ html,body{overflow-x:hidden}
 <script>var y=document.getElementById("copy-year");if(y)y.textContent=new Date().getFullYear();</script>
 <script src="../cities.json" type="application/json" id="citiesDataScript"></script>
 <script>
-(function(){
-// ── City autocomplete ──
-var cityInput = document.getElementById('cityInput');
-var acList    = document.getElementById('autocompleteList');
-var selectedCity = null;
-var _cd = null, _umi = 74580;
+const _umi = 74580;
+let citiesData = [];
+let _cd = {};
+let dataReady = false;
 
-// Load city data
-try {
-  var s = document.getElementById('citiesDataScript');
-  fetch('../cities.json').then(function(r){return r.json();}).then(function(d){_cd=d;});
-} catch(e){}
+(async () => {
+  try {
+    const [cr, kr] = await Promise.all([
+      fetch('../cities.json'),
+      fetch('../counties.json')
+    ]);
+    if (cr.ok && kr.ok) {
+      [citiesData, _cd] = await Promise.all([cr.json(), kr.json()]);
+    }
+  } catch(e) {}
+  dataReady = true;
+  if (cityInput && cityInput.value.length >= 2) {
+    cityInput.dispatchEvent(new Event('input'));
+  }
+})();
 
-cityInput.addEventListener('input', function(){
-  var q = this.value.trim().toLowerCase();
-  if(q.length < 2){ acList.classList.remove('open'); return; }
-  fetch('../cities.json').then(function(r){return r.json();}).then(function(data){
-    _cd = data;
-    var keys = Object.keys(data).filter(function(k){ return k.toLowerCase().includes(q); }).slice(0,8);
-    if(!keys.length){ acList.classList.remove('open'); return; }
-    acList.innerHTML = keys.map(function(k){
-      var d = data[k]; return '<div class="ac-item" data-key="'+k+'">'+k+'</div>';
-    }).join('');
-    acList.classList.add('open');
-  });
-});
+let selectedCity = null;
+let selectedBags = 2;
+let selectedService = 'bagdrop';
+let selectedStars = 0;
 
-acList.addEventListener('mousedown', function(e){
-  var item = e.target.closest('.ac-item');
-  if(!item) return;
-  e.preventDefault();
-  var key = item.dataset.key;
-  selectedCity = {c: key.split(',')[0].trim(), s: key.split(',')[1]?.trim()||'', f: _cd && _cd[key] ? key : null, income: _cd && _cd[key] ? _cd[key] : _umi};
-  cityInput.value = key;
-  acList.classList.remove('open');
+const cityInput = document.getElementById('cityInput');
+const acList = document.getElementById('autocompleteList');
+let acActiveIdx = -1;
+
+const STATE_ABBR = {
+'alabama':'AL','alaska':'AK','arizona':'AZ','arkansas':'AR','california':'CA',
+'colorado':'CO','connecticut':'CT','delaware':'DE','florida':'FL','georgia':'GA',
+'hawaii':'HI','idaho':'ID','illinois':'IL','indiana':'IN','iowa':'IA','kansas':'KS',
+'kentucky':'KY','louisiana':'LA','maine':'ME','maryland':'MD','massachusetts':'MA',
+'michigan':'MI','minnesota':'MN','mississippi':'MS','missouri':'MO','montana':'MT',
+'nebraska':'NE','nevada':'NV','new hampshire':'NH','new jersey':'NJ','new mexico':'NM',
+'new york':'NY','north carolina':'NC','north dakota':'ND','ohio':'OH','oklahoma':'OK',
+'oregon':'OR','pennsylvania':'PA','rhode island':'RI','south carolina':'SC',
+'south dakota':'SD','tennessee':'TN','texas':'TX','utah':'UT','vermont':'VT',
+'virginia':'VA','washington':'WA','west virginia':'WV','wisconsin':'WI','wyoming':'WY',
+'district of columbia':'DC','washington dc':'DC'
+};
+
+cityInput.addEventListener('input', () => {
+  selectedCity = null;
   document.getElementById('cityError').classList.remove('show');
+  const raw = cityInput.value.trim();
+  if (raw.length < 2 || !dataReady) { closeAC(); return; }
+  const val = raw.toLowerCase();
+  let cityPart = val, statePart = '';
+  const commaIdx = val.indexOf(',');
+  if (commaIdx !== -1) {
+    cityPart = val.slice(0, commaIdx).trim();
+    const rawState = val.slice(commaIdx + 1).trim();
+    statePart = STATE_ABBR[rawState] || rawState.toUpperCase();
+  }
+  const matches = citiesData.filter(city => {
+    if (!city.c.toLowerCase().startsWith(cityPart)) return false;
+    if (statePart) return city.s === statePart;
+    return true;
+  }).slice(0, 9);
+  renderAC(matches, raw);
 });
 
-document.addEventListener('click', function(e){
-  if(!e.target.closest('.autocomplete-wrap')) acList.classList.remove('open');
+cityInput.addEventListener('keydown', e => {
+  const items = acList.querySelectorAll('.ac-item');
+  if (e.key === 'ArrowDown') { acActiveIdx = Math.min(acActiveIdx+1, items.length-1); updateACActive(items); e.preventDefault(); }
+  else if (e.key === 'ArrowUp') { acActiveIdx = Math.max(acActiveIdx-1, 0); updateACActive(items); e.preventDefault(); }
+  else if (e.key === 'Enter' && acActiveIdx >= 0) { items[acActiveIdx].click(); e.preventDefault(); }
+  else if (e.key === 'Escape') closeAC();
 });
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('.autocomplete-wrap')) closeAC();
+});
+
+function renderAC(matches, typed) {
+  acActiveIdx = -1;
+  if (!matches.length) { closeAC(); return; }
+  acList.innerHTML = '';
+  matches.forEach(city => {
+    const div = document.createElement('div');
+    div.className = 'ac-item';
+    div.textContent = city.c + ', ' + city.s;
+    div.addEventListener('mousedown', e => { e.preventDefault(); selectCity(city); });
+    acList.appendChild(div);
+  });
+  acList.classList.add('open');
+}
+
+function updateACActive(items) {
+  items.forEach((el, i) => el.classList.toggle('active', i === acActiveIdx));
+}
+
+function selectCity(city) {
+  cityInput.value = city.c + ', ' + city.s;
+  selectedCity = city;
+  closeAC();
+  document.getElementById('cityError').classList.remove('show');
+}
+
+function closeAC() {
+  acList.classList.remove('open');
+  acList.innerHTML = '';
+  acActiveIdx = -1;
+}
 
 // ── Bag count ──
-var selectedBags = 2;
-document.getElementById('bagsGroup').querySelectorAll('.pill').forEach(function(btn){
-  btn.addEventListener('click', function(){
-    document.getElementById('bagsGroup').querySelectorAll('.pill').forEach(function(b){ b.classList.remove('selected'); });
+document.getElementById('bagsGroup').querySelectorAll('.pill').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.getElementById('bagsGroup').querySelectorAll('.pill').forEach(b => b.classList.remove('selected'));
     this.classList.add('selected');
     selectedBags = parseInt(this.dataset.val);
   });
 });
 
 // ── Service type ──
-var selectedService = 'bagdrop';
-document.getElementById('serviceGroup').querySelectorAll('.pill').forEach(function(btn){
-  btn.addEventListener('click', function(){
-    document.getElementById('serviceGroup').querySelectorAll('.pill').forEach(function(b){ b.classList.remove('selected'); });
+document.getElementById('serviceGroup').querySelectorAll('.pill').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.getElementById('serviceGroup').querySelectorAll('.pill').forEach(b => b.classList.remove('selected'));
     this.classList.add('selected');
     selectedService = this.dataset.val;
   });
 });
 
 // ── Stars ──
-var selectedStars = 0;
-var starLabels = {1:'Very disappointed',2:'Below expectations',3:'Satisfied',4:'Really pleased',5:'Outstanding!'};
-document.getElementById('starsWrap').querySelectorAll('.star-btn').forEach(function(btn){
-  btn.addEventListener('click', function(){
+const starLabels = {1:'Very disappointed',2:'Below expectations',3:'Satisfied',4:'Really pleased',5:'Outstanding!'};
+document.getElementById('starsWrap').querySelectorAll('.star-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
     selectedStars = parseInt(this.dataset.star);
-    document.getElementById('starsWrap').querySelectorAll('.star-btn').forEach(function(b){
-      b.classList.toggle('lit', parseInt(b.dataset.star) <= selectedStars);
-    });
+    document.getElementById('starsWrap').querySelectorAll('.star-btn').forEach(b =>
+      b.classList.toggle('lit', parseInt(b.dataset.star) <= selectedStars));
     document.getElementById('starLabel').textContent = selectedStars + ' star' + (selectedStars !== 1 ? 's' : '') + ' — ' + (starLabels[selectedStars]||'');
   });
 });
 
 // ── Recalc ──
-document.getElementById('recalcBtn').addEventListener('click', function(){
+document.getElementById('recalcBtn').addEventListener('click', () => {
   document.getElementById('resultsSection').style.display = 'none';
   document.getElementById('formCard').style.display = '';
   window.scrollTo({top:0, behavior:'smooth'});
@@ -470,90 +532,68 @@ document.getElementById('recalcBtn').addEventListener('click', function(){
 // ── Calculate ──
 document.getElementById('calcBtn').addEventListener('click', calculate);
 
-function calculate(){
-  var valid = true;
-  if(!selectedCity){
+function calculate() {
+  if (!selectedCity) {
     document.getElementById('cityError').classList.add('show');
-    valid = false;
+    return;
   }
-  if(!valid) return;
 
-  var income = selectedCity.income || _umi;
-  var _i1 = (income - 40000) / (120000 - 40000);
-  _i1 = Math.max(0, Math.min(1, _i1));
-  var incomeMult = 0.75 + _i1 * 0.50;
+  const income = (selectedCity.f && _cd[selectedCity.f]) ? _cd[selectedCity.f] : _umi;
+  const _i1 = Math.max(0, Math.min(1, (income - 40000) / (120000 - 40000)));
+  const incomeMult = 0.75 + _i1 * 0.50;
+  const bagBase = {1:2.5, 2:5, 3:7, 4:9, 6:11, 8:14}[selectedBags] || 5;
+  const isWheelchair = selectedService === 'wheelchair';
+  const svcMult = {bagdrop:1.0, heavy:1.25, rush:1.2}[selectedService] || 1.0;
+  const starMult = selectedStars === 0 ? 1.0 : {1:0.6, 2:0.8, 3:1.0, 4:1.2, 5:1.4}[selectedStars];
 
-  // Base tip per bag by bag count
-  var bagBase = {1:2.5, 2:5, 3:7, 4:9, 6:11, 8:14}[selectedBags] || 5;
-
-  // Service multiplier
-  var svcMult = {bagdrop:1.0, heavy:1.25, rush:1.2, wheelchair:0}[selectedService] || 1.0;
-  var isWheelchair = selectedService === 'wheelchair';
-
-  // Stars multiplier
-  var starMult = selectedStars === 0 ? 1.0 :
-    {1:0.6, 2:0.8, 3:1.0, 4:1.2, 5:1.4}[selectedStars];
-
-  var tip;
-  if(isWheelchair){
-    // Wheelchair: flat $5–$20 range based on city income
-    var wcBase = 8 + _i1 * 10; // $8–$18
-    wcBase *= starMult;
-    tip = Math.max(5, Math.round(wcBase));
+  let tip;
+  if (isWheelchair) {
+    tip = Math.max(5, Math.round((8 + _i1 * 10) * starMult));
   } else {
-    tip = bagBase * svcMult * incomeMult * starMult;
-    tip = Math.max(2, Math.round(tip));
+    tip = Math.max(2, Math.round(bagBase * svcMult * incomeMult * starMult));
   }
 
-  var fmt = function(n){ return '$' + Math.round(n); };
-
-  var svcLabels = {bagdrop:'curbside bag check',heavy:'heavy/oversized bags',rush:'rush/expedited',wheelchair:'wheelchair assistance'};
-
-  // Build cards
-  var _good, _better, _best, _min;
-  if(isWheelchair){
-    _good   = Math.max(5, Math.round(tip * 0.85));
+  const fmt = n => '$' + Math.round(n);
+  let _good, _better, _best, _min;
+  if (isWheelchair) {
+    _good = Math.max(5, Math.round(tip * 0.85));
     _better = tip;
-    _best   = Math.round(tip * 1.3);
-    _min    = Math.max(3, Math.round(tip * 0.6));
+    _best = Math.round(tip * 1.3);
+    _min = Math.max(3, Math.round(tip * 0.6));
   } else {
-    _good   = Math.max(2, Math.round(tip * 0.9));
+    _good = Math.max(2, Math.round(tip * 0.9));
     _better = tip;
-    _best   = Math.max(_better + 1, Math.round(tip * 1.35));
-    _min    = Math.max(1, Math.round(tip * 0.55));
-    // Enforce gaps
-    if(_best <= _better) _best = _better + Math.max(1, Math.round(_better * 0.1));
-    if(_good >= _better) _good = _better - 1;
-    if(_min >= _good)    _min  = Math.max(1, _good - 1);
+    _best = Math.max(_better + 1, Math.round(tip * 1.35));
+    _min = Math.max(1, Math.round(tip * 0.55));
+    if (_best <= _better) _best = _better + Math.max(1, Math.round(_better * 0.1));
+    if (_good >= _better) _good = _better - 1;
+    if (_min >= _good) _min = Math.max(1, _good - 1);
   }
 
-  var perBagNote = isWheelchair ? 'flat tip' :
+  const perBagNote = isWheelchair ? 'flat tip' :
     (selectedBags > 1 ? fmt(Math.max(1, Math.round(_better / selectedBags))) + '/bag' : 'flat tip');
 
-  var cards = [
-    {cls:'good',   label:'Standard',  tipAmt:_good,   desc: isWheelchair ? 'Standard amount for wheelchair assistance.' : 'Per-bag standard — the widely accepted norm.',      isAcceptable:false},
-    {cls:'better', label:'Generous',  tipAmt:_better, desc: isWheelchair ? 'Appreciated for attentive, helpful assistance.' : 'Above standard — for attentive, fast service.',   isAcceptable:false},
-    {cls:'best',   label:'Excellent', tipAmt:_best,   desc: isWheelchair ? 'For exceptional escort across a long distance.' : 'For exceptional speed, attitude, or extra help.',  isAcceptable:false},
-    {cls:'minimum',label:'Minimum',   tipAmt:_min,    desc: isWheelchair ? 'Below standard — only for poor service.' : 'Below standard — only if service was poor.',             isAcceptable:true},
+  const cards = [
+    {cls:'good',    tipAmt:_good,   desc: isWheelchair ? 'Standard amount for wheelchair assistance.' : 'Per-bag standard — the widely accepted norm.',     isAcceptable:false},
+    {cls:'better',  tipAmt:_better, desc: isWheelchair ? 'Appreciated for attentive, helpful assistance.' : 'Above standard — for attentive, fast service.',  isAcceptable:false},
+    {cls:'best',    tipAmt:_best,   desc: isWheelchair ? 'For exceptional escort across a long distance.' : 'For exceptional speed, attitude, or extra help.', isAcceptable:false},
+    {cls:'minimum', tipAmt:_min,    desc: isWheelchair ? 'Below standard — only for poor service.' : 'Below standard — only if service was poor.',            isAcceptable:true},
   ];
 
-  var grid = document.getElementById('tipGrid');
+  const grid = document.getElementById('tipGrid');
   grid.innerHTML = '';
-
-  cards.forEach(function(card){
-    var div = document.createElement('div');
+  cards.forEach(card => {
+    const div = document.createElement('div');
     div.className = 'tip-card ' + card.cls + (card.isAcceptable ? ' acceptable' : '');
-
-    var lbl  = document.createElement('div'); lbl.className = 'tip-card-label'; lbl.textContent = card.label;
-    var amt  = document.createElement('div'); amt.className = 'tip-card-amount'; amt.textContent = fmt(card.tipAmt);
-    var desc = document.createElement('div'); desc.className = 'tip-card-desc';  desc.textContent = card.desc;
-
-    if(card.isAcceptable){
-      var pct = document.createElement('div'); pct.className = 'tip-card-pct';
+    const lbl  = document.createElement('div'); lbl.className = 'tip-card-label';
+    const amt  = document.createElement('div'); amt.className = 'tip-card-amount'; amt.textContent = fmt(card.tipAmt);
+    const desc = document.createElement('div'); desc.className = 'tip-card-desc';  desc.textContent = card.desc;
+    if (card.isAcceptable) {
+      const pct = document.createElement('div'); pct.className = 'tip-card-pct';
       pct.textContent = isWheelchair ? 'flat amount' : perBagNote;
-      var tot = document.createElement('div'); tot.className = 'tip-card-total';
-      var tl  = document.createElement('div'); tl.className = 'tip-card-total-label'; tl.textContent = 'Tip Total';
-      var tv  = document.createElement('div'); tv.className = 'tip-card-total-value'; tv.textContent = fmt(card.tipAmt);
+      const tot = document.createElement('div'); tot.className = 'tip-card-total';
+      const tl  = document.createElement('div'); tl.className = 'tip-card-total-label'; tl.textContent = 'Tip Total';
+      const tv  = document.createElement('div'); tv.className = 'tip-card-total-value'; tv.textContent = fmt(card.tipAmt);
       tot.appendChild(tl); tot.appendChild(tv);
       div.appendChild(lbl); div.appendChild(desc); div.appendChild(amt); div.appendChild(pct); div.appendChild(tot);
     } else {
@@ -562,31 +602,25 @@ function calculate(){
     grid.appendChild(div);
   });
 
-  // Insight
-  var fmtIncome = '$' + Math.round((selectedCity.income||_umi)/1000) + 'K';
-  var incomeNote = (selectedCity.income||_umi) >= 100000 ? fmtIncome+' area — high cost of living' :
-    (selectedCity.income||_umi) >= 74000 ? fmtIncome+' area — above national average' :
+  const fmtIncome = '$' + Math.round(income/1000) + 'K';
+  const incomeNote = income >= 100000 ? fmtIncome+' area — high cost of living' :
+    income >= 74000 ? fmtIncome+' area — above national average' :
     fmtIncome+' area — near or below national average';
-
-  var svcNote = 'Tip calculated for ' + svcLabels[selectedService] + ' with ' +
-    ({1:'1 bag',2:'2 bags',3:'3 bags',4:'4 bags',6:'5–6 bags',8:'7+ bags'}[selectedBags]||'2 bags') + '.';
-
-  var starNote = selectedStars > 0 ? ' ' + selectedStars + '-star experience.' : '';
+  const svcLabels = {bagdrop:'curbside bag check',heavy:'heavy/oversized bags',rush:'rush/expedited',wheelchair:'wheelchair assistance'};
+  const bagLabel = {1:'1 bag',2:'2 bags',3:'3 bags',4:'4 bags',6:'5–6 bags',8:'7+ bags'}[selectedBags]||'2 bags';
 
   document.getElementById('insightBox').innerHTML =
-    '<strong>' + (selectedCity.c||'Your city') + ' tip range: ' + fmt(_min) + '–' + fmt(_best) + '</strong><br>' +
-    incomeNote + '.<br>' + svcNote + starNote + '<br><br>' +
-    '<strong>Tip in cash only.</strong> The curbside service fee (charged by the airline) does not go to the skycap — your tip is their income.';
+    '<strong>' + selectedCity.c + ' tip range: ' + fmt(_min) + '–' + fmt(_best) + '</strong><br>' +
+    incomeNote + '.<br>Calculated for ' + svcLabels[selectedService] + ' with ' + bagLabel + '.' +
+    (selectedStars > 0 ? ' ' + selectedStars + '-star experience.' : '') +
+    '<br><br><strong>Tip in cash only.</strong> The curbside fee charged by the airline does not go to the skycap — your tip is their income.';
 
-  // Show results
-  document.getElementById('resultCity').textContent = (selectedCity.c||'').toUpperCase() + (selectedCity.s ? ', '+selectedCity.s : '');
+  document.getElementById('resultCity').textContent = selectedCity.c.toUpperCase() + ', ' + selectedCity.s;
   document.getElementById('formCard').style.display = 'none';
-  var results = document.getElementById('resultsSection');
+  const results = document.getElementById('resultsSection');
   results.style.display = 'block';
   window.scrollTo({top: results.getBoundingClientRect().top + window.pageYOffset - 70, behavior:'smooth'});
 }
-
-})();
 </script>
 </body>
 </html>
