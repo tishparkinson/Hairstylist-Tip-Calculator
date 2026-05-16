@@ -257,6 +257,24 @@ html, body { overflow-x: hidden }
 .result-feedback .ri:hover{background:rgba(255,255,255,0.18)}
 .result-feedback .rpop{display:none;position:absolute;bottom:calc(100%+8px);left:0;width:280px;background:#1a1a1e;color:rgba(255,255,255,0.8);font-size:12px;line-height:1.6;border-radius:8px;padding:12px 14px;box-shadow:0 8px 32px rgba(0,0,0,0.6);z-index:100;border:1px solid rgba(255,255,255,0.15)}
 .result-feedback .ri:hover .rpop,.result-feedback .ri:focus .rpop{display:block}
+
+/* ── Label + amount font fix ── */
+.tip-card-label::before,
+.tip-card.good .tip-card-label::before,
+.tip-card.better .tip-card-label::before,
+.tip-card.best .tip-card-label::before {
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-size: 10px !important;
+  font-weight: 900 !important;
+  letter-spacing: .22em !important;
+  text-transform: uppercase !important;
+}
+.tip-card-amount {
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-size: clamp(26px,5vw,34px) !important;
+  font-weight: 900 !important;
+  letter-spacing: -.02em !important;
+}
 </style>
 
 <meta name="description" content="How much do you tip a wedding officiant? Our calculator accounts for custom ceremony writing, rehearsal attendance, number of prep meetings, ceremony length, travel, and your local cost of living.">
