@@ -248,6 +248,12 @@ html, body { overflow-x: hidden }
 .site-logo-img{width:80px;height:80px;object-fit:contain;flex-shrink:0}
 .site-logo span{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:#fff;letter-spacing:-.02em}
 .site-logo span em{font-style:normal;color:#4ade80}
+
+.result-feedback{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:rgba(255,255,255,0.35);margin-top:14px;cursor:default;position:relative}
+.result-feedback .ri{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);font-size:10px;font-weight:700;cursor:pointer;flex-shrink:0;font-style:normal}
+.result-feedback .ri:hover{background:rgba(255,255,255,0.18)}
+.result-feedback .rpop{display:none;position:absolute;bottom:calc(100%+8px);left:0;width:280px;background:#1a1a1e;color:rgba(255,255,255,0.8);font-size:12px;line-height:1.6;border-radius:8px;padding:12px 14px;box-shadow:0 8px 32px rgba(0,0,0,0.6);z-index:100;border:1px solid rgba(255,255,255,0.15)}
+.result-feedback .ri:hover .rpop,.result-feedback .ri:focus .rpop{display:block}
 </style>
 <script type="application/ld+json">
 {
@@ -392,6 +398,7 @@ html, body { overflow-x: hidden }
           <span class="insight-info-popup"><strong>How your city affects these numbers</strong><br><br>We look up the median household income for your county using US Census data. Higher-income areas have higher tipping expectations — our base tip rate scales from ~15% in lower-income areas to ~22%+ in high cost-of-living cities.<br><br><strong>Examples:</strong><br>Rural ($42K) → base ~15%<br>US average ($74K) → base ~18%<br>High cost city ($120K+) → base ~22%<br><br>The percentage itself adjusts — not just the dollar amount.</span>
         </span>
       </div>
+      <div class="result-feedback">Got an unexpected result? <span class="ri" tabindex="0">i<span class="rpop">If a suggestion looks off, we want to know. Email <a href="mailto:verdantwebsolutions@gmail.com" style="color:#4ade80">verdantwebsolutions@gmail.com</a> with the calculator name, the inputs you entered, and the result you got — we'll review and fix it.</span></span></div>
       <button class="recalc-btn" id="recalcBtn">← Calculate Again</button>
     </div>
   </div>
