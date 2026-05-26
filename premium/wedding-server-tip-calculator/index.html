@@ -746,10 +746,10 @@ const rawGood=pricePerServer*(eff-0.01)+pricePerServer*bonusPct;
 const rawBetter=pricePerServer*eff+pricePerServer*bonusPct;
 const rawBest=pricePerServer*(eff+0.04)+pricePerServer*bonusPct;
 
-const tipMin=Math.min(40,Math.max(10,rawMin));
-const tipGood=Math.min(75,Math.max(tipMin+10,rawGood));
-const tipBetter=Math.min(125,Math.max(tipGood+15,rawBetter));
-const tipBest=Math.min(200,Math.max(tipBetter+20,rawBest));
+const tipMin=Math.min(25,Math.max(10,rawMin));
+const tipGood=Math.min(40,Math.max(tipMin+8,rawGood));
+const tipBetter=Math.min(60,Math.max(tipGood+10,rawBetter));
+const tipBest=Math.min(80,Math.max(tipBetter+10,rawBest));
 
 const perNote=n>1?`Tip is per server. At Better level: $${Math.round(tipBetter)} each, $${Math.round(tipBetter*n)} total for all ${n} servers.`:null;
 
@@ -762,7 +762,7 @@ if(guests>=200) adjItems.push('+Very large guest count — +2%');
 if(bonusPct>0) adjItems.push('+Bonus applied');
 
 buildCards(pricePerServer,tipGood,tipBetter,tipBest,tipMin,selectedStars,bonusLabel,perNote);
-buildInsight(selectedCity,localIncome,dataSource,adjItems,'Always check if gratuity is in your catering contract first — it usually is. Tip is per server. Cash envelopes at the end of the night are best.');
+buildInsight(selectedCity,localIncome,dataSource,adjItems,'Always check your catering contract for a service charge first — most include 18–22%. If not included, $20–$60 per server is typical. Cash envelopes given directly to each server at the end of the night is best.');
 }
 
 document.getElementById('calcBtn').addEventListener('click',calculate);
