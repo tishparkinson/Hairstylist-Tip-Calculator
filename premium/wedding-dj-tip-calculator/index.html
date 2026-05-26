@@ -805,7 +805,7 @@ const rawGood=price*(eff-0.01)+price*bonusPct;
 const rawBetter=price*eff+price*bonusPct;
 const rawBest=price*(eff+0.04)+price*bonusPct;
 
-const tipMin=Math.min(200,Math.max(50,rawMin));
+const tipMin=Math.min(200,Math.max(25,rawMin));
 const tipGood=Math.min(300,Math.max(tipMin+25,rawGood));
 const tipBetter=Math.min(400,Math.max(tipGood+25,rawBetter));
 const tipBest=Math.min(500,Math.max(tipBetter+25,rawBest));
