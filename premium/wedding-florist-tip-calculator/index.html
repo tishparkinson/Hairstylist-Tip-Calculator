@@ -755,10 +755,10 @@ const rawGood=price*(eff-0.01)+price*bonusPct;
 const rawBetter=price*eff+price*bonusPct;
 const rawBest=price*(eff+0.04)+price*bonusPct;
 
-const tipMin=Math.min(150,Math.max(25,rawMin));
-const tipGood=Math.min(250,Math.max(tipMin+25,rawGood));
-const tipBetter=Math.min(375,Math.max(tipGood+25,rawBetter));
-const tipBest=Math.min(500,Math.max(tipBetter+25,rawBest));
+const tipMin=Math.min(50,Math.max(15,rawMin));
+const tipGood=Math.min(100,Math.max(tipMin+20,rawGood));
+const tipBetter=Math.min(200,Math.max(tipGood+25,rawBetter));
+const tipBest=Math.min(300,Math.max(tipBetter+25,rawBest));
 
 const adjItems=[];
 if(localIncome>=100000)adjItems.push('+High local cost of living');

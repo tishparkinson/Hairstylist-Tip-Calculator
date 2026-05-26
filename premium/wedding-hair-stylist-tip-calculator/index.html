@@ -1252,10 +1252,10 @@ const rawMin=pricePerStylist*(Math.max(0.10,eff-0.05))+pricePerStylist*bp;
 const rawGood=pricePerStylist*(eff-0.01)+pricePerStylist*bp;
 const rawBetter=pricePerStylist*eff+pricePerStylist*bp;
 const rawBest=pricePerStylist*(eff+0.04)+pricePerStylist*bp;
-const tipMin=Math.min(100,Math.max(20,rawMin));
-const tipGood=Math.min(200,Math.max(tipMin+20,rawGood));
-const tipBetter=Math.min(300,Math.max(tipGood+25,rawBetter));
-const tipBest=Math.min(400,Math.max(tipBetter+25,rawBest));
+const tipMin=Math.min(50,Math.max(15,rawMin));
+const tipGood=Math.min(75,Math.max(tipMin+15,rawGood));
+const tipBetter=Math.min(100,Math.max(tipGood+15,rawBetter));
+const tipBest=Math.min(150,Math.max(tipBetter+20,rawBest));
 const n=parseInt(selectedStylists);
 const perNote=n>1?`Tip is per stylist. At the Better level: $${Math.round(tipBetter)} each, $${Math.round(tipBetter*n)} total for all ${n} stylists.`
 :'Tip is for your hair stylist directly.';

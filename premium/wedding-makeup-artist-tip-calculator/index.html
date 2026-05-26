@@ -1245,10 +1245,10 @@ const rawMin=pricePerArtist*(Math.max(0.08,eff-0.05))+pricePerArtist*bp;
 const rawGood=pricePerArtist*(eff-0.01)+pricePerArtist*bp;
 const rawBetter=pricePerArtist*eff+pricePerArtist*bp;
 const rawBest=pricePerArtist*(eff+0.04)+pricePerArtist*bp;
-const tipMin=Math.min(150,Math.max(25,rawMin));
-const tipGood=Math.min(250,Math.max(tipMin+20,rawGood));
-const tipBetter=Math.min(350,Math.max(tipGood+25,rawBetter));
-const tipBest=Math.min(500,Math.max(tipBetter+25,rawBest));
+const tipMin=Math.min(50,Math.max(15,rawMin));
+const tipGood=Math.min(80,Math.max(tipMin+15,rawGood));
+const tipBetter=Math.min(120,Math.max(tipGood+20,rawBetter));
+const tipBest=Math.min(150,Math.max(tipBetter+20,rawBest));
 const n=parseInt(selectedArtists);
 const perNote=n>1?`Tip shown is per artist ($${Math.round(tipBetter)} each). Total for all ${n} artists: $${Math.round(tipBetter*n)}. Give each artist their own envelope.`
 :'Tip is for your makeup artist directly. Cash in an envelope on the day is ideal.';
