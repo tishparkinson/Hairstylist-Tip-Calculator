@@ -144,6 +144,10 @@
 
 
 
+
+/* ── Results section show/hide ── */
+.results { display: none !important; }
+.results.show { display: block !important; }
 /* ── Layout width fix ── */
 .main { max-width: 600px !important; margin: 0 auto !important; }
 main:not(.seo-inner):not(.seo-section) { max-width: 600px !important; margin: 0 auto !important; }
@@ -761,7 +765,14 @@ buildCards(pricePerServer,tipGood,tipBetter,tipBest,tipMin,selectedStars,bonusLa
 buildInsight(selectedCity,localIncome,dataSource,adjItems,'Always check if gratuity is in your catering contract first — it usually is. Tip is per server. Cash envelopes at the end of the night are best.');
 }
 
-document.getElementById('calcBtn').addEventListener('click',calculate);</script>
+document.getElementById('calcBtn').addEventListener('click',calculate);
+const recalcBtn=document.getElementById('recalcBtn');
+if(recalcBtn){recalcBtn.addEventListener('click',()=>{
+  document.getElementById('formCard').style.display='';
+  document.getElementById('resultsSection').classList.remove('show');
+  window.scrollTo({top:0,behavior:'smooth'});
+});}
+</script>
 <script>var y=document.getElementById("copy-year");if(y)y.textContent=new Date().getFullYear();</script>
 </body>
 </html>
