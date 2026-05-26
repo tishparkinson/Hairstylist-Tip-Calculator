@@ -937,8 +937,8 @@ capBox.innerHTML = '<div class="wedding-cap-box-title">💡 Wedding Catering Tip
 '<p><strong>Tip the people, not the invoice.</strong> The accepted US standard is <strong>$25–$40 per server</strong> and <strong>$75–$150 for the catering captain</strong>, regardless of total contract value. For 7 servers + a captain at a 100-guest wedding, budget roughly $300–$430 total — not $4,000.</p><br>' +
 '<p><strong>Do caterers bring their own servers?</strong> Usually not for large events. Most wedding caterers use venue staff or a staffing agency — so catering tips and server tips are separate conversations. Ask your caterer: "How many staff will be on-site and how should I handle gratuity?"</p><br>' +
 '<p><strong>Does the service charge cover the staff?</strong> Many contracts include 18%–22% that goes to the company, not the workers. Always ask. <a href="../../premium/wedding-server-tip-calculator/index.html" style="color:#8B7A00;font-weight:600;">→ Calculate server tips separately</a></p>';
-insight = document.getElementById('insightBox');
-insight.parentNode.insertBefore(capBox, insight);
+const insightEl = document.getElementById('insightBox');
+insightEl.parentNode.insertBefore(capBox, insightEl);
 document.getElementById("resultCity").textContent = selectedCity.c.toUpperCase() + ", " + selectedCity.s;
 document.getElementById("formCard").style.display = "none";
 const results = document.getElementById("resultsSection");
