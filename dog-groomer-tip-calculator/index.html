@@ -992,10 +992,9 @@ if(el){ el.style.cssText += DARK_STYLES; }
 
 <script>var y=document.getElementById("copy-year");if(y)y.textContent=new Date().getFullYear();</script>
 
-<style>
-/* ══ DEFINITIVE MINIMUM CARD FIX — placed last so nothing overrides ══ */
 
-/* Make the minimum card a column like good/better/best */
+<style>
+/* ══ DEFINITIVE MINIMUM CARD v2 — matches good/better/best exactly ══ */
 .tip-card.acceptable {
   flex-direction: column !important;
   padding: 0 !important;
@@ -1006,25 +1005,25 @@ if(el){ el.style.cssText += DARK_STYLES; }
   box-shadow: 0 6px 24px rgba(0,0,0,0.45) !important;
   transform: none !important;
   grid-column: 1 / -1 !important;
+  display: flex !important;
+  width: 100% !important;
 }
-.tip-card.acceptable:hover {
-  transform: none !important;
-  box-shadow: none !important;
-}
+.tip-card.acceptable:hover { transform: none !important; box-shadow: 0 6px 24px rgba(0,0,0,0.45) !important; }
 
-/* Silver banner label — NOT stretched, same style as good/better/best label bands */
+/* Label band — EXACT same height as good/better/best: height forced to 52px */
 .tip-card.acceptable > .tip-card-label {
   font-size: 0 !important;
-  display: block !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: center !important;
   width: 100% !important;
   box-sizing: border-box !important;
-  padding: 26px 14px 18px !important;
+  height: 52px !important;
+  padding: 0 14px 12px !important;
   text-align: center !important;
   background: linear-gradient(145deg,#4B5563 0%,#9CA3AF 40%,#D1D5DB 65%,#9CA3AF 100%) !important;
   border-radius: 0 !important;
   margin: 0 !important;
-  letter-spacing: normal !important;
-  transform: none !important;
 }
 .tip-card.acceptable > .tip-card-label::before {
   content: 'MINIMUM' !important;
@@ -1036,10 +1035,9 @@ if(el){ el.style.cssText += DARK_STYLES; }
   color: rgba(30,30,30,0.85) !important;
   display: block !important;
   text-align: center !important;
-  font-stretch: normal !important;
 }
 
-/* Amount — identical font to good/better/best */
+/* Amount — IDENTICAL to good/better/best */
 .tip-card.acceptable .tip-card-amount {
   font-family: 'Syne', sans-serif !important;
   font-size: clamp(28px, 4.5vw, 36px) !important;
@@ -1049,13 +1047,12 @@ if(el){ el.style.cssText += DARK_STYLES; }
   padding: 14px 12px 4px !important;
   line-height: 1 !important;
   background: #161618 !important;
-  letter-spacing: normal !important;
-  font-stretch: normal !important;
   width: 100% !important;
   box-sizing: border-box !important;
+  display: block !important;
 }
 
-/* Total box — identical to good/better/best */
+/* Total box */
 .tip-card.acceptable .tip-card-total {
   display: table !important;
   margin: 8px auto !important;
@@ -1065,7 +1062,6 @@ if(el){ el.style.cssText += DARK_STYLES; }
   border-radius: 8px !important;
   text-align: center !important;
   width: auto !important;
-  background-color: rgba(255,255,255,0.08) !important;
 }
 .tip-card.acceptable .tip-card-total-label {
   font-family: 'Inter', sans-serif !important;
@@ -1075,7 +1071,7 @@ if(el){ el.style.cssText += DARK_STYLES; }
   text-transform: uppercase !important;
   color: rgba(255,255,255,0.38) !important;
   display: block !important;
-  font-stretch: normal !important;
+  font-style: normal !important;
 }
 .tip-card.acceptable .tip-card-total-value {
   font-family: 'Inter', sans-serif !important;
@@ -1084,17 +1080,16 @@ if(el){ el.style.cssText += DARK_STYLES; }
   color: #fff !important;
   display: block !important;
   font-style: normal !important;
-  font-stretch: normal !important;
-  letter-spacing: normal !important;
 }
 
-/* Pct and desc */
 .tip-card.acceptable .tip-card-pct {
   font-size: 13px !important;
   color: rgba(255,255,255,0.5) !important;
   text-align: center !important;
   padding: 4px 12px 2px !important;
   background: #161618 !important;
+  display: block !important;
+  width: 100% !important;
 }
 .tip-card.acceptable .tip-card-desc {
   font-size: 12px !important;
@@ -1104,13 +1099,12 @@ if(el){ el.style.cssText += DARK_STYLES; }
   line-height: 1.55 !important;
   flex: 1 !important;
   background: #161618 !important;
+  display: block !important;
+  width: 100% !important;
 }
-
-/* Kill the tip-card-body/right wrappers */
 .tip-card.acceptable .tip-card-body,
-.tip-card.acceptable .tip-card-right {
-  display: contents !important;
-}
+.tip-card.acceptable .tip-card-right { display: contents !important; }
+.tip-card.acceptable .most-common-tag { display: none !important; }
 </style>
 </body>
 </html>
