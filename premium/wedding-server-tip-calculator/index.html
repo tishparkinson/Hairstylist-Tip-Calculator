@@ -567,7 +567,7 @@ if(onSelect)onSelect();
 });
 }
 
-let selectedStars=0;
+selectedStars=0;
 document.getElementById('starsWrap').querySelectorAll('.star-btn').forEach(btn=>{
 btn.addEventListener('click',()=>{
 selectedStars=parseInt(btn.dataset.star);
