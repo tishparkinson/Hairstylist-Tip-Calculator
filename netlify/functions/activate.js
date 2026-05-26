@@ -14,9 +14,6 @@ function generateLicenseKey() {
 }
 
 async function sendLicenseEmail(toEmail, licenseKey) {
-  // Uses Resend (resend.com) — free up to 3,000 emails/month
-  // Set RESEND_API_KEY in your Netlify environment variables
-  // Set RESEND_FROM_EMAIL in Netlify environment variables
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -71,10 +68,47 @@ async function sendLicenseEmail(toEmail, licenseKey) {
   if (!res.ok) {
     const err = await res.text();
     console.error("Resend error:", err);
-    // Don't throw — email failure shouldn't block the user from accessing premium
   } else {
     console.log(`License key email sent to ${toEmail}`);
   }
+}
+
+async function attachKeyToStripe(stripe, session, licenseKey) {
+  const promises = [];
+
+  // Option 1: Save to subscription metadata (visible in Stripe dashboard,
+  // persists for the life of the subscription, great for support lookups)
+  if (session.subscription) {
+    promises.push(
+      stripe.subscriptions.update(session.subscription, {
+        metadata: { license_key: licenseKey },
+      }).then(() => console.log("License key saved to subscription metadata"))
+        .catch(err => console.error("Failed to update subscription metadata:", err))
+    );
+  }
+
+  // Also save to customer metadata so it's visible on the customer record too
+  if (session.customer) {
+    promises.push(
+      stripe.customers.update(session.customer, {
+        metadata: { license_key: licenseKey },
+      }).then(() => console.log("License key saved to customer metadata"))
+        .catch(err => console.error("Failed to update customer metadata:", err))
+    );
+  }
+
+  // Option 2: Add license key as a custom field on the invoice PDF
+  // Customers see this on their Stripe receipt and downloadable invoice
+  if (session.invoice) {
+    promises.push(
+      stripe.invoices.update(session.invoice, {
+        custom_fields: [{ name: "License Key", value: licenseKey }],
+      }).then(() => console.log("License key added to invoice custom fields"))
+        .catch(err => console.error("Failed to update invoice custom fields:", err))
+    );
+  }
+
+  await Promise.allSettled(promises);
 }
 
 export default async (req) => {
@@ -87,7 +121,11 @@ export default async (req) => {
     }
 
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-    const session = await stripe.checkout.sessions.retrieve(sessionId);
+
+    // Expand invoice so we can add the custom field to it
+    const session = await stripe.checkout.sessions.retrieve(sessionId, {
+      expand: ["invoice"],
+    });
 
     if (session.payment_status !== "paid") {
       return Response.redirect("https://geotipper.com/pricing", 302);
@@ -110,7 +148,12 @@ export default async (req) => {
 
     console.log(`Token created for ${email}, key: ${licenseKey}`);
 
-    // Send the license key email (non-blocking — failure won't affect the redirect)
+    // Attach key to Stripe (metadata + invoice) — non-blocking
+    attachKeyToStripe(stripe, session, licenseKey).catch(err =>
+      console.error("Stripe key attach failed (non-fatal):", err)
+    );
+
+    // Send license key email — non-blocking
     if (email) {
       sendLicenseEmail(email, licenseKey).catch(err =>
         console.error("Email send failed (non-fatal):", err)
