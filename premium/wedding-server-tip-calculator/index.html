@@ -510,8 +510,8 @@ let countiesData = {};
 async function loadData() {
 try {
 const [cr, cc] = await Promise.all([
-fetch('../cities.json').then(r => r.json()),
-fetch('../counties.json').then(r => r.json())
+fetch('../../cities.json').then(r => r.json()),
+fetch('../../counties.json').then(r => r.json())
 ]);
 window._cities = cr; countiesData = cc;
 } catch(e) { window._cities = CITIES_FALLBACK; countiesData = {}; }
