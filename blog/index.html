@@ -266,5 +266,126 @@ html, body { overflow-x: hidden }
   </div>
 </footer>
 <script>var y=document.getElementById("copy-year");if(y)y.textContent=new Date().getFullYear();</script>
+
+<style id="minimum-card-final">
+/* ══ MINIMUM CARD — ABSOLUTE FINAL OVERRIDE ══ */
+/* Must come after calc.min.css which is inlined into every page */
+.tip-card.acceptable,
+.tip-grid .tip-card.acceptable {
+  grid-column: 1 / -1 !important;
+  flex-direction: column !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border-radius: 14px !important;
+  border: 1.5px solid rgba(255,255,255,0.14) !important;
+  background: #161618 !important;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.45) !important;
+  transform: none !important;
+  width: auto !important;
+  max-width: 100% !important;
+}
+.tip-card.acceptable:hover { transform: none !important; }
+.tip-card.acceptable > .tip-card-label {
+  font-size: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 20px 14px 14px !important;
+  text-align: center !important;
+  background: linear-gradient(145deg,#4B5563 0%,#9CA3AF 40%,#D1D5DB 65%,#9CA3AF 100%) !important;
+  border: none !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  height: auto !important;
+  min-height: auto !important;
+  flex: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.tip-card.acceptable > .tip-card-label::before {
+  content: 'MINIMUM' !important;
+  font-family: 'Syne', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  letter-spacing: .2em !important;
+  text-transform: uppercase !important;
+  color: rgba(30,30,30,0.85) !important;
+  display: block !important;
+  text-align: center !important;
+}
+.tip-card.acceptable .tip-card-body {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  padding: 14px 18px !important;
+  flex: 1 !important;
+  background: #161618 !important;
+  width: 100% !important;
+}
+.tip-card.acceptable .tip-card-desc {
+  background: transparent !important;
+  color: rgba(255,255,255,0.65) !important;
+  padding: 0 !important;
+  text-align: left !important;
+  font-size: 13px !important;
+  flex: 1 !important;
+  line-height: 1.55 !important;
+}
+.tip-card.acceptable .tip-card-right {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-end !important;
+  gap: 3px !important;
+  padding-left: 16px !important;
+  border-left: 1px solid rgba(255,255,255,0.08) !important;
+  margin-left: 16px !important;
+  min-width: 110px !important;
+  text-align: right !important;
+}
+.tip-card.acceptable .tip-card-amount {
+  background: transparent !important;
+  padding: 0 !important;
+  font-size: 22px !important;
+  font-weight: 800 !important;
+  color: #fff !important;
+  text-align: right !important;
+  line-height: 1 !important;
+}
+.tip-card.acceptable .tip-card-pct {
+  background: transparent !important;
+  padding: 0 !important;
+  font-size: 12px !important;
+  color: rgba(255,255,255,0.45) !important;
+  text-align: right !important;
+}
+.tip-card.acceptable .tip-card-total {
+  background: rgba(255,255,255,0.07) !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
+  border-radius: 8px !important;
+  padding: 5px 12px !important;
+  text-align: center !important;
+  width: auto !important;
+  margin: 4px 0 0 !important;
+  display: inline-flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+.tip-card.acceptable .tip-card-total-label {
+  font-size: 8px !important;
+  font-weight: 700 !important;
+  letter-spacing: .14em !important;
+  text-transform: uppercase !important;
+  color: rgba(255,255,255,0.38) !important;
+  display: block !important;
+}
+.tip-card.acceptable .tip-card-total-value {
+  font-family: 'Syne', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  color: #fff !important;
+  display: block !important;
+}
+.tip-card.acceptable .most-common-tag { display: none !important; }
+</style>
 </body>
 </html>

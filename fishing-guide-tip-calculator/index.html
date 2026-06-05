@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>How Much Do You Tip a Fishing Guide — Fishing Guide Tip Calculator</title>
 <meta name="description" content="How much do you tip a fishing guide? Free calculator for fishing charters, fly fishing guides, deep sea fishing, and charter captains — calibrated to your trip and location.">
@@ -207,6 +209,12 @@ html,body{overflow-x:hidden}
 .tip-card.acceptable .tip-card-body, .tip-card.acceptable .tip-card-right { display: contents !important; }
 
 .site-logo-img { width: 80px !important; height: 80px !important; margin-top: 0 !important; }
+
+/* Ensure results section shows when active */
+#resultsSection.show,
+.results.show {
+  display: block !important;
+}
 </style>
 </head>
 <body>
@@ -300,7 +308,13 @@ html,body{overflow-x:hidden}
         <h2>Your Fishing Guide Tip</h2>
       </div>
       <div class="tip-grid" id="tipGrid"></div>
-      <div class="insight-box" id="insightBox"></div>
+      
+<!-- GeoTipper Support Link -->
+<div style="margin:20px 0 8px;padding:14px 18px;background:rgba(74,222,128,0.06);border:1px solid rgba(74,222,128,0.2);border-radius:12px;text-align:center;">
+  <p style="font-size:12px;color:rgba(255,255,255,0.55);margin-bottom:6px;">Found GeoTipper helpful?</p>
+  <a href="https://donate.stripe.com/bJedRa4Aefhvd9Dabc1RC05" target="_blank" rel="noopener" style="display:inline-block;background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.4);color:#4ade80;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;padding:8px 20px;border-radius:8px;text-decoration:none;">💚 Tip the tip calculator</a>
+</div>
+<div class="insight-box" id="insightBox"></div>
       <div class="result-feedback">Got an unexpected result? <span class="ri" tabindex="0">i<span class="rpop">If a suggestion looks off, we want to know. Email <a href="mailto:verdantwebsolutions@gmail.com" style="color:#4ade80">verdantwebsolutions@gmail.com</a> with the calculator name, the inputs you entered, and the result you got — we'll review and fix it.</span></span></div>
       <button class="recalc-btn" id="recalcBtn">← Calculate Again</button>
     </div>
@@ -552,6 +566,35 @@ function calculate() {
     }
     grid.appendChild(div);
   });
+  // Build adjustment breakdown
+  const prevBD2 = document.getElementById('adjBreakdown');
+  if (prevBD2) prevBD2.remove();
+  const bd2 = document.createElement('div'); bd2.id = 'adjBreakdown'; bd2.className = 'adj-breakdown';
+  const bt2 = document.createElement('div'); bt2.className = 'adj-breakdown-title'; bt2.textContent = 'What affected your suggestion:';
+  bd2.appendChild(bt2);
+  const adjs2 = [];
+  if (selectedCity) {
+    const inc = selectedCity.income || localIncome || 65000;
+    adjs2.push({pos: inc > 70000, dir: inc > 70000 ? '▲' : inc < 50000 ? '▼' : '·', text: 'Local income level (' + selectedCity.c + ', ' + selectedCity.s + ')', val: inc > 70000 ? 'higher area — tips trend up' : inc < 50000 ? 'lower area — tips trend down' : 'near US average'});
+  }
+  const durLbl = {half:'Half day',full:'Full day',multi:'Multi-day'};
+  adjs2.push({pos: selectedLength==='multi', dir: selectedLength==='multi' ? '▲' : '·', text: 'Trip length: ' + (durLbl[selectedLength]||selectedLength), val: selectedLength==='multi' ? 'multi-day premium applied' : 'standard'});
+  const grpLbl = {1:'1 angler',2:'2 anglers',3:'3 anglers',4:'4 anglers',6:'5–6 anglers',8:'7+ anglers'};
+  adjs2.push({pos: false, dir: '·', text: 'Group size: ' + (grpLbl[selectedGroup]||selectedGroup), val: 'tip is per person'});
+  if (selectedStars >= 4) adjs2.push({pos: true, dir: '▲', text: 'Rating: ' + selectedStars + ' stars', val: 'great trip — higher range shown'});
+  else if (selectedStars <= 2) adjs2.push({pos: false, dir: '▼', text: 'Rating: ' + selectedStars + ' star(s)', val: 'below expectations — lower range'});
+  if (Object.values(selectedBonuses||{}).some(function(v){return v;})) {
+    adjs2.push({pos: true, dir: '▲', text: 'Bonus occasion', val: 'special bonus added'});
+  }
+  adjs2.forEach(function(a) {
+    const row = document.createElement('div'); row.className = 'adj-breakdown-row';
+    const tag = document.createElement('span'); tag.className = 'adj-tag ' + (a.pos ? 'adj-pos' : a.dir==='▼' ? 'adj-neg' : '');
+    tag.textContent = a.dir; row.appendChild(tag);
+    const txt = document.createElement('span'); txt.textContent = a.text + ' — ' + a.val; row.appendChild(txt);
+    bd2.appendChild(row);
+  });
+  grid.after(bd2);
+
 
   const lengthLabel = {half:'half-day', full:'full-day', multi:'multi-day'}[selectedLength];
   const groupLabel = {1:'solo',2:'2-person',3:'3-person',4:'4-person',6:'5–6 person',8:'7+ person'}[selectedGroup] || '';
@@ -682,6 +725,127 @@ function calculate() {
 }
 .tip-card.acceptable .tip-card-body,
 .tip-card.acceptable .tip-card-right { display: contents !important; }
+.tip-card.acceptable .most-common-tag { display: none !important; }
+</style>
+
+<style id="minimum-card-final">
+/* ══ MINIMUM CARD — ABSOLUTE FINAL OVERRIDE ══ */
+/* Must come after calc.min.css which is inlined into every page */
+.tip-card.acceptable,
+.tip-grid .tip-card.acceptable {
+  grid-column: 1 / -1 !important;
+  flex-direction: column !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border-radius: 14px !important;
+  border: 1.5px solid rgba(255,255,255,0.14) !important;
+  background: #161618 !important;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.45) !important;
+  transform: none !important;
+  width: auto !important;
+  max-width: 100% !important;
+}
+.tip-card.acceptable:hover { transform: none !important; }
+.tip-card.acceptable > .tip-card-label {
+  font-size: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 20px 14px 14px !important;
+  text-align: center !important;
+  background: linear-gradient(145deg,#4B5563 0%,#9CA3AF 40%,#D1D5DB 65%,#9CA3AF 100%) !important;
+  border: none !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  height: auto !important;
+  min-height: auto !important;
+  flex: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.tip-card.acceptable > .tip-card-label::before {
+  content: 'MINIMUM' !important;
+  font-family: 'Syne', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  letter-spacing: .2em !important;
+  text-transform: uppercase !important;
+  color: rgba(30,30,30,0.85) !important;
+  display: block !important;
+  text-align: center !important;
+}
+.tip-card.acceptable .tip-card-body {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  padding: 14px 18px !important;
+  flex: 1 !important;
+  background: #161618 !important;
+  width: 100% !important;
+}
+.tip-card.acceptable .tip-card-desc {
+  background: transparent !important;
+  color: rgba(255,255,255,0.65) !important;
+  padding: 0 !important;
+  text-align: left !important;
+  font-size: 13px !important;
+  flex: 1 !important;
+  line-height: 1.55 !important;
+}
+.tip-card.acceptable .tip-card-right {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-end !important;
+  gap: 3px !important;
+  padding-left: 16px !important;
+  border-left: 1px solid rgba(255,255,255,0.08) !important;
+  margin-left: 16px !important;
+  min-width: 110px !important;
+  text-align: right !important;
+}
+.tip-card.acceptable .tip-card-amount {
+  background: transparent !important;
+  padding: 0 !important;
+  font-size: 22px !important;
+  font-weight: 800 !important;
+  color: #fff !important;
+  text-align: right !important;
+  line-height: 1 !important;
+}
+.tip-card.acceptable .tip-card-pct {
+  background: transparent !important;
+  padding: 0 !important;
+  font-size: 12px !important;
+  color: rgba(255,255,255,0.45) !important;
+  text-align: right !important;
+}
+.tip-card.acceptable .tip-card-total {
+  background: rgba(255,255,255,0.07) !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
+  border-radius: 8px !important;
+  padding: 5px 12px !important;
+  text-align: center !important;
+  width: auto !important;
+  margin: 4px 0 0 !important;
+  display: inline-flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+.tip-card.acceptable .tip-card-total-label {
+  font-size: 8px !important;
+  font-weight: 700 !important;
+  letter-spacing: .14em !important;
+  text-transform: uppercase !important;
+  color: rgba(255,255,255,0.38) !important;
+  display: block !important;
+}
+.tip-card.acceptable .tip-card-total-value {
+  font-family: 'Syne', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  color: #fff !important;
+  display: block !important;
+}
 .tip-card.acceptable .most-common-tag { display: none !important; }
 </style>
 </body>

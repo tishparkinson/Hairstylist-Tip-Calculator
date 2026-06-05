@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>How Much to Tip a Hair Stylist | Tip Calculator</title>
 <meta name="description" content="US hair stylist tip calculator. Find the right tip for your hairdresser based on your city's local income data. Covers every US city — fast, free, no signup.">
@@ -286,6 +288,12 @@ html, body { overflow-x: hidden }
 .tip-card.acceptable .tip-card-body, .tip-card.acceptable .tip-card-right { display: contents !important; }
 
 .site-logo-img { width: 80px !important; height: 80px !important; margin-top: 0 !important; }
+
+/* Ensure results section shows when active */
+#resultsSection.show,
+.results.show {
+  display: block !important;
+}
 </style>
 <script type="application/ld+json">
 {
@@ -522,6 +530,7 @@ html, body { overflow-x: hidden }
         <div class="autocomplete-list" id="autocompleteList"></div>
       </div>
       <p class="helper" id="cityHelper">We use your area's median household income to calibrate tip expectations.</p>
+      <p style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:4px;line-height:1.4;">If your city isn't listed, use the closest one to you.</p>
       <div class="error-msg" id="cityError">Please select a city from the list.</div>
     </div>
 
@@ -604,14 +613,19 @@ html, body { overflow-x: hidden }
   </div>
 
   
-  <div class="results" id="resultsSection" style="display:none">
+  <div class="results" id="resultsSection" style="display:none" data-results="true">
     <div class="card">
       <div class="result-header">
         <div class="city-name" id="resultCity"></div>
         <h2>Your Tip Suggestions <span class="info-trigger" tabindex="0" role="button" aria-label="How local income affects tip suggestions">i<span class="info-popup"><strong>How your city affects these numbers</strong><br><br>We look up the median household income for your county using US Census data. Higher local incomes mean higher tipping expectations — a 20% tip in Manhattan carries different social weight than 20% in a small rural town.<br><br><strong>Example ranges:</strong><br>Rural ($42K income) → base ~15%<br>National avg ($74K) → base ~18%<br>High cost city ($120K+) → base ~22%<br><br>The percentage itself adjusts — not just the dollar amount.</span></span></h2>
       </div>
       <div class="tip-grid" id="tipGrid"></div>
-      <div class="insight-wrap">
+      
+<div style="margin:20px 0 8px;padding:14px 18px;background:rgba(74,222,128,0.06);border:1px solid rgba(74,222,128,0.2);border-radius:12px;text-align:center;">
+  <p style="font-size:12px;color:rgba(255,255,255,0.55);margin-bottom:6px;">Found GeoTipper helpful?</p>
+  <a href="https://donate.stripe.com/bJedRa4Aefhvd9Dabc1RC05" target="_blank" rel="noopener" style="display:inline-block;background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.4);color:#4ade80;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;padding:8px 20px;border-radius:8px;text-decoration:none;">💚 Tip the tip calculator</a>
+</div>
+<div class="insight-wrap">
         <div class="insight-box" id="insightBox"></div>
         <span class="insight-info-btn" tabindex="0" role="button" aria-label="How income affects tip suggestions">i
           <span class="insight-info-popup"><strong>How your city affects these numbers</strong><br><br>We look up the median household income for your county using US Census data. Higher-income areas have higher tipping expectations — our base tip rate scales from ~15% in lower-income areas to ~22%+ in high cost-of-living cities.<br><br><strong>Examples:</strong><br>Rural ($42K) → base ~15%<br>US average ($74K) → base ~18%<br>High cost city ($120K+) → base ~22%<br><br>The percentage itself adjusts — not just the dollar amount.</span>
@@ -944,7 +958,6 @@ slider.addEventListener('input', updateSlider);
 updateSlider();
 const bonusLabels = {
 holiday: 'Holiday / Christmas bonus included',
-baby: 'New baby celebration bonus included',
 squeeze: 'Last-minute squeeze-in bonus included',
 outstanding: 'Truly Outstanding results bonus included',
 yearend: 'Year-end bonus (1 full service) included'
@@ -1141,8 +1154,8 @@ desc: selectedStars <= 2
 : 'Disappointed with results — still acknowledges the effort.'
 }
 ];
-const bonusIcons = { holiday: '🎄', baby: '👶', squeeze: '⏰', outstanding: '✨', yearend: '🎁' };
-const bonusFriendly = { holiday: 'Holiday', baby: 'New Baby', squeeze: 'Squeezed Me In', outstanding: 'Truly Outstanding', yearend: 'Year-End Bonus' };
+const bonusIcons = { holiday: '🎄', squeeze: '⏰', outstanding: '✨', yearend: '🎁' };
+const bonusFriendly = { holiday: 'Holiday', squeeze: 'Squeezed Me In', outstanding: 'Truly Outstanding', yearend: 'Year-End Bonus' };
 const activeKeys = Object.keys(selectedBonuses);
 const bonusIconString = activeKeys.map(k => bonusIcons[k]).join('');
 const pctDollar = _p4 > 0 ? '+$' + Math.round(price * _p4) : '';
@@ -1221,7 +1234,7 @@ const incomeDesc = _li >= 100000 ? 'high'
 : _li >= 74000 ? 'above the national average'
 : _li >= 55000 ? 'near the national average'
 : 'below the national average';
-const bonusNames = { holiday: 'holiday', baby: 'new baby', squeeze: 'last-minute squeeze-in', outstanding: 'truly outstanding results', yearend: 'year-end service bonus' };
+const bonusNames = { holiday: 'holiday', squeeze: 'last-minute squeeze-in', outstanding: 'truly outstanding results', yearend: 'year-end service bonus' };
 const bonusKeys = Object.keys(selectedBonuses);
 const pctKeys = bonusKeys.filter(k => k !== 'yearend');
 const bonusInsight = bonusKeys.length
@@ -1316,6 +1329,7 @@ selectedCity.c.toUpperCase() + ', ' + selectedCity.s;
 document.getElementById('formCard').style.display = 'none';
 const results = document.getElementById('resultsSection');
 results.classList.add('show');
+results.style.display = 'block';
 results.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }</script>
 
@@ -1466,5 +1480,24 @@ if(el){ el.style.cssText += DARK_STYLES; }
 .tip-card.acceptable .tip-card-right { display: contents !important; }
 .tip-card.acceptable .most-common-tag { display: none !important; }
 </style>
-</body>
+
+<style id="minimum-card-final">
+.tip-card.acceptable,.tip-grid .tip-card.acceptable{grid-column:1/-1!important;flex-direction:column!important;padding:0!important;overflow:hidden!important;border-radius:14px!important;border:1.5px solid rgba(255,255,255,0.14)!important;background:#161618!important;box-shadow:0 6px 24px rgba(0,0,0,0.45)!important;transform:none!important;width:auto!important;max-width:100%!important}
+.tip-card.acceptable:hover{transform:none!important}
+.tip-card.acceptable>.tip-card-label{font-size:0!important;display:block!important;width:100%!important;box-sizing:border-box!important;padding:20px 14px 14px!important;text-align:center!important;background:linear-gradient(145deg,#4B5563 0%,#9CA3AF 40%,#D1D5DB 65%,#9CA3AF 100%)!important;border:none!important;border-radius:0!important;margin:0!important;height:auto!important;min-height:auto!important}
+.tip-card.acceptable>.tip-card-label::before{content:'MINIMUM'!important;font-family:'Syne',sans-serif!important;font-size:13px!important;font-weight:800!important;letter-spacing:.2em!important;text-transform:uppercase!important;color:rgba(30,30,30,0.85)!important;display:block!important;text-align:center!important}
+.tip-card.acceptable .tip-card-body{display:flex!important;flex-direction:row!important;align-items:center!important;padding:14px 18px!important;flex:1!important;background:#161618!important;width:100%!important}
+.tip-card.acceptable .tip-card-desc{background:transparent!important;color:rgba(255,255,255,0.65)!important;padding:0!important;text-align:left!important;font-size:13px!important;flex:1!important;line-height:1.55!important}
+.tip-card.acceptable .tip-card-right{display:flex!important;flex-direction:column!important;align-items:flex-end!important;gap:3px!important;padding-left:16px!important;border-left:1px solid rgba(255,255,255,0.08)!important;margin-left:16px!important;min-width:110px!important;text-align:right!important}
+.tip-card.acceptable .tip-card-amount{background:transparent!important;padding:0!important;font-size:22px!important;font-weight:800!important;color:#fff!important;text-align:right!important;line-height:1!important}
+.tip-card.acceptable .tip-card-pct{background:transparent!important;padding:0!important;font-size:12px!important;color:rgba(255,255,255,0.45)!important;text-align:right!important}
+.tip-card.acceptable .tip-card-total{background:rgba(255,255,255,0.07)!important;border:1px solid rgba(255,255,255,0.1)!important;border-radius:8px!important;padding:5px 12px!important;text-align:center!important;width:auto!important;margin:4px 0 0!important;display:inline-flex!important;flex-direction:column!important;align-items:center!important}
+.tip-card.acceptable .most-common-tag{display:none!important}
+</style>
+<script>
+document.querySelectorAll('#cityInput,.city-input').forEach(function(inp){
+  inp.addEventListener('input',function(){var v=this.value,c=v.replace(/[0-9]/g,'');if(c!==v){var p=this.selectionStart-(v.length-c.length);this.value=c;try{this.setSelectionRange(p,p);}catch(e){}}});
+  inp.addEventListener('keydown',function(e){if(e.key>='0'&&e.key<='9'&&!e.ctrlKey&&!e.metaKey)e.preventDefault();});
+});
+</script></body>
 </html>
