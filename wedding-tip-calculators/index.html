@@ -207,12 +207,293 @@ html, body { overflow-x: hidden }
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://geotipper.com/og-image.png">
+
+<style id="hamburger-nav">
+/* Hamburger button — hidden on desktop */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.2s ease, width 0.2s ease;
+  transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-hamburger.open span:nth-child(2) {
+  opacity: 0;
+  width: 0;
+}
+.nav-hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile drawer */
+.nav-mobile-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(13,13,15,0.98);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 8px 0 12px;
+  z-index: 999;
+  /* Animate open */
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+.nav-mobile-menu.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.nav-mobile-menu a {
+  display: block;
+  padding: 12px 24px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  transition: color 0.15s, background 0.15s;
+  border-radius: 0;
+}
+.nav-mobile-menu a:hover,
+.nav-mobile-menu a:active {
+  color: #fff;
+  background: rgba(255,255,255,0.05);
+}
+.nav-mobile-menu .site-nav-cta {
+  color: #4ade80 !important;
+  font-weight: 600 !important;
+}
+.nav-mobile-menu .site-nav-cta:hover {
+  background: rgba(74,222,128,0.08) !important;
+}
+
+@media (max-width: 640px) {
+  .nav-hamburger { display: flex !important; }
+  .site-nav-links { display: none !important; }
+  .site-nav { position: relative !important; }
+}
+</style>
+
+<style id="preview-modal-css">
+/* ── Preview Modal ── */
+.preview-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 8px;
+  padding: 5px 12px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+  cursor: pointer;
+  transition: background .15s, border-color .15s;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+.preview-btn:hover {
+  background: rgba(255,255,255,0.2);
+  border-color: rgba(255,255,255,0.35);
+  color: #fff;
+}
+.preview-btn svg { flex-shrink: 0; }
+
+/* overlay */
+#gtPreviewOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.72);
+  z-index: 9000;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  box-sizing: border-box;
+  backdrop-filter: blur(4px);
+}
+#gtPreviewOverlay.open { display: flex; }
+
+/* modal box */
+#gtPreviewModal {
+  background: #161618;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 460px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.7);
+  position: relative;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* header bar */
+#gtPreviewModal .pm-header {
+  background: linear-gradient(135deg, rgba(74,222,128,0.12) 0%, rgba(74,222,128,0.04) 100%);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 20px 20px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  backdrop-filter: blur(8px);
+}
+#gtPreviewModal .pm-eyebrow {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: #4ade80;
+  margin-bottom: 4px;
+}
+#gtPreviewModal .pm-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 2px;
+  letter-spacing: -.01em;
+}
+#gtPreviewModal .pm-sub {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.5;
+}
+#gtPreviewModal .pm-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 30px;
+  height: 30px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 50%;
+  color: rgba(255,255,255,0.6);
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s;
+  line-height: 1;
+  padding: 0;
+  font-family: sans-serif;
+}
+#gtPreviewModal .pm-close:hover {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+}
+
+/* body */
+#gtPreviewModal .pm-body {
+  padding: 18px 20px 24px;
+}
+#gtPreviewModal .pm-label {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(74,222,128,0.6);
+  margin-bottom: 10px;
+}
+#gtPreviewModal .pm-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+#gtPreviewModal .pm-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+}
+#gtPreviewModal .pm-field-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4ade80;
+  flex-shrink: 0;
+  opacity: .65;
+}
+#gtPreviewModal .pm-field-name {
+  font-size: 13px;
+  color: rgba(255,255,255,0.75);
+  font-family: 'Inter', sans-serif;
+}
+#gtPreviewModal .pm-note {
+  font-size: 12px;
+  color: rgba(255,255,255,0.38);
+  line-height: 1.6;
+  text-align: center;
+  margin-bottom: 16px;
+}
+#gtPreviewModal .pm-cta {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px;
+  background: #4ade80;
+  color: #052e16;
+  font-family: 'Syne', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: .03em;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: background .15s;
+}
+#gtPreviewModal .pm-cta:hover { background: #22c55e; }
+</style>
 </head>
 <body>
 <nav class="site-nav">
   <a href="../index.html" class="site-logo"><img src="../logo.png" alt="GeoTipper" class="site-logo-img"><span>Geo<em>Tipper</em></span></a>
   <div class="site-nav-links">
-    <a href="../redeem/index.html">Have a Key?</a>
+<a href="../redeem/index.html">Have a Key?</a>
+    <a href="../index.html">All Calculators</a>
+    <a href="../about/index.html">About</a>
+  </div>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-mobile-menu" id="navMobileMenu">
+<a href="../redeem/index.html">Have a Key?</a>
     <a href="../index.html">All Calculators</a>
     <a href="../about/index.html">About</a>
   </div>
@@ -236,62 +517,92 @@ html, body { overflow-x: hidden }
     <a class="vendor-card" href="../premium/wedding-photographer-tip-calculator/index.html">
       <div class="card-visual vg-photo"><div class="card-visual-premium">PREMIUM</div><div class="card-visual-title">Wedding Photographer</div><div class="card-visual-range">10%&ndash;20% of fee &middot; Varies by city</div></div>
       <div class="card-body"><p class="card-desc">Tip based on package size, hours covered, and whether a second shooter was included.</p><span class="card-cta">Get my local tip</span></div>
+    
+      <button class="preview-btn" data-slug="wedding-photographer-tip-calculator" data-pricing="../pricing/index.html" type="button"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1.5C3 1.5 1 3.3 1 5.5S3 9.5 5.5 9.5 10 7.7 10 5.5 8 1.5 5.5 1.5z" stroke="currentColor" stroke-width="1.2" fill="none"/><circle cx="5.5" cy="5.5" r="1.3" fill="currentColor"/></svg> Preview</button>
     </a>
     <a class="vendor-card" href="../premium/wedding-dj-tip-calculator/index.html">
       <div class="card-visual vg-dj"><div class="card-visual-premium">PREMIUM</div><div class="card-visual-title">Wedding DJ</div><div class="card-visual-range">10%&ndash;15% &middot; Varies by city</div></div>
       <div class="card-body"><p class="card-desc">DJs work 8&ndash;10 hour days including setup and breakdown &mdash; tip the full commitment.</p><span class="card-cta">Get my local tip</span></div>
+    
+      <button class="preview-btn" data-slug="wedding-dj-tip-calculator" data-pricing="../pricing/index.html" type="button"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1.5C3 1.5 1 3.3 1 5.5S3 9.5 5.5 9.5 10 7.7 10 5.5 8 1.5 5.5 1.5z" stroke="currentColor" stroke-width="1.2" fill="none"/><circle cx="5.5" cy="5.5" r="1.3" fill="currentColor"/></svg> Preview</button>
     </a>
     <a class="vendor-card" href="../premium/wedding-band-tip-calculator/index.html">
       <div class="card-visual vg-band"><div class="card-visual-premium">PREMIUM</div><div class="card-visual-title">Wedding Band</div><div class="card-visual-range">Per musician &middot; Varies by city</div></div>
       <div class="card-body"><p class="card-desc">Tip each musician individually. Band leaders typically receive a larger amount.</p><span class="card-cta">Get my local tip</span></div>
+    
+      <button class="preview-btn" data-slug="wedding-band-tip-calculator" data-pricing="../pricing/index.html" type="button"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1.5C3 1.5 1 3.3 1 5.5S3 9.5 5.5 9.5 10 7.7 10 5.5 8 1.5 5.5 1.5z" stroke="currentColor" stroke-width="1.2" fill="none"/><circle cx="5.5" cy="5.5" r="1.3" fill="currentColor"/></svg> Preview</button>
     </a>
     <a class="vendor-card" href="../premium/wedding-planner-tip-calculator/index.html">
       <div class="card-visual vg-planner"><div class="card-visual-premium">PREMIUM</div><div class="card-visual-title">Wedding Planner</div><div class="card-visual-range">Flat gift &middot; Varies by city</div></div>
       <div class="card-body"><p class="card-desc">Optional but deeply appreciated for planners who managed every detail across months.</p><span class="card-cta">Get my local tip</span></div>
+    
+      <button class="preview-btn" data-slug="wedding-planner-tip-calculator" data-pricing="../pricing/index.html" type="button"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1.5C3 1.5 1 3.3 1 5.5S3 9.5 5.5 9.5 10 7.7 10 5.5 8 1.5 5.5 1.5z" stroke="currentColor" stroke-width="1.2" fill="none"/><circle cx="5.5" cy="5.5" r="1.3" fill="currentColor"/></svg> Preview</button>
     </a>
     <a class="vendor-card" href="../premium/wedding-coordinator-tip-calculator/index.html">
       <div class="card-visual vg-coord"><div class="card-visual-premium">PREMIUM</div><div class="card-visual-title">Wedding Coordinator</div><div class="card-visual-range">Day-of &middot; Varies by city</div></div>
       <div class="card-body"><p class="card-desc">Day-of coordinators are often the hardest-working person at your wedding.</p><span class="card-cta">Get my local tip</span></div>
+    
+      <button class="preview-btn" data-slug="wedding-coordinator-tip-calculator" data-pricing="../pricing/index.html" type="button"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1.5C3 1.5 1 3.3 1 5.5S3 9.5 5.5 9.5 10 7.7 10 5.5 8 1.5 5.5 1.5z" stroke="currentColor" stroke-width="1.2" fill="none"/><circle cx="5.5" cy="5.5" r="1.3" fill="currentColor"/></svg> Preview</button>
     </a>
     <a class="vendor-card" href="../premium/wedding-florist-tip-calculator/index.html">
       <div class="card-visual vg-florist"><div class="card-visual-premium">PREMIUM</div><div class="card-visual-title">Wedding Florist</div><div class="card-visual-range">Optional &middot; Varies by city</div></div>
       <div class="card-body"><p class="card-desc">Tip the lead designer, then tip delivery and setup staff separately when possible.</p><span class="card-cta">Get my local tip</span></div>
+    
+      <button class="preview-btn" data-slug="wedding-florist-tip-calculator" data-pricing="../pricing/index.html" type="button"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1.5C3 1.5 1 3.3 1 5.5S3 9.5 5.5 9.5 10 7.7 10 5.5 8 1.5 5.5 1.5z" stroke="currentColor" stroke-width="1.2" fill="none"/><circle cx="5.5" cy="5.5" r="1.3" fill="currentColor"/></svg> Preview</button>
     </a>
     <a class="vendor-card" href="../premium/wedding-makeup-artist-tip-calculator/index.html">
       <div class="card-visual vg-makeup"><div class="card-visual-premium">PREMIUM</div><div class="card-visual-title">Wedding Makeup Artist</div><div class="card-visual-range">15%&ndash;20% &middot; Varies by city</div></div>
       <div class="card-body"><p class="card-desc">Same salon norms apply. Tip each artist on their individual service cost.</p><span class="card-cta">Get my local tip</span></div>
+    
+      <button class="preview-btn" data-slug="wedding-makeup-artist-tip-calculator" data-pricing="../pricing/index.html" type="button"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1.5C3 1.5 1 3.3 1 5.5S3 9.5 5.5 9.5 10 7.7 10 5.5 8 1.5 5.5 1.5z" stroke="currentColor" stroke-width="1.2" fill="none"/><circle cx="5.5" cy="5.5" r="1.3" fill="currentColor"/></svg> Preview</button>
     </a>
     <a class="vendor-card" href="../premium/wedding-hair-stylist-tip-calculator/index.html">
       <div class="card-visual vg-hair"><div class="card-visual-premium">PREMIUM</div><div class="card-visual-title">Wedding Hair Stylist</div><div class="card-visual-range">15%&ndash;25% &middot; Varies by city</div></div>
       <div class="card-body"><p class="card-desc">Bridal updos and extensions warrant 20%&ndash;25% for the extra skill required.</p><span class="card-cta">Get my local tip</span></div>
+    
+      <button class="preview-btn" data-slug="wedding-hair-stylist-tip-calculator" data-pricing="../pricing/index.html" type="button"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1.5C3 1.5 1 3.3 1 5.5S3 9.5 5.5 9.5 10 7.7 10 5.5 8 1.5 5.5 1.5z" stroke="currentColor" stroke-width="1.2" fill="none"/><circle cx="5.5" cy="5.5" r="1.3" fill="currentColor"/></svg> Preview</button>
     </a>
     <a class="vendor-card" href="../premium/wedding-officiant-tip-calculator/index.html">
       <div class="card-visual vg-officiant"><div class="card-visual-premium">PREMIUM</div><div class="card-visual-title">Wedding Officiant</div><div class="card-visual-range">Flat amount &middot; Varies by city</div></div>
       <div class="card-body"><p class="card-desc">Civil officiants receive cash tips; religious officiants often prefer a congregation donation.</p><span class="card-cta">Get my local tip</span></div>
+    
+      <button class="preview-btn" data-slug="wedding-officiant-tip-calculator" data-pricing="../pricing/index.html" type="button"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1.5C3 1.5 1 3.3 1 5.5S3 9.5 5.5 9.5 10 7.7 10 5.5 8 1.5 5.5 1.5z" stroke="currentColor" stroke-width="1.2" fill="none"/><circle cx="5.5" cy="5.5" r="1.3" fill="currentColor"/></svg> Preview</button>
     </a>
     <a class="vendor-card" href="../premium/wedding-bartender-tip-calculator/index.html">
       <div class="card-visual vg-bartender"><div class="card-visual-premium">PREMIUM</div><div class="card-visual-title">Wedding Bartender</div><div class="card-visual-range">Per bartender &middot; Varies by city</div></div>
       <div class="card-body"><p class="card-desc">Check your contract for included service charges before adding a tip on top.</p><span class="card-cta">Get my local tip</span></div>
+    
+      <button class="preview-btn" data-slug="wedding-bartender-tip-calculator" data-pricing="../pricing/index.html" type="button"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1.5C3 1.5 1 3.3 1 5.5S3 9.5 5.5 9.5 10 7.7 10 5.5 8 1.5 5.5 1.5z" stroke="currentColor" stroke-width="1.2" fill="none"/><circle cx="5.5" cy="5.5" r="1.3" fill="currentColor"/></svg> Preview</button>
     </a>
     <a class="vendor-card" href="../premium/wedding-limo-driver-tip-calculator/index.html">
       <div class="card-visual vg-limo"><div class="card-visual-premium">PREMIUM</div><div class="card-visual-title">Wedding Limo Driver</div><div class="card-visual-range">15%&ndash;20% &middot; Varies by city</div></div>
       <div class="card-body"><p class="card-desc">Gratuity is often included in limo contracts &mdash; always check before adding more.</p><span class="card-cta">Get my local tip</span></div>
+    
+      <button class="preview-btn" data-slug="wedding-limo-driver-tip-calculator" data-pricing="../pricing/index.html" type="button"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1.5C3 1.5 1 3.3 1 5.5S3 9.5 5.5 9.5 10 7.7 10 5.5 8 1.5 5.5 1.5z" stroke="currentColor" stroke-width="1.2" fill="none"/><circle cx="5.5" cy="5.5" r="1.3" fill="currentColor"/></svg> Preview</button>
     </a>
     <a class="vendor-card" href="../premium/wedding-shuttle-driver-tip-calculator/index.html">
       <div class="card-visual vg-shuttle"><div class="card-visual-premium">PREMIUM</div><div class="card-visual-title">Wedding Shuttle Driver</div><div class="card-visual-range">Per run &middot; Varies by city</div></div>
       <div class="card-body"><p class="card-desc">For multiple hotel-to-venue runs through the night, budget $50&ndash;$100 total.</p><span class="card-cta">Get my local tip</span></div>
+    
+      <button class="preview-btn" data-slug="wedding-shuttle-driver-tip-calculator" data-pricing="../pricing/index.html" type="button"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1.5C3 1.5 1 3.3 1 5.5S3 9.5 5.5 9.5 10 7.7 10 5.5 8 1.5 5.5 1.5z" stroke="currentColor" stroke-width="1.2" fill="none"/><circle cx="5.5" cy="5.5" r="1.3" fill="currentColor"/></svg> Preview</button>
     </a>
     <a class="vendor-card" href="../premium/bridal-dress-consultant-tip-calculator/index.html">
       <div class="card-visual vg-bridal"><div class="card-visual-premium">PREMIUM</div><div class="card-visual-title">Wedding Dress Consultant</div><div class="card-visual-range">Optional &middot; Varies by city</div></div>
       <div class="card-body"><p class="card-desc">Tip the consultant for exceptional service and the seamstress separately per fitting.</p><span class="card-cta">Get my local tip</span></div>
+    
+      <button class="preview-btn" data-slug="bridal-dress-consultant-tip-calculator" data-pricing="../pricing/index.html" type="button"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1.5C3 1.5 1 3.3 1 5.5S3 9.5 5.5 9.5 10 7.7 10 5.5 8 1.5 5.5 1.5z" stroke="currentColor" stroke-width="1.2" fill="none"/><circle cx="5.5" cy="5.5" r="1.3" fill="currentColor"/></svg> Preview</button>
     </a>
     <a class="vendor-card" href="../premium/wedding-server-tip-calculator/index.html">
       <div class="card-visual vg-server"><div class="card-visual-premium">PREMIUM</div><div class="card-visual-title">Wedding Server</div><div class="card-visual-range">Per server &middot; Varies by city</div></div>
       <div class="card-body"><p class="card-desc">Catering staff often split a shared tip &mdash; check whether your caterer handles distribution.</p><span class="card-cta">Get my local tip</span></div>
+    
+      <button class="preview-btn" data-slug="wedding-server-tip-calculator" data-pricing="../pricing/index.html" type="button"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1.5C3 1.5 1 3.3 1 5.5S3 9.5 5.5 9.5 10 7.7 10 5.5 8 1.5 5.5 1.5z" stroke="currentColor" stroke-width="1.2" fill="none"/><circle cx="5.5" cy="5.5" r="1.3" fill="currentColor"/></svg> Preview</button>
     </a>
     <a class="vendor-card" href="../premium/caterer-tip-calculator/index.html">
       <div class="card-visual vg-planner"><div class="card-visual-premium">PREMIUM</div><div class="card-visual-title">Wedding Caterer</div><div class="card-visual-range">10%&ndash;20% &middot; Varies by city</div></div>
       <div class="card-body"><p class="card-desc">Always check whether gratuity is already included in your catering contract.</p><span class="card-cta">Get my local tip</span></div>
+    
+      <button class="preview-btn" data-slug="caterer-tip-calculator" data-pricing="../pricing/index.html" type="button"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 1.5C3 1.5 1 3.3 1 5.5S3 9.5 5.5 9.5 10 7.7 10 5.5 8 1.5 5.5 1.5z" stroke="currentColor" stroke-width="1.2" fill="none"/><circle cx="5.5" cy="5.5" r="1.3" fill="currentColor"/></svg> Preview</button>
     </a>
   </div>
 
@@ -395,8 +706,8 @@ document.addEventListener('click',function(e){if(!e.target.closest('.search-wrap
       </div>
       <div class="footer-col">
         <div class="footer-col-label">Calculators</div>
-        <a href="../index.html">Free Calculators</a>
-        <a href="../premium/index.html">Premium Calculators</a>
+        <a href="../index.html">All Calculators</a>
+        <a href="../wedding-tip-calculators/index.html">Wedding Calculators</a>
         <a href="../wedding-tip-calculators/index.html">Wedding Vendors</a>
       </div>
       <div class="footer-col">
@@ -408,7 +719,7 @@ document.addEventListener('click',function(e){if(!e.target.closest('.search-wrap
       <div class="footer-col">
         <div class="footer-col-label">Account</div>
         <a href="https://billing.stripe.com/p/login/8x25kE7Mq8T7edH8341RC00" target="_blank">Manage Subscription</a>
-        <a href="../pricing/index.html">Subscribe</a>
+        <a href="../pricing/index.html">Pricing &amp; Plans</a>
       </div>
       <div class="footer-col">
         <div class="footer-col-label">Legal</div>
@@ -546,5 +857,33 @@ document.addEventListener('click',function(e){if(!e.target.closest('.search-wrap
 }
 .tip-card.acceptable .most-common-tag { display: none !important; }
 </style>
+
+<script id="hamburger-script">
+(function(){
+  var btn = document.getElementById('navHamburger');
+  var menu = document.getElementById('navMobileMenu');
+  if (!btn || !menu) return;
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    var open = btn.classList.toggle('open');
+    if (open) {
+      menu.style.display = 'block';
+      requestAnimationFrame(function(){
+        menu.classList.add('open');
+      });
+    } else {
+      menu.classList.remove('open');
+      setTimeout(function(){ menu.style.display = 'none'; }, 200);
+    }
+  });
+  document.addEventListener('click', function(e){
+    if (!e.target.closest('.site-nav')) {
+      btn.classList.remove('open');
+      menu.classList.remove('open');
+      setTimeout(function(){ menu.style.display = 'none'; }, 200);
+    }
+  });
+})();
+</script>
 </body>
 </html>
