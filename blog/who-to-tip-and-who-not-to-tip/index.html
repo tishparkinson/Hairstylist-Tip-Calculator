@@ -139,10 +139,28 @@ html, body { overflow-x: hidden }
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://geotipper.com/og-image.png">
+<style id="hamburger-nav">
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;padding:8px;background:none;border:none;cursor:pointer;margin-left:auto;flex-shrink:0;-webkit-tap-highlight-color:transparent}
+.nav-hamburger span{display:block;width:22px;height:2px;background:rgba(255,255,255,0.7);border-radius:2px;transition:transform .25s ease,opacity .2s ease,width .2s ease;transform-origin:center}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0;width:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-mobile-menu{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(13,13,15,0.98);border-bottom:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:8px 0 12px;z-index:999;opacity:0;transform:translateY(-8px);transition:opacity .2s ease,transform .2s ease;pointer-events:none}
+.nav-mobile-menu.open{opacity:1;transform:translateY(0);pointer-events:auto}
+.nav-mobile-menu a{display:block;padding:12px 24px;font-family:'Inter',sans-serif;font-size:15px;font-weight:500;color:rgba(255,255,255,0.65);text-decoration:none;transition:color .15s,background .15s}
+.nav-mobile-menu a:hover,.nav-mobile-menu a:active{color:#fff;background:rgba(255,255,255,0.05)}
+.nav-mobile-menu .site-nav-cta{color:#4ade80!important;font-weight:600!important}
+.nav-mobile-menu .site-nav-cta:hover{background:rgba(74,222,128,0.08)!important}
+@media(max-width:640px){.nav-hamburger{display:flex!important}.site-nav-links{display:none!important}.site-nav{position:relative!important}}
+</style>
 </head>
 
 <body>
-<nav class="site-nav"><a href="../../index.html" class="site-logo"><img src="../../logo.png" alt="GeoTipper" class="site-logo-img"><span>Geo<em>Tipper</em></span></a><div class="site-nav-links"><a href="../index.html">Blog</a><a href="../../about/index.html">About</a><a href="../../index.html">Calculators</a></div></nav>
+<nav class="site-nav"><a href="../../index.html" class="site-logo"><img src="../../logo.png" alt="GeoTipper" class="site-logo-img"><span>Geo<em>Tipper</em></span></a><div class="site-nav-links"><a href="../index.html">Blog</a><a href="../../about/index.html">About</a><a href="../../index.html">Calculators</a></div>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <div class="nav-mobile-menu" id="navMobileMenu">
+<a href="../index.html">Blog</a><a href="../../about/index.html">About</a><a href="../../index.html">Calculators</a>
+  </div></nav>
 <div class="blog-hero">
   <p class="meta">GeoTipper.com · Tipping Guide · 2026</p>
   <h1>Who to Tip and Who Not to Tip in the US</h1>
@@ -262,5 +280,25 @@ html, body { overflow-x: hidden }
   </div>
 </footer>
 <script>var y=document.getElementById("copy-year");if(y)y.textContent=new Date().getFullYear();</script>
+<script id="hamburger-script">
+(function(){
+  var btn=document.getElementById('navHamburger');
+  var menu=document.getElementById('navMobileMenu');
+  if(!btn||!menu)return;
+  btn.addEventListener('click',function(e){
+    e.stopPropagation();
+    var open=btn.classList.toggle('open');
+    if(open){menu.style.display='block';requestAnimationFrame(function(){menu.classList.add('open')});}
+    else{menu.classList.remove('open');setTimeout(function(){menu.style.display='none';},200);}
+  });
+  document.addEventListener('click',function(e){
+    if(!e.target.closest('.site-nav')){
+      btn.classList.remove('open');
+      menu.classList.remove('open');
+      setTimeout(function(){menu.style.display='none';},200);
+    }
+  });
+})();
+</script>
 </body>
 </html>
