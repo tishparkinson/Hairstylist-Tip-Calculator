@@ -197,6 +197,24 @@ body::before {
 #gtPvModal .pv-unlock:active{background:#16a34a}
 #gtPvModal .pv-unlock-note{font-size:11px;color:rgba(255,255,255,0.28);text-align:center;margin-top:8px}
 #gtPvModal .calc-btn{display:none!important}
+
+/* Card wrapper for preview button outside <a> */
+.calc-card-wrap { position:relative; display:block; }
+.calc-card-wrap .preview-btn { position:absolute; bottom:10px; right:12px; z-index:2; }
+.calc-card-wrap .calc-cta-row { padding-right: 80px; } /* make room for abs button */
+
+/* Wedding calc class variants */
+#gtPvModal .field-group { margin-bottom: 0 !important; }
+#gtPvModal .city-input { background:#1a1a1e !important; border:1.5px solid rgba(255,255,255,0.12) !important; border-radius:10px !important; color:rgba(255,255,255,0.4) !important; font-size:15px !important; font-family:'Inter',sans-serif !important; padding:11px 14px !important; width:100% !important; box-sizing:border-box !important; pointer-events:none !important; }
+#gtPvModal .input-wrap { position:relative !important; display:block !important; }
+#gtPvModal .input-prefix { position:absolute !important; left:14px !important; top:50% !important; transform:translateY(-50%) !important; color:rgba(255,255,255,0.4) !important; pointer-events:none !important; }
+#gtPvModal .helper-text, #gtPvModal .helper { font-size:11px !important; color:rgba(255,255,255,0.35) !important; line-height:1.5 !important; margin-top:4px !important; }
+#gtPvModal .star-row { display:flex !important; gap:3px !important; margin-top:6px !important; }
+#gtPvModal .bonus-icon { font-size:16px !important; flex-shrink:0 !important; }
+#gtPvModal .input-wrap input[type="number"],
+#gtPvModal .input-wrap input[type="text"] { padding-left:28px !important; }
+#gtPvModal label { display:block !important; font-size:14px !important; font-weight:600 !important; color:rgba(255,255,255,0.88) !important; margin-bottom:7px !important; }
+#gtPvModal select { background:#1a1a1e !important; border:1.5px solid rgba(255,255,255,0.12) !important; border-radius:10px !important; color:rgba(255,255,255,0.5) !important; font-size:14px !important; padding:10px 14px !important; width:100% !important; pointer-events:none !important; }
 </style>
 </head>
 <body>
@@ -306,7 +324,7 @@ body::before {
         <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
-    <a class="calc-card is-premium" href="premium/caterer-tip-calculator/index.html">
+    <div class="calc-card-wrap"><a class="calc-card is-premium" href="premium/caterer-tip-calculator/index.html">
       <div class="card-visual gi-4">
         <div class="card-visual-wbar"></div>
         <div class="card-visual-frame"></div>
@@ -319,9 +337,11 @@ body::before {
         <p class="calc-card-desc">City cost of living · Service type · Guest count · Satisfaction · Contract gratuity</p>
         <p class="calc-card-tagline">Local tip suggestions in seconds</p>
         </div>
-        <div class="calc-cta-row"><span class="calc-card-btn">Get my local tip</span><button class="preview-btn" data-slug="caterer-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button></div>
+        <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
+      <button class="preview-btn" data-slug="caterer-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button>
+    </div>
     <a class="calc-card" href="dj-tip-calculator/index.html">
       <div class="card-visual gi-5">
         <div class="card-visual-wbar"></div>
@@ -354,7 +374,7 @@ body::before {
         <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
-    <a class="calc-card is-premium" href="premium/furniture-delivery-tip-calculator/index.html">
+    <div class="calc-card-wrap"><a class="calc-card is-premium" href="premium/furniture-delivery-tip-calculator/index.html">
       <div class="card-visual gi-7">
         <div class="card-visual-wbar"></div>
         <div class="card-visual-frame"></div>
@@ -367,9 +387,11 @@ body::before {
         <p class="calc-card-desc">City cost of living · Service level · Assembly · Stairs · Crew size</p>
         <p class="calc-card-tagline">Local tip suggestions in seconds</p>
         </div>
-        <div class="calc-cta-row"><span class="calc-card-btn">Get my local tip</span><button class="preview-btn" data-slug="furniture-delivery-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button></div>
+        <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
+      <button class="preview-btn" data-slug="furniture-delivery-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button>
+    </div>
 
     <a class="calc-card" href="food-delivery-tip-calculator/index.html">
       <div class="card-visual gi-8">
@@ -403,7 +425,7 @@ body::before {
         <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
-    <a class="calc-card is-premium" href="premium/hair-colorist-tip-calculator/index.html">
+    <div class="calc-card-wrap"><a class="calc-card is-premium" href="premium/hair-colorist-tip-calculator/index.html">
       <div class="card-visual gi-10">
         <div class="card-visual-wbar"></div>
         <div class="card-visual-frame"></div>
@@ -416,11 +438,13 @@ body::before {
         <p class="calc-card-desc">City cost of living · Service complexity · Time in chair · Satisfaction</p>
         <p class="calc-card-tagline">Local tip suggestions in seconds</p>
         </div>
-        <div class="calc-cta-row"><span class="calc-card-btn">Get my local tip</span><button class="preview-btn" data-slug="hair-colorist-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button></div>
+        <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
+      <button class="preview-btn" data-slug="hair-colorist-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button>
+    </div>
 
-    <a class="calc-card is-premium" href="premium/hair-stylist-tip-calculator/index.html">
+    <div class="calc-card-wrap"><a class="calc-card is-premium" href="premium/hair-stylist-tip-calculator/index.html">
       <div class="card-visual gi-11">
         <div class="card-visual-wbar"></div>
         <div class="card-visual-frame"></div>
@@ -433,9 +457,11 @@ body::before {
         <p class="calc-card-desc">City cost of living · Service length · Regular vs new client · Hair type & complexity</p>
         <p class="calc-card-tagline">Local tip suggestions in seconds</p>
         </div>
-        <div class="calc-cta-row"><span class="calc-card-btn">Get my local tip</span><button class="preview-btn" data-slug="hair-stylist-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button></div>
+        <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
+      <button class="preview-btn" data-slug="hair-stylist-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button>
+    </div>
     <a class="calc-card" href="house-cleaner-tip-calculator/index.html">
       <div class="card-visual gi-12">
         <div class="card-visual-wbar"></div>
@@ -468,7 +494,7 @@ body::before {
         <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
-    <a class="calc-card is-premium" href="premium/massage-therapist-tip-calculator/index.html">
+    <div class="calc-card-wrap"><a class="calc-card is-premium" href="premium/massage-therapist-tip-calculator/index.html">
       <div class="card-visual gi-14">
         <div class="card-visual-wbar"></div>
         <div class="card-visual-frame"></div>
@@ -481,9 +507,11 @@ body::before {
         <p class="calc-card-desc">City cost of living · Session length · Massage type · Satisfaction · Therapist experience</p>
         <p class="calc-card-tagline">Local tip suggestions in seconds</p>
         </div>
-        <div class="calc-cta-row"><span class="calc-card-btn">Get my local tip</span><button class="preview-btn" data-slug="massage-therapist-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button></div>
+        <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
+      <button class="preview-btn" data-slug="massage-therapist-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button>
+    </div>
     <a class="calc-card" href="movers-tip-calculator/index.html">
       <div class="card-visual gi-15">
         <div class="card-visual-wbar"></div>
@@ -516,7 +544,7 @@ body::before {
         <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
-    <a class="calc-card is-premium" href="premium/photographer-tip-calculator/index.html">
+    <div class="calc-card-wrap"><a class="calc-card is-premium" href="premium/photographer-tip-calculator/index.html">
       <div class="card-visual gi-17">
         <div class="card-visual-wbar"></div>
         <div class="card-visual-frame"></div>
@@ -529,9 +557,11 @@ body::before {
         <p class="calc-card-desc">City cost of living · Session type · Hours · Travel · Satisfaction</p>
         <p class="calc-card-tagline">Local tip suggestions in seconds</p>
         </div>
-        <div class="calc-cta-row"><span class="calc-card-btn">Get my local tip</span><button class="preview-btn" data-slug="photographer-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button></div>
+        <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
+      <button class="preview-btn" data-slug="photographer-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button>
+    </div>
 
     <a class="calc-card" href="restaurant-tip-calculator/index.html">
       <div class="card-visual gi-18">
@@ -565,7 +595,7 @@ body::before {
         <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
-    <a class="calc-card is-premium" href="premium/tattoo-tip-calculator/index.html">
+    <div class="calc-card-wrap"><a class="calc-card is-premium" href="premium/tattoo-tip-calculator/index.html">
       <div class="card-visual gi-20">
         <div class="card-visual-wbar"></div>
         <div class="card-visual-frame"></div>
@@ -578,9 +608,11 @@ body::before {
         <p class="calc-card-desc">City cost of living · Session length · Piece complexity · Custom vs flash · Satisfaction</p>
         <p class="calc-card-tagline">Local tip suggestions in seconds</p>
         </div>
-        <div class="calc-cta-row"><span class="calc-card-btn">Get my local tip</span><button class="preview-btn" data-slug="tattoo-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button></div>
+        <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
+      <button class="preview-btn" data-slug="tattoo-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button>
+    </div>
     <a class="calc-card" href="valet-tip-calculator/index.html">
       <div class="card-visual gi-21">
         <div class="card-visual-wbar"></div>
@@ -3131,7 +3163,7 @@ body::before {
         <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
-    <a class="calc-card is-premium" href="premium/caterer-tip-calculator/index.html">
+    <div class="calc-card-wrap"><a class="calc-card is-premium" href="premium/caterer-tip-calculator/index.html">
       <div class="card-visual gi-4">
         <div class="card-visual-wbar"></div>
         <div class="card-visual-frame"></div>
@@ -3144,9 +3176,11 @@ body::before {
         <p class="calc-card-desc">City cost of living · Service type · Guest count · Satisfaction · Contract gratuity</p>
         <p class="calc-card-tagline">Local tip suggestions in seconds</p>
         </div>
-        <div class="calc-cta-row"><span class="calc-card-btn">Get my local tip</span><button class="preview-btn" data-slug="caterer-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button></div>
+        <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
+      <button class="preview-btn" data-slug="caterer-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button>
+    </div>
     <a class="calc-card" href="dj-tip-calculator/index.html">
       <div class="card-visual gi-5">
         <div class="card-visual-wbar"></div>
@@ -3179,7 +3213,7 @@ body::before {
         <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
-    <a class="calc-card is-premium" href="premium/furniture-delivery-tip-calculator/index.html">
+    <div class="calc-card-wrap"><a class="calc-card is-premium" href="premium/furniture-delivery-tip-calculator/index.html">
       <div class="card-visual gi-7">
         <div class="card-visual-wbar"></div>
         <div class="card-visual-frame"></div>
@@ -3192,9 +3226,11 @@ body::before {
         <p class="calc-card-desc">City cost of living · Service level · Assembly · Stairs · Crew size</p>
         <p class="calc-card-tagline">Local tip suggestions in seconds</p>
         </div>
-        <div class="calc-cta-row"><span class="calc-card-btn">Get my local tip</span><button class="preview-btn" data-slug="furniture-delivery-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button></div>
+        <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
+      <button class="preview-btn" data-slug="furniture-delivery-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button>
+    </div>
 
     <a class="calc-card" href="food-delivery-tip-calculator/index.html">
       <div class="card-visual gi-8">
@@ -3228,7 +3264,7 @@ body::before {
         <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
-    <a class="calc-card is-premium" href="premium/hair-colorist-tip-calculator/index.html">
+    <div class="calc-card-wrap"><a class="calc-card is-premium" href="premium/hair-colorist-tip-calculator/index.html">
       <div class="card-visual gi-10">
         <div class="card-visual-wbar"></div>
         <div class="card-visual-frame"></div>
@@ -3241,11 +3277,13 @@ body::before {
         <p class="calc-card-desc">City cost of living · Service complexity · Time in chair · Satisfaction</p>
         <p class="calc-card-tagline">Local tip suggestions in seconds</p>
         </div>
-        <div class="calc-cta-row"><span class="calc-card-btn">Get my local tip</span><button class="preview-btn" data-slug="hair-colorist-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button></div>
+        <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
+      <button class="preview-btn" data-slug="hair-colorist-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button>
+    </div>
 
-    <a class="calc-card is-premium" href="premium/hair-stylist-tip-calculator/index.html">
+    <div class="calc-card-wrap"><a class="calc-card is-premium" href="premium/hair-stylist-tip-calculator/index.html">
       <div class="card-visual gi-11">
         <div class="card-visual-wbar"></div>
         <div class="card-visual-frame"></div>
@@ -3258,9 +3296,11 @@ body::before {
         <p class="calc-card-desc">City cost of living · Service length · Regular vs new client · Hair type & complexity</p>
         <p class="calc-card-tagline">Local tip suggestions in seconds</p>
         </div>
-        <div class="calc-cta-row"><span class="calc-card-btn">Get my local tip</span><button class="preview-btn" data-slug="hair-stylist-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button></div>
+        <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
+      <button class="preview-btn" data-slug="hair-stylist-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button>
+    </div>
     <a class="calc-card" href="house-cleaner-tip-calculator/index.html">
       <div class="card-visual gi-12">
         <div class="card-visual-wbar"></div>
@@ -3293,7 +3333,7 @@ body::before {
         <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
-    <a class="calc-card is-premium" href="premium/massage-therapist-tip-calculator/index.html">
+    <div class="calc-card-wrap"><a class="calc-card is-premium" href="premium/massage-therapist-tip-calculator/index.html">
       <div class="card-visual gi-14">
         <div class="card-visual-wbar"></div>
         <div class="card-visual-frame"></div>
@@ -3306,9 +3346,11 @@ body::before {
         <p class="calc-card-desc">City cost of living · Session length · Massage type · Satisfaction · Therapist experience</p>
         <p class="calc-card-tagline">Local tip suggestions in seconds</p>
         </div>
-        <div class="calc-cta-row"><span class="calc-card-btn">Get my local tip</span><button class="preview-btn" data-slug="massage-therapist-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button></div>
+        <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
+      <button class="preview-btn" data-slug="massage-therapist-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button>
+    </div>
     <a class="calc-card" href="movers-tip-calculator/index.html">
       <div class="card-visual gi-15">
         <div class="card-visual-wbar"></div>
@@ -3341,7 +3383,7 @@ body::before {
         <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
-    <a class="calc-card is-premium" href="premium/photographer-tip-calculator/index.html">
+    <div class="calc-card-wrap"><a class="calc-card is-premium" href="premium/photographer-tip-calculator/index.html">
       <div class="card-visual gi-17">
         <div class="card-visual-wbar"></div>
         <div class="card-visual-frame"></div>
@@ -3354,9 +3396,11 @@ body::before {
         <p class="calc-card-desc">City cost of living · Session type · Hours · Travel · Satisfaction</p>
         <p class="calc-card-tagline">Local tip suggestions in seconds</p>
         </div>
-        <div class="calc-cta-row"><span class="calc-card-btn">Get my local tip</span><button class="preview-btn" data-slug="photographer-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button></div>
+        <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
+      <button class="preview-btn" data-slug="photographer-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button>
+    </div>
 
     <a class="calc-card" href="restaurant-tip-calculator/index.html">
       <div class="card-visual gi-18">
@@ -3390,7 +3434,7 @@ body::before {
         <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
-    <a class="calc-card is-premium" href="premium/tattoo-tip-calculator/index.html">
+    <div class="calc-card-wrap"><a class="calc-card is-premium" href="premium/tattoo-tip-calculator/index.html">
       <div class="card-visual gi-20">
         <div class="card-visual-wbar"></div>
         <div class="card-visual-frame"></div>
@@ -3403,9 +3447,11 @@ body::before {
         <p class="calc-card-desc">City cost of living · Session length · Piece complexity · Custom vs flash · Satisfaction</p>
         <p class="calc-card-tagline">Local tip suggestions in seconds</p>
         </div>
-        <div class="calc-cta-row"><span class="calc-card-btn">Get my local tip</span><button class="preview-btn" data-slug="tattoo-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button></div>
+        <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
+      <button class="preview-btn" data-slug="tattoo-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button>
+    </div>
     <a class="calc-card" href="valet-tip-calculator/index.html">
       <div class="card-visual gi-21">
         <div class="card-visual-wbar"></div>

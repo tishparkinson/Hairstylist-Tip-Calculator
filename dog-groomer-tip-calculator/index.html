@@ -1243,16 +1243,10 @@ if (el){ el.style.cssText += DARK_STYLES; }
 .tip-card.acceptable .tip-card-body,
 .tip-card.acceptable .tip-card-right { display: contents !important; }
 .tip-card.acceptable .most-common-tag { display: none !important; }
+.tip-card-label { white-space: normal !important; word-wrap: break-word !important; overflow-wrap: break-word !important; min-height: auto !important; }
 </style>
 
 
-/* Fix tip-card-label overflow - allow wrapping */
-.tip-card-label {
-  white-space: normal !important;
-  word-wrap: break-word !important;
-  overflow-wrap: break-word !important;
-  min-height: auto !important;
-}
 <style id="minimum-card-final">
 /* ══ MINIMUM CARD — FINAL ══ */
 .tip-card.acceptable,
@@ -1375,6 +1369,7 @@ if (el){ el.style.cssText += DARK_STYLES; }
 }
 
 .tip-card.acceptable .most-common-tag { display: none !important; }
+.tip-card-label { white-space: normal !important; word-wrap: break-word !important; overflow-wrap: break-word !important; min-height: auto !important; }
 </style>
 <script>
 // Reject numbers in city/state input

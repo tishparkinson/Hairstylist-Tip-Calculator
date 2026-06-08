@@ -208,13 +208,6 @@ footer p{font-size:11px;color:rgba(255,255,255,0.3)}
 <script>var y=document.getElementById("copy-year");if (y)y.textContent=new Date().getFullYear();</script>
 
 
-/* Fix tip-card-label overflow - allow wrapping */
-.tip-card-label {
-  white-space: normal !important;
-  word-wrap: break-word !important;
-  overflow-wrap: break-word !important;
-  min-height: auto !important;
-}
 <style id="minimum-card-final">
 /* ══ MINIMUM CARD — FINAL ══ */
 .tip-card.acceptable,
@@ -337,6 +330,7 @@ footer p{font-size:11px;color:rgba(255,255,255,0.3)}
 }
 
 .tip-card.acceptable .most-common-tag { display: none !important; }
+.tip-card-label { white-space: normal !important; word-wrap: break-word !important; overflow-wrap: break-word !important; min-height: auto !important; }
 </style>
 
 <script id="hamburger-script">
