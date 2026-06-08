@@ -340,7 +340,7 @@ body::before {
         <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
-      <button class="preview-btn" data-slug="caterer-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button>
+      <button class="preview-btn" data-slug="caterer-tip-calculator" data-pricing="pricing/index.html" type="button">Preview</button>
     </div>
     <a class="calc-card" href="dj-tip-calculator/index.html">
       <div class="card-visual gi-5">
@@ -390,7 +390,7 @@ body::before {
         <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
-      <button class="preview-btn" data-slug="furniture-delivery-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button>
+      <button class="preview-btn" data-slug="furniture-delivery-tip-calculator" data-pricing="pricing/index.html" type="button">Preview</button>
     </div>
 
     <a class="calc-card" href="food-delivery-tip-calculator/index.html">
@@ -441,7 +441,7 @@ body::before {
         <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
-      <button class="preview-btn" data-slug="hair-colorist-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button>
+      <button class="preview-btn" data-slug="hair-colorist-tip-calculator" data-pricing="pricing/index.html" type="button">Preview</button>
     </div>
 
     <div class="calc-card-wrap"><a class="calc-card is-premium" href="premium/hair-stylist-tip-calculator/index.html">
@@ -460,7 +460,7 @@ body::before {
         <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
-      <button class="preview-btn" data-slug="hair-stylist-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button>
+      <button class="preview-btn" data-slug="hair-stylist-tip-calculator" data-pricing="pricing/index.html" type="button">Preview</button>
     </div>
     <a class="calc-card" href="house-cleaner-tip-calculator/index.html">
       <div class="card-visual gi-12">
@@ -510,7 +510,7 @@ body::before {
         <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
-      <button class="preview-btn" data-slug="massage-therapist-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button>
+      <button class="preview-btn" data-slug="massage-therapist-tip-calculator" data-pricing="pricing/index.html" type="button">Preview</button>
     </div>
     <a class="calc-card" href="movers-tip-calculator/index.html">
       <div class="card-visual gi-15">
@@ -560,7 +560,7 @@ body::before {
         <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
-      <button class="preview-btn" data-slug="photographer-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button>
+      <button class="preview-btn" data-slug="photographer-tip-calculator" data-pricing="pricing/index.html" type="button">Preview</button>
     </div>
 
     <a class="calc-card" href="restaurant-tip-calculator/index.html">
@@ -611,7 +611,7 @@ body::before {
         <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
-      <button class="preview-btn" data-slug="tattoo-tip-calculator" data-pricing="pricing/index.html" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><ellipse cx="6" cy="6" rx="5" ry="3.5" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="6" r="1.5" fill="currentColor"/></svg> Preview</button>
+      <button class="preview-btn" data-slug="tattoo-tip-calculator" data-pricing="pricing/index.html" type="button">Preview</button>
     </div>
     <a class="calc-card" href="valet-tip-calculator/index.html">
       <div class="card-visual gi-21">
@@ -992,42 +992,39 @@ if (hit)window.location.href=hit.u;
     </div>
   </div>
 </div>
-<script id="preview-modal-js">
-const GT_FORMS = {
-  "hair-stylist-tip-calculator": {
-    t: "How Much to Tip Your Hairdresser?",
-    s: "Cuts · Color · Balayage · Highlights · Blowouts · Treatments",
-    h: `
+
+<!-- Preview data store -->
+<div id="pvd-hair-stylist-tip-calculator" style="display:none" data-title="How Much to Tip Your Hairdresser?" data-sub="Cuts · Color · Balayage · Highlights · Blowouts · Treatments">
 
     
     <div class="section-label">Your Location</div>
     <div class="field">
-      <label for="cityInput">City &amp; State</label>
+      <label>City &amp; State</label>
       <div class="autocomplete-wrap">
-        <input tabindex="-1" type="text" id="cityInput" placeholder="Start typing a city…" autocomplete="off" maxlength="80">
-        <div class="autocomplete-list" id="autocompleteList"></div>
+        <input tabindex="-1" type="text" data-orig-id="cityInput" placeholder="Start typing a city…" autocomplete="off" maxlength="80">
+        <div class="autocomplete-list" data-orig-id="autocompleteList"></div>
       </div>
-      <p class="helper" id="cityHelper">We use your area's median household income to calibrate tip expectations.</p>
+      <p class="helper" data-orig-id="cityHelper">We use your area's median household income to calibrate tip expectations.</p>
       <p style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:4px;line-height:1.4;">If your city isn't listed, use the closest one to you.</p>
-      <div class="error-msg" id="cityError">Please select a city from the list.</div>
+      <div class="error-msg" data-orig-id="cityError">Please select a city from the list.</div>
     </div>
 
     
     <div class="section-label">Your Bill</div>
     <div class="field">
-      <label for="priceInput">Total Service Cost(before tip)</label>
+      <label>Total Service Cost(before tip)</label>
       <div class="input-prefix-wrap">
         <span class="input-prefix">$</span>
-        <input tabindex="-1" type="number" id="priceInput" placeholder="0" min="1" max="5000" step="1">
+        <input tabindex="-1" type="number" data-orig-id="priceInput" placeholder="0" min="1" max="5000" step="1">
       </div>
-      <div class="error-msg" id="priceError">Please enter a valid service cost.</div>
+      <div class="error-msg" data-orig-id="priceError">Please enter a valid service cost.</div>
     </div>
 
     
     <div class="section-label">Appointment Length <span class="optional-label">(optional)</span></div>
     <div class="field">
-      <div class="duration-display" id="durationDisplay">30 <span>minutes</span></div>
-      <input tabindex="-1" type="range" id="durationSlider" min="15" max="240" step="15" value="30">
+      <div class="duration-display" data-orig-id="durationDisplay">30 <span>minutes</span></div>
+      <input tabindex="-1" type="range" data-orig-id="durationSlider" min="15" max="240" step="15" value="30">
       <div class="range-labels"><span>15 min</span><span style="margin-left:auto">4 hrs</span></div>
       <p class="helper">Longer appointments mean more time and skill — that's factored in.</p>
     </div>
@@ -1036,7 +1033,7 @@ const GT_FORMS = {
     <div class="section-label">Visit Type <span class="optional-label">(optional)</span></div>
     <div class="field">
       <label>Are you a regular or first-time client?</label>
-      <div class="pill-group" id="clientGroup">
+      <div class="pill-group" data-orig-id="clientGroup">
         <button tabindex="-1" class="pill selected" data-val="regular">Regular client</button>
         <button tabindex="-1" class="pill" data-val="first">First time</button>
       </div>
@@ -1046,22 +1043,22 @@ const GT_FORMS = {
     <div class="section-label">Your Experience</div>
     <div class="field">
       <label>How satisfied are you with the results?</label>
-      <div class="stars-wrap" id="starsWrap">
+      <div class="stars-wrap" data-orig-id="starsWrap">
         <button tabindex="-1" class="star-btn" data-star="1" aria-label="1 star">★</button>
         <button tabindex="-1" class="star-btn" data-star="2" aria-label="2 stars">★</button>
         <button tabindex="-1" class="star-btn" data-star="3" aria-label="3 stars">★</button>
         <button tabindex="-1" class="star-btn" data-star="4" aria-label="4 stars">★</button>
         <button tabindex="-1" class="star-btn" data-star="5" aria-label="5 stars">★</button>
       </div>
-      <div class="star-label" id="starLabel">Tap to rate your experience</div>
-      <div class="error-msg" id="starError">Please rate your experience.</div>
+      <div class="star-label" data-orig-id="starLabel">Tap to rate your experience</div>
+      <div class="error-msg" data-orig-id="starError">Please rate your experience.</div>
     </div>
 
     
     <div class="section-label">Special Occasion? <span class="optional-label">(optional)</span></div>
     <div class="field">
       <label>Tip a little extra for any of these? Tap to toggle.</label>
-      <div class="bonus-grid" id="bonusGroup">
+      <div class="bonus-grid" data-orig-id="bonusGroup">
         <button tabindex="-1" class="bonus-btn" data-bonus="0.05" data-key="holiday" type="button">
           <span class="bonus-icon">🎄</span>
           <span>Holiday / Christmas<br><small class="bonus-sub" style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+5% suggested</small></span>
@@ -1078,43 +1075,39 @@ const GT_FORMS = {
           <span class="bonus-icon">✨</span>
           <span>Truly Outstanding<br><small class="bonus-sub" style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+5% suggested</small></span>
         </button>
-        <button tabindex="-1" class="bonus-btn bonus-btn--yearend" data-key="yearend" type="button" id="yearendBtn">
+        <button tabindex="-1" class="bonus-btn bonus-btn--yearend" data-key="yearend" type="button" data-orig-id="yearendBtn">
           <span class="bonus-icon">🎁</span>
-          <span>Year-End Bonus<br><small id="yearendLabel" style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">= 1 full service</small></span>
+          <span>Year-End Bonus<br><small data-orig-id="yearendLabel" style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">= 1 full service</small></span>
         </button>
 
       </div>
-      <p class="bonus-note" id="bonusNote" style="display:none"></p>
+      <p class="bonus-note" data-orig-id="bonusNote" style="display:none"></p>
     </div>
 
-    <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a>`
-  },
-  "hair-colorist-tip-calculator": {
-    t: "How Much to Tip a Hair Colorist?",
-    s: "Balayage · Highlights · Color Correction · Root Touch-Ups · Fashion Color · Toners",
-    h: `
+    <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a></div>
+<div id="pvd-hair-colorist-tip-calculator" style="display:none" data-title="How Much to Tip a Hair Colorist?" data-sub="Balayage · Highlights · Color Correction · Root Touch-Ups · Fashion Color · Toners">
 
     
     <div class="section-label">Your Location</div>
     <div class="field">
-      <label for="cityInput">City &amp; State</label>
-      <div class="autocomplete-wrap"><input tabindex="-1" type="text" id="cityInput" placeholder="Start typing a city…" autocomplete="off" maxlength="80"><div class="autocomplete-list" id="autocompleteList"></div></div>
-      <p class="helper" id="cityHelper">We calibrate tips to the cost of living in the area.</p>
+      <label>City &amp; State</label>
+      <div class="autocomplete-wrap"><input tabindex="-1" type="text" data-orig-id="cityInput" placeholder="Start typing a city…" autocomplete="off" maxlength="80"><div class="autocomplete-list" data-orig-id="autocompleteList"></div></div>
+      <p class="helper" data-orig-id="cityHelper">We calibrate tips to the cost of living in the area.</p>
       <p style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:4px;line-height:1.4;">If your city isn't listed, use the closest one to you.</p>
-      <div class="error-msg" id="cityError">Please select a city from the list.</div>
+      <div class="error-msg" data-orig-id="cityError">Please select a city from the list.</div>
     </div>
     <div class="section-label">Service Cost</div>
     <div class="field">
-      <label for="priceInput">Total Color Service Cost(before tip)</label>
+      <label>Total Color Service Cost(before tip)</label>
       <div class="input-prefix-wrap"><span class="input-prefix">$</span>
-        <input tabindex="-1" type="number" id="priceInput" placeholder="0" min="1" max="1000" step="1">
+        <input tabindex="-1" type="number" data-orig-id="priceInput" placeholder="0" min="1" max="1000" step="1">
       </div>
-      <div class="error-msg" id="priceError">Please enter a valid amount.</div>
+      <div class="error-msg" data-orig-id="priceError">Please enter a valid amount.</div>
     </div>
     <div class="section-label">Service Type</div>
     <div class="field">
       <label>What color service did you receive?</label>
-      <div class="pill-group" id="colorServiceGroup">
+      <div class="pill-group" data-orig-id="colorServiceGroup">
         <button tabindex="-1" class="pill" data-val="roottouch">Root touch-up / single process</button>
         <button tabindex="-1" class="pill" data-val="rootmelt">Root melt / root smudge / shadow root</button>
         <button tabindex="-1" class="pill" data-val="babylights">Baby lights(ultra-fine highlights)</button>
@@ -1131,7 +1124,7 @@ const GT_FORMS = {
     <div class="section-label">Multiple Services? <span class="optional-label">(optional)</span></div>
     <div class="field">
       <label>Were additional color services combined?</label>
-      <div class="bonus-grid" id="multiServiceGroup">
+      <div class="bonus-grid" data-orig-id="multiServiceGroup">
         <button tabindex="-1" class="bonus-btn" data-ms="toner_addon" type="button"><span class="bonus-icon">✨</span><span>+ Toner / gloss added<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">After main color service</small></span></button>
         <button tabindex="-1" class="bonus-btn" data-ms="second_technique" type="button"><span class="bonus-icon">🎨</span><span>+ Second technique<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">e.g. balayage + babylights</small></span></button>
         <button tabindex="-1" class="bonus-btn" data-ms="root_plus_highlight" type="button"><span class="bonus-icon">🌿</span><span>+ Root touch-up + highlights<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Two services in one visit</small></span></button>
@@ -1141,15 +1134,15 @@ const GT_FORMS = {
     </div>
     <div class="section-label">Time in Chair <span class="optional-label">(optional)</span></div>
     <div class="field">
-      <div class="duration-display" id="durationDisplay">1 <span>hour</span></div>
-      <input tabindex="-1" type="range" id="durationSlider" min="15" max="360" step="15" value="60">
+      <div class="duration-display" data-orig-id="durationDisplay">1 <span>hour</span></div>
+      <input tabindex="-1" type="range" data-orig-id="durationSlider" min="15" max="360" step="15" value="60">
       <div class="range-labels"><span>15 min</span><span style="margin-left:auto">6 hrs</span></div>
       <p class="helper">Longer color appointments mean more skill and product cost — factored in automatically.</p>
     </div>
     <div class="section-label">Visit Type <span class="optional-label">(optional)</span></div>
     <div class="field">
       <label>Is this your regular colorist?</label>
-      <div class="pill-group" id="clientGroup">
+      <div class="pill-group" data-orig-id="clientGroup">
         <button tabindex="-1" class="pill selected" data-val="regular">Regular client</button>
         <button tabindex="-1" class="pill" data-val="first">First visit</button>
       </div>
@@ -1158,61 +1151,57 @@ const GT_FORMS = {
     <div class="field">
       <label>How happy are you with the results?</label>
       <div class="star-row">
-        <div class="stars-wrap" id="starsWrap">
+        <div class="stars-wrap" data-orig-id="starsWrap">
           <button tabindex="-1" class="star-btn" data-star="1">★</button>
           <button tabindex="-1" class="star-btn" data-star="2">★</button>
           <button tabindex="-1" class="star-btn" data-star="3">★</button>
           <button tabindex="-1" class="star-btn" data-star="4">★</button>
           <button tabindex="-1" class="star-btn" data-star="5">★</button>
         </div>
-        <span class="star-label" id="starLabel"></span>
+        <span class="star-label" data-orig-id="starLabel"></span>
       </div>
-      <p class="helper" id="colorStarNote" style="display:none;color:#8B7A00;background:#FFFBF0;border:1px solid #E8D88A;border-radius:6px;padding:8px 10px;font-size:12px;">Color correction often doesn't fully resolve in a single session — consider whether the result is a step in the right direction before rating very low.</p>
-      <div class="error-msg" id="starError">Please rate your experience.</div>
+      <p class="helper" data-orig-id="colorStarNote" style="display:none;color:#8B7A00;background:#FFFBF0;border:1px solid #E8D88A;border-radius:6px;padding:8px 10px;font-size:12px;">Color correction often doesn't fully resolve in a single session — consider whether the result is a step in the right direction before rating very low.</p>
+      <div class="error-msg" data-orig-id="starError">Please rate your experience.</div>
     </div>
     <div class="section-label">Special Occasion? <span class="optional-label">(optional)</span></div>
     <div class="field">
-      <div class="bonus-grid" id="bonusGroup">
+      <div class="bonus-grid" data-orig-id="bonusGroup">
         <button tabindex="-1" class="bonus-btn" data-bonus="0.05" data-key="holiday" type="button"><span class="bonus-icon">🎄</span><span>Holiday / Christmas<br><small class="bonus-sub" style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+5% suggested</small></span></button>
         <button tabindex="-1" class="bonus-btn" data-bonus="0.03" data-key="squeeze" type="button"><span class="bonus-icon">⏰</span><span>Squeezed Me In<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+3% suggested</small></span></button>
         <button tabindex="-1" class="bonus-btn" data-bonus="0.05" data-key="outstanding" type="button"><span class="bonus-icon">✨</span><span>Truly Outstanding<br><small class="bonus-sub" style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+5% suggested</small></span></button>
-        <button tabindex="-1" class="bonus-btn bonus-btn--yearend" data-key="yearend" type="button" id="yearendBtn"><span class="bonus-icon">🎁</span><span>Year-End Bonus<br><small id="yearendLabel" style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">= 1 full service</small></span></button>
+        <button tabindex="-1" class="bonus-btn bonus-btn--yearend" data-key="yearend" type="button" data-orig-id="yearendBtn"><span class="bonus-icon">🎁</span><span>Year-End Bonus<br><small data-orig-id="yearendLabel" style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">= 1 full service</small></span></button>
       </div>
-      <p class="bonus-note" id="bonusNote" style="display:none"></p>
+      <p class="bonus-note" data-orig-id="bonusNote" style="display:none"></p>
     </div>
-        <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a>`
-  },
-  "massage-therapist-tip-calculator": {
-    t: "How Much to Tip a Massage Therapist?",
-    s: "Spa · Independent · In-Home · Chiropractor · Sports &amp; Deep Tissue",
-    h: `
+        <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a></div>
+<div id="pvd-massage-therapist-tip-calculator" style="display:none" data-title="How Much to Tip a Massage Therapist?" data-sub="Spa · Independent · In-Home · Chiropractor · Sports &amp; Deep Tissue">
 
     
     <div class="section-label">Your Location</div>
     <div class="field">
-      <label for="cityInput">City &amp; State</label>
+      <label>City &amp; State</label>
       <div class="autocomplete-wrap">
-        <input tabindex="-1" type="text" id="cityInput" placeholder="Start typing a city…" autocomplete="off" maxlength="80">
-        <div class="autocomplete-list" id="autocompleteList"></div>
+        <input tabindex="-1" type="text" data-orig-id="cityInput" placeholder="Start typing a city…" autocomplete="off" maxlength="80">
+        <div class="autocomplete-list" data-orig-id="autocompleteList"></div>
       </div>
-      <p class="helper" id="cityHelper">We calibrate your tip to your area's median household income.</p>
+      <p class="helper" data-orig-id="cityHelper">We calibrate your tip to your area's median household income.</p>
       <p style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:4px;line-height:1.4;">If your city isn't listed, use the closest one to you.</p>
-      <div class="error-msg" id="cityError">Please select a city from the list.</div>
+      <div class="error-msg" data-orig-id="cityError">Please select a city from the list.</div>
     </div>
     
     <div class="section-label">Your Bill</div>
     <div class="field">
-      <label for="priceInput">Total Session Cost(before tip)</label>
+      <label>Total Session Cost(before tip)</label>
       <div class="input-prefix-wrap"><span class="input-prefix">$</span>
-        <input tabindex="-1" type="number" id="priceInput" placeholder="0" min="1" max="2000" step="1">
+        <input tabindex="-1" type="number" data-orig-id="priceInput" placeholder="0" min="1" max="2000" step="1">
       </div>
-      <div class="error-msg" id="priceError">Please enter a valid session cost.</div>
+      <div class="error-msg" data-orig-id="priceError">Please enter a valid session cost.</div>
     </div>
     
     <div class="section-label">Session Length</div>
     <div class="field">
       <label>How long was your session?</label>
-      <div class="pill-group" id="durationGroup">
+      <div class="pill-group" data-orig-id="durationGroup">
         <button tabindex="-1" class="pill" data-val="30">30 min</button>
         <button tabindex="-1" class="pill selected" data-val="60">60 min</button>
         <button tabindex="-1" class="pill" data-val="90">90 min</button>
@@ -1226,7 +1215,7 @@ const GT_FORMS = {
     <div class="section-label">Massage Type <span class="optional-label">(optional)</span></div>
     <div class="field">
       <label>What type of massage?</label>
-      <div class="pill-group" id="massageTypeGroup">
+      <div class="pill-group" data-orig-id="massageTypeGroup">
         <button tabindex="-1" class="pill selected" data-val="swedish">Swedish / Relaxation</button>
         <button tabindex="-1" class="pill" data-val="deep">Deep Tissue</button>
         <button tabindex="-1" class="pill" data-val="sports">Sports Massage</button>
@@ -1240,7 +1229,7 @@ const GT_FORMS = {
     <div class="section-label">Setting <span class="optional-label">(optional)</span></div>
     <div class="field">
       <label>Where did you receive your massage?</label>
-      <div class="pill-group" id="settingGroup">
+      <div class="pill-group" data-orig-id="settingGroup">
         <button tabindex="-1" class="pill selected" data-val="spa">Spa or Salon</button>
         <button tabindex="-1" class="pill" data-val="independent">Independent Therapist</button>
         <button tabindex="-1" class="pill" data-val="chiro">Chiropractor Office</button>
@@ -1252,17 +1241,17 @@ const GT_FORMS = {
     <div class="section-label">Number of Therapists <span class="optional-label">(optional)</span></div>
     <div class="field">
       <label>How many therapists worked on you?</label>
-      <div class="pill-group" id="therapistCountGroup">
+      <div class="pill-group" data-orig-id="therapistCountGroup">
         <button tabindex="-1" class="pill selected" data-val="1">1 therapist</button>
         <button tabindex="-1" class="pill" data-val="2">2 therapists(couples or 4-hand)</button>
       </div>
-      <p class="helper" id="twoTherapistNote" style="display:none">Tip each therapist separately — the suggestion below is per therapist.</p>
+      <p class="helper" data-orig-id="twoTherapistNote" style="display:none">Tip each therapist separately — the suggestion below is per therapist.</p>
     </div>
     
     <div class="section-label">Visit Type <span class="optional-label">(optional)</span></div>
     <div class="field">
       <label>Are you a regular or first-time client?</label>
-      <div class="pill-group" id="clientGroup">
+      <div class="pill-group" data-orig-id="clientGroup">
         <button tabindex="-1" class="pill selected" data-val="regular">Regular client</button>
         <button tabindex="-1" class="pill" data-val="first">First time</button>
       </div>
@@ -1272,70 +1261,66 @@ const GT_FORMS = {
     <div class="field">
       <label>How satisfied are you with the session?</label>
       <div class="star-row">
-        <div class="stars-wrap" id="starsWrap">
+        <div class="stars-wrap" data-orig-id="starsWrap">
           <button tabindex="-1" class="star-btn" data-star="1" aria-label="1 star">★</button>
           <button tabindex="-1" class="star-btn" data-star="2" aria-label="2 stars">★</button>
           <button tabindex="-1" class="star-btn" data-star="3" aria-label="3 stars">★</button>
           <button tabindex="-1" class="star-btn" data-star="4" aria-label="4 stars">★</button>
           <button tabindex="-1" class="star-btn" data-star="5" aria-label="5 stars">★</button>
         </div>
-        <span class="star-label" id="starLabel"></span>
+        <span class="star-label" data-orig-id="starLabel"></span>
       </div>
-      <div class="error-msg" id="starError">Please rate your experience.</div>
+      <div class="error-msg" data-orig-id="starError">Please rate your experience.</div>
     </div>
     
     <div class="section-label">Special Occasion? <span class="optional-label">(optional)</span></div>
     <div class="field">
       <label>Tip a little extra for any of these?</label>
-      <div class="bonus-grid" id="bonusGroup">
+      <div class="bonus-grid" data-orig-id="bonusGroup">
         <button tabindex="-1" class="bonus-btn" data-bonus="0.05" data-key="holiday" type="button"><span class="bonus-icon">🎄</span><span>Holiday / Christmas<br><small class="bonus-sub" style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+5% suggested</small></span></button>
         <button tabindex="-1" class="bonus-btn" data-bonus="0.03" data-key="squeeze" type="button"><span class="bonus-icon">⏰</span><span>Squeezed Me In<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+3% suggested</small></span></button>
         <button tabindex="-1" class="bonus-btn" data-bonus="0.05" data-key="outstanding" type="button"><span class="bonus-icon">✨</span><span>Truly Outstanding<br><small class="bonus-sub" style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+5% suggested</small></span></button>
-        <button tabindex="-1" class="bonus-btn bonus-btn--yearend" data-key="yearend" type="button" id="yearendBtn"><span class="bonus-icon">🎁</span><span>Year-End Bonus<br><small id="yearendLabel" style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">= 1 full session</small></span></button>
+        <button tabindex="-1" class="bonus-btn bonus-btn--yearend" data-key="yearend" type="button" data-orig-id="yearendBtn"><span class="bonus-icon">🎁</span><span>Year-End Bonus<br><small data-orig-id="yearendLabel" style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">= 1 full session</small></span></button>
       </div>
-      <p class="bonus-note" id="bonusNote" style="display:none"></p>
+      <p class="bonus-note" data-orig-id="bonusNote" style="display:none"></p>
     </div>
-        <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a>`
-  },
-  "tattoo-tip-calculator": {
-    t: "How Much to Tip a Tattoo Artist?",
-    s: "Simple · Medium · Complex · Custom · Single &amp; Multi-Session",
-    h: `
+        <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a></div>
+<div id="pvd-tattoo-tip-calculator" style="display:none" data-title="How Much to Tip a Tattoo Artist?" data-sub="Simple · Medium · Complex · Custom · Single &amp; Multi-Session">
 
     
     <div class="section-label">Your Location</div>
     <div class="field">
-      <label for="cityInput">City &amp; State</label>
+      <label>City &amp; State</label>
       <div class="autocomplete-wrap">
-        <input tabindex="-1" type="text" id="cityInput" placeholder="Start typing a city…" autocomplete="off" maxlength="80">
-        <div class="autocomplete-list" id="autocompleteList"></div>
+        <input tabindex="-1" type="text" data-orig-id="cityInput" placeholder="Start typing a city…" autocomplete="off" maxlength="80">
+        <div class="autocomplete-list" data-orig-id="autocompleteList"></div>
       </div>
-      <p class="helper" id="cityHelper">We calibrate tips to the cost of living in the area.</p>
+      <p class="helper" data-orig-id="cityHelper">We calibrate tips to the cost of living in the area.</p>
       <p style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:4px;line-height:1.4;">If your city isn't listed, use the closest one to you.</p>
-      <div class="error-msg" id="cityError">Please select a city from the list.</div>
+      <div class="error-msg" data-orig-id="cityError">Please select a city from the list.</div>
     </div>
     <div class="section-label">Session Cost</div>
     <div class="field">
-      <label for="priceInput">Total Tattoo Cost(before tip)</label>
+      <label>Total Tattoo Cost(before tip)</label>
       <div class="input-prefix-wrap"><span class="input-prefix">$</span>
-        <input tabindex="-1" type="number" id="priceInput" placeholder="0" min="1" max="10000" step="1">
+        <input tabindex="-1" type="number" data-orig-id="priceInput" placeholder="0" min="1" max="10000" step="1">
       </div>
-      <div class="error-msg" id="priceError">Please enter a valid session cost.</div>
+      <div class="error-msg" data-orig-id="priceError">Please enter a valid session cost.</div>
     </div>
     <div class="section-label">Session Type</div>
     <div class="field">
       <label>What kind of session is this?</label>
-      <div class="pill-group" id="tattooSessionGroup">
+      <div class="pill-group" data-orig-id="tattooSessionGroup">
         <button tabindex="-1" class="pill selected" data-val="single">Single session piece</button>
         <button tabindex="-1" class="pill" data-val="ongoing">Ongoing multi-session project</button>
         <button tabindex="-1" class="pill" data-val="final">Final session — piece complete</button>
       </div>
-      <p class="helper" id="sessionHelper">Final sessions on large pieces often warrant a higher tip to celebrate the completed work.</p>
+      <p class="helper" data-orig-id="sessionHelper">Final sessions on large pieces often warrant a higher tip to celebrate the completed work.</p>
     </div>
     <div class="section-label">Design Complexity <span class="optional-label">(optional)</span></div>
     <div class="field">
       <label>How complex was the design?</label>
-      <div class="pill-group" id="complexityGroup">
+      <div class="pill-group" data-orig-id="complexityGroup">
         <button tabindex="-1" class="pill" data-val="simple">Simple / Fine line</button>
         <button tabindex="-1" class="pill selected" data-val="medium">Medium detail</button>
         <button tabindex="-1" class="pill" data-val="complex">Complex / Custom artwork</button>
@@ -1344,63 +1329,59 @@ const GT_FORMS = {
     <div class="section-label">Visit Type <span class="optional-label">(optional)</span></div>
     <div class="field">
       <label>Is this your first time with this artist?</label>
-      <div class="pill-group" id="clientGroup">
+      <div class="pill-group" data-orig-id="clientGroup">
         <button tabindex="-1" class="pill" data-val="first">First time</button>
         <button tabindex="-1" class="pill selected" data-val="regular">Returning client</button>
       </div>
     </div>
     <div class="section-label">Your Satisfaction</div>
     <div class="field">
-      <label id="starsLabel">How pleased are you with the results?</label>
+      <label data-orig-id="starsLabel">How pleased are you with the results?</label>
       <div class="star-row">
-        <div class="stars-wrap" id="starsWrap">
+        <div class="stars-wrap" data-orig-id="starsWrap">
           <button tabindex="-1" class="star-btn" data-star="1" aria-label="1 star">★</button>
           <button tabindex="-1" class="star-btn" data-star="2" aria-label="2 stars">★</button>
           <button tabindex="-1" class="star-btn" data-star="3" aria-label="3 stars">★</button>
           <button tabindex="-1" class="star-btn" data-star="4" aria-label="4 stars">★</button>
           <button tabindex="-1" class="star-btn" data-star="5" aria-label="5 stars">★</button>
         </div>
-        <span class="star-label" id="starLabel"></span>
+        <span class="star-label" data-orig-id="starLabel"></span>
       </div>
-      <div class="error-msg" id="starError">Please rate your experience.</div>
+      <div class="error-msg" data-orig-id="starError">Please rate your experience.</div>
     </div>
     <div class="section-label">Special Occasion? <span class="optional-label">(optional)</span></div>
     <div class="field">
       <label>Tip a little extra for any of these?</label>
-      <div class="bonus-grid" id="bonusGroup">
+      <div class="bonus-grid" data-orig-id="bonusGroup">
         <button tabindex="-1" class="bonus-btn" data-bonus="0.05" data-key="squeeze" type="button"><span class="bonus-icon">⏰</span><span>Squeezed Me In<br><small class="bonus-sub" style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+5% suggested</small></span></button>
         <button tabindex="-1" class="bonus-btn" data-bonus="0.05" data-key="outstanding" type="button"><span class="bonus-icon">✨</span><span>Truly Outstanding<br><small class="bonus-sub" style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+5% suggested</small></span></button>
       </div>
-      <p class="bonus-note" id="bonusNote" style="display:none"></p>
+      <p class="bonus-note" data-orig-id="bonusNote" style="display:none"></p>
     </div>
-        <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a>`
-  },
-  "photographer-tip-calculator": {
-    t: "How Much to Tip a Photographer?",
-    s: "Family Portraits · Engagement · Senior Photos · Newborn · Event · Birth Story · Headshots",
-    h: `
+        <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a></div>
+<div id="pvd-photographer-tip-calculator" style="display:none" data-title="How Much to Tip a Photographer?" data-sub="Family Portraits · Engagement · Senior Photos · Newborn · Event · Birth Story · Headshots">
 
     
     <div class="section-label">Your Location</div>
     <div class="field">
-      <label for="cityInput">City &amp; State</label>
-      <div class="autocomplete-wrap"><input tabindex="-1" type="text" id="cityInput" placeholder="Start typing a city…" autocomplete="off" maxlength="80"><div class="autocomplete-list" id="autocompleteList"></div></div>
-      <p class="helper" id="cityHelper">We calibrate tips to the cost of living in the area.</p>
+      <label>City &amp; State</label>
+      <div class="autocomplete-wrap"><input tabindex="-1" type="text" data-orig-id="cityInput" placeholder="Start typing a city…" autocomplete="off" maxlength="80"><div class="autocomplete-list" data-orig-id="autocompleteList"></div></div>
+      <p class="helper" data-orig-id="cityHelper">We calibrate tips to the cost of living in the area.</p>
       <p style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:4px;line-height:1.4;">If your city isn't listed, use the closest one to you.</p>
-      <div class="error-msg" id="cityError">Please select a city from the list.</div>
+      <div class="error-msg" data-orig-id="cityError">Please select a city from the list.</div>
     </div>
     <div class="section-label">Service Cost</div>
     <div class="field">
-      <label for="priceInput">Total Photography Session Cost(before tip)</label>
+      <label>Total Photography Session Cost(before tip)</label>
       <div class="input-prefix-wrap"><span class="input-prefix">$</span>
-        <input tabindex="-1" type="number" id="priceInput" placeholder="0" min="1" max="5000" step="1">
+        <input tabindex="-1" type="number" data-orig-id="priceInput" placeholder="0" min="1" max="5000" step="1">
       </div>
-      <div class="error-msg" id="priceError">Please enter a valid amount.</div>
+      <div class="error-msg" data-orig-id="priceError">Please enter a valid amount.</div>
     </div>
     <div class="section-label">Session Type</div>
     <div class="field">
       <label>What kind of photography session?</label>
-      <div class="pill-group" id="photoTypeGroup">
+      <div class="pill-group" data-orig-id="photoTypeGroup">
         <button tabindex="-1" class="pill selected" data-val="family">Family portraits</button>
         <button tabindex="-1" class="pill" data-val="engagement">Engagement session</button>
         <button tabindex="-1" class="pill" data-val="senior">High school / senior portraits</button>
@@ -1414,7 +1395,7 @@ const GT_FORMS = {
     <div class="section-label">Photographer Type <span class="optional-label">(optional)</span></div>
     <div class="field">
       <label>Who took your photos?</label>
-      <div class="pill-group" id="photoOwnerGroup">
+      <div class="pill-group" data-orig-id="photoOwnerGroup">
         <button tabindex="-1" class="pill selected" data-val="independent">Independent / freelance photographer</button>
         <button tabindex="-1" class="pill" data-val="studio">Photography studio</button>
         <button tabindex="-1" class="pill" data-val="employee">Studio employee(not owner)</button>
@@ -1423,7 +1404,7 @@ const GT_FORMS = {
     <div class="section-label">Travel <span class="optional-label">(optional)</span></div>
     <div class="field">
       <label>Did the photographer travel to your location?</label>
-      <div class="pill-group" id="photoTravelGroup">
+      <div class="pill-group" data-orig-id="photoTravelGroup">
         <button tabindex="-1" class="pill selected" data-val="none">No — I went to their studio</button>
         <button tabindex="-1" class="pill" data-val="local">Yes — local travel to me</button>
         <button tabindex="-1" class="pill" data-val="regional">Yes — regional(30–100 miles)</button>
@@ -1434,44 +1415,40 @@ const GT_FORMS = {
     <div class="field">
       <label>How happy are you with the results?</label>
       <div class="star-row">
-        <div class="stars-wrap" id="starsWrap">
+        <div class="stars-wrap" data-orig-id="starsWrap">
           <button tabindex="-1" class="star-btn" data-star="1" aria-label="1 star">★</button>
           <button tabindex="-1" class="star-btn" data-star="2" aria-label="2 stars">★</button>
           <button tabindex="-1" class="star-btn" data-star="3" aria-label="3 stars">★</button>
           <button tabindex="-1" class="star-btn" data-star="4" aria-label="4 stars">★</button>
           <button tabindex="-1" class="star-btn" data-star="5" aria-label="5 stars">★</button>
         </div>
-        <span class="star-label" id="starLabel"></span>
+        <span class="star-label" data-orig-id="starLabel"></span>
       </div>
-      <div class="error-msg" id="starError">Please rate your experience.</div>
+      <div class="error-msg" data-orig-id="starError">Please rate your experience.</div>
     </div>
     <div class="section-label">Bonus? <span class="optional-label">(optional)</span></div>
     <div class="field">
-      <div class="bonus-grid" id="bonusGroup">
+      <div class="bonus-grid" data-orig-id="bonusGroup">
         <button tabindex="-1" class="bonus-btn" data-bonus="0.05" data-key="outstanding" type="button"><span class="bonus-icon">✨</span><span>Truly Outstanding<br><small class="bonus-sub" style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+5% suggested</small></span></button>
       </div>
-      <p class="bonus-note" id="bonusNote" style="display:none"></p>
+      <p class="bonus-note" data-orig-id="bonusNote" style="display:none"></p>
     </div>
-        <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a>`
-  },
-  "furniture-delivery-tip-calculator": {
-    t: "How Much to Tip Furniture Delivery?",
-    s: "Curbside · Room-of-Choice · White Glove · Assembly · Haul-Away",
-    h: `
+        <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a></div>
+<div id="pvd-furniture-delivery-tip-calculator" style="display:none" data-title="How Much to Tip Furniture Delivery?" data-sub="Curbside · Room-of-Choice · White Glove · Assembly · Haul-Away">
 
     
     <div class="section-label">Your Location</div>
     <div class="field">
-      <label for="cityInput">City &amp; State</label>
-      <div class="autocomplete-wrap"><input tabindex="-1" type="text" id="cityInput" placeholder="Start typing a city…" autocomplete="off" maxlength="80"><div class="autocomplete-list" id="autocompleteList"></div></div>
-      <p class="helper" id="cityHelper">We calibrate tips to the cost of living in the area.</p>
+      <label>City &amp; State</label>
+      <div class="autocomplete-wrap"><input tabindex="-1" type="text" data-orig-id="cityInput" placeholder="Start typing a city…" autocomplete="off" maxlength="80"><div class="autocomplete-list" data-orig-id="autocompleteList"></div></div>
+      <p class="helper" data-orig-id="cityHelper">We calibrate tips to the cost of living in the area.</p>
       <p style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:4px;line-height:1.4;">If your city isn't listed, use the closest one to you.</p>
-      <div class="error-msg" id="cityError">Please select a city from the list.</div>
+      <div class="error-msg" data-orig-id="cityError">Please select a city from the list.</div>
     </div>
     <div class="section-label">Delivery Type</div>
     <div class="field">
       <label>What kind of furniture delivery?</label>
-      <div class="pill-group" id="furnitureTypeGroup">
+      <div class="pill-group" data-orig-id="furnitureTypeGroup">
         <button tabindex="-1" class="pill selected" data-val="standard" title="Items brought inside to a room of your choice — no assembly">Standard delivery <span style="font-size:10px;opacity:0.65">(inside only)</span> (curbside / door)</button>
         <button tabindex="-1" class="pill" data-val="room">Room of choice delivery</button>
         <button tabindex="-1" class="pill" data-val="whiteglove">White glove service</button>
@@ -1482,7 +1459,7 @@ const GT_FORMS = {
     <div class="section-label">Retailer <span class="optional-label">(optional)</span></div>
     <div class="field">
       <label>Which store or service?</label>
-      <div class="pill-group" id="retailerGroup">
+      <div class="pill-group" data-orig-id="retailerGroup">
         <button tabindex="-1" class="pill selected" data-val="general" title="Chain or big-box store(Ashley, IKEA, Wayfair) — delivery is a separate contracted service">General furniture store <span style="font-size:10px;opacity:0.65">(chain / big-box)</span></button>
         <button tabindex="-1" class="pill" data-val="raymour">Raymour &amp; Flanigan</button>
         <button tabindex="-1" class="pill" data-val="ashley">Ashley Furniture</button>
@@ -1494,7 +1471,7 @@ const GT_FORMS = {
     <div class="section-label">Number of Delivery People <span class="optional-label">(optional)</span></div>
     <div class="field">
       <label>How many people delivered?</label>
-      <div class="pill-group" id="deliveryCrewGroup">
+      <div class="pill-group" data-orig-id="deliveryCrewGroup">
         <button tabindex="-1" class="pill" data-val="1">1 person</button>
         <button tabindex="-1" class="pill selected" data-val="2">2 people</button>
         <button tabindex="-1" class="pill" data-val="3">3 people</button>
@@ -1503,7 +1480,7 @@ const GT_FORMS = {
     <div class="section-label">Difficulty <span class="optional-label">(optional)</span></div>
     <div class="field">
       <label>Select anything that applies.</label>
-      <div class="bonus-grid" id="furnitureDetailsGroup">
+      <div class="bonus-grid" data-orig-id="furnitureDetailsGroup">
         <button tabindex="-1" class="bonus-btn" data-fd="stairs" type="button"><span class="bonus-icon">🪜</span><span>Stairs involved<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Multiple flights</small></span></button>
         <button tabindex="-1" class="bonus-btn" data-fd="heavy" type="button"><span class="bonus-icon">🛋️</span><span>Very heavy item<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Sofa, mattress, large cabinet</small></span></button>
         <button tabindex="-1" class="bonus-btn" data-fd="careful" type="button"><span class="bonus-icon">✅</span><span>Careful with home<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">No marks or damage</small></span></button>
@@ -1514,30 +1491,26 @@ const GT_FORMS = {
     <div class="field">
       <label>How was the delivery team?</label>
       <div class="star-row">
-        <div class="stars-wrap" id="starsWrap">
+        <div class="stars-wrap" data-orig-id="starsWrap">
           <button tabindex="-1" class="star-btn" data-star="1">★</button>
           <button tabindex="-1" class="star-btn" data-star="2">★</button>
           <button tabindex="-1" class="star-btn" data-star="3">★</button>
           <button tabindex="-1" class="star-btn" data-star="4">★</button>
           <button tabindex="-1" class="star-btn" data-star="5">★</button>
         </div>
-        <span class="star-label" id="starLabel"></span>
+        <span class="star-label" data-orig-id="starLabel"></span>
       </div>
-      <div class="error-msg" id="starError">Please rate your experience.</div>
+      <div class="error-msg" data-orig-id="starError">Please rate your experience.</div>
     </div>
     <div class="section-label">Bonus? <span class="optional-label">(optional)</span></div>
     <div class="field">
-      <div class="bonus-grid" id="bonusGroup">
+      <div class="bonus-grid" data-orig-id="bonusGroup">
         <button tabindex="-1" class="bonus-btn" data-bonus="0.05" data-key="outstanding" type="button"><span class="bonus-icon">✨</span><span>Truly Outstanding<br><small class="bonus-sub" style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+5% suggested</small></span></button>
       </div>
-      <p class="bonus-note" id="bonusNote" style="display:none"></p>
+      <p class="bonus-note" data-orig-id="bonusNote" style="display:none"></p>
     </div>
-        <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a>`
-  },
-  "caterer-tip-calculator": {
-    t: "How Much to Tip a Caterer?",
-    s: "Wedding Caterers · Corporate Events · Food Trucks · Taco Catering · Buffets · Drop-Off Catering",
-    h: `
+        <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a></div>
+<div id="pvd-caterer-tip-calculator" style="display:none" data-title="How Much to Tip a Caterer?" data-sub="Wedding Caterers · Corporate Events · Food Trucks · Taco Catering · Buffets · Drop-Off Catering">
 
     <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);border-radius:10px;padding:14px 18px;margin-bottom:20px;font-size:13px;color:rgba(255,255,255,0.82);line-height:1.65;">
       <strong style="color:#fff;">Check your itemized invoice first.</strong> Many catering contracts include an 18%–22% service charge. If yours does, confirm whether it goes to the staff or the company before calculating a tip — this changes the math significantly.
@@ -1545,24 +1518,24 @@ const GT_FORMS = {
     
     <div class="section-label">Your Location</div>
     <div class="field">
-      <label for="cityInput">City &amp; State</label>
-      <div class="autocomplete-wrap"><input tabindex="-1" type="text" id="cityInput" placeholder="Start typing a city…" autocomplete="off" maxlength="80"><div class="autocomplete-list" id="autocompleteList"></div></div>
-      <p class="helper" id="cityHelper">We calibrate tips to the cost of living in the area.</p>
+      <label>City &amp; State</label>
+      <div class="autocomplete-wrap"><input tabindex="-1" type="text" data-orig-id="cityInput" placeholder="Start typing a city…" autocomplete="off" maxlength="80"><div class="autocomplete-list" data-orig-id="autocompleteList"></div></div>
+      <p class="helper" data-orig-id="cityHelper">We calibrate tips to the cost of living in the area.</p>
       <p style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:4px;line-height:1.4;">If your city isn't listed, use the closest one to you.</p>
-      <div class="error-msg" id="cityError">Please select a city from the list.</div>
+      <div class="error-msg" data-orig-id="cityError">Please select a city from the list.</div>
     </div>
     <div class="section-label">Service Cost</div>
     <div class="field">
-      <label for="priceInput">Total Catering Cost(before tip)</label>
+      <label>Total Catering Cost(before tip)</label>
       <div class="input-prefix-wrap"><span class="input-prefix">$</span>
-        <input tabindex="-1" type="number" id="priceInput" placeholder="0" min="1" max="50000" step="1">
+        <input tabindex="-1" type="number" data-orig-id="priceInput" placeholder="0" min="1" max="50000" step="1">
       </div>
-      <div class="error-msg" id="priceError">Please enter a valid amount.</div>
+      <div class="error-msg" data-orig-id="priceError">Please enter a valid amount.</div>
     </div>
     <div class="section-label">Event Type <span class="optional-label">(optional)</span></div>
     <div class="field">
       <label>What kind of event?</label>
-      <div class="pill-group" id="eventTypeGroup">
+      <div class="pill-group" data-orig-id="eventTypeGroup">
         <button tabindex="-1" class="pill selected" data-val="wedding">Wedding reception</button>
         <button tabindex="-1" class="pill" data-val="corporate">Corporate event</button>
         <button tabindex="-1" class="pill" data-val="birthday">Birthday / party</button>
@@ -1575,7 +1548,7 @@ const GT_FORMS = {
     <div class="section-label">Service Style <span class="optional-label">(optional)</span></div>
     <div class="field">
       <label>How was the food served?</label>
-      <div class="pill-group" id="serviceStyleGroup">
+      <div class="pill-group" data-orig-id="serviceStyleGroup">
         <button tabindex="-1" class="pill selected" data-val="plated">Plated sit-down service</button>
         <button tabindex="-1" class="pill" data-val="foodtruck">Food truck service</button>
         <button tabindex="-1" class="pill" data-val="buffet">Buffet / self-serve</button>
@@ -1587,7 +1560,7 @@ const GT_FORMS = {
     <div class="section-label">Staffing <span class="optional-label">(optional)</span></div>
     <div class="field">
       <label>Select anything that applies.</label>
-      <div class="bonus-grid" id="caterDetailsGroup">
+      <div class="bonus-grid" data-orig-id="caterDetailsGroup">
 
         <button tabindex="-1" class="bonus-btn" data-ct="traveled" type="button"><span class="bonus-icon">🚐</span><span>Traveled far to event<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Significant travel involved</small></span></button>
         <button tabindex="-1" class="bonus-btn" data-ct="setup" type="button"><span class="bonus-icon">🏗️</span><span>Full setup &amp; breakdown<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Handled everything</small></span></button>
@@ -1598,7 +1571,7 @@ const GT_FORMS = {
     <div class="section-label">Guest Count <span class="optional-label">(optional)</span></div>
     <div class="field">
       <label>Approximately how many guests?</label>
-      <div class="pill-group" id="guestCountGroup">
+      <div class="pill-group" data-orig-id="guestCountGroup">
         <button tabindex="-1" class="pill" data-val="small">Under 25</button>
         <button tabindex="-1" class="pill selected" data-val="medium">25–75</button>
         <button tabindex="-1" class="pill" data-val="large">75–150</button>
@@ -1609,55 +1582,51 @@ const GT_FORMS = {
     <div class="field">
       <label>How was the overall catering experience?</label>
       <div class="star-row">
-        <div class="stars-wrap" id="starsWrap">
+        <div class="stars-wrap" data-orig-id="starsWrap">
           <button tabindex="-1" class="star-btn" data-star="1" aria-label="1 star">★</button>
           <button tabindex="-1" class="star-btn" data-star="2" aria-label="2 stars">★</button>
           <button tabindex="-1" class="star-btn" data-star="3" aria-label="3 stars">★</button>
           <button tabindex="-1" class="star-btn" data-star="4" aria-label="4 stars">★</button>
           <button tabindex="-1" class="star-btn" data-star="5" aria-label="5 stars">★</button>
         </div>
-        <span class="star-label" id="starLabel"></span>
+        <span class="star-label" data-orig-id="starLabel"></span>
       </div>
-      <div class="error-msg" id="starError">Please rate your experience.</div>
+      <div class="error-msg" data-orig-id="starError">Please rate your experience.</div>
     </div>
     <div class="section-label">Special Occasion? <span class="optional-label">(optional)</span></div>
     <div class="field">
-      <div class="bonus-grid" id="bonusGroup">
+      <div class="bonus-grid" data-orig-id="bonusGroup">
         
         <button tabindex="-1" class="bonus-btn" data-bonus="0.05" data-key="outstanding" type="button"><span class="bonus-icon">✨</span><span>Truly Outstanding<br><small class="bonus-sub" style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+5% suggested</small></span></button>
         
       </div>
-      <p class="bonus-note" id="bonusNote" style="display:none"></p>
+      <p class="bonus-note" data-orig-id="bonusNote" style="display:none"></p>
     </div>
-        <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a>`
-  },
-  "wedding-photographer-tip-calculator": {
-    t: "How Much to Tip Your Wedding Photographer",
-    s: "Wedding Photography · Engagement Sessions · Second Shooters",
-    h: `
+        <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a></div>
+<div id="pvd-wedding-photographer-tip-calculator" style="display:none" data-title="How Much to Tip Your Wedding Photographer" data-sub="Wedding Photography · Engagement Sessions · Second Shooters">
       <div class="field-group">
         <div class="section-label">Your Location</div>
         <div class="field">
           <label>Service Provider's Home City <span class="optional-label">(where they are based, not the wedding venue)</span></label>
           <div class="autocomplete-wrap">
-            <input tabindex="-1" type="text" id="cityInput" class="city-input" placeholder="Type your city..." autocomplete="off">
-            <div class="autocomplete-list" id="autocompleteList"></div>
+            <input tabindex="-1" type="text" data-orig-id="cityInput" class="city-input" placeholder="Type your city..." autocomplete="off">
+            <div class="autocomplete-list" data-orig-id="autocompleteList"></div>
           </div>
-          <div class="helper-text" id="cityHelper">Enter the service provider's home city — not the wedding venue location. This determines their local cost of living.</div>
+          <div class="helper-text" data-orig-id="cityHelper">Enter the service provider's home city — not the wedding venue location. This determines their local cost of living.</div>
           <p style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:4px;line-height:1.4;">If your city isn't listed, use the closest one to you.</p>
-      <div class="error-msg" id="cityError">Please select your city.</div>
+      <div class="error-msg" data-orig-id="cityError">Please select your city.</div>
         </div>
       </div>
       <div class="field-group">
         <div class="section-label">Package Details</div>
         <div class="field">
           <label>Total Package Cost</label>
-          <div class="input-wrap"><span class="input-prefix">$</span><input tabindex="-1" type="number" id="priceInput" placeholder="e.g. 3500" min="0"></div>
-          <div class="error-msg" id="priceError">Please enter your package cost.</div>
+          <div class="input-wrap"><span class="input-prefix">$</span><input tabindex="-1" type="number" data-orig-id="priceInput" placeholder="e.g. 3500" min="0"></div>
+          <div class="error-msg" data-orig-id="priceError">Please enter your package cost.</div>
         </div>
         <div class="field">
           <label>Hours of Coverage</label>
-          <div class="pill-group" id="hoursGroup">
+          <div class="pill-group" data-orig-id="hoursGroup">
             <button tabindex="-1" class="pill" data-val="4" type="button">4 hrs</button>
             <button tabindex="-1" class="pill" data-val="6" type="button">6 hrs</button>
             <button tabindex="-1" class="pill" data-val="8" type="button">8 hrs</button>
@@ -1666,7 +1635,7 @@ const GT_FORMS = {
         </div>
         <div class="field">
           <label>Second Shooter Included?</label>
-          <div class="pill-group" id="secondGroup">
+          <div class="pill-group" data-orig-id="secondGroup">
             <button tabindex="-1" class="pill selected" data-val="no" type="button">No</button>
             <button tabindex="-1" class="pill" data-val="yes" type="button">Yes</button>
           </div>
@@ -1674,7 +1643,7 @@ const GT_FORMS = {
         </div>
         <div class="field">
           <label>Engagement Session Included?</label>
-          <div class="pill-group" id="engageGroup">
+          <div class="pill-group" data-orig-id="engageGroup">
             <button tabindex="-1" class="pill selected" data-val="no" type="button">No</button>
             <button tabindex="-1" class="pill" data-val="yes" type="button">Yes</button>
           </div>
@@ -1684,7 +1653,7 @@ const GT_FORMS = {
         <div class="section-label">Travel &amp; Logistics</div>
         <div class="field">
           <label>Did the photographer travel to you?</label>
-          <div class="pill-group" id="travelGroup">
+          <div class="pill-group" data-orig-id="travelGroup">
             <button tabindex="-1" class="pill selected" data-val="local" type="button">Local(under 1 hr)</button>
             <button tabindex="-1" class="pill" data-val="regional" type="button">Regional(1–3 hrs)</button>
             <button tabindex="-1" class="pill" data-val="destination" type="button">Destination / Overnight</button>
@@ -1693,7 +1662,7 @@ const GT_FORMS = {
         </div>
         <div class="field">
           <label>Photo Delivery &amp; Turnaround</label>
-          <div class="pill-group" id="turnGroup">
+          <div class="pill-group" data-orig-id="turnGroup">
             <button tabindex="-1" class="pill selected" data-val="ontime" type="button">On time</button>
             <button tabindex="-1" class="pill" data-val="early" type="button">Early delivery</button>
             <button tabindex="-1" class="pill" data-val="late" type="button">Late / disappointing</button>
@@ -1703,57 +1672,53 @@ const GT_FORMS = {
         <div class="section-label">Your Experience</div>
         <div class="field">
           <label>Overall Satisfaction</label>
-          <div class="star-row" id="starsWrap">
+          <div class="star-row" data-orig-id="starsWrap">
             <button tabindex="-1" class="star-btn" data-star="1" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="2" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="3" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="4" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="5" type="button">★</button>
-            <span class="star-label" id="starLabel"></span>
+            <span class="star-label" data-orig-id="starLabel"></span>
           </div>
-          <div class="error-msg" id="starError">Please rate your experience.</div>
+          <div class="error-msg" data-orig-id="starError">Please rate your experience.</div>
         </div>
       </div>
       <div class="field-group">
         <div class="section-label">Bonus? <span class="optional-label">(optional)</span></div>
         <div class="field">
           <label>Tip a little extra for any of these?</label>
-          <div class="bonus-grid" id="bonusGroup">
+          <div class="bonus-grid" data-orig-id="bonusGroup">
             <button tabindex="-1" class="bonus-btn" data-bonus="0.04" data-key="outstanding" type="button"><span class="bonus-icon">✨</span><span>Truly Outstanding<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Exceeded all expectations</small></span></button>
             <button tabindex="-1" class="bonus-btn" data-bonus="0.03" data-key="holiday" type="button"><span class="bonus-icon">🎄</span><span>Holiday / Christmas<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+3% suggested</small></span></button>
             <button tabindex="-1" class="bonus-btn" data-bonus="0.03" data-key="squeeze" type="button"><span class="bonus-icon">⏰</span><span>Squeezed Me In<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Last-minute booking</small></span></button>
           </div>
         </div>
       </div>
-    <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a>`
-  },
-  "wedding-dj-tip-calculator": {
-    t: "How Much to Tip Your Wedding DJ",
-    s: "Wedding Reception DJ · Ceremony Music · MC Services · Lighting",
-    h: `
+    <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a></div>
+<div id="pvd-wedding-dj-tip-calculator" style="display:none" data-title="How Much to Tip Your Wedding DJ" data-sub="Wedding Reception DJ · Ceremony Music · MC Services · Lighting">
       <div class="field-group">
         <div class="section-label">Your Location</div>
         <div class="field">
           <label>Service Provider's Home City <span class="optional-label">(where they are based, not the wedding venue)</span></label>
           <div class="autocomplete-wrap">
-            <input tabindex="-1" type="text" id="cityInput" class="city-input" placeholder="Type your city..." autocomplete="off">
-            <div class="autocomplete-list" id="autocompleteList"></div>
+            <input tabindex="-1" type="text" data-orig-id="cityInput" class="city-input" placeholder="Type your city..." autocomplete="off">
+            <div class="autocomplete-list" data-orig-id="autocompleteList"></div>
           </div>
-          <div class="helper-text" id="cityHelper">Enter the service provider's home city — not the wedding venue location. This determines their local cost of living.</div>
+          <div class="helper-text" data-orig-id="cityHelper">Enter the service provider's home city — not the wedding venue location. This determines their local cost of living.</div>
           <p style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:4px;line-height:1.4;">If your city isn't listed, use the closest one to you.</p>
-      <div class="error-msg" id="cityError">Please select your city.</div>
+      <div class="error-msg" data-orig-id="cityError">Please select your city.</div>
         </div>
       </div>
       <div class="field-group">
         <div class="section-label">Service Details</div>
         <div class="field">
           <label>Total Cost</label>
-          <div class="input-wrap"><span class="input-prefix">$</span><input tabindex="-1" type="number" id="priceInput" placeholder="e.g. 1800" min="0"></div>
-          <div class="error-msg" id="priceError">Please enter the service cost.</div>
+          <div class="input-wrap"><span class="input-prefix">$</span><input tabindex="-1" type="number" data-orig-id="priceInput" placeholder="e.g. 1800" min="0"></div>
+          <div class="error-msg" data-orig-id="priceError">Please enter the service cost.</div>
         </div>
         <div class="field">
           <label>What did they cover?</label>
-          <div class="pill-group" id="coverGroup">
+          <div class="pill-group" data-orig-id="coverGroup">
             <button tabindex="-1" class="pill" data-val="ceremony" type="button">Ceremony only</button>
             <button tabindex="-1" class="pill" data-val="reception" type="button">Reception only</button>
             <button tabindex="-1" class="pill selected" data-val="both" type="button">Ceremony + Reception</button>
@@ -1761,7 +1726,7 @@ const GT_FORMS = {
         </div>
         <div class="field">
           <label>Hours worked(including setup &amp; breakdown)</label>
-          <div class="pill-group" id="hoursGroup">
+          <div class="pill-group" data-orig-id="hoursGroup">
             <button tabindex="-1" class="pill" data-val="4" type="button">Under 4 hrs</button>
             <button tabindex="-1" class="pill" data-val="6" type="button">4–6 hrs</button>
             <button tabindex="-1" class="pill selected" data-val="8" type="button">6–8 hrs</button>
@@ -1771,28 +1736,28 @@ const GT_FORMS = {
         </div>
         <div class="field">
           <label>MC Duties</label>
-          <div class="pill-group" id="mcGroup">
+          <div class="pill-group" data-orig-id="mcGroup">
             <button tabindex="-1" class="pill selected" data-val="no" type="button">No MC work</button>
             <button tabindex="-1" class="pill" data-val="yes" type="button">Full MC — announcements, toasts, flow</button>
           </div>
         </div>
         <div class="field">
           <label>Lighting Provided?</label>
-          <div class="pill-group" id="lightGroup">
+          <div class="pill-group" data-orig-id="lightGroup">
             <button tabindex="-1" class="pill selected" data-val="no" type="button">No</button>
             <button tabindex="-1" class="pill" data-val="yes" type="button">Yes — full lighting setup</button>
           </div>
         </div>
         <div class="field">
           <label>Custom Playlist / Coordination</label>
-          <div class="pill-group" id="playlistGroup">
+          <div class="pill-group" data-orig-id="playlistGroup">
             <button tabindex="-1" class="pill selected" data-val="standard" type="button">Standard</button>
             <button tabindex="-1" class="pill" data-val="custom" type="button">Detailed custom playlist built with us</button>
           </div>
         </div>
         <div class="field">
           <label>Gratuity already in your contract?</label>
-          <div class="pill-group" id="gratGroup">
+          <div class="pill-group" data-orig-id="gratGroup">
             <button tabindex="-1" class="pill selected" data-val="no" type="button">No</button>
             <button tabindex="-1" class="pill" data-val="yes" type="button">Yes — already included</button>
           </div>
@@ -1803,7 +1768,7 @@ const GT_FORMS = {
         <div class="section-label">Travel</div>
         <div class="field">
           <label>DJ Travel Distance</label>
-          <div class="pill-group" id="travelGroup">
+          <div class="pill-group" data-orig-id="travelGroup">
             <button tabindex="-1" class="pill selected" data-val="local" type="button">Local</button>
             <button tabindex="-1" class="pill" data-val="regional" type="button">Regional(1–3 hrs)</button>
             <button tabindex="-1" class="pill" data-val="destination" type="button">Destination</button>
@@ -1814,7 +1779,7 @@ const GT_FORMS = {
         <div class="section-label">Dance Floor &amp; Vibe</div>
         <div class="field">
           <label>How was the dance floor?</label>
-          <div class="pill-group" id="danceGroup">
+          <div class="pill-group" data-orig-id="danceGroup">
             <button tabindex="-1" class="pill" data-val="empty" type="button">Mostly empty</button>
             <button tabindex="-1" class="pill selected" data-val="good" type="button">Good energy</button>
             <button tabindex="-1" class="pill" data-val="packed" type="button">Packed all night</button>
@@ -1824,55 +1789,51 @@ const GT_FORMS = {
         <div class="section-label">Your Experience</div>
         <div class="field">
           <label>Overall Satisfaction</label>
-          <div class="star-row" id="starsWrap">
+          <div class="star-row" data-orig-id="starsWrap">
             <button tabindex="-1" class="star-btn" data-star="1" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="2" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="3" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="4" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="5" type="button">★</button>
-            <span class="star-label" id="starLabel"></span>
+            <span class="star-label" data-orig-id="starLabel"></span>
           </div>
-          <div class="error-msg" id="starError">Please rate your experience.</div>
+          <div class="error-msg" data-orig-id="starError">Please rate your experience.</div>
         </div>
       </div>
       <div class="field-group">
         <div class="section-label">Bonus? <span class="optional-label">(optional)</span></div>
         <div class="field">
-          <div class="bonus-grid" id="bonusGroup">
+          <div class="bonus-grid" data-orig-id="bonusGroup">
             <button tabindex="-1" class="bonus-btn" data-bonus="0.05" data-key="holiday" type="button"><span class="bonus-icon">🎄</span><span>Holiday / Christmas<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+5% suggested</small></span></button>
             <button tabindex="-1" class="bonus-btn" data-bonus="0.05" data-key="outstanding" type="button"><span class="bonus-icon">✨</span><span>Truly Outstanding<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Exceeded all expectations</small></span></button>
           </div>
         </div>
       </div>
-    <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a>`
-  },
-  "wedding-band-tip-calculator": {
-    t: "How Much to Tip Your Wedding Band",
-    s: "Wedding Reception Bands · Ceremony Music · Live Performance",
-    h: `
+    <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a></div>
+<div id="pvd-wedding-band-tip-calculator" style="display:none" data-title="How Much to Tip Your Wedding Band" data-sub="Wedding Reception Bands · Ceremony Music · Live Performance">
       <div class="field-group">
         <div class="section-label">Your Location</div>
         <div class="field">
           <label>Service Provider's Home City <span class="optional-label">(where they are based, not the wedding venue)</span></label>
           <div class="autocomplete-wrap">
-            <input tabindex="-1" type="text" id="cityInput" class="city-input" placeholder="Type your city..." autocomplete="off">
-            <div class="autocomplete-list" id="autocompleteList"></div>
+            <input tabindex="-1" type="text" data-orig-id="cityInput" class="city-input" placeholder="Type your city..." autocomplete="off">
+            <div class="autocomplete-list" data-orig-id="autocompleteList"></div>
           </div>
-          <div class="helper-text" id="cityHelper">Enter the service provider's home city — not the wedding venue location. This determines their local cost of living.</div>
+          <div class="helper-text" data-orig-id="cityHelper">Enter the service provider's home city — not the wedding venue location. This determines their local cost of living.</div>
           <p style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:4px;line-height:1.4;">If your city isn't listed, use the closest one to you.</p>
-      <div class="error-msg" id="cityError">Please select your city.</div>
+      <div class="error-msg" data-orig-id="cityError">Please select your city.</div>
         </div>
       </div>
       <div class="field-group">
         <div class="section-label">Band Details</div>
         <div class="field">
           <label>Total Cost</label>
-          <div class="input-wrap"><span class="input-prefix">$</span><input tabindex="-1" type="number" id="priceInput" placeholder="e.g. 5000" min="0"></div>
-          <div class="error-msg" id="priceError">Please enter the total cost.</div>
+          <div class="input-wrap"><span class="input-prefix">$</span><input tabindex="-1" type="number" data-orig-id="priceInput" placeholder="e.g. 5000" min="0"></div>
+          <div class="error-msg" data-orig-id="priceError">Please enter the total cost.</div>
         </div>
         <div class="field">
           <label>Number of Musicians</label>
-          <div class="pill-group" id="musoGroup">
+          <div class="pill-group" data-orig-id="musoGroup">
             <button tabindex="-1" class="pill" data-val="2" type="button">Duo(2)</button>
             <button tabindex="-1" class="pill" data-val="4" type="button">Quartet(3–4)</button>
             <button tabindex="-1" class="pill selected" data-val="6" type="button">5–7 piece</button>
@@ -1883,7 +1844,7 @@ const GT_FORMS = {
         </div>
         <div class="field">
           <label>What did they cover?</label>
-          <div class="pill-group" id="coverGroup">
+          <div class="pill-group" data-orig-id="coverGroup">
             <button tabindex="-1" class="pill" data-val="ceremony" type="button">Ceremony only</button>
             <button tabindex="-1" class="pill" data-val="reception" type="button">Reception only</button>
             <button tabindex="-1" class="pill selected" data-val="both" type="button">Ceremony + Reception</button>
@@ -1891,7 +1852,7 @@ const GT_FORMS = {
         </div>
         <div class="field">
           <label>Hours performed(not including setup)</label>
-          <div class="pill-group" id="hoursGroup">
+          <div class="pill-group" data-orig-id="hoursGroup">
             <button tabindex="-1" class="pill" data-val="2" type="button">Under 2 hrs</button>
             <button tabindex="-1" class="pill" data-val="3" type="button">2–3 hrs</button>
             <button tabindex="-1" class="pill selected" data-val="4" type="button">3–4 hrs</button>
@@ -1901,14 +1862,14 @@ const GT_FORMS = {
         </div>
         <div class="field">
           <label>Did they learn a custom song?</label>
-          <div class="pill-group" id="customGroup">
+          <div class="pill-group" data-orig-id="customGroup">
             <button tabindex="-1" class="pill selected" data-val="no" type="button">No</button>
             <button tabindex="-1" class="pill" data-val="yes" type="button">Yes — first dance / special song</button>
           </div>
         </div>
         <div class="field">
           <label>Travel Distance</label>
-          <div class="pill-group" id="travelGroup">
+          <div class="pill-group" data-orig-id="travelGroup">
             <button tabindex="-1" class="pill selected" data-val="local" type="button">Local</button>
             <button tabindex="-1" class="pill" data-val="regional" type="button">Regional(1–3 hrs)</button>
             <button tabindex="-1" class="pill" data-val="destination" type="button">Destination</button>
@@ -1919,55 +1880,51 @@ const GT_FORMS = {
         <div class="section-label">Your Experience</div>
         <div class="field">
           <label>Overall Satisfaction</label>
-          <div class="star-row" id="starsWrap">
+          <div class="star-row" data-orig-id="starsWrap">
             <button tabindex="-1" class="star-btn" data-star="1" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="2" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="3" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="4" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="5" type="button">★</button>
-            <span class="star-label" id="starLabel"></span>
+            <span class="star-label" data-orig-id="starLabel"></span>
           </div>
-          <div class="error-msg" id="starError">Please rate your experience.</div>
+          <div class="error-msg" data-orig-id="starError">Please rate your experience.</div>
         </div>
       </div>
       <div class="field-group">
         <div class="section-label">Bonus? <span class="optional-label">(optional)</span></div>
         <div class="field">
-          <div class="bonus-grid" id="bonusGroup">
+          <div class="bonus-grid" data-orig-id="bonusGroup">
             <button tabindex="-1" class="bonus-btn" data-bonus="0.04" data-key="outstanding" type="button"><span class="bonus-icon">✨</span><span>Truly Outstanding<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Everyone was on the dance floor</small></span></button>
             <button tabindex="-1" class="bonus-btn" data-bonus="0.03" data-key="holiday" type="button"><span class="bonus-icon">🎄</span><span>Holiday / Christmas<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+3% suggested</small></span></button>
           </div>
         </div>
       </div>
-    <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a>`
-  },
-  "wedding-planner-tip-calculator": {
-    t: "How Much to Tip a Wedding Planner",
-    s: "Full-Service Planning · Partial Planning · Months of Coordination · Budget Management",
-    h: `
+    <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a></div>
+<div id="pvd-wedding-planner-tip-calculator" style="display:none" data-title="How Much to Tip a Wedding Planner" data-sub="Full-Service Planning · Partial Planning · Months of Coordination · Budget Management">
       <div class="field-group">
         <div class="section-label">Planner's Home City <span class="optional-label">(where they are based, not the wedding venue)</span></div>
         <div class="field">
           <label>Service Provider's Home City <span class="optional-label">(determines their local cost of living)</span></label>
           <div class="autocomplete-wrap">
-            <input tabindex="-1" type="text" id="cityInput" class="city-input" placeholder="Type the planner's city..." autocomplete="off">
-            <div class="autocomplete-list" id="autocompleteList"></div>
+            <input tabindex="-1" type="text" data-orig-id="cityInput" class="city-input" placeholder="Type the planner's city..." autocomplete="off">
+            <div class="autocomplete-list" data-orig-id="autocompleteList"></div>
           </div>
-          <div class="helper-text" id="cityHelper">Enter the planner's city — not the wedding venue — to calibrate to their local cost of living.</div>
+          <div class="helper-text" data-orig-id="cityHelper">Enter the planner's city — not the wedding venue — to calibrate to their local cost of living.</div>
           <p style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:4px;line-height:1.4;">If your city isn't listed, use the closest one to you.</p>
-      <div class="error-msg" id="cityError">Please select a city.</div>
+      <div class="error-msg" data-orig-id="cityError">Please select a city.</div>
         </div>
       </div>
       <div class="field-group">
         <div class="section-label">Planning Scope</div>
         <div class="field">
           <label>Total Cost Paid to Planner</label>
-          <div class="input-wrap"><span class="input-prefix">$</span><input tabindex="-1" type="number" id="priceInput" placeholder="e.g. 4500" min="0"></div>
-          <div class="error-msg" id="priceError">Please enter the cost.</div>
+          <div class="input-wrap"><span class="input-prefix">$</span><input tabindex="-1" type="number" data-orig-id="priceInput" placeholder="e.g. 4500" min="0"></div>
+          <div class="error-msg" data-orig-id="priceError">Please enter the cost.</div>
         </div>
         <div class="field">
           <label>Type of Planning Service</label>
-          <div class="pill-group" id="scopeGroup">
+          <div class="pill-group" data-orig-id="scopeGroup">
             <button tabindex="-1" class="pill" data-val="dayof" type="button">Day-of Coordination Only</button>
             <button tabindex="-1" class="pill" data-val="partial" type="button">Partial Planning</button>
             <button tabindex="-1" class="pill selected" data-val="full" type="button">Full-Service Planning</button>
@@ -1975,7 +1932,7 @@ const GT_FORMS = {
         </div>
         <div class="field">
           <label>How long were they involved?</label>
-          <div class="pill-group" id="monthsGroup">
+          <div class="pill-group" data-orig-id="monthsGroup">
             <button tabindex="-1" class="pill" data-val="1" type="button">Under 1 month</button>
             <button tabindex="-1" class="pill" data-val="3" type="button">1–3 months</button>
             <button tabindex="-1" class="pill" data-val="6" type="button">3–6 months</button>
@@ -1985,7 +1942,7 @@ const GT_FORMS = {
         </div>
         <div class="field">
           <label>Approximately how many vendors did they coordinate?</label>
-          <div class="pill-group" id="vendorsGroup">
+          <div class="pill-group" data-orig-id="vendorsGroup">
             <button tabindex="-1" class="pill" data-val="3" type="button">1–3</button>
             <button tabindex="-1" class="pill" data-val="7" type="button">4–7</button>
             <button tabindex="-1" class="pill selected" data-val="10" type="button">8–12</button>
@@ -1994,7 +1951,7 @@ const GT_FORMS = {
         </div>
         <div class="field">
           <label>Did they manage the budget effectively?</label>
-          <div class="pill-group" id="budgetGroup">
+          <div class="pill-group" data-orig-id="budgetGroup">
             <button tabindex="-1" class="pill" data-val="over" type="button">Went over budget</button>
             <button tabindex="-1" class="pill selected" data-val="ontrack" type="button">Kept us on track</button>
             <button tabindex="-1" class="pill" data-val="under" type="button">Came in under budget</button>
@@ -2002,7 +1959,7 @@ const GT_FORMS = {
         </div>
         <div class="field">
           <label>Did they handle any problems or emergencies on the day?</label>
-          <div class="pill-group" id="emergGroup">
+          <div class="pill-group" data-orig-id="emergGroup">
             <button tabindex="-1" class="pill selected" data-val="no" type="button">No major issues</button>
             <button tabindex="-1" class="pill" data-val="yes" type="button">Yes — handled smoothly</button>
             <button tabindex="-1" class="pill" data-val="mishandled" type="button">Issues were not handled well</button>
@@ -2010,7 +1967,7 @@ const GT_FORMS = {
         </div>
         <div class="field">
           <label>Was this a destination wedding?</label>
-          <div class="pill-group" id="destGroup">
+          <div class="pill-group" data-orig-id="destGroup">
             <button tabindex="-1" class="pill selected" data-val="no" type="button">No</button>
             <button tabindex="-1" class="pill" data-val="yes" type="button">Yes — destination</button>
           </div>
@@ -2018,7 +1975,7 @@ const GT_FORMS = {
         </div>
         <div class="field">
           <label>How many people were on the planning team?</label>
-          <div class="pill-group" id="teamGroup">
+          <div class="pill-group" data-orig-id="teamGroup">
             <button tabindex="-1" class="pill selected" data-val="1" type="button">Just the planner</button>
             <button tabindex="-1" class="pill" data-val="2" type="button">Planner + 1 assistant</button>
             <button tabindex="-1" class="pill" data-val="3" type="button">Team of 3+</button>
@@ -2030,137 +1987,129 @@ const GT_FORMS = {
         <div class="section-label">Your Experience</div>
         <div class="field">
           <label>Overall Satisfaction</label>
-          <div class="star-row" id="starsWrap">
+          <div class="star-row" data-orig-id="starsWrap">
             <button tabindex="-1" class="star-btn" data-star="1" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="2" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="3" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="4" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="5" type="button">★</button>
-            <span class="star-label" id="starLabel"></span>
+            <span class="star-label" data-orig-id="starLabel"></span>
           </div>
-          <div class="error-msg" id="starError">Please rate your experience.</div>
+          <div class="error-msg" data-orig-id="starError">Please rate your experience.</div>
         </div>
       </div>
       <div class="field-group">
         <div class="section-label">Bonus? <span class="optional-label">(optional)</span></div>
         <div class="field">
           <label>Tip a little extra for any of these?</label>
-          <div class="bonus-grid" id="bonusGroup">
+          <div class="bonus-grid" data-orig-id="bonusGroup">
             <button tabindex="-1" class="bonus-btn" data-bonus="0.04" data-key="outstanding" type="button"><span class="bonus-icon">✨</span><span>Truly Outstanding<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Dream wedding, perfectly executed</small></span></button>
             <button tabindex="-1" class="bonus-btn" data-bonus="0.03" data-key="holiday" type="button"><span class="bonus-icon">🎄</span><span>Holiday / Christmas Wedding<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+3% suggested</small></span></button>
             <button tabindex="-1" class="bonus-btn" data-bonus="0.04" data-key="saved" type="button"><span class="bonus-icon">🚨</span><span>Saved the Day<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Handled a major crisis beautifully</small></span></button>
           </div>
         </div>
       </div>
-    <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a>`
-  },
-  "wedding-coordinator-tip-calculator": {
-    t: "How Much to Tip a Day-of Wedding Coordinator",
-    s: "Wedding Day Coordination · Vendor Management · Timeline &amp; Logistics",
-    h: `
+    <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a></div>
+<div id="pvd-wedding-coordinator-tip-calculator" style="display:none" data-title="How Much to Tip a Day-of Wedding Coordinator" data-sub="Wedding Day Coordination · Vendor Management · Timeline &amp; Logistics">
       <div class="field-group">
         <div class="section-label">Your Location</div>
         <div class="field">
           <label>Service Provider's Home City <span class="optional-label">(where they are based, not the wedding venue)</span></label>
           <div class="autocomplete-wrap">
-            <input tabindex="-1" type="text" id="cityInput" class="city-input" placeholder="Type your city..." autocomplete="off">
-            <div class="autocomplete-list" id="autocompleteList"></div>
+            <input tabindex="-1" type="text" data-orig-id="cityInput" class="city-input" placeholder="Type your city..." autocomplete="off">
+            <div class="autocomplete-list" data-orig-id="autocompleteList"></div>
           </div>
-          <div class="helper-text" id="cityHelper">Enter the service provider's home city — not the wedding venue location. This determines their local cost of living.</div>
+          <div class="helper-text" data-orig-id="cityHelper">Enter the service provider's home city — not the wedding venue location. This determines their local cost of living.</div>
           <p style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:4px;line-height:1.4;">If your city isn't listed, use the closest one to you.</p>
-      <div class="error-msg" id="cityError">Please select your city.</div>
+      <div class="error-msg" data-orig-id="cityError">Please select your city.</div>
         </div>
       </div>
       <div class="field-group">
         <div class="section-label">Service Details</div>        <div class="field">
           <label>Total Cost</label>
-          <div class="input-wrap"><span class="input-prefix">$</span><input tabindex="-1" type="number" id="priceInput" placeholder="e.g. 1500" min="0"></div>
-          <div class="error-msg" id="priceError">Please enter the total cost.</div>
+          <div class="input-wrap"><span class="input-prefix">$</span><input tabindex="-1" type="number" data-orig-id="priceInput" placeholder="e.g. 1500" min="0"></div>
+          <div class="error-msg" data-orig-id="priceError">Please enter the total cost.</div>
         </div>
                 <div class="field">
           <label>Hours on wedding day</label>
-          <div class="pill-group" id="hoursGroup"><button tabindex="-1" class="pill" data-val="4" type="button">Under 4 hrs</button><button tabindex="-1" class="pill" data-val="6" type="button">4–6 hrs</button><button tabindex="-1" class="pill selected" data-val="8" type="button">6–8 hrs</button><button tabindex="-1" class="pill" data-val="10" type="button">8–10 hrs</button><button tabindex="-1" class="pill" data-val="12" type="button">10+ hrs</button></div>
+          <div class="pill-group" data-orig-id="hoursGroup"><button tabindex="-1" class="pill" data-val="4" type="button">Under 4 hrs</button><button tabindex="-1" class="pill" data-val="6" type="button">4–6 hrs</button><button tabindex="-1" class="pill selected" data-val="8" type="button">6–8 hrs</button><button tabindex="-1" class="pill" data-val="10" type="button">8–10 hrs</button><button tabindex="-1" class="pill" data-val="12" type="button">10+ hrs</button></div>
           
         </div>
                 <div class="field">
           <label>Pre-wedding meetings / calls</label>
-          <div class="pill-group" id="meetingsGroup"><button tabindex="-1" class="pill" data-val="0" type="button">Just 1 meeting</button><button tabindex="-1" class="pill selected" data-val="2" type="button">2–3 meetings</button><button tabindex="-1" class="pill" data-val="4" type="button">4–6 meetings</button><button tabindex="-1" class="pill" data-val="7" type="button">7+ meetings</button></div>
+          <div class="pill-group" data-orig-id="meetingsGroup"><button tabindex="-1" class="pill" data-val="0" type="button">Just 1 meeting</button><button tabindex="-1" class="pill selected" data-val="2" type="button">2–3 meetings</button><button tabindex="-1" class="pill" data-val="4" type="button">4–6 meetings</button><button tabindex="-1" class="pill" data-val="7" type="button">7+ meetings</button></div>
           
         </div>
                 <div class="field">
           <label>Number of vendors they coordinated on the day</label>
-          <div class="pill-group" id="vendorsGroup"><button tabindex="-1" class="pill" data-val="3" type="button">Under 3</button><button tabindex="-1" class="pill selected" data-val="5" type="button">3–5</button><button tabindex="-1" class="pill" data-val="8" type="button">6–8</button><button tabindex="-1" class="pill" data-val="12" type="button">9–12</button><button tabindex="-1" class="pill" data-val="15" type="button">13+</button></div>
+          <div class="pill-group" data-orig-id="vendorsGroup"><button tabindex="-1" class="pill" data-val="3" type="button">Under 3</button><button tabindex="-1" class="pill selected" data-val="5" type="button">3–5</button><button tabindex="-1" class="pill" data-val="8" type="button">6–8</button><button tabindex="-1" class="pill" data-val="12" type="button">9–12</button><button tabindex="-1" class="pill" data-val="15" type="button">13+</button></div>
           
         </div>
                 <div class="field">
           <label>Did they handle setup and breakdown?</label>
-          <div class="pill-group" id="setupGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">No</button><button tabindex="-1" class="pill" data-val="partial" type="button">Partial setup only</button><button tabindex="-1" class="pill" data-val="yes" type="button">Full setup and breakdown</button></div>
+          <div class="pill-group" data-orig-id="setupGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">No</button><button tabindex="-1" class="pill" data-val="partial" type="button">Partial setup only</button><button tabindex="-1" class="pill" data-val="yes" type="button">Full setup and breakdown</button></div>
           
         </div>
                 <div class="field">
           <label>Any problems or emergencies handled on the day?</label>
-          <div class="pill-group" id="emergGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">No issues</button><button tabindex="-1" class="pill" data-val="yes" type="button">Yes — handled smoothly</button><button tabindex="-1" class="pill" data-val="mishandled" type="button">Issues arose and were not handled well</button></div>
+          <div class="pill-group" data-orig-id="emergGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">No issues</button><button tabindex="-1" class="pill" data-val="yes" type="button">Yes — handled smoothly</button><button tabindex="-1" class="pill" data-val="mishandled" type="button">Issues arose and were not handled well</button></div>
           
         </div>
                 <div class="field">
           <label>Did they stay until the end of the event?</label>
-          <div class="pill-group" id="stayGroup"><button tabindex="-1" class="pill" data-val="no" type="button">Left early</button><button tabindex="-1" class="pill selected" data-val="yes" type="button">Stayed until the very end</button></div>
+          <div class="pill-group" data-orig-id="stayGroup"><button tabindex="-1" class="pill" data-val="no" type="button">Left early</button><button tabindex="-1" class="pill selected" data-val="yes" type="button">Stayed until the very end</button></div>
           
         </div>
       </div>      <div class="field-group">
         <div class="section-label">Your Experience</div>
         <div class="field">
           <label>Overall Satisfaction</label>
-          <div class="star-row" id="starsWrap">
+          <div class="star-row" data-orig-id="starsWrap">
             <button tabindex="-1" class="star-btn" data-star="1" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="2" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="3" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="4" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="5" type="button">★</button>
-            <span class="star-label" id="starLabel"></span>
+            <span class="star-label" data-orig-id="starLabel"></span>
           </div>
-          <div class="error-msg" id="starError">Please rate your experience.</div>
+          <div class="error-msg" data-orig-id="starError">Please rate your experience.</div>
         </div>
       </div>      <div class="field-group">
         <div class="section-label">Bonus? <span class="optional-label">(optional)</span></div>
         <div class="field">
           <label>Tip a little extra for any of these?</label>
-          <div class="bonus-grid" id="bonusGroup">
+          <div class="bonus-grid" data-orig-id="bonusGroup">
             <button tabindex="-1" class="bonus-btn" data-bonus="0.05" data-key="outstanding" type="button"><span class="bonus-icon">✨</span><span>Truly Outstanding<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Flawlessly executed our day</small></span></button>
             <button tabindex="-1" class="bonus-btn" data-bonus="0.04" data-key="holiday" type="button"><span class="bonus-icon">🎄</span><span>Holiday / Christmas<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+4% suggested</small></span></button>
             <button tabindex="-1" class="bonus-btn" data-bonus="0.04" data-key="emerg" type="button"><span class="bonus-icon">🚨</span><span>Saved the Day<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Handled a major emergency</small></span></button>
           </div>
         </div>
       </div>
-    <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a>`
-  },
-  "wedding-florist-tip-calculator": {
-    t: "How Much to Tip Your Wedding Florist",
-    s: "Bridal Bouquets · Venue Florals · Centerpieces · Ceremony Arrangements",
-    h: `
+    <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a></div>
+<div id="pvd-wedding-florist-tip-calculator" style="display:none" data-title="How Much to Tip Your Wedding Florist" data-sub="Bridal Bouquets · Venue Florals · Centerpieces · Ceremony Arrangements">
       <div class="field-group">
         <div class="section-label">Your Location</div>
         <div class="field">
           <label>Service Provider's Home City <span class="optional-label">(where they are based, not the wedding venue)</span></label>
           <div class="autocomplete-wrap">
-            <input tabindex="-1" type="text" id="cityInput" class="city-input" placeholder="Type your city..." autocomplete="off">
-            <div class="autocomplete-list" id="autocompleteList"></div>
+            <input tabindex="-1" type="text" data-orig-id="cityInput" class="city-input" placeholder="Type your city..." autocomplete="off">
+            <div class="autocomplete-list" data-orig-id="autocompleteList"></div>
           </div>
-          <div class="helper-text" id="cityHelper">Enter the service provider's home city — not the wedding venue location. This determines their local cost of living.</div>
+          <div class="helper-text" data-orig-id="cityHelper">Enter the service provider's home city — not the wedding venue location. This determines their local cost of living.</div>
           <p style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:4px;line-height:1.4;">If your city isn't listed, use the closest one to you.</p>
-      <div class="error-msg" id="cityError">Please select your city.</div>
+      <div class="error-msg" data-orig-id="cityError">Please select your city.</div>
         </div>
       </div>
       <div class="field-group">
         <div class="section-label">Service Details</div>
         <div class="field">
           <label>Total Floral Cost</label>
-          <div class="input-wrap"><span class="input-prefix">$</span><input tabindex="-1" type="number" id="priceInput" placeholder="e.g. 3000" min="0"></div>
-          <div class="error-msg" id="priceError">Please enter the total cost.</div>
+          <div class="input-wrap"><span class="input-prefix">$</span><input tabindex="-1" type="number" data-orig-id="priceInput" placeholder="e.g. 3000" min="0"></div>
+          <div class="error-msg" data-orig-id="priceError">Please enter the total cost.</div>
         </div>
         <div class="field">
           <label>Scope of Arrangements</label>
-          <div class="pill-group" id="scopeGroup">
+          <div class="pill-group" data-orig-id="scopeGroup">
             <button tabindex="-1" class="pill" data-val="bouquet" type="button">Bridal bouquet only</button>
             <button tabindex="-1" class="pill" data-val="partial" type="button">Bouquet + some arrangements</button>
             <button tabindex="-1" class="pill selected" data-val="full" type="button">Full venue florals</button>
@@ -2168,7 +2117,7 @@ const GT_FORMS = {
         </div>
         <div class="field">
           <label>Did they set up at the venue?</label>
-          <div class="pill-group" id="setupGroup">
+          <div class="pill-group" data-orig-id="setupGroup">
             <button tabindex="-1" class="pill" data-val="no" type="button">No — drop-off only</button>
             <button tabindex="-1" class="pill selected" data-val="yes" type="button">Yes — full setup</button>
           </div>
@@ -2176,21 +2125,21 @@ const GT_FORMS = {
         </div>
         <div class="field">
           <label>Did they handle breakdown / cleanup after?</label>
-          <div class="pill-group" id="breakdownGroup">
+          <div class="pill-group" data-orig-id="breakdownGroup">
             <button tabindex="-1" class="pill selected" data-val="no" type="button">No</button>
             <button tabindex="-1" class="pill" data-val="yes" type="button">Yes</button>
           </div>
         </div>
         <div class="field">
           <label>Custom or Difficult Arrangements?</label>
-          <div class="pill-group" id="customGroup">
+          <div class="pill-group" data-orig-id="customGroup">
             <button tabindex="-1" class="pill selected" data-val="standard" type="button">Standard arrangements</button>
             <button tabindex="-1" class="pill" data-val="custom" type="button">Highly custom / rare flowers</button>
           </div>
         </div>
         <div class="field">
           <label>Delivery Distance</label>
-          <div class="pill-group" id="delivGroup">
+          <div class="pill-group" data-orig-id="delivGroup">
             <button tabindex="-1" class="pill selected" data-val="local" type="button">Local</button>
             <button tabindex="-1" class="pill" data-val="regional" type="button">Regional(1–2 hrs)</button>
             <button tabindex="-1" class="pill" data-val="far" type="button">Far / destination</button>
@@ -2201,107 +2150,103 @@ const GT_FORMS = {
         <div class="section-label">Your Experience</div>
         <div class="field">
           <label>Overall Satisfaction</label>
-          <div class="star-row" id="starsWrap">
+          <div class="star-row" data-orig-id="starsWrap">
             <button tabindex="-1" class="star-btn" data-star="1" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="2" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="3" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="4" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="5" type="button">★</button>
-            <span class="star-label" id="starLabel"></span>
+            <span class="star-label" data-orig-id="starLabel"></span>
           </div>
-          <div class="error-msg" id="starError">Please rate your experience.</div>
+          <div class="error-msg" data-orig-id="starError">Please rate your experience.</div>
         </div>
       </div>
       <div class="field-group">
         <div class="section-label">Bonus? <span class="optional-label">(optional)</span></div>
         <div class="field">
-          <div class="bonus-grid" id="bonusGroup">
+          <div class="bonus-grid" data-orig-id="bonusGroup">
             <button tabindex="-1" class="bonus-btn" data-bonus="0.04" data-key="outstanding" type="button"><span class="bonus-icon">✨</span><span>Truly Outstanding<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Exceeded our vision completely</small></span></button>
             <button tabindex="-1" class="bonus-btn" data-bonus="0.03" data-key="holiday" type="button"><span class="bonus-icon">🎄</span><span>Holiday / Christmas<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+3% suggested</small></span></button>
           </div>
         </div>
       </div>
-    <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a>`
-  },
-  "wedding-makeup-artist-tip-calculator": {
-    t: "How Much to Tip Your Wedding Makeup Artist",
-    s: "Bridal Makeup · Bridal Party · Airbrush · Touch-Up Kits",
-    h: `
+    <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a></div>
+<div id="pvd-wedding-makeup-artist-tip-calculator" style="display:none" data-title="How Much to Tip Your Wedding Makeup Artist" data-sub="Bridal Makeup · Bridal Party · Airbrush · Touch-Up Kits">
       <div class="field-group">
         <div class="section-label">Your Location</div>
         <div class="field">
           <label>Service Provider's Home City <span class="optional-label">(where they are based, not the wedding venue)</span></label>
           <div class="autocomplete-wrap">
-            <input tabindex="-1" type="text" id="cityInput" class="city-input" placeholder="Type your city..." autocomplete="off">
-            <div class="autocomplete-list" id="autocompleteList"></div>
+            <input tabindex="-1" type="text" data-orig-id="cityInput" class="city-input" placeholder="Type your city..." autocomplete="off">
+            <div class="autocomplete-list" data-orig-id="autocompleteList"></div>
           </div>
-          <div class="helper-text" id="cityHelper">Enter the service provider's home city — not the wedding venue location. This determines their local cost of living.</div>
+          <div class="helper-text" data-orig-id="cityHelper">Enter the service provider's home city — not the wedding venue location. This determines their local cost of living.</div>
           <p style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:4px;line-height:1.4;">If your city isn't listed, use the closest one to you.</p>
-      <div class="error-msg" id="cityError">Please select your city.</div>
+      <div class="error-msg" data-orig-id="cityError">Please select your city.</div>
         </div>
       </div>
       <div class="field-group">
         <div class="section-label">Service Details</div>        <div class="field">
           <label>Total Cost</label>
-          <div class="input-wrap"><span class="input-prefix">$</span><input tabindex="-1" type="number" id="priceInput" placeholder="e.g. 1200" min="0"></div>
-          <div class="error-msg" id="priceError">Please enter the total cost.</div>
+          <div class="input-wrap"><span class="input-prefix">$</span><input tabindex="-1" type="number" data-orig-id="priceInput" placeholder="e.g. 1200" min="0"></div>
+          <div class="error-msg" data-orig-id="priceError">Please enter the total cost.</div>
         </div>
                 <div class="field">
           <label>Number of people receiving makeup</label>
-          <div class="pill-group" id="countGroup"><button tabindex="-1" class="pill selected" data-val="1" type="button">Bride only</button><button tabindex="-1" class="pill" data-val="3" type="button">2–3 people</button><button tabindex="-1" class="pill" data-val="5" type="button">4–6 people</button><button tabindex="-1" class="pill" data-val="8" type="button">7–10 people</button><button tabindex="-1" class="pill" data-val="12" type="button">11+ people</button></div>
+          <div class="pill-group" data-orig-id="countGroup"><button tabindex="-1" class="pill selected" data-val="1" type="button">Bride only</button><button tabindex="-1" class="pill" data-val="3" type="button">2–3 people</button><button tabindex="-1" class="pill" data-val="5" type="button">4–6 people</button><button tabindex="-1" class="pill" data-val="8" type="button">7–10 people</button><button tabindex="-1" class="pill" data-val="12" type="button">11+ people</button></div>
           <div class="helper-text">If multiple artists were used, total cost should reflect all combined. Tip shown is per artist.</div>
         </div>
                 <div class="field">
           <label>Number of makeup artists working</label>
-          <div class="pill-group" id="artistGroup"><button tabindex="-1" class="pill selected" data-val="1" type="button">Just one artist</button><button tabindex="-1" class="pill" data-val="2" type="button">2 artists</button><button tabindex="-1" class="pill" data-val="3" type="button">3+ artists</button></div>
+          <div class="pill-group" data-orig-id="artistGroup"><button tabindex="-1" class="pill selected" data-val="1" type="button">Just one artist</button><button tabindex="-1" class="pill" data-val="2" type="button">2 artists</button><button tabindex="-1" class="pill" data-val="3" type="button">3+ artists</button></div>
           <div class="helper-text">Tip shown is per artist. Each artist should receive their own tip.</div>
         </div>
                 <div class="field">
           <label>Trial session included?</label>
-          <div class="pill-group" id="trialGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">No trial</button><button tabindex="-1" class="pill" data-val="yes" type="button">Yes — paid trial session</button></div>
+          <div class="pill-group" data-orig-id="trialGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">No trial</button><button tabindex="-1" class="pill" data-val="yes" type="button">Yes — paid trial session</button></div>
           
         </div>
                 <div class="field">
           <label>Airbrush technique used?</label>
-          <div class="pill-group" id="airGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">Standard makeup</button><button tabindex="-1" class="pill" data-val="yes" type="button">Airbrush finish</button></div>
+          <div class="pill-group" data-orig-id="airGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">Standard makeup</button><button tabindex="-1" class="pill" data-val="yes" type="button">Airbrush finish</button></div>
           
         </div>
                 <div class="field">
           <label>Touch-up kit left behind?</label>
-          <div class="pill-group" id="kitGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">No</button><button tabindex="-1" class="pill" data-val="yes" type="button">Yes — left a touch-up kit</button></div>
+          <div class="pill-group" data-orig-id="kitGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">No</button><button tabindex="-1" class="pill" data-val="yes" type="button">Yes — left a touch-up kit</button></div>
           
         </div>
       </div>
       <div class="field-group">
         <div class="section-label">Travel &amp; Time</div>        <div class="field">
           <label>Did the artist travel to the venue?</label>
-          <div class="pill-group" id="travelGroup"><button tabindex="-1" class="pill" data-val="no" type="button">No — we came to them</button><button tabindex="-1" class="pill selected" data-val="local" type="button">Yes — local travel</button><button tabindex="-1" class="pill" data-val="far" type="button">Yes — far / destination</button></div>
+          <div class="pill-group" data-orig-id="travelGroup"><button tabindex="-1" class="pill" data-val="no" type="button">No — we came to them</button><button tabindex="-1" class="pill selected" data-val="local" type="button">Yes — local travel</button><button tabindex="-1" class="pill" data-val="far" type="button">Yes — far / destination</button></div>
           <div class="helper-text">Artists who travel to your venue take on extra time and logistics. Travel cost is often in their fee, but a tip still reflects the added effort.</div>
         </div>
                 <div class="field">
           <label>Hours at the venue(getting everyone ready)</label>
-          <div class="pill-group" id="hoursGroup"><button tabindex="-1" class="pill" data-val="2" type="button">Under 2 hrs</button><button tabindex="-1" class="pill selected" data-val="3" type="button">2–3 hrs</button><button tabindex="-1" class="pill" data-val="5" type="button">3–5 hrs</button><button tabindex="-1" class="pill" data-val="6" type="button">5–7 hrs</button><button tabindex="-1" class="pill" data-val="8" type="button">7+ hrs</button></div>
+          <div class="pill-group" data-orig-id="hoursGroup"><button tabindex="-1" class="pill" data-val="2" type="button">Under 2 hrs</button><button tabindex="-1" class="pill selected" data-val="3" type="button">2–3 hrs</button><button tabindex="-1" class="pill" data-val="5" type="button">3–5 hrs</button><button tabindex="-1" class="pill" data-val="6" type="button">5–7 hrs</button><button tabindex="-1" class="pill" data-val="8" type="button">7+ hrs</button></div>
           
         </div>
       </div>      <div class="field-group">
         <div class="section-label">Your Experience</div>
         <div class="field">
           <label>Overall Satisfaction</label>
-          <div class="star-row" id="starsWrap">
+          <div class="star-row" data-orig-id="starsWrap">
             <button tabindex="-1" class="star-btn" data-star="1" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="2" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="3" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="4" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="5" type="button">★</button>
-            <span class="star-label" id="starLabel"></span>
+            <span class="star-label" data-orig-id="starLabel"></span>
           </div>
-          <div class="error-msg" id="starError">Please rate your experience.</div>
+          <div class="error-msg" data-orig-id="starError">Please rate your experience.</div>
         </div>
       </div>      <div class="field-group">
         <div class="section-label">Bonus? <span class="optional-label">(optional)</span></div>
         <div class="field">
           <label>Tip a little extra for any of these?</label>
-          <div class="bonus-grid" id="bonusGroup">
+          <div class="bonus-grid" data-orig-id="bonusGroup">
             <button tabindex="-1" class="bonus-btn" data-bonus="0.05" data-key="holiday" type="button"><span class="bonus-icon">🎄</span><span>Holiday / Christmas<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+5% suggested</small></span></button>
             <button tabindex="-1" class="bonus-btn" data-bonus="0.05" data-key="outstanding" type="button"><span class="bonus-icon">✨</span><span>Truly Outstanding<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Absolutely flawless</small></span></button>
             <button tabindex="-1" class="bonus-btn" data-bonus="0.03" data-key="squeeze" type="button"><span class="bonus-icon">⏰</span><span>Squeezed Me In<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Last-minute booking</small></span></button>
@@ -2309,92 +2254,88 @@ const GT_FORMS = {
           </div>
         </div>
       </div>
-    <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a>`
-  },
-  "wedding-hair-stylist-tip-calculator": {
-    t: "How Much to Tip Your Wedding Hair Stylist",
-    s: "Bridal Hair · Updos · Bridal Party Styling · Extensions",
-    h: `
+    <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a></div>
+<div id="pvd-wedding-hair-stylist-tip-calculator" style="display:none" data-title="How Much to Tip Your Wedding Hair Stylist" data-sub="Bridal Hair · Updos · Bridal Party Styling · Extensions">
       <div class="field-group">
         <div class="section-label">Your Location</div>
         <div class="field">
           <label>Service Provider's Home City <span class="optional-label">(where they are based, not the wedding venue)</span></label>
           <div class="autocomplete-wrap">
-            <input tabindex="-1" type="text" id="cityInput" class="city-input" placeholder="Type your city..." autocomplete="off">
-            <div class="autocomplete-list" id="autocompleteList"></div>
+            <input tabindex="-1" type="text" data-orig-id="cityInput" class="city-input" placeholder="Type your city..." autocomplete="off">
+            <div class="autocomplete-list" data-orig-id="autocompleteList"></div>
           </div>
-          <div class="helper-text" id="cityHelper">Enter the service provider's home city — not the wedding venue location. This determines their local cost of living.</div>
+          <div class="helper-text" data-orig-id="cityHelper">Enter the service provider's home city — not the wedding venue location. This determines their local cost of living.</div>
           <p style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:4px;line-height:1.4;">If your city isn't listed, use the closest one to you.</p>
-      <div class="error-msg" id="cityError">Please select your city.</div>
+      <div class="error-msg" data-orig-id="cityError">Please select your city.</div>
         </div>
       </div>
       <div class="field-group">
         <div class="section-label">Service Details</div>        <div class="field">
           <label>Total Cost</label>
-          <div class="input-wrap"><span class="input-prefix">$</span><input tabindex="-1" type="number" id="priceInput" placeholder="e.g. 900" min="0"></div>
-          <div class="error-msg" id="priceError">Please enter the total cost.</div>
+          <div class="input-wrap"><span class="input-prefix">$</span><input tabindex="-1" type="number" data-orig-id="priceInput" placeholder="e.g. 900" min="0"></div>
+          <div class="error-msg" data-orig-id="priceError">Please enter the total cost.</div>
         </div>
                 <div class="field">
           <label>Number of people getting hair done</label>
-          <div class="pill-group" id="countGroup"><button tabindex="-1" class="pill selected" data-val="1" type="button">Bride only</button><button tabindex="-1" class="pill" data-val="3" type="button">2–3 people</button><button tabindex="-1" class="pill" data-val="5" type="button">4–6 people</button><button tabindex="-1" class="pill" data-val="8" type="button">7–10 people</button><button tabindex="-1" class="pill" data-val="12" type="button">11+ people</button></div>
+          <div class="pill-group" data-orig-id="countGroup"><button tabindex="-1" class="pill selected" data-val="1" type="button">Bride only</button><button tabindex="-1" class="pill" data-val="3" type="button">2–3 people</button><button tabindex="-1" class="pill" data-val="5" type="button">4–6 people</button><button tabindex="-1" class="pill" data-val="8" type="button">7–10 people</button><button tabindex="-1" class="pill" data-val="12" type="button">11+ people</button></div>
           
         </div>
                 <div class="field">
           <label>Number of stylists working</label>
-          <div class="pill-group" id="stylistGroup"><button tabindex="-1" class="pill selected" data-val="1" type="button">Just one stylist</button><button tabindex="-1" class="pill" data-val="2" type="button">2 stylists</button><button tabindex="-1" class="pill" data-val="3" type="button">3+ stylists</button></div>
+          <div class="pill-group" data-orig-id="stylistGroup"><button tabindex="-1" class="pill selected" data-val="1" type="button">Just one stylist</button><button tabindex="-1" class="pill" data-val="2" type="button">2 stylists</button><button tabindex="-1" class="pill" data-val="3" type="button">3+ stylists</button></div>
           <div class="helper-text">Tip shown is per stylist. Each should receive their own tip.</div>
         </div>
                 <div class="field">
           <label>Trial session included?</label>
-          <div class="pill-group" id="trialGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">No trial</button><button tabindex="-1" class="pill" data-val="yes" type="button">Yes — paid trial</button></div>
+          <div class="pill-group" data-orig-id="trialGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">No trial</button><button tabindex="-1" class="pill" data-val="yes" type="button">Yes — paid trial</button></div>
           
         </div>
                 <div class="field">
           <label>Style complexity</label>
-          <div class="pill-group" id="complexGroup"><button tabindex="-1" class="pill" data-val="simple" type="button">Simple / blowout</button><button tabindex="-1" class="pill selected" data-val="halfup" type="button">Half-up styles</button><button tabindex="-1" class="pill" data-val="updo" type="button">Full updo</button><button tabindex="-1" class="pill" data-val="extensions" type="button">Extensions / hairpieces</button></div>
+          <div class="pill-group" data-orig-id="complexGroup"><button tabindex="-1" class="pill" data-val="simple" type="button">Simple / blowout</button><button tabindex="-1" class="pill selected" data-val="halfup" type="button">Half-up styles</button><button tabindex="-1" class="pill" data-val="updo" type="button">Full updo</button><button tabindex="-1" class="pill" data-val="extensions" type="button">Extensions / hairpieces</button></div>
           
         </div>
                 <div class="field">
           <label>Extensions or hairpieces worked with?</label>
-          <div class="pill-group" id="extGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">No</button><button tabindex="-1" class="pill" data-val="yes" type="button">Yes</button></div>
+          <div class="pill-group" data-orig-id="extGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">No</button><button tabindex="-1" class="pill" data-val="yes" type="button">Yes</button></div>
           <div class="helper-text">Working with extensions requires significantly more skill and time.</div>
         </div>
       </div>
       <div class="field-group">
         <div class="section-label">Travel &amp; Time</div>        <div class="field">
           <label>Did they travel to the venue?</label>
-          <div class="pill-group" id="travelGroup"><button tabindex="-1" class="pill" data-val="no" type="button">No — we came to them</button><button tabindex="-1" class="pill selected" data-val="local" type="button">Yes — local travel</button><button tabindex="-1" class="pill" data-val="far" type="button">Yes — destination / far</button></div>
+          <div class="pill-group" data-orig-id="travelGroup"><button tabindex="-1" class="pill" data-val="no" type="button">No — we came to them</button><button tabindex="-1" class="pill selected" data-val="local" type="button">Yes — local travel</button><button tabindex="-1" class="pill" data-val="far" type="button">Yes — destination / far</button></div>
           
         </div>
                 <div class="field">
           <label>Hours at the venue</label>
-          <div class="pill-group" id="hoursGroup"><button tabindex="-1" class="pill" data-val="2" type="button">Under 2 hrs</button><button tabindex="-1" class="pill selected" data-val="3" type="button">2–3 hrs</button><button tabindex="-1" class="pill" data-val="5" type="button">3–5 hrs</button><button tabindex="-1" class="pill" data-val="6" type="button">5–7 hrs</button><button tabindex="-1" class="pill" data-val="8" type="button">7+ hrs</button></div>
+          <div class="pill-group" data-orig-id="hoursGroup"><button tabindex="-1" class="pill" data-val="2" type="button">Under 2 hrs</button><button tabindex="-1" class="pill selected" data-val="3" type="button">2–3 hrs</button><button tabindex="-1" class="pill" data-val="5" type="button">3–5 hrs</button><button tabindex="-1" class="pill" data-val="6" type="button">5–7 hrs</button><button tabindex="-1" class="pill" data-val="8" type="button">7+ hrs</button></div>
           
         </div>
                 <div class="field">
           <label>First time with this stylist?</label>
-          <div class="pill-group" id="firstGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">Existing relationship</button><button tabindex="-1" class="pill" data-val="yes" type="button">First time — new stylist</button></div>
+          <div class="pill-group" data-orig-id="firstGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">Existing relationship</button><button tabindex="-1" class="pill" data-val="yes" type="button">First time — new stylist</button></div>
           
         </div>
       </div>      <div class="field-group">
         <div class="section-label">Your Experience</div>
         <div class="field">
           <label>Overall Satisfaction</label>
-          <div class="star-row" id="starsWrap">
+          <div class="star-row" data-orig-id="starsWrap">
             <button tabindex="-1" class="star-btn" data-star="1" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="2" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="3" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="4" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="5" type="button">★</button>
-            <span class="star-label" id="starLabel"></span>
+            <span class="star-label" data-orig-id="starLabel"></span>
           </div>
-          <div class="error-msg" id="starError">Please rate your experience.</div>
+          <div class="error-msg" data-orig-id="starError">Please rate your experience.</div>
         </div>
       </div>      <div class="field-group">
         <div class="section-label">Bonus? <span class="optional-label">(optional)</span></div>
         <div class="field">
           <label>Tip a little extra for any of these?</label>
-          <div class="bonus-grid" id="bonusGroup">
+          <div class="bonus-grid" data-orig-id="bonusGroup">
             <button tabindex="-1" class="bonus-btn" data-bonus="0.05" data-key="holiday" type="button"><span class="bonus-icon">🎄</span><span>Holiday / Christmas<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+5% suggested</small></span></button>
             <button tabindex="-1" class="bonus-btn" data-bonus="0.05" data-key="outstanding" type="button"><span class="bonus-icon">✨</span><span>Truly Outstanding<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Perfect hair all day</small></span></button>
             <button tabindex="-1" class="bonus-btn" data-bonus="0.03" data-key="squeeze" type="button"><span class="bonus-icon">⏰</span><span>Squeezed Me In<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Last-minute availability</small></span></button>
@@ -2402,486 +2343,462 @@ const GT_FORMS = {
           </div>
         </div>
       </div>
-    <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a>`
-  },
-  "wedding-officiant-tip-calculator": {
-    t: "How Much to Tip Your Wedding Officiant",
-    s: "Wedding Ceremonies · Vow Writing · Rehearsal Services",
-    h: `
+    <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a></div>
+<div id="pvd-wedding-officiant-tip-calculator" style="display:none" data-title="How Much to Tip Your Wedding Officiant" data-sub="Wedding Ceremonies · Vow Writing · Rehearsal Services">
       <div class="field-group">
         <div class="section-label">Your Location</div>
         <div class="field">
           <label>Service Provider's Home City <span class="optional-label">(where they are based, not the wedding venue)</span></label>
           <div class="autocomplete-wrap">
-            <input tabindex="-1" type="text" id="cityInput" class="city-input" placeholder="Type your city..." autocomplete="off">
-            <div class="autocomplete-list" id="autocompleteList"></div>
+            <input tabindex="-1" type="text" data-orig-id="cityInput" class="city-input" placeholder="Type your city..." autocomplete="off">
+            <div class="autocomplete-list" data-orig-id="autocompleteList"></div>
           </div>
-          <div class="helper-text" id="cityHelper">Enter the service provider's home city — not the wedding venue location. This determines their local cost of living.</div>
+          <div class="helper-text" data-orig-id="cityHelper">Enter the service provider's home city — not the wedding venue location. This determines their local cost of living.</div>
           <p style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:4px;line-height:1.4;">If your city isn't listed, use the closest one to you.</p>
-      <div class="error-msg" id="cityError">Please select your city.</div>
+      <div class="error-msg" data-orig-id="cityError">Please select your city.</div>
         </div>
       </div>
       <div class="field-group">
         <div class="section-label">Service Details</div>        <div class="field">
           <label>Total Cost</label>
-          <div class="input-wrap"><span class="input-prefix">$</span><input tabindex="-1" type="number" id="priceInput" placeholder="e.g. 500" min="0"></div>
-          <div class="error-msg" id="priceError">Please enter the total cost.</div>
+          <div class="input-wrap"><span class="input-prefix">$</span><input tabindex="-1" type="number" data-orig-id="priceInput" placeholder="e.g. 500" min="0"></div>
+          <div class="error-msg" data-orig-id="priceError">Please enter the total cost.</div>
         </div>
                 <div class="field">
           <label>Type of ceremony</label>
-          <div class="pill-group" id="typeGroup"><button tabindex="-1" class="pill selected" data-val="civil" type="button">Civil / non-religious</button><button tabindex="-1" class="pill" data-val="religious" type="button">Religious ceremony</button><button tabindex="-1" class="pill" data-val="hybrid" type="button">Hybrid / spiritual</button><button tabindex="-1" class="pill" data-val="nondenominational" type="button">Non-denominational</button></div>
+          <div class="pill-group" data-orig-id="typeGroup"><button tabindex="-1" class="pill selected" data-val="civil" type="button">Civil / non-religious</button><button tabindex="-1" class="pill" data-val="religious" type="button">Religious ceremony</button><button tabindex="-1" class="pill" data-val="hybrid" type="button">Hybrid / spiritual</button><button tabindex="-1" class="pill" data-val="nondenominational" type="button">Non-denominational</button></div>
           
         </div>
                 <div class="field">
           <label>Was the ceremony script custom-written?</label>
-          <div class="pill-group" id="customGroup"><button tabindex="-1" class="pill" data-val="no" type="button">Standard ceremony</button><button tabindex="-1" class="pill selected" data-val="partial" type="button">Partially custom</button><button tabindex="-1" class="pill" data-val="full" type="button">Fully custom / personal vows incorporated</button></div>
+          <div class="pill-group" data-orig-id="customGroup"><button tabindex="-1" class="pill" data-val="no" type="button">Standard ceremony</button><button tabindex="-1" class="pill selected" data-val="partial" type="button">Partially custom</button><button tabindex="-1" class="pill" data-val="full" type="button">Fully custom / personal vows incorporated</button></div>
           <div class="helper-text">A custom ceremony script takes significant preparation time.</div>
         </div>
                 <div class="field">
           <label>Did they attend the rehearsal?</label>
-          <div class="pill-group" id="rehearsalGroup"><button tabindex="-1" class="pill" data-val="no" type="button">No rehearsal</button><button tabindex="-1" class="pill selected" data-val="yes" type="button">Yes — attended rehearsal</button></div>
+          <div class="pill-group" data-orig-id="rehearsalGroup"><button tabindex="-1" class="pill" data-val="no" type="button">No rehearsal</button><button tabindex="-1" class="pill selected" data-val="yes" type="button">Yes — attended rehearsal</button></div>
           
         </div>
                 <div class="field">
           <label>Number of pre-wedding meetings or calls</label>
-          <div class="pill-group" id="meetingsGroup"><button tabindex="-1" class="pill" data-val="0" type="button">None</button><button tabindex="-1" class="pill" data-val="1" type="button">1 meeting</button><button tabindex="-1" class="pill selected" data-val="2" type="button">2–3 meetings</button><button tabindex="-1" class="pill" data-val="4" type="button">4+ meetings</button></div>
+          <div class="pill-group" data-orig-id="meetingsGroup"><button tabindex="-1" class="pill" data-val="0" type="button">None</button><button tabindex="-1" class="pill" data-val="1" type="button">1 meeting</button><button tabindex="-1" class="pill selected" data-val="2" type="button">2–3 meetings</button><button tabindex="-1" class="pill" data-val="4" type="button">4+ meetings</button></div>
           
         </div>
                 <div class="field">
           <label>Ceremony length</label>
-          <div class="pill-group" id="lengthGroup"><button tabindex="-1" class="pill" data-val="short" type="button">Under 20 min</button><button tabindex="-1" class="pill selected" data-val="standard" type="button">20–40 min</button><button tabindex="-1" class="pill" data-val="long" type="button">40–60 min</button><button tabindex="-1" class="pill" data-val="verylong" type="button">Over 60 min</button></div>
+          <div class="pill-group" data-orig-id="lengthGroup"><button tabindex="-1" class="pill" data-val="short" type="button">Under 20 min</button><button tabindex="-1" class="pill selected" data-val="standard" type="button">20–40 min</button><button tabindex="-1" class="pill" data-val="long" type="button">40–60 min</button><button tabindex="-1" class="pill" data-val="verylong" type="button">Over 60 min</button></div>
           
         </div>
       </div>
       <div class="field-group">
         <div class="section-label">Travel</div>        <div class="field">
           <label>Travel distance</label>
-          <div class="pill-group" id="travelGroup"><button tabindex="-1" class="pill selected" data-val="local" type="button">Local</button><button tabindex="-1" class="pill" data-val="regional" type="button">Regional(1–2 hrs)</button><button tabindex="-1" class="pill" data-val="destination" type="button">Destination / overnight</button></div>
+          <div class="pill-group" data-orig-id="travelGroup"><button tabindex="-1" class="pill selected" data-val="local" type="button">Local</button><button tabindex="-1" class="pill" data-val="regional" type="button">Regional(1–2 hrs)</button><button tabindex="-1" class="pill" data-val="destination" type="button">Destination / overnight</button></div>
           <div class="helper-text">Officiants often travel and may include this in their fee. A tip for long-distance travel is appreciated.</div>
         </div>
       </div>      <div class="field-group">
         <div class="section-label">Your Experience</div>
         <div class="field">
           <label>Overall Satisfaction</label>
-          <div class="star-row" id="starsWrap">
+          <div class="star-row" data-orig-id="starsWrap">
             <button tabindex="-1" class="star-btn" data-star="1" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="2" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="3" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="4" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="5" type="button">★</button>
-            <span class="star-label" id="starLabel"></span>
+            <span class="star-label" data-orig-id="starLabel"></span>
           </div>
-          <div class="error-msg" id="starError">Please rate your experience.</div>
+          <div class="error-msg" data-orig-id="starError">Please rate your experience.</div>
         </div>
       </div>      <div class="field-group">
         <div class="section-label">Bonus? <span class="optional-label">(optional)</span></div>
         <div class="field">
           <label>Tip a little extra for any of these?</label>
-          <div class="bonus-grid" id="bonusGroup">
+          <div class="bonus-grid" data-orig-id="bonusGroup">
             <button tabindex="-1" class="bonus-btn" data-bonus="0.05" data-key="outstanding" type="button"><span class="bonus-icon">✨</span><span>Truly Exceptional<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Made the ceremony unforgettable</small></span></button>
             <button tabindex="-1" class="bonus-btn" data-bonus="0.04" data-key="holiday" type="button"><span class="bonus-icon">🎄</span><span>Holiday / Christmas Wedding<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+4% suggested</small></span></button>
             <button tabindex="-1" class="bonus-btn" data-bonus="0.04" data-key="squeeze" type="button"><span class="bonus-icon">⏰</span><span>Squeezed Me In<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Very short notice booking</small></span></button>
           </div>
         </div>
       </div>
-    <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a>`
-  },
-  "wedding-bartender-tip-calculator": {
-    t: "How Much to Tip Your Wedding Bartender",
-    s: "Open Bar Service · Beer &amp; Wine · Signature Cocktails · Champagne Toasts",
-    h: `
+    <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a></div>
+<div id="pvd-wedding-bartender-tip-calculator" style="display:none" data-title="How Much to Tip Your Wedding Bartender" data-sub="Open Bar Service · Beer &amp; Wine · Signature Cocktails · Champagne Toasts">
       <div class="field-group">
         <div class="section-label">Your Location</div>
         <div class="field">
           <label>Service Provider's Home City <span class="optional-label">(where they are based, not the wedding venue)</span></label>
           <div class="autocomplete-wrap">
-            <input tabindex="-1" type="text" id="cityInput" class="city-input" placeholder="Type your city..." autocomplete="off">
-            <div class="autocomplete-list" id="autocompleteList"></div>
+            <input tabindex="-1" type="text" data-orig-id="cityInput" class="city-input" placeholder="Type your city..." autocomplete="off">
+            <div class="autocomplete-list" data-orig-id="autocompleteList"></div>
           </div>
-          <div class="helper-text" id="cityHelper">Enter the service provider's home city — not the wedding venue location. This determines their local cost of living.</div>
+          <div class="helper-text" data-orig-id="cityHelper">Enter the service provider's home city — not the wedding venue location. This determines their local cost of living.</div>
           <p style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:4px;line-height:1.4;">If your city isn't listed, use the closest one to you.</p>
-      <div class="error-msg" id="cityError">Please select your city.</div>
+      <div class="error-msg" data-orig-id="cityError">Please select your city.</div>
         </div>
       </div>
       <div class="field-group">
         <div class="section-label">Service Details</div>        <div class="field">
           <label>Total Cost</label>
-          <div class="input-wrap"><span class="input-prefix">$</span><input tabindex="-1" type="number" id="priceInput" placeholder="e.g. 1500" min="0"></div>
-          <div class="error-msg" id="priceError">Please enter the total cost.</div>
+          <div class="input-wrap"><span class="input-prefix">$</span><input tabindex="-1" type="number" data-orig-id="priceInput" placeholder="e.g. 1500" min="0"></div>
+          <div class="error-msg" data-orig-id="priceError">Please enter the total cost.</div>
         </div>
                 <div class="field">
           <label>Number of bartenders working</label>
-          <div class="pill-group" id="countGroup"><button tabindex="-1" class="pill selected" data-val="1" type="button">1 bartender</button><button tabindex="-1" class="pill" data-val="2" type="button">2 bartenders</button><button tabindex="-1" class="pill" data-val="3" type="button">3+ bartenders</button></div>
+          <div class="pill-group" data-orig-id="countGroup"><button tabindex="-1" class="pill selected" data-val="1" type="button">1 bartender</button><button tabindex="-1" class="pill" data-val="2" type="button">2 bartenders</button><button tabindex="-1" class="pill" data-val="3" type="button">3+ bartenders</button></div>
           <div class="helper-text">Tip shown is per bartender. Each should receive their own tip or split from a total.</div>
         </div>
                 <div class="field">
           <label>Hours worked(including setup &amp; breakdown)</label>
-          <div class="pill-group" id="hoursGroup"><button tabindex="-1" class="pill" data-val="4" type="button">Under 4 hrs</button><button tabindex="-1" class="pill" data-val="5" type="button">4–5 hrs</button><button tabindex="-1" class="pill selected" data-val="6" type="button">5–6 hrs</button><button tabindex="-1" class="pill" data-val="8" type="button">6–8 hrs</button><button tabindex="-1" class="pill" data-val="10" type="button">8+ hrs</button></div>
+          <div class="pill-group" data-orig-id="hoursGroup"><button tabindex="-1" class="pill" data-val="4" type="button">Under 4 hrs</button><button tabindex="-1" class="pill" data-val="5" type="button">4–5 hrs</button><button tabindex="-1" class="pill selected" data-val="6" type="button">5–6 hrs</button><button tabindex="-1" class="pill" data-val="8" type="button">6–8 hrs</button><button tabindex="-1" class="pill" data-val="10" type="button">8+ hrs</button></div>
           
         </div>
                 <div class="field">
           <label>Did setup and breakdown?</label>
-          <div class="pill-group" id="setupGroup"><button tabindex="-1" class="pill" data-val="no" type="button">No — bar was ready on arrival</button><button tabindex="-1" class="pill selected" data-val="yes" type="button">Yes — full setup and breakdown</button></div>
+          <div class="pill-group" data-orig-id="setupGroup"><button tabindex="-1" class="pill" data-val="no" type="button">No — bar was ready on arrival</button><button tabindex="-1" class="pill selected" data-val="yes" type="button">Yes — full setup and breakdown</button></div>
           
         </div>
                 <div class="field">
           <label>Guest count</label>
-          <div class="pill-group" id="guestGroup"><button tabindex="-1" class="pill" data-val="50" type="button">Under 50</button><button tabindex="-1" class="pill selected" data-val="100" type="button">50–100</button><button tabindex="-1" class="pill" data-val="150" type="button">100–150</button><button tabindex="-1" class="pill" data-val="200" type="button">150–200</button><button tabindex="-1" class="pill" data-val="300" type="button">200+</button></div>
+          <div class="pill-group" data-orig-id="guestGroup"><button tabindex="-1" class="pill" data-val="50" type="button">Under 50</button><button tabindex="-1" class="pill selected" data-val="100" type="button">50–100</button><button tabindex="-1" class="pill" data-val="150" type="button">100–150</button><button tabindex="-1" class="pill" data-val="200" type="button">150–200</button><button tabindex="-1" class="pill" data-val="300" type="button">200+</button></div>
           
         </div>
                 <div class="field">
           <label>Signature cocktail created?</label>
-          <div class="pill-group" id="sigGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">No</button><button tabindex="-1" class="pill" data-val="yes" type="button">Yes — custom cocktail designed</button></div>
+          <div class="pill-group" data-orig-id="sigGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">No</button><button tabindex="-1" class="pill" data-val="yes" type="button">Yes — custom cocktail designed</button></div>
           
         </div>
                 <div class="field">
           <label>Gratuity already in your contract?</label>
-          <div class="pill-group" id="gratGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">No</button><button tabindex="-1" class="pill" data-val="yes" type="button">Yes — already included</button></div>
+          <div class="pill-group" data-orig-id="gratGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">No</button><button tabindex="-1" class="pill" data-val="yes" type="button">Yes — already included</button></div>
           <div class="helper-text">If gratuity is in the contract, a small additional tip of $25–$50 per bartender is a kind gesture, not an obligation.</div>
         </div>
       </div>      <div class="field-group">
         <div class="section-label">Your Experience</div>
         <div class="field">
           <label>Overall Satisfaction</label>
-          <div class="star-row" id="starsWrap">
+          <div class="star-row" data-orig-id="starsWrap">
             <button tabindex="-1" class="star-btn" data-star="1" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="2" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="3" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="4" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="5" type="button">★</button>
-            <span class="star-label" id="starLabel"></span>
+            <span class="star-label" data-orig-id="starLabel"></span>
           </div>
-          <div class="error-msg" id="starError">Please rate your experience.</div>
+          <div class="error-msg" data-orig-id="starError">Please rate your experience.</div>
         </div>
       </div>      <div class="field-group">
         <div class="section-label">Bonus? <span class="optional-label">(optional)</span></div>
         <div class="field">
           <label>Tip a little extra for any of these?</label>
-          <div class="bonus-grid" id="bonusGroup">
+          <div class="bonus-grid" data-orig-id="bonusGroup">
             <button tabindex="-1" class="bonus-btn" data-bonus="0.05" data-key="holiday" type="button"><span class="bonus-icon">🎄</span><span>Holiday / Christmas<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+5% suggested</small></span></button>
             <button tabindex="-1" class="bonus-btn" data-bonus="0.05" data-key="outstanding" type="button"><span class="bonus-icon">✨</span><span>Truly Outstanding<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Incredible service all night</small></span></button>
             <button tabindex="-1" class="bonus-btn" data-bonus="0.05" data-key="yearend" type="button"><span class="bonus-icon">🎁</span><span>Year-End Appreciation<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">December / year-end</small></span></button>
           </div>
         </div>
       </div>
-    <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a>`
-  },
-  "wedding-limo-driver-tip-calculator": {
-    t: "How Much to Tip Your Limo / Car Driver",
-    s: "Luxury Sedans · Stretch Limos · Party Buses · Vintage Cars",
-    h: `
+    <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a></div>
+<div id="pvd-wedding-limo-driver-tip-calculator" style="display:none" data-title="How Much to Tip Your Limo / Car Driver" data-sub="Luxury Sedans · Stretch Limos · Party Buses · Vintage Cars">
       <div class="field-group">
         <div class="section-label">Your Location</div>
         <div class="field">
           <label>Service Provider's Home City <span class="optional-label">(where they are based, not the wedding venue)</span></label>
           <div class="autocomplete-wrap">
-            <input tabindex="-1" type="text" id="cityInput" class="city-input" placeholder="Type your city..." autocomplete="off">
-            <div class="autocomplete-list" id="autocompleteList"></div>
+            <input tabindex="-1" type="text" data-orig-id="cityInput" class="city-input" placeholder="Type your city..." autocomplete="off">
+            <div class="autocomplete-list" data-orig-id="autocompleteList"></div>
           </div>
-          <div class="helper-text" id="cityHelper">Enter the service provider's home city — not the wedding venue location. This determines their local cost of living.</div>
+          <div class="helper-text" data-orig-id="cityHelper">Enter the service provider's home city — not the wedding venue location. This determines their local cost of living.</div>
           <p style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:4px;line-height:1.4;">If your city isn't listed, use the closest one to you.</p>
-      <div class="error-msg" id="cityError">Please select your city.</div>
+      <div class="error-msg" data-orig-id="cityError">Please select your city.</div>
         </div>
       </div>
       <div class="field-group">
         <div class="section-label">Service Details</div>        <div class="field">
           <label>Total Cost</label>
-          <div class="input-wrap"><span class="input-prefix">$</span><input tabindex="-1" type="number" id="priceInput" placeholder="e.g. 800" min="0"></div>
-          <div class="error-msg" id="priceError">Please enter the total cost.</div>
+          <div class="input-wrap"><span class="input-prefix">$</span><input tabindex="-1" type="number" data-orig-id="priceInput" placeholder="e.g. 800" min="0"></div>
+          <div class="error-msg" data-orig-id="priceError">Please enter the total cost.</div>
         </div>
                 <div class="field">
           <label>Vehicle type</label>
-          <div class="pill-group" id="vehicleGroup"><button tabindex="-1" class="pill selected" data-val="sedan" type="button">Luxury sedan / SUV</button><button tabindex="-1" class="pill" data-val="limo" type="button">Stretch limo</button><button tabindex="-1" class="pill" data-val="bus" type="button">Party bus / sprinter</button><button tabindex="-1" class="pill" data-val="vintage" type="button">Vintage / specialty</button></div>
+          <div class="pill-group" data-orig-id="vehicleGroup"><button tabindex="-1" class="pill selected" data-val="sedan" type="button">Luxury sedan / SUV</button><button tabindex="-1" class="pill" data-val="limo" type="button">Stretch limo</button><button tabindex="-1" class="pill" data-val="bus" type="button">Party bus / sprinter</button><button tabindex="-1" class="pill" data-val="vintage" type="button">Vintage / specialty</button></div>
           
         </div>
                 <div class="field">
           <label>Total hours of service</label>
-          <div class="pill-group" id="hoursGroup"><button tabindex="-1" class="pill" data-val="2" type="button">Under 2 hrs</button><button tabindex="-1" class="pill selected" data-val="3" type="button">2–3 hrs</button><button tabindex="-1" class="pill" data-val="4" type="button">3–4 hrs</button><button tabindex="-1" class="pill" data-val="6" type="button">4–6 hrs</button><button tabindex="-1" class="pill" data-val="8" type="button">6+ hrs</button></div>
+          <div class="pill-group" data-orig-id="hoursGroup"><button tabindex="-1" class="pill" data-val="2" type="button">Under 2 hrs</button><button tabindex="-1" class="pill selected" data-val="3" type="button">2–3 hrs</button><button tabindex="-1" class="pill" data-val="4" type="button">3–4 hrs</button><button tabindex="-1" class="pill" data-val="6" type="button">4–6 hrs</button><button tabindex="-1" class="pill" data-val="8" type="button">6+ hrs</button></div>
           
         </div>
                 <div class="field">
           <label>Number of trips / runs</label>
-          <div class="pill-group" id="tripsGroup"><button tabindex="-1" class="pill" data-val="1" type="button">One way</button><button tabindex="-1" class="pill selected" data-val="2" type="button">Two trips</button><button tabindex="-1" class="pill" data-val="3" type="button">3+ trips all day</button></div>
+          <div class="pill-group" data-orig-id="tripsGroup"><button tabindex="-1" class="pill" data-val="1" type="button">One way</button><button tabindex="-1" class="pill selected" data-val="2" type="button">Two trips</button><button tabindex="-1" class="pill" data-val="3" type="button">3+ trips all day</button></div>
           
         </div>
                 <div class="field">
           <label>Gratuity already in your contract?</label>
-          <div class="pill-group" id="gratGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">No</button><button tabindex="-1" class="pill" data-val="yes" type="button">Yes — already included</button></div>
+          <div class="pill-group" data-orig-id="gratGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">No</button><button tabindex="-1" class="pill" data-val="yes" type="button">Yes — already included</button></div>
           <div class="helper-text">Many limo companies automatically add 15–20% gratuity. Check your invoice before tipping.</div>
         </div>
                 <div class="field">
           <label>Was driver on time for all trips?</label>
-          <div class="pill-group" id="timeGroup"><button tabindex="-1" class="pill" data-val="late" type="button">No — was late</button><button tabindex="-1" class="pill selected" data-val="yes" type="button">Yes — on time</button><button tabindex="-1" class="pill" data-val="early" type="button">Early / waiting for us</button></div>
+          <div class="pill-group" data-orig-id="timeGroup"><button tabindex="-1" class="pill" data-val="late" type="button">No — was late</button><button tabindex="-1" class="pill selected" data-val="yes" type="button">Yes — on time</button><button tabindex="-1" class="pill" data-val="early" type="button">Early / waiting for us</button></div>
           
         </div>
                 <div class="field">
           <label>Helped with luggage, dress, or getting in?</label>
-          <div class="pill-group" id="helpGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">No extra help</button><button tabindex="-1" class="pill" data-val="yes" type="button">Yes — very helpful</button></div>
+          <div class="pill-group" data-orig-id="helpGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">No extra help</button><button tabindex="-1" class="pill" data-val="yes" type="button">Yes — very helpful</button></div>
           
         </div>
       </div>      <div class="field-group">
         <div class="section-label">Your Experience</div>
         <div class="field">
           <label>Overall Satisfaction</label>
-          <div class="star-row" id="starsWrap">
+          <div class="star-row" data-orig-id="starsWrap">
             <button tabindex="-1" class="star-btn" data-star="1" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="2" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="3" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="4" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="5" type="button">★</button>
-            <span class="star-label" id="starLabel"></span>
+            <span class="star-label" data-orig-id="starLabel"></span>
           </div>
-          <div class="error-msg" id="starError">Please rate your experience.</div>
+          <div class="error-msg" data-orig-id="starError">Please rate your experience.</div>
         </div>
       </div>      <div class="field-group">
         <div class="section-label">Bonus? <span class="optional-label">(optional)</span></div>
         <div class="field">
           <label>Tip a little extra for any of these?</label>
-          <div class="bonus-grid" id="bonusGroup">
+          <div class="bonus-grid" data-orig-id="bonusGroup">
             <button tabindex="-1" class="bonus-btn" data-bonus="0.05" data-key="holiday" type="button"><span class="bonus-icon">🎄</span><span>Holiday / Christmas<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+5% suggested</small></span></button>
             <button tabindex="-1" class="bonus-btn" data-bonus="0.05" data-key="outstanding" type="button"><span class="bonus-icon">✨</span><span>Truly Outstanding<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Above and beyond</small></span></button>
             <button tabindex="-1" class="bonus-btn" data-bonus="0.05" data-key="yearend" type="button"><span class="bonus-icon">🎁</span><span>Year-End Bonus<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">December / year-end</small></span></button>
           </div>
         </div>
       </div>
-    <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a>`
-  },
-  "wedding-shuttle-driver-tip-calculator": {
-    t: "How Much to Tip Your Shuttle Driver",
-    s: "Guest Shuttles · Hotel Runs · Venue Transport · Late-Night Shuttles",
-    h: `
+    <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a></div>
+<div id="pvd-wedding-shuttle-driver-tip-calculator" style="display:none" data-title="How Much to Tip Your Shuttle Driver" data-sub="Guest Shuttles · Hotel Runs · Venue Transport · Late-Night Shuttles">
       <div class="field-group">
         <div class="section-label">Your Location</div>
         <div class="field">
           <label>Service Provider's Home City <span class="optional-label">(where they are based, not the wedding venue)</span></label>
           <div class="autocomplete-wrap">
-            <input tabindex="-1" type="text" id="cityInput" class="city-input" placeholder="Type your city..." autocomplete="off">
-            <div class="autocomplete-list" id="autocompleteList"></div>
+            <input tabindex="-1" type="text" data-orig-id="cityInput" class="city-input" placeholder="Type your city..." autocomplete="off">
+            <div class="autocomplete-list" data-orig-id="autocompleteList"></div>
           </div>
-          <div class="helper-text" id="cityHelper">Enter the service provider's home city — not the wedding venue location. This determines their local cost of living.</div>
+          <div class="helper-text" data-orig-id="cityHelper">Enter the service provider's home city — not the wedding venue location. This determines their local cost of living.</div>
           <p style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:4px;line-height:1.4;">If your city isn't listed, use the closest one to you.</p>
-      <div class="error-msg" id="cityError">Please select your city.</div>
+      <div class="error-msg" data-orig-id="cityError">Please select your city.</div>
         </div>
       </div>
       <div class="field-group">
         <div class="section-label">Service Details</div>        <div class="field">
           <label>Total Cost</label>
-          <div class="input-wrap"><span class="input-prefix">$</span><input tabindex="-1" type="number" id="priceInput" placeholder="e.g. 600" min="0"></div>
-          <div class="error-msg" id="priceError">Please enter the total cost.</div>
+          <div class="input-wrap"><span class="input-prefix">$</span><input tabindex="-1" type="number" data-orig-id="priceInput" placeholder="e.g. 600" min="0"></div>
+          <div class="error-msg" data-orig-id="priceError">Please enter the total cost.</div>
         </div>
                 <div class="field">
           <label>Number of shuttle runs made</label>
-          <div class="pill-group" id="runsGroup"><button tabindex="-1" class="pill" data-val="1" type="button">1 run</button><button tabindex="-1" class="pill selected" data-val="2" type="button">2–3 runs</button><button tabindex="-1" class="pill" data-val="4" type="button">4–6 runs</button><button tabindex="-1" class="pill" data-val="7" type="button">7+ runs</button></div>
+          <div class="pill-group" data-orig-id="runsGroup"><button tabindex="-1" class="pill" data-val="1" type="button">1 run</button><button tabindex="-1" class="pill selected" data-val="2" type="button">2–3 runs</button><button tabindex="-1" class="pill" data-val="4" type="button">4–6 runs</button><button tabindex="-1" class="pill" data-val="7" type="button">7+ runs</button></div>
           
         </div>
                 <div class="field">
           <label>Total hours of service</label>
-          <div class="pill-group" id="hoursGroup"><button tabindex="-1" class="pill" data-val="2" type="button">Under 2 hrs</button><button tabindex="-1" class="pill selected" data-val="3" type="button">2–3 hrs</button><button tabindex="-1" class="pill" data-val="4" type="button">3–5 hrs</button><button tabindex="-1" class="pill" data-val="6" type="button">5+ hrs</button></div>
+          <div class="pill-group" data-orig-id="hoursGroup"><button tabindex="-1" class="pill" data-val="2" type="button">Under 2 hrs</button><button tabindex="-1" class="pill selected" data-val="3" type="button">2–3 hrs</button><button tabindex="-1" class="pill" data-val="4" type="button">3–5 hrs</button><button tabindex="-1" class="pill" data-val="6" type="button">5+ hrs</button></div>
           
         </div>
                 <div class="field">
           <label>Approximate number of passengers</label>
-          <div class="pill-group" id="passGroup"><button tabindex="-1" class="pill" data-val="20" type="button">Under 20</button><button tabindex="-1" class="pill selected" data-val="40" type="button">20–40</button><button tabindex="-1" class="pill" data-val="70" type="button">40–70</button><button tabindex="-1" class="pill" data-val="100" type="button">70–100</button><button tabindex="-1" class="pill" data-val="150" type="button">100+</button></div>
+          <div class="pill-group" data-orig-id="passGroup"><button tabindex="-1" class="pill" data-val="20" type="button">Under 20</button><button tabindex="-1" class="pill selected" data-val="40" type="button">20–40</button><button tabindex="-1" class="pill" data-val="70" type="button">40–70</button><button tabindex="-1" class="pill" data-val="100" type="button">70–100</button><button tabindex="-1" class="pill" data-val="150" type="button">100+</button></div>
           
         </div>
                 <div class="field">
           <label>Gratuity already in your contract?</label>
-          <div class="pill-group" id="gratGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">No</button><button tabindex="-1" class="pill" data-val="yes" type="button">Yes — already included</button></div>
+          <div class="pill-group" data-orig-id="gratGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">No</button><button tabindex="-1" class="pill" data-val="yes" type="button">Yes — already included</button></div>
           <div class="helper-text">Many shuttle companies include gratuity. Always check your contract.</div>
         </div>
                 <div class="field">
           <label>Was driver on time for all runs?</label>
-          <div class="pill-group" id="timeGroup"><button tabindex="-1" class="pill" data-val="late" type="button">No — runs were delayed</button><button tabindex="-1" class="pill selected" data-val="yes" type="button">On time</button><button tabindex="-1" class="pill" data-val="early" type="button">Ahead of schedule</button></div>
+          <div class="pill-group" data-orig-id="timeGroup"><button tabindex="-1" class="pill" data-val="late" type="button">No — runs were delayed</button><button tabindex="-1" class="pill selected" data-val="yes" type="button">On time</button><button tabindex="-1" class="pill" data-val="early" type="button">Ahead of schedule</button></div>
           
         </div>
                 <div class="field">
           <label>Driver went above and beyond?</label>
-          <div class="pill-group" id="aboveGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">Standard service</button><button tabindex="-1" class="pill" data-val="yes" type="button">Helped guests, communicated well</button></div>
+          <div class="pill-group" data-orig-id="aboveGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">Standard service</button><button tabindex="-1" class="pill" data-val="yes" type="button">Helped guests, communicated well</button></div>
           
         </div>
       </div>      <div class="field-group">
         <div class="section-label">Your Experience</div>
         <div class="field">
           <label>Overall Satisfaction</label>
-          <div class="star-row" id="starsWrap">
+          <div class="star-row" data-orig-id="starsWrap">
             <button tabindex="-1" class="star-btn" data-star="1" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="2" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="3" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="4" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="5" type="button">★</button>
-            <span class="star-label" id="starLabel"></span>
+            <span class="star-label" data-orig-id="starLabel"></span>
           </div>
-          <div class="error-msg" id="starError">Please rate your experience.</div>
+          <div class="error-msg" data-orig-id="starError">Please rate your experience.</div>
         </div>
       </div>      <div class="field-group">
         <div class="section-label">Bonus? <span class="optional-label">(optional)</span></div>
         <div class="field">
           <label>Tip a little extra for any of these?</label>
-          <div class="bonus-grid" id="bonusGroup">
+          <div class="bonus-grid" data-orig-id="bonusGroup">
             <button tabindex="-1" class="bonus-btn" data-bonus="0.05" data-key="holiday" type="button"><span class="bonus-icon">🎄</span><span>Holiday / Christmas<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+5% suggested</small></span></button>
             <button tabindex="-1" class="bonus-btn" data-bonus="0.05" data-key="outstanding" type="button"><span class="bonus-icon">✨</span><span>Truly Outstanding<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Exceptional guest experience</small></span></button>
           </div>
         </div>
       </div>
-    <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a>`
-  },
-  "bridal-dress-consultant-tip-calculator": {
-    t: "How Much to Tip Your Wedding Dress Consultant",
-    s: "Bridal Boutiques · Dress Fittings · Seamstress &amp; Alterations · Special Orders",
-    h: `
+    <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a></div>
+<div id="pvd-bridal-dress-consultant-tip-calculator" style="display:none" data-title="How Much to Tip Your Wedding Dress Consultant" data-sub="Bridal Boutiques · Dress Fittings · Seamstress &amp; Alterations · Special Orders">
       <div class="field-group">
         <div class="section-label">Your Location</div>
         <div class="field">
           <label>Service Provider's Home City <span class="optional-label">(where they are based, not the wedding venue)</span></label>
           <div class="autocomplete-wrap">
-            <input tabindex="-1" type="text" id="cityInput" class="city-input" placeholder="Type your city..." autocomplete="off">
-            <div class="autocomplete-list" id="autocompleteList"></div>
+            <input tabindex="-1" type="text" data-orig-id="cityInput" class="city-input" placeholder="Type your city..." autocomplete="off">
+            <div class="autocomplete-list" data-orig-id="autocompleteList"></div>
           </div>
-          <div class="helper-text" id="cityHelper">Enter the service provider's home city — not the wedding venue location. This determines their local cost of living.</div>
+          <div class="helper-text" data-orig-id="cityHelper">Enter the service provider's home city — not the wedding venue location. This determines their local cost of living.</div>
           <p style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:4px;line-height:1.4;">If your city isn't listed, use the closest one to you.</p>
-      <div class="error-msg" id="cityError">Please select your city.</div>
+      <div class="error-msg" data-orig-id="cityError">Please select your city.</div>
         </div>
       </div>
       <div class="field-group">
         <div class="section-label">Service Details</div>        <div class="field">
           <label>Total Cost</label>
-          <div class="input-wrap"><span class="input-prefix">$</span><input tabindex="-1" type="number" id="priceInput" placeholder="e.g. 200" min="0"></div>
-          <div class="error-msg" id="priceError">Please enter the total cost.</div>
+          <div class="input-wrap"><span class="input-prefix">$</span><input tabindex="-1" type="number" data-orig-id="priceInput" placeholder="e.g. 200" min="0"></div>
+          <div class="error-msg" data-orig-id="priceError">Please enter the total cost.</div>
         </div>
                 <div class="field">
           <label>Did you find your dress with this consultant?</label>
-          <div class="pill-group" id="foundGroup"><button tabindex="-1" class="pill" data-val="no" type="button">No — did not find it here</button><button tabindex="-1" class="pill" data-val="maybe" type="button">Found it but decided later</button><button tabindex="-1" class="pill selected" data-val="yes" type="button">Yes — found the dress here!</button></div>
+          <div class="pill-group" data-orig-id="foundGroup"><button tabindex="-1" class="pill" data-val="no" type="button">No — did not find it here</button><button tabindex="-1" class="pill" data-val="maybe" type="button">Found it but decided later</button><button tabindex="-1" class="pill selected" data-val="yes" type="button">Yes — found the dress here!</button></div>
           <div class="helper-text">A consultant who helped you find the dress invested significant time and emotional energy.</div>
         </div>
                 <div class="field">
           <label>Number of appointments</label>
-          <div class="pill-group" id="apptsGroup"><button tabindex="-1" class="pill" data-val="1" type="button">1 appointment</button><button tabindex="-1" class="pill selected" data-val="2" type="button">2 appointments</button><button tabindex="-1" class="pill" data-val="3" type="button">3–4 appointments</button><button tabindex="-1" class="pill" data-val="5" type="button">5+ appointments</button></div>
+          <div class="pill-group" data-orig-id="apptsGroup"><button tabindex="-1" class="pill" data-val="1" type="button">1 appointment</button><button tabindex="-1" class="pill selected" data-val="2" type="button">2 appointments</button><button tabindex="-1" class="pill" data-val="3" type="button">3–4 appointments</button><button tabindex="-1" class="pill" data-val="5" type="button">5+ appointments</button></div>
           
         </div>
                 <div class="field">
           <label>Total time spent with consultant</label>
-          <div class="pill-group" id="hoursGroup"><button tabindex="-1" class="pill" data-val="1" type="button">Under 1 hr</button><button tabindex="-1" class="pill selected" data-val="2" type="button">1–2 hrs</button><button tabindex="-1" class="pill" data-val="4" type="button">2–4 hrs</button><button tabindex="-1" class="pill" data-val="6" type="button">4+ hrs</button></div>
+          <div class="pill-group" data-orig-id="hoursGroup"><button tabindex="-1" class="pill" data-val="1" type="button">Under 1 hr</button><button tabindex="-1" class="pill selected" data-val="2" type="button">1–2 hrs</button><button tabindex="-1" class="pill" data-val="4" type="button">2–4 hrs</button><button tabindex="-1" class="pill" data-val="6" type="button">4+ hrs</button></div>
           
         </div>
                 <div class="field">
           <label>Did they coordinate alterations?</label>
-          <div class="pill-group" id="alterGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">No</button><button tabindex="-1" class="pill" data-val="yes" type="button">Yes — handled all alterations</button></div>
+          <div class="pill-group" data-orig-id="alterGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">No</button><button tabindex="-1" class="pill" data-val="yes" type="button">Yes — handled all alterations</button></div>
           
         </div>
                 <div class="field">
           <label>Did they go above and beyond?</label>
-          <div class="pill-group" id="aboveGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">Standard service</button><button tabindex="-1" class="pill" data-val="yes" type="button">Special orders, extra fittings, personal touches</button></div>
+          <div class="pill-group" data-orig-id="aboveGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">Standard service</button><button tabindex="-1" class="pill" data-val="yes" type="button">Special orders, extra fittings, personal touches</button></div>
           
         </div>
       </div>      <div class="field-group">
         <div class="section-label">Your Experience</div>
         <div class="field">
           <label>Overall Satisfaction</label>
-          <div class="star-row" id="starsWrap">
+          <div class="star-row" data-orig-id="starsWrap">
             <button tabindex="-1" class="star-btn" data-star="1" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="2" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="3" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="4" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="5" type="button">★</button>
-            <span class="star-label" id="starLabel"></span>
+            <span class="star-label" data-orig-id="starLabel"></span>
           </div>
-          <div class="error-msg" id="starError">Please rate your experience.</div>
+          <div class="error-msg" data-orig-id="starError">Please rate your experience.</div>
         </div>
       </div>      <div class="field-group">
         <div class="section-label">Bonus? <span class="optional-label">(optional)</span></div>
         <div class="field">
           <label>Tip a little extra for any of these?</label>
-          <div class="bonus-grid" id="bonusGroup">
+          <div class="bonus-grid" data-orig-id="bonusGroup">
             <button tabindex="-1" class="bonus-btn" data-bonus="0.05" data-key="found" type="button"><span class="bonus-icon">👗</span><span>Found the Dress!<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">They found THE one</small></span></button>
             <button tabindex="-1" class="bonus-btn" data-bonus="0.04" data-key="outstanding" type="button"><span class="bonus-icon">✨</span><span>Truly Outstanding<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Exceptional personal service</small></span></button>
             <button tabindex="-1" class="bonus-btn" data-bonus="0.04" data-key="holiday" type="button"><span class="bonus-icon">🎄</span><span>Holiday / Christmas<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+4% suggested</small></span></button>
           </div>
         </div>
       </div>
-    <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a>`
-  },
-  "wedding-server-tip-calculator": {
-    t: "How Much to Tip Your Wedding Server",
-    s: "Plated Service · Buffet Staff · Cocktail Hour Service · Bar Service",
-    h: `
+    <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a></div>
+<div id="pvd-wedding-server-tip-calculator" style="display:none" data-title="How Much to Tip Your Wedding Server" data-sub="Plated Service · Buffet Staff · Cocktail Hour Service · Bar Service">
       <div class="field-group">
         <div class="section-label">Your Location</div>
         <div class="field">
           <label>Service Provider's Home City <span class="optional-label">(where they are based, not the wedding venue)</span></label>
           <div class="autocomplete-wrap">
-            <input tabindex="-1" type="text" id="cityInput" class="city-input" placeholder="Type your city..." autocomplete="off">
-            <div class="autocomplete-list" id="autocompleteList"></div>
+            <input tabindex="-1" type="text" data-orig-id="cityInput" class="city-input" placeholder="Type your city..." autocomplete="off">
+            <div class="autocomplete-list" data-orig-id="autocompleteList"></div>
           </div>
-          <div class="helper-text" id="cityHelper">Enter the service provider's home city — not the wedding venue location. This determines their local cost of living.</div>
+          <div class="helper-text" data-orig-id="cityHelper">Enter the service provider's home city — not the wedding venue location. This determines their local cost of living.</div>
           <p style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:4px;line-height:1.4;">If your city isn't listed, use the closest one to you.</p>
-      <div class="error-msg" id="cityError">Please select your city.</div>
+      <div class="error-msg" data-orig-id="cityError">Please select your city.</div>
         </div>
       </div>
       <div class="field-group">
         <div class="section-label">Service Details</div>        <div class="field">
           <label>Total Cost</label>
-          <div class="input-prefix-wrap"><span class="input-prefix">$</span><input tabindex="-1" type="number" id="priceInput" placeholder="e.g. 2500" min="0" class="has-prefix"></div>
-          <div class="error-msg" id="priceError">Please enter the total cost.</div>
+          <div class="input-prefix-wrap"><span class="input-prefix">$</span><input tabindex="-1" type="number" data-orig-id="priceInput" placeholder="e.g. 2500" min="0" class="has-prefix"></div>
+          <div class="error-msg" data-orig-id="priceError">Please enter the total cost.</div>
         </div>
                 <div class="field">
           <label>Service style</label>
-          <div class="pill-group" id="styleGroup"><button tabindex="-1" class="pill" data-val="buffet" type="button">Buffet</button><button tabindex="-1" class="pill" data-val="stations" type="button">Food stations</button><button tabindex="-1" class="pill selected" data-val="plated" type="button">Plated / full service</button><button tabindex="-1" class="pill" data-val="cocktail" type="button">Cocktail hour only</button></div>
+          <div class="pill-group" data-orig-id="styleGroup"><button tabindex="-1" class="pill" data-val="buffet" type="button">Buffet</button><button tabindex="-1" class="pill" data-val="stations" type="button">Food stations</button><button tabindex="-1" class="pill selected" data-val="plated" type="button">Plated / full service</button><button tabindex="-1" class="pill" data-val="cocktail" type="button">Cocktail hour only</button></div>
           
         </div>
                 <div class="field">
           <label>Number of servers working</label>
-          <div class="pill-group" id="countGroup"><button tabindex="-1" class="pill" data-val="1" type="button">1 server</button><button tabindex="-1" class="pill selected" data-val="3" type="button">2–3 servers</button><button tabindex="-1" class="pill" data-val="5" type="button">4–6 servers</button><button tabindex="-1" class="pill" data-val="8" type="button">7–10 servers</button><button tabindex="-1" class="pill" data-val="12" type="button">11+ servers</button></div>
+          <div class="pill-group" data-orig-id="countGroup"><button tabindex="-1" class="pill" data-val="1" type="button">1 server</button><button tabindex="-1" class="pill selected" data-val="3" type="button">2–3 servers</button><button tabindex="-1" class="pill" data-val="5" type="button">4–6 servers</button><button tabindex="-1" class="pill" data-val="8" type="button">7–10 servers</button><button tabindex="-1" class="pill" data-val="12" type="button">11+ servers</button></div>
           <div class="helper-text">Tip shown is per server. Give each server their own envelope.</div>
         </div>
                 <div class="field">
           <label>Hours worked(including setup &amp; breakdown)</label>
-          <div class="pill-group" id="hoursGroup"><button tabindex="-1" class="pill" data-val="4" type="button">Under 4 hrs</button><button tabindex="-1" class="pill" data-val="5" type="button">4–5 hrs</button><button tabindex="-1" class="pill selected" data-val="6" type="button">5–7 hrs</button><button tabindex="-1" class="pill" data-val="8" type="button">7–9 hrs</button><button tabindex="-1" class="pill" data-val="10" type="button">9+ hrs</button></div>
+          <div class="pill-group" data-orig-id="hoursGroup"><button tabindex="-1" class="pill" data-val="4" type="button">Under 4 hrs</button><button tabindex="-1" class="pill" data-val="5" type="button">4–5 hrs</button><button tabindex="-1" class="pill selected" data-val="6" type="button">5–7 hrs</button><button tabindex="-1" class="pill" data-val="8" type="button">7–9 hrs</button><button tabindex="-1" class="pill" data-val="10" type="button">9+ hrs</button></div>
           
         </div>
                 <div class="field">
           <label>Did they handle setup and breakdown?</label>
-          <div class="pill-group" id="setupGroup"><button tabindex="-1" class="pill" data-val="no" type="button">No</button><button tabindex="-1" class="pill selected" data-val="yes" type="button">Yes — full setup and breakdown</button></div>
+          <div class="pill-group" data-orig-id="setupGroup"><button tabindex="-1" class="pill" data-val="no" type="button">No</button><button tabindex="-1" class="pill selected" data-val="yes" type="button">Yes — full setup and breakdown</button></div>
           
         </div>
                 <div class="field">
           <label>Guest count</label>
-          <div class="pill-group" id="guestGroup"><button tabindex="-1" class="pill" data-val="50" type="button">Under 50</button><button tabindex="-1" class="pill selected" data-val="100" type="button">50–100</button><button tabindex="-1" class="pill" data-val="150" type="button">100–150</button><button tabindex="-1" class="pill" data-val="200" type="button">150–200</button><button tabindex="-1" class="pill" data-val="250" type="button">200+</button></div>
+          <div class="pill-group" data-orig-id="guestGroup"><button tabindex="-1" class="pill" data-val="50" type="button">Under 50</button><button tabindex="-1" class="pill selected" data-val="100" type="button">50–100</button><button tabindex="-1" class="pill" data-val="150" type="button">100–150</button><button tabindex="-1" class="pill" data-val="200" type="button">150–200</button><button tabindex="-1" class="pill" data-val="250" type="button">200+</button></div>
           
         </div>
                 <div class="field">
           <label>Gratuity already in your catering contract?</label>
-          <div class="pill-group" id="gratGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">No</button><button tabindex="-1" class="pill" data-val="yes" type="button">Yes — already included</button></div>
+          <div class="pill-group" data-orig-id="gratGroup"><button tabindex="-1" class="pill selected" data-val="no" type="button">No</button><button tabindex="-1" class="pill" data-val="yes" type="button">Yes — already included</button></div>
           <div class="helper-text">Very important — most catering contracts include an 18–22% service charge. If it is already in the contract, an additional tip is not expected.</div>
         </div>
       </div>      <div class="field-group">
         <div class="section-label">Your Experience</div>
         <div class="field">
           <label>Overall Satisfaction</label>
-          <div class="star-row" id="starsWrap">
+          <div class="star-row" data-orig-id="starsWrap">
             <button tabindex="-1" class="star-btn" data-star="1" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="2" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="3" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="4" type="button">★</button>
             <button tabindex="-1" class="star-btn" data-star="5" type="button">★</button>
-            <span class="star-label" id="starLabel"></span>
+            <span class="star-label" data-orig-id="starLabel"></span>
           </div>
-          <div class="error-msg" id="starError">Please rate your experience.</div>
+          <div class="error-msg" data-orig-id="starError">Please rate your experience.</div>
         </div>
       </div>      <div class="field-group">
         <div class="section-label">Bonus? <span class="optional-label">(optional)</span></div>
         <div class="field">
           <label>Tip a little extra for any of these?</label>
-          <div class="bonus-grid" id="bonusGroup">
+          <div class="bonus-grid" data-orig-id="bonusGroup">
             <button tabindex="-1" class="bonus-btn" data-bonus="0.05" data-key="holiday" type="button"><span class="bonus-icon">🎄</span><span>Holiday / Christmas<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+5% suggested</small></span></button>
             <button tabindex="-1" class="bonus-btn" data-bonus="0.05" data-key="outstanding" type="button"><span class="bonus-icon">✨</span><span>Truly Outstanding<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Flawless service all night</small></span></button>
             <button tabindex="-1" class="bonus-btn" data-bonus="0.05" data-key="yearend" type="button"><span class="bonus-icon">🎁</span><span>Year-End Appreciation<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">December / year-end</small></span></button>
           </div>
         </div>
       </div>
-    <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a>`
-  },
-};
-(function (){
+    <a href="__PRICING__" class="calc-btn" style="display:block;text-align:center;text-decoration:none;margin-top:8px;">🔒 Unlock to Calculate My Tip →</a></div>
+<!-- /Preview data store -->
+<script id="preview-modal-js">
+(function(){
   var ov=document.getElementById('gtPvOverlay');
   var ttl=document.getElementById('gtPvTitle');
   var sub=document.getElementById('gtPvSub');
@@ -2889,24 +2806,38 @@ const GT_FORMS = {
   var cta=document.getElementById('gtPvCta');
   var cls=document.getElementById('gtPvClose');
   var modal=document.getElementById('gtPvModal');
-  if (!ov)return;
+  if(!ov||!cls){return;}
+
   function openPreview(slug,pricingUrl){
-    var d=GT_FORMS[slug];if (!d)return;
-    ttl.textContent=d.t;sub.textContent=d.s;bod.innerHTML=d.h;cta.href=pricingUrl;
-    ov.classList.add('open');document.body.style.overflow='hidden';
+    var src=document.getElementById('pvd-'+slug);
+    if(!src){return;}
+    ttl.textContent=src.dataset.title||'';
+    sub.textContent=src.dataset.sub||'';
+    bod.innerHTML=src.innerHTML;
+    cta.href=pricingUrl;
+    ov.classList.add('open');
+    document.body.style.overflow='hidden';
     modal.scrollTop=0;
   }
+
   function closePreview(){
-    ov.classList.remove('open');document.body.style.overflow='';
+    ov.classList.remove('open');
+    document.body.style.overflow='';
   }
+
   cls.addEventListener('click',closePreview);
-  ov.addEventListener('click',function (e){if (e.target===ov)closePreview();});
-  document.addEventListener('keydown',function (e){if (e.key==='Escape')closePreview();});
+  ov.addEventListener('click',function(e){if(e.target===ov)closePreview();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closePreview();});
+
   var startY=0;
-  modal.addEventListener('touchstart',function (e){startY=e.touches[0].clientY;},{passive:true});
-  modal.addEventListener('touchend',function (e){if (e.changedTouches[0].clientY-startY>80)closePreview();},{passive:true});
-  document.querySelectorAll('.preview-btn').forEach(function (btn){
-    btn.addEventListener('click',function (e){e.preventDefault();e.stopPropagation();openPreview(btn.dataset.slug,btn.dataset.pricing);});
+  modal.addEventListener('touchstart',function(e){startY=e.touches[0].clientY;},{passive:true});
+  modal.addEventListener('touchend',function(e){if(e.changedTouches[0].clientY-startY>80)closePreview();},{passive:true});
+
+  document.querySelectorAll('.preview-btn').forEach(function(btn){
+    btn.addEventListener('click',function(e){
+      e.preventDefault();e.stopPropagation();
+      openPreview(btn.dataset.slug,btn.dataset.pricing);
+    });
   });
 })();
 </script>
