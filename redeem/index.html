@@ -44,7 +44,7 @@
     .footer-links{display:flex;gap:20px}
     .footer-links a{font-size:11px;color:rgba(255,255,255,0.3);text-decoration:none}
     .footer-links a:hover{color:rgba(255,255,255,0.65)}
-    @media(max-width:480px){.card{padding:28px 20px}.site-nav{padding:0 16px}}
+    @media (max-width:480px){.card{padding:28px 20px}.site-nav{padding:0 16px}}
   
 
 
@@ -200,14 +200,14 @@ html, body { overflow-x: hidden }
   transition: transform 0.25s ease, opacity 0.2s ease, width 0.2s ease;
   transform-origin: center;
 }
-.nav-hamburger.open span:nth-child(1) {
+.nav-hamburger.open span:nth-child (1) {
   transform: translateY(7px) rotate(45deg);
 }
-.nav-hamburger.open span:nth-child(2) {
+.nav-hamburger.open span:nth-child (2) {
   opacity: 0;
   width: 0;
 }
-.nav-hamburger.open span:nth-child(3) {
+.nav-hamburger.open span:nth-child (3) {
   transform: translateY(-7px) rotate(-45deg);
 }
 
@@ -334,7 +334,7 @@ html, body { overflow-x: hidden }
 <script>
   // Auto-format key input as user types: insert dashes at positions 4,9,14
   const inp = document.getElementById('keyInput');
-  inp.addEventListener('input', function() {
+  inp.addEventListener('input', function () {
     let val = this.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
     let formatted = '';
     for (let i = 0; i < val.length && i < 16; i++) {
@@ -357,9 +357,16 @@ html, body { overflow-x: hidden }
 </script>
 
 
+
+/* Fix tip-card-label overflow - allow wrapping */
+.tip-card-label {
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  min-height: auto !important;
+}
 <style id="minimum-card-final">
-/* ══ MINIMUM CARD — ABSOLUTE FINAL OVERRIDE ══ */
-/* Must come after calc.min.css which is inlined into every page */
+/* ══ MINIMUM CARD — FINAL ══ */
 .tip-card.acceptable,
 .tip-grid .tip-card.acceptable {
   grid-column: 1 / -1 !important;
@@ -375,12 +382,16 @@ html, body { overflow-x: hidden }
   max-width: 100% !important;
 }
 .tip-card.acceptable:hover { transform: none !important; }
+
+/* MINIMUM header bar */
 .tip-card.acceptable > .tip-card-label {
   font-size: 0 !important;
-  display: block !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   width: 100% !important;
   box-sizing: border-box !important;
-  padding: 20px 14px 14px !important;
+  padding: 22px 14px 18px !important;
   text-align: center !important;
   background: linear-gradient(145deg,#4B5563 0%,#9CA3AF 40%,#D1D5DB 65%,#9CA3AF 100%) !important;
   border: none !important;
@@ -389,8 +400,6 @@ html, body { overflow-x: hidden }
   height: auto !important;
   min-height: auto !important;
   flex: none !important;
-  align-items: center !important;
-  justify-content: center !important;
 }
 .tip-card.acceptable > .tip-card-label::before {
   content: 'MINIMUM' !important;
@@ -403,62 +412,44 @@ html, body { overflow-x: hidden }
   display: block !important;
   text-align: center !important;
 }
-.tip-card.acceptable .tip-card-body {
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  padding: 14px 18px !important;
-  flex: 1 !important;
-  background: #161618 !important;
-  width: 100% !important;
-}
-.tip-card.acceptable .tip-card-desc {
-  background: transparent !important;
-  color: rgba(255,255,255,0.65) !important;
-  padding: 0 !important;
-  text-align: left !important;
-  font-size: 13px !important;
-  flex: 1 !important;
-  line-height: 1.55 !important;
-}
-.tip-card.acceptable .tip-card-right {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-end !important;
-  gap: 3px !important;
-  padding-left: 16px !important;
-  border-left: 1px solid rgba(255,255,255,0.08) !important;
-  margin-left: 16px !important;
-  min-width: 110px !important;
-  text-align: right !important;
-}
+
+/* Amount — centered, same size as good/better/best */
 .tip-card.acceptable .tip-card-amount {
-  background: transparent !important;
-  padding: 0 !important;
-  font-size: 22px !important;
+  display: block !important;
+  font-family: 'Syne', sans-serif !important;
+  font-size: clamp(28px,4.5vw,36px) !important;
   font-weight: 800 !important;
   color: #fff !important;
-  text-align: right !important;
+  text-align: center !important;
   line-height: 1 !important;
-}
-.tip-card.acceptable .tip-card-pct {
+  padding: 18px 16px 6px !important;
+  margin: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
   background: transparent !important;
-  padding: 0 !important;
-  font-size: 12px !important;
-  color: rgba(255,255,255,0.45) !important;
-  text-align: right !important;
 }
+
+/* Percentage text — centered */
+.tip-card.acceptable .tip-card-pct {
+  display: block !important;
+  font-size: 13px !important;
+  color: rgba(255,255,255,0.5) !important;
+  text-align: center !important;
+  padding: 0 16px 4px !important;
+  background: transparent !important;
+}
+
+/* NEW TOTAL block — centered */
 .tip-card.acceptable .tip-card-total {
-  background: rgba(255,255,255,0.07) !important;
+  display: block !important;
+  margin: 6px auto 10px !important;
+  padding: 6px 20px !important;
+  background: rgba(255,255,255,0.08) !important;
   border: 1px solid rgba(255,255,255,0.1) !important;
   border-radius: 8px !important;
-  padding: 5px 12px !important;
   text-align: center !important;
-  width: auto !important;
-  margin: 4px 0 0 !important;
-  display: inline-flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
+  width: fit-content !important;
+  max-width: calc(100% - 32px) !important;
 }
 .tip-card.acceptable .tip-card-total-label {
   font-size: 8px !important;
@@ -467,6 +458,7 @@ html, body { overflow-x: hidden }
   text-transform: uppercase !important;
   color: rgba(255,255,255,0.38) !important;
   display: block !important;
+  text-align: center !important;
 }
 .tip-card.acceptable .tip-card-total-value {
   font-family: 'Syne', sans-serif !important;
@@ -474,33 +466,57 @@ html, body { overflow-x: hidden }
   font-weight: 800 !important;
   color: #fff !important;
   display: block !important;
+  text-align: center !important;
 }
+
+/* Description text — centered */
+.tip-card.acceptable .tip-card-desc {
+  display: block !important;
+  font-size: 13px !important;
+  color: rgba(255,255,255,0.55) !important;
+  text-align: center !important;
+  padding: 4px 16px 18px !important;
+  line-height: 1.5 !important;
+  background: transparent !important;
+}
+
+/* Right-column layout override — none for minimum */
+.tip-card.acceptable .tip-card-body,
+.tip-card.acceptable .tip-card-right {
+  display: contents !important;
+}
+
 .tip-card.acceptable .most-common-tag { display: none !important; }
 </style>
 
 <script id="hamburger-script">
-(function(){
+(function (){
   var btn = document.getElementById('navHamburger');
   var menu = document.getElementById('navMobileMenu');
   if (!btn || !menu) return;
-  btn.addEventListener('click', function(e){
+  btn.addEventListener('click', function (e){
     e.stopPropagation();
     var open = btn.classList.toggle('open');
     if (open) {
       menu.style.display = 'block';
-      requestAnimationFrame(function(){
+      requestAnimationFrame(function (){
         menu.classList.add('open');
       });
     } else {
       menu.classList.remove('open');
-      setTimeout(function(){ menu.style.display = 'none'; }, 200);
+      setTimeout(function (){ menu.style.display = 'none'; }, 200);
     }
   });
-  document.addEventListener('click', function(e){
+  document.addEventListener('click', function (e){
     if (!e.target.closest('.site-nav')) {
       btn.classList.remove('open');
       menu.classList.remove('open');
-      setTimeout(function(){ menu.style.display = 'none'; }, 200);
+      setTimeout(function (){ menu.style.display = 'none'; }, 200);
+    } else if (e.target.tagName === 'A' && e.target.closest('.nav-mobile-menu')) {
+      // Let the link navigate; close menu after a short delay
+      btn.classList.remove('open');
+      menu.classList.remove('open');
+      setTimeout(function (){ menu.style.display = 'none'; }, 300);
     }
   });
 })();
