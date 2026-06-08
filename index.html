@@ -149,20 +149,100 @@ body::before {
 @media (max-width:640px){.nav-hamburger{display:flex!important}.site-nav-links{display:none!important}.site-nav{position:relative!important}}
 </style>
 <style id="card-info-css">
-.ci-btn{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.6);font-size:11px;font-weight:700;font-family:'Inter',sans-serif;font-style:italic;cursor:pointer;flex-shrink:0;transition:background .15s,border-color .15s;-webkit-tap-highlight-color:transparent;line-height:1;padding:0}
-.ci-btn:hover{background:rgba(255,255,255,0.18);border-color:rgba(255,255,255,0.55);color:#fff}
-.ci-popup{display:none;position:absolute;bottom:calc(100% + 8px);left:0;right:0;background:#1a1a1e;border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:12px 14px;z-index:9999;box-shadow:0 8px 32px rgba(0,0,0,0.7)}
-.ci-popup.open{display:block}
-.ci-popup-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
-.ci-popup-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:800;color:#fff}
-.ci-popup-close{width:22px;height:22px;border-radius:50%;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.5);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:sans-serif;line-height:1;padding:0;-webkit-tap-highlight-color:transparent}
-.ci-popup-close:hover{background:rgba(255,255,255,0.15);color:#fff}
-.ci-popup-label{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(74,222,128,0.7);margin-bottom:4px}
-.ci-popup-factors{font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6}
-.ci-wrap{position:relative}
-/* Remove green arrow from premium cards */
-.calc-card.is-premium .calc-card-btn{display:none}
-.vendor-card .card-cta{display:none}
+/* Card wrapper: positions the i button outside the <a> */
+.calc-card-wrap {
+  position: relative;
+  display: block;
+}
+/* The i button: absolute top-right corner of wrapper, above the card */
+.ci-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 10;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.35);
+  background: rgba(20,20,22,0.75);
+  color: rgba(255,255,255,0.7);
+  font-size: 12px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s, border-color .15s;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1;
+  padding: 0;
+}
+.ci-btn:hover {
+  background: rgba(40,40,44,0.95);
+  border-color: rgba(255,255,255,0.65);
+  color: #fff;
+}
+/* Popup: sits above the card */
+.ci-popup {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: #1a1a1e;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 10px;
+  padding: 12px 14px;
+  z-index: 9999;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.75);
+}
+.ci-popup.open { display: block; }
+.ci-popup-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+.ci-popup-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  color: #fff;
+}
+.ci-popup-close {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.55);
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: sans-serif;
+  line-height: 1;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+.ci-popup-close:hover { background: rgba(255,255,255,0.15); color: #fff; }
+.ci-popup-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(74,222,128,0.75);
+  margin-bottom: 4px;
+}
+.ci-popup-factors {
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.65;
+}
 </style>
 </head>
 <body>
@@ -272,7 +352,7 @@ body::before {
         <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
-    <a class="calc-card is-premium" href="premium/caterer-tip-calculator/index.html">
+    <div class="calc-card-wrap"><a class="calc-card is-premium" href="premium/caterer-tip-calculator/index.html">
       <div class="card-visual gi-4">
         <div class="card-visual-wbar"></div>
         <div class="card-visual-frame"></div>
@@ -286,10 +366,10 @@ body::before {
         <p class="calc-card-tagline">Local tip suggestions in seconds</p>
         </div>
         <span class="calc-card-btn">Get my local tip</span>
-      </div>
-    
-      <div class="ci-wrap"><button class="ci-btn" type="button" onclick="event.preventDefault();event.stopPropagation();(function(btn){document.querySelectorAll('.ci-popup.open').forEach(function(p){if(p!==btn.nextElementSibling)p.classList.remove('open');});btn.nextElementSibling.classList.toggle('open');})this" aria-label="What this calculates">i</button><div class="ci-popup"><div class="ci-popup-head"><span class="ci-popup-title">Caterer</span><button class="ci-popup-close" onclick="this.closest('.ci-popup').classList.remove('open')" type="button">&#x2715;</button></div><div class="ci-popup-label">What this calculates</div><div class="ci-popup-factors">City cost of living · Service type · Guest count · Satisfaction · Contract gratuity</div></div></div>
+      </div> <div class="ci-popup-label">What this calculates</div><div class="ci-popup-factors">City cost of living · Service type · Guest count · Satisfaction · Contract gratuity</div></div></div>
     </a>
+    <button class="ci-btn" type="button" aria-label="What this calculates">i</button><div class="ci-popup"><div class="ci-popup-head"><span class="ci-popup-title">Caterer</span><button class="ci-popup-close" type="button">&#x2715;</button></div><div class="ci-popup-label">What this calculates</div><div class="ci-popup-factors">City cost of living · Service type · Guest count · Satisfaction · Contract gratuity</div></div>
+    </div>
     <a class="calc-card" href="dj-tip-calculator/index.html">
       <div class="card-visual gi-5">
         <div class="card-visual-wbar"></div>
@@ -322,7 +402,7 @@ body::before {
         <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
-    <a class="calc-card is-premium" href="premium/furniture-delivery-tip-calculator/index.html">
+    <div class="calc-card-wrap"><a class="calc-card is-premium" href="premium/furniture-delivery-tip-calculator/index.html">
       <div class="card-visual gi-7">
         <div class="card-visual-wbar"></div>
         <div class="card-visual-frame"></div>
@@ -336,10 +416,10 @@ body::before {
         <p class="calc-card-tagline">Local tip suggestions in seconds</p>
         </div>
         <span class="calc-card-btn">Get my local tip</span>
-      </div>
-    
-      <div class="ci-wrap"><button class="ci-btn" type="button" onclick="event.preventDefault();event.stopPropagation();(function(btn){document.querySelectorAll('.ci-popup.open').forEach(function(p){if(p!==btn.nextElementSibling)p.classList.remove('open');});btn.nextElementSibling.classList.toggle('open');})this" aria-label="What this calculates">i</button><div class="ci-popup"><div class="ci-popup-head"><span class="ci-popup-title">Furniture Delivery</span><button class="ci-popup-close" onclick="this.closest('.ci-popup').classList.remove('open')" type="button">&#x2715;</button></div><div class="ci-popup-label">What this calculates</div><div class="ci-popup-factors">City cost of living · Service level · Assembly · Stairs · Crew size</div></div></div>
+      </div> <div class="ci-popup-label">What this calculates</div><div class="ci-popup-factors">City cost of living · Service level · Assembly · Stairs · Crew size</div></div></div>
     </a>
+    <button class="ci-btn" type="button" aria-label="What this calculates">i</button><div class="ci-popup"><div class="ci-popup-head"><span class="ci-popup-title">Furniture Delivery</span><button class="ci-popup-close" type="button">&#x2715;</button></div><div class="ci-popup-label">What this calculates</div><div class="ci-popup-factors">City cost of living · Service level · Assembly · Stairs · Crew size</div></div>
+    </div>
 
     <a class="calc-card" href="food-delivery-tip-calculator/index.html">
       <div class="card-visual gi-8">
@@ -373,7 +453,7 @@ body::before {
         <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
-    <a class="calc-card is-premium" href="premium/hair-colorist-tip-calculator/index.html">
+    <div class="calc-card-wrap"><a class="calc-card is-premium" href="premium/hair-colorist-tip-calculator/index.html">
       <div class="card-visual gi-10">
         <div class="card-visual-wbar"></div>
         <div class="card-visual-frame"></div>
@@ -387,12 +467,12 @@ body::before {
         <p class="calc-card-tagline">Local tip suggestions in seconds</p>
         </div>
         <span class="calc-card-btn">Get my local tip</span>
-      </div>
-    
-      <div class="ci-wrap"><button class="ci-btn" type="button" onclick="event.preventDefault();event.stopPropagation();(function(btn){document.querySelectorAll('.ci-popup.open').forEach(function(p){if(p!==btn.nextElementSibling)p.classList.remove('open');});btn.nextElementSibling.classList.toggle('open');})this" aria-label="What this calculates">i</button><div class="ci-popup"><div class="ci-popup-head"><span class="ci-popup-title">Hair Colorist</span><button class="ci-popup-close" onclick="this.closest('.ci-popup').classList.remove('open')" type="button">&#x2715;</button></div><div class="ci-popup-label">What this calculates</div><div class="ci-popup-factors">City cost of living · Service complexity · Time in chair · Satisfaction</div></div></div>
+      </div> <div class="ci-popup-label">What this calculates</div><div class="ci-popup-factors">City cost of living · Service complexity · Time in chair · Satisfaction</div></div></div>
     </a>
+    <button class="ci-btn" type="button" aria-label="What this calculates">i</button><div class="ci-popup"><div class="ci-popup-head"><span class="ci-popup-title">Hair Colorist</span><button class="ci-popup-close" type="button">&#x2715;</button></div><div class="ci-popup-label">What this calculates</div><div class="ci-popup-factors">City cost of living · Service complexity · Time in chair · Satisfaction</div></div>
+    </div>
 
-    <a class="calc-card is-premium" href="premium/hair-stylist-tip-calculator/index.html">
+    <div class="calc-card-wrap"><a class="calc-card is-premium" href="premium/hair-stylist-tip-calculator/index.html">
       <div class="card-visual gi-11">
         <div class="card-visual-wbar"></div>
         <div class="card-visual-frame"></div>
@@ -406,10 +486,10 @@ body::before {
         <p class="calc-card-tagline">Local tip suggestions in seconds</p>
         </div>
         <span class="calc-card-btn">Get my local tip</span>
-      </div>
-    
-      <div class="ci-wrap"><button class="ci-btn" type="button" onclick="event.preventDefault();event.stopPropagation();(function(btn){document.querySelectorAll('.ci-popup.open').forEach(function(p){if(p!==btn.nextElementSibling)p.classList.remove('open');});btn.nextElementSibling.classList.toggle('open');})this" aria-label="What this calculates">i</button><div class="ci-popup"><div class="ci-popup-head"><span class="ci-popup-title">Hair Stylist</span><button class="ci-popup-close" onclick="this.closest('.ci-popup').classList.remove('open')" type="button">&#x2715;</button></div><div class="ci-popup-label">What this calculates</div><div class="ci-popup-factors">City cost of living · Session length · Regular vs new client · Hair complexity</div></div></div>
+      </div> <div class="ci-popup-label">What this calculates</div><div class="ci-popup-factors">City cost of living · Session length · Regular vs new client · Hair complexity</div></div></div>
     </a>
+    <button class="ci-btn" type="button" aria-label="What this calculates">i</button><div class="ci-popup"><div class="ci-popup-head"><span class="ci-popup-title">Hair Stylist</span><button class="ci-popup-close" type="button">&#x2715;</button></div><div class="ci-popup-label">What this calculates</div><div class="ci-popup-factors">City cost of living · Session length · Regular vs new client · Hair complexity</div></div>
+    </div>
     <a class="calc-card" href="house-cleaner-tip-calculator/index.html">
       <div class="card-visual gi-12">
         <div class="card-visual-wbar"></div>
@@ -442,7 +522,7 @@ body::before {
         <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
-    <a class="calc-card is-premium" href="premium/massage-therapist-tip-calculator/index.html">
+    <div class="calc-card-wrap"><a class="calc-card is-premium" href="premium/massage-therapist-tip-calculator/index.html">
       <div class="card-visual gi-14">
         <div class="card-visual-wbar"></div>
         <div class="card-visual-frame"></div>
@@ -456,10 +536,10 @@ body::before {
         <p class="calc-card-tagline">Local tip suggestions in seconds</p>
         </div>
         <span class="calc-card-btn">Get my local tip</span>
-      </div>
-    
-      <div class="ci-wrap"><button class="ci-btn" type="button" onclick="event.preventDefault();event.stopPropagation();(function(btn){document.querySelectorAll('.ci-popup.open').forEach(function(p){if(p!==btn.nextElementSibling)p.classList.remove('open');});btn.nextElementSibling.classList.toggle('open');})this" aria-label="What this calculates">i</button><div class="ci-popup"><div class="ci-popup-head"><span class="ci-popup-title">Massage Therapist</span><button class="ci-popup-close" onclick="this.closest('.ci-popup').classList.remove('open')" type="button">&#x2715;</button></div><div class="ci-popup-label">What this calculates</div><div class="ci-popup-factors">City cost of living · Session length · Massage type · Setting · Satisfaction</div></div></div>
+      </div> <div class="ci-popup-label">What this calculates</div><div class="ci-popup-factors">City cost of living · Session length · Massage type · Setting · Satisfaction</div></div></div>
     </a>
+    <button class="ci-btn" type="button" aria-label="What this calculates">i</button><div class="ci-popup"><div class="ci-popup-head"><span class="ci-popup-title">Massage Therapist</span><button class="ci-popup-close" type="button">&#x2715;</button></div><div class="ci-popup-label">What this calculates</div><div class="ci-popup-factors">City cost of living · Session length · Massage type · Setting · Satisfaction</div></div>
+    </div>
     <a class="calc-card" href="movers-tip-calculator/index.html">
       <div class="card-visual gi-15">
         <div class="card-visual-wbar"></div>
@@ -492,7 +572,7 @@ body::before {
         <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
-    <a class="calc-card is-premium" href="premium/photographer-tip-calculator/index.html">
+    <div class="calc-card-wrap"><a class="calc-card is-premium" href="premium/photographer-tip-calculator/index.html">
       <div class="card-visual gi-17">
         <div class="card-visual-wbar"></div>
         <div class="card-visual-frame"></div>
@@ -506,10 +586,10 @@ body::before {
         <p class="calc-card-tagline">Local tip suggestions in seconds</p>
         </div>
         <span class="calc-card-btn">Get my local tip</span>
-      </div>
-    
-      <div class="ci-wrap"><button class="ci-btn" type="button" onclick="event.preventDefault();event.stopPropagation();(function(btn){document.querySelectorAll('.ci-popup.open').forEach(function(p){if(p!==btn.nextElementSibling)p.classList.remove('open');});btn.nextElementSibling.classList.toggle('open');})this" aria-label="What this calculates">i</button><div class="ci-popup"><div class="ci-popup-head"><span class="ci-popup-title">Photographer</span><button class="ci-popup-close" onclick="this.closest('.ci-popup').classList.remove('open')" type="button">&#x2715;</button></div><div class="ci-popup-label">What this calculates</div><div class="ci-popup-factors">City cost of living · Session type · Hours · Travel · Satisfaction</div></div></div>
+      </div> <div class="ci-popup-label">What this calculates</div><div class="ci-popup-factors">City cost of living · Session type · Hours · Travel · Satisfaction</div></div></div>
     </a>
+    <button class="ci-btn" type="button" aria-label="What this calculates">i</button><div class="ci-popup"><div class="ci-popup-head"><span class="ci-popup-title">Photographer</span><button class="ci-popup-close" type="button">&#x2715;</button></div><div class="ci-popup-label">What this calculates</div><div class="ci-popup-factors">City cost of living · Session type · Hours · Travel · Satisfaction</div></div>
+    </div>
 
     <a class="calc-card" href="restaurant-tip-calculator/index.html">
       <div class="card-visual gi-18">
@@ -543,7 +623,7 @@ body::before {
         <span class="calc-card-btn">Get my local tip</span>
       </div>
     </a>
-    <a class="calc-card is-premium" href="premium/tattoo-tip-calculator/index.html">
+    <div class="calc-card-wrap"><a class="calc-card is-premium" href="premium/tattoo-tip-calculator/index.html">
       <div class="card-visual gi-20">
         <div class="card-visual-wbar"></div>
         <div class="card-visual-frame"></div>
@@ -557,10 +637,10 @@ body::before {
         <p class="calc-card-tagline">Local tip suggestions in seconds</p>
         </div>
         <span class="calc-card-btn">Get my local tip</span>
-      </div>
-    
-      <div class="ci-wrap"><button class="ci-btn" type="button" onclick="event.preventDefault();event.stopPropagation();(function(btn){document.querySelectorAll('.ci-popup.open').forEach(function(p){if(p!==btn.nextElementSibling)p.classList.remove('open');});btn.nextElementSibling.classList.toggle('open');})this" aria-label="What this calculates">i</button><div class="ci-popup"><div class="ci-popup-head"><span class="ci-popup-title">Tattoo Artist</span><button class="ci-popup-close" onclick="this.closest('.ci-popup').classList.remove('open')" type="button">&#x2715;</button></div><div class="ci-popup-label">What this calculates</div><div class="ci-popup-factors">City cost of living · Session length · Piece complexity · Custom vs flash · Satisfaction</div></div></div>
+      </div> <div class="ci-popup-label">What this calculates</div><div class="ci-popup-factors">City cost of living · Session length · Piece complexity · Custom vs flash · Satisfaction</div></div></div>
     </a>
+    <button class="ci-btn" type="button" aria-label="What this calculates">i</button><div class="ci-popup"><div class="ci-popup-head"><span class="ci-popup-title">Tattoo Artist</span><button class="ci-popup-close" type="button">&#x2715;</button></div><div class="ci-popup-label">What this calculates</div><div class="ci-popup-factors">City cost of living · Session length · Piece complexity · Custom vs flash · Satisfaction</div></div>
+    </div>
     <a class="calc-card" href="valet-tip-calculator/index.html">
       <div class="card-visual gi-21">
         <div class="card-visual-wbar"></div>
@@ -963,11 +1043,25 @@ document.querySelectorAll('.calc-card.is-premium, .vendor-card').forEach(functio
 </script>
 <script id="card-info-js">
 (function(){
-  // Close any open popup when clicking outside
-  document.addEventListener('click',function(e){
-    if(!e.target.closest('.ci-wrap')){
-      document.querySelectorAll('.ci-popup.open').forEach(function(p){p.classList.remove('open');});
+  document.addEventListener('click', function(e){
+    if (!e.target.closest('.ci-btn') && !e.target.closest('.ci-popup')) {
+      document.querySelectorAll('.ci-popup.open').forEach(function(p){ p.classList.remove('open'); });
     }
+  });
+  document.querySelectorAll('.ci-btn').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var popup = btn.nextElementSibling;
+      var isOpen = popup.classList.contains('open');
+      document.querySelectorAll('.ci-popup.open').forEach(function(p){ p.classList.remove('open'); });
+      if (!isOpen) popup.classList.add('open');
+    });
+  });
+  document.querySelectorAll('.ci-popup-close').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      btn.closest('.ci-popup').classList.remove('open');
+    });
   });
 })();
 </script>
