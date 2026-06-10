@@ -1156,124 +1156,13 @@ if (el){ el.style.cssText += DARK_STYLES; }
 <script>var y=document.getElementById("copy-year");if (y)y.textContent=new Date().getFullYear();</script>
 
 
-<style>
-/* ══ DEFINITIVE MINIMUM CARD v2 — matches good/better/best exactly ══ */
-.tip-card.acceptable {
-  flex-direction: column !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-  border-radius: 14px !important;
-  border: 1.5px solid rgba(255,255,255,0.14) !important;
-  background: #161618 !important;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.45) !important;
-  transform: none !important;
-  grid-column: 1 / -1 !important;
-  display: flex !important;
-  width: 100% !important;
-}
-.tip-card.acceptable:hover { transform: none !important; box-shadow: 0 6px 24px rgba(0,0,0,0.45) !important; }
 
-/* Label band — EXACT same height as good/better/best: height forced to 52px */
-.tip-card.acceptable > .tip-card-label {
-  font-size: 0 !important;
-  display: flex !important;
-  align-items: flex-end !important;
-  justify-content: center !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-  height: 52px !important;
-  padding: 0 14px 12px !important;
-  text-align: center !important;
-  background: linear-gradient(145deg,#4B5563 0%,#9CA3AF 40%,#D1D5DB 65%,#9CA3AF 100%) !important;
-  border-radius: 0 !important;
-  margin: 0 !important;
-}
-.tip-card.acceptable > .tip-card-label::before {
-  content: 'MINIMUM' !important;
-  font-family: 'Syne', sans-serif !important;
-  font-size: 13px !important;
-  font-weight: 800 !important;
-  letter-spacing: .2em !important;
-  text-transform: uppercase !important;
-  color: rgba(30,30,30,0.85) !important;
-  display: block !important;
-  text-align: center !important;
-}
-
-/* Amount — IDENTICAL to good/better/best */
-.tip-card.acceptable .tip-card-amount {
-  font-family: 'Syne', sans-serif !important;
-  font-size: clamp(28px, 4.5vw, 36px) !important;
-  font-weight: 800 !important;
-  color: #fff !important;
-  text-align: center !important;
-  padding: 14px 12px 4px !important;
-  line-height: 1 !important;
-  background: #161618 !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-  display: block !important;
-}
-
-/* Total box */
-.tip-card.acceptable .tip-card-total {
-  display: table !important;
-  margin: 8px auto !important;
-  padding: 6px 16px !important;
-  background: rgba(255,255,255,0.08) !important;
-  border: 1px solid rgba(255,255,255,0.1) !important;
-  border-radius: 8px !important;
-  text-align: center !important;
-  width: auto !important;
-}
-.tip-card.acceptable .tip-card-total-label {
-  font-family: 'Inter', sans-serif !important;
-  font-size: 8px !important;
-  font-weight: 700 !important;
-  letter-spacing: .14em !important;
-  text-transform: uppercase !important;
-  color: rgba(255,255,255,0.38) !important;
-  display: block !important;
-  font-style: normal !important;
-}
-.tip-card.acceptable .tip-card-total-value {
-  font-family: 'Inter', sans-serif !important;
-  font-size: 15px !important;
-  font-weight: 700 !important;
-  color: #fff !important;
-  display: block !important;
-  font-style: normal !important;
-}
-
-.tip-card.acceptable .tip-card-pct {
-  font-size: 13px !important;
-  color: rgba(255,255,255,0.5) !important;
-  text-align: center !important;
-  padding: 4px 12px 2px !important;
-  background: #161618 !important;
-  display: block !important;
-  width: 100% !important;
-}
-.tip-card.acceptable .tip-card-desc {
-  font-size: 12px !important;
-  color: rgba(255,255,255,0.6) !important;
-  text-align: center !important;
-  padding: 6px 14px 14px !important;
-  line-height: 1.55 !important;
-  flex: 1 !important;
-  background: #161618 !important;
-  display: block !important;
-  width: 100% !important;
-}
-.tip-card.acceptable .tip-card-body,
-.tip-card.acceptable .tip-card-right { display: contents !important; }
-.tip-card.acceptable .most-common-tag { display: none !important; }
-.tip-card-label { white-space: normal !important; word-wrap: break-word !important; overflow-wrap: break-word !important; min-height: auto !important; }
-</style>
 
 
 <style id="minimum-card-final">
-/* ══ MINIMUM CARD — FINAL ══ */
+/* ══ MINIMUM CARD — DEFINITIVE FINAL ══ */
+/* The minimum card is full-width but its content styling MUST match good/better/best exactly */
+
 .tip-card.acceptable,
 .tip-grid .tip-card.acceptable {
   grid-column: 1 / -1 !important;
@@ -1287,110 +1176,112 @@ if (el){ el.style.cssText += DARK_STYLES; }
   transform: none !important;
   width: auto !important;
   max-width: 100% !important;
+  align-items: center !important;
 }
 .tip-card.acceptable:hover { transform: none !important; }
 
-/* MINIMUM header bar */
-.tip-card.acceptable > .tip-card-label {
+/* MINIMUM header bar — unique silver gradient label */
+.tip-card.acceptable .tip-card-label {
   font-size: 0 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
   width: 100% !important;
   box-sizing: border-box !important;
   padding: 22px 14px 18px !important;
   text-align: center !important;
   background: linear-gradient(145deg,#4B5563 0%,#9CA3AF 40%,#D1D5DB 65%,#9CA3AF 100%) !important;
-  border: none !important;
   border-radius: 0 !important;
-  margin: 0 !important;
-  height: auto !important;
-  min-height: auto !important;
-  flex: none !important;
+  margin: 0 0 11px !important;
+  display: block !important;
+  white-space: normal !important;
+  letter-spacing: normal !important;
 }
-.tip-card.acceptable > .tip-card-label::before {
+.tip-card.acceptable .tip-card-label::before {
   content: 'MINIMUM' !important;
   font-family: 'Syne', sans-serif !important;
   font-size: 13px !important;
   font-weight: 800 !important;
-  letter-spacing: .2em !important;
+  letter-spacing: 0.2em !important;
   text-transform: uppercase !important;
   color: rgba(30,30,30,0.85) !important;
   display: block !important;
   text-align: center !important;
 }
 
-/* Amount — centered, same size as good/better/best */
+/* Amount — EXACTLY matches .tip-card-amount */
 .tip-card.acceptable .tip-card-amount {
-  display: block !important;
   font-family: 'Syne', sans-serif !important;
-  font-size: clamp(28px,4.5vw,36px) !important;
-  font-weight: 800 !important;
-  color: #fff !important;
-  text-align: center !important;
+  font-size: 36px !important;
+  font-weight: 600 !important;
   line-height: 1 !important;
-  padding: 18px 16px 6px !important;
-  margin: 0 !important;
+  color: var(--ink, #E8E8E4) !important;
+  margin-bottom: 3px !important;
+  letter-spacing: 0.03em !important;
+  text-align: center !important;
   width: 100% !important;
-  box-sizing: border-box !important;
-  background: transparent !important;
-}
-
-/* Percentage text — centered */
-.tip-card.acceptable .tip-card-pct {
   display: block !important;
-  font-size: 13px !important;
-  color: rgba(255,255,255,0.5) !important;
-  text-align: center !important;
-  padding: 0 16px 4px !important;
   background: transparent !important;
+  padding: 0 16px !important;
 }
 
-/* NEW TOTAL block — centered */
+/* Total block — EXACTLY matches .tip-card-total */
 .tip-card.acceptable .tip-card-total {
-  display: block !important;
-  margin: 6px auto 10px !important;
-  padding: 6px 20px !important;
-  background: rgba(255,255,255,0.08) !important;
-  border: 1px solid rgba(255,255,255,0.1) !important;
-  border-radius: 8px !important;
-  text-align: center !important;
-  width: fit-content !important;
-  max-width: calc(100% - 32px) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  background: var(--bg, #1E1E22) !important;
+  border: 1.5px solid var(--rule, rgba(255,255,255,0.12)) !important;
+  border-radius: 7px !important;
+  padding: 6px 12px 7px !important;
+  margin: 8px 16px 6px !important;
+  width: calc(100% - 32px) !important;
+  box-sizing: border-box !important;
+  gap: 1px !important;
 }
+
+/* Total label — EXACTLY matches .tip-card-total-label */
 .tip-card.acceptable .tip-card-total-label {
-  font-size: 8px !important;
-  font-weight: 700 !important;
-  letter-spacing: .14em !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.1em !important;
   text-transform: uppercase !important;
-  color: rgba(255,255,255,0.38) !important;
+  color: var(--ink-3, rgba(255,255,255,0.38)) !important;
+  font-family: inherit !important;
   display: block !important;
-  text-align: center !important;
 }
+
+/* Total value — EXACTLY matches .tip-card-total-value */
 .tip-card.acceptable .tip-card-total-value {
   font-family: 'Syne', sans-serif !important;
-  font-size: 15px !important;
-  font-weight: 800 !important;
-  color: #fff !important;
+  font-size: 21px !important;
+  font-weight: 600 !important;
+  color: var(--ink, #E8E8E4) !important;
+  line-height: 1.1 !important;
+  letter-spacing: 0.02em !important;
   display: block !important;
   text-align: center !important;
 }
 
-/* Description text — centered */
-.tip-card.acceptable .tip-card-desc {
-  display: block !important;
+/* Pct — EXACTLY matches .tip-card-pct */
+.tip-card.acceptable .tip-card-pct {
   font-size: 13px !important;
-  color: rgba(255,255,255,0.55) !important;
+  color: var(--ink-2, rgba(255,255,255,0.55)) !important;
   text-align: center !important;
+  width: 100% !important;
+  display: block !important;
+  padding: 0 16px !important;
+  background: transparent !important;
+  letter-spacing: normal !important;
+}
+
+/* Desc — matches .tip-card-desc */
+.tip-card.acceptable .tip-card-desc {
+  font-size: 13px !important;
+  color: var(--ink-2, rgba(255,255,255,0.55)) !important;
+  text-align: center !important;
+  width: 100% !important;
+  display: block !important;
   padding: 4px 16px 18px !important;
   line-height: 1.5 !important;
   background: transparent !important;
-}
-
-/* Right-column layout override — none for minimum */
-.tip-card.acceptable .tip-card-body,
-.tip-card.acceptable .tip-card-right {
-  display: contents !important;
 }
 
 .tip-card.acceptable .most-common-tag { display: none !important; }
