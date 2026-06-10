@@ -296,6 +296,9 @@ html, body { overflow-x: hidden }
 .results.show {
   display: block !important;
 }
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+input[type="number"]{-moz-appearance:textfield}
 </style>
 <script type="application/ld+json">
 {
@@ -482,7 +485,6 @@ html, body { overflow-x: hidden }
       <label>What color service did you receive?</label>
       <div class="pill-group" id="colorServiceGroup">
         <button class="pill" data-val="roottouch">Root touch-up / single process</button>
-        <button class="pill" data-val="rootmelt">Root melt / root smudge / shadow root</button>
         <button class="pill" data-val="babylights">Baby lights (ultra-fine highlights)</button>
         <button class="pill" data-val="partial_light">Light partial highlights</button>
         <button class="pill" data-val="partial_medium">Medium partial highlights</button>
@@ -491,7 +493,8 @@ html, body { overflow-x: hidden }
         <button class="pill" data-val="allover">All-over color change</button>
         <button class="pill" data-val="correction">Color correction</button>
         <button class="pill" data-val="fashion">Fashion / vivid / fashion color</button>
-        <button class="pill" data-val="toner">Gloss / toner only</button>
+      
+        <button class="pill" data-val="extensions">Color on extensions</button>
       </div>
     </div>
     <div class="section-label">Multiple Services? <span class="optional-label">(optional)</span></div>
@@ -533,7 +536,7 @@ html, body { overflow-x: hidden }
         </div>
         <span class="star-label" id="starLabel"></span>
       </div>
-      <p class="helper" id="colorStarNote" style="display:none;color:#8B7A00;background:#FFFBF0;border:1px solid #E8D88A;border-radius:6px;padding:8px 10px;font-size:12px;">Color correction often doesn't fully resolve in a single session — consider whether the result is a step in the right direction before rating very low.</p>
+      <p class="helper" id="colorStarNote" style="display:none;color:rgba(255,200,50,0.9);background:rgba(255,200,50,0.08);border:1px solid rgba(255,200,50,0.25);border-radius:6px;padding:8px 10px;font-size:12px;">Color correction often doesn't fully resolve in a single session — consider whether the result is a step in the right direction before rating very low.</p>
       <div class="error-msg" id="starError">Please rate your experience.</div>
     </div>
     <div class="section-label">Special Occasion? <span class="optional-label">(optional)</span></div>
@@ -560,7 +563,7 @@ html, body { overflow-x: hidden }
       
 <!-- GeoTipper Support Link -->
 <div style="margin:20px 0 8px;padding:14px 18px;background:rgba(74,222,128,0.06);border:1px solid rgba(74,222,128,0.2);border-radius:12px;text-align:center;">
-  <p style="font-size:12px;color:rgba(255,255,255,0.55);margin-bottom:6px;">Found GeoTipper helpful?</p>
+  <p style="font-size:12px;color:rgba(255,255,255,0.55);margin-bottom:6px;">Was GeoTipper.com helpful?</p>
   <a href="https://donate.stripe.com/bJedRa4Aefhvd9Dabc1RC05" target="_blank" rel="noopener" style="display:inline-block;background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.4);color:#4ade80;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;padding:8px 20px;border-radius:8px;text-decoration:none;">💚 Tip the tip calculator</a>
 </div>
 <div class="insight-wrap">
@@ -1053,7 +1056,7 @@ const correctionNote = isCorrectionService && selectedStars <= 3
 ? ' Color correction rarely resolves fully in one session — the suggestion reflects this.'
 : '';
 const svcNote = 'Calibrated for ' + (svcLabels[selectedColorService]||selectedColorService) + ' (' + selectedColorTime + '+ hour appointment) in this area.' + correctionNote + (multiNote||'');
-const _incomeEffect = _li>=100000?"+"+fmtIncome+" median income — well above average, higher tip norms":_li>=74000?"+"+fmtIncome+" median income — above the national average($74,580)":_li>=60000?"·"+fmtIncome+" median income — near the national average($74,580)":"-"+fmtIncome+" median income — below the national average, lower base rate";
+const _incomeEffect = _li>=100000?"+"+fmtIncome+" median income — well above average, higher tip norms":_li>=74000?"+"+fmtIncome+" median income — above the national average ($74,580)":_li>=60000?"·"+fmtIncome+" median income — near the national average ($74,580)":"-"+fmtIncome+" median income — below the national average, lower base rate";
 const _adjItems = [];
 _adjItems.push(_incomeEffect);
 const _starLabelsAdj = {1:'-1 star (Very disappointed) — minimum applied',2:'-2 stars (Below expectations) — tips reduced',3:'·3 stars (Satisfied) — standard suggestions',4:'+4 stars (Really pleased) — generous range shown',5:'+5 stars (Outstanding!) — top-end suggestions'};
@@ -1073,7 +1076,7 @@ const insight = document.getElementById("insightBox");
 insight.textContent = "";
 const strong = document.createElement("strong"); strong.textContent = selectedCity.c + ", " + selectedCity.s + ":";
 insight.appendChild(strong);
-insight.appendChild(document.createTextNode(" The local cost of living here(based on median household income) is " + fmtIncome + " — " + incomeDesc + ". " + svcNote + fallbackNote));
+insight.appendChild(document.createTextNode(" The local cost of living here (based on median household income) is " + fmtIncome + " — " + incomeDesc + ". " + svcNote + fallbackNote));
 const prevYearBox = document.getElementById("yearendBox");
 if (prevYearBox) prevYearBox.remove();
 if (yearendFlat > 0) {
@@ -1268,7 +1271,7 @@ const correctionNote = isCorrectionService && selectedStars <= 3
 ? ' Color correction rarely resolves fully in one session — the suggestion reflects this.'
 : '';
 const svcNote = 'Calibrated for ' + (svcLabels[selectedColorService]||selectedColorService) + ' (' + selectedColorTime + '+ hour appointment) in this area.' + correctionNote + (multiNote||'');
-const _incomeEffect = _li>=100000?"+"+fmtIncome+" median income — well above average, higher tip norms":_li>=74000?"+"+fmtIncome+" median income — above the national average($74,580)":_li>=60000?"·"+fmtIncome+" median income — near the national average($74,580)":"-"+fmtIncome+" median income — below the national average, lower base rate";
+const _incomeEffect = _li>=100000?"+"+fmtIncome+" median income — well above average, higher tip norms":_li>=74000?"+"+fmtIncome+" median income — above the national average ($74,580)":_li>=60000?"·"+fmtIncome+" median income — near the national average ($74,580)":"-"+fmtIncome+" median income — below the national average, lower base rate";
 const _adjItems = [];
 _adjItems.push(_incomeEffect);
 if (selectedBonuses["holiday"]!==undefined) _adjItems.push("+Holiday bonus (flat cash, shown separately)");
@@ -1279,7 +1282,7 @@ const insight = document.getElementById("insightBox");
 insight.textContent = "";
 const strong = document.createElement("strong"); strong.textContent = selectedCity.c + ", " + selectedCity.s + ":";
 insight.appendChild(strong);
-insight.appendChild(document.createTextNode(" The local cost of living here(based on median household income) is " + fmtIncome + " — " + incomeDesc + ". " + svcNote + fallbackNote));
+insight.appendChild(document.createTextNode(" The local cost of living here (based on median household income) is " + fmtIncome + " — " + incomeDesc + ". " + svcNote + fallbackNote));
 const prevYearBox = document.getElementById("yearendBox");
 if (prevYearBox) prevYearBox.remove();
 if (yearendFlat > 0) {

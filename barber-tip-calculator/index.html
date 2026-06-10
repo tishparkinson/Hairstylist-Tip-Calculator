@@ -294,6 +294,9 @@ html, body { overflow-x: hidden }
 .results.show {
   display: block !important;
 }
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+input[type="number"]{-moz-appearance:textfield}
 </style>
 <script type="application/ld+json">
 {
@@ -613,7 +616,7 @@ html, body { overflow-x: hidden }
       
 <!-- GeoTipper Support Link -->
 <div style="margin:20px 0 8px;padding:14px 18px;background:rgba(74,222,128,0.06);border:1px solid rgba(74,222,128,0.2);border-radius:12px;text-align:center;">
-  <p style="font-size:12px;color:rgba(255,255,255,0.55);margin-bottom:6px;">Found GeoTipper helpful?</p>
+  <p style="font-size:12px;color:rgba(255,255,255,0.55);margin-bottom:6px;">Was GeoTipper.com helpful?</p>
   <a href="https://donate.stripe.com/bJedRa4Aefhvd9Dabc1RC05" target="_blank" rel="noopener" style="display:inline-block;background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.4);color:#4ade80;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;padding:8px 20px;border-radius:8px;text-decoration:none;">💚 Tip the tip calculator</a>
 </div>
 <div class="insight-wrap">
@@ -876,7 +879,7 @@ const bonusLabels = {
 holiday: 'Holiday / Christmas bonus included',
 squeeze: 'Last-minute squeeze-in bonus included',
 outstanding: 'Truly Outstanding results bonus included',
-yearend: 'Year-end bonus(1 full service) included'
+yearend: 'Year-end bonus (1 full service) included'
 };
 function updateYearendLabel() {
 const price = parseFloat(document.getElementById('priceInput').value);
@@ -1106,9 +1109,9 @@ const fallbackNote = dataSource === 'national' ? ' (Using national average — l
 const _incomeEffect = _li >= 100000
 ? '+' + fmtIncome + ' median income — well above average, higher tip norms'
 : _li >= 74000
-? '+' + fmtIncome + ' median income — above the national average($74,580)'
+? '+' + fmtIncome + ' median income — above the national average ($74,580)'
 : _li >= 60000
-? '·' + fmtIncome + ' median income — near the national average($74,580)'
+? '·' + fmtIncome + ' median income — near the national average ($74,580)'
 : _li >= 50000
 ? '-' + fmtIncome + ' median income — below the national average, lower base rate'
 : '-' + fmtIncome + ' median income — significantly below average, _a5 down';
@@ -1132,13 +1135,13 @@ if (_c3 > 0) _adjItems.push('+Regular client — loyalty added');
 if (selectedBonuses['holiday'] !== undefined && selectedBonuses['holiday'] !== 'YEAREND') _adjItems.push('+Holiday bonus (flat cash, shown separately)');
 if (selectedBonuses['squeeze'] !== undefined && selectedBonuses['squeeze'] !== 'YEAREND') _adjItems.push('+Squeezed me in — +3%');
 if (selectedBonuses['outstanding'] !== undefined && selectedBonuses['outstanding'] !== 'YEAREND') _adjItems.push('+Truly Outstanding result (+20% bonus)');
-if (selectedBonuses['yearend'] === 'YEAREND') _adjItems.push('+Year-end bonus — ' + '$' + Math.round(price||0) + ' cash gift(1 full service)');
+if (selectedBonuses['yearend'] === 'YEAREND') _adjItems.push('+Year-end bonus — ' + '$' + Math.round(price||0) + ' cash gift (1 full service)');
 const insight = document.getElementById('insightBox');
 insight.textContent = '';
 const strong = document.createElement('strong'); strong.textContent = selectedCity.c + ', ' + selectedCity.s + ':';
 insight.appendChild(strong);
 insight.appendChild(document.createTextNode(
-' The local cost of living here(based on median household income) is ' + fmtIncome + ' — ' + incomeDesc +
+' The local cost of living here (based on median household income) is ' + fmtIncome + ' — ' + incomeDesc +
 '. Suggestions are calibrated to what feels appropriate for a ' + serviceLabel + ' in this area.' +
 bonusInsight + fallbackNote
 ));

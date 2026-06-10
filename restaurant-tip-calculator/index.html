@@ -296,6 +296,9 @@ html, body { overflow-x: hidden }
 .results.show {
   display: block !important;
 }
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+input[type="number"]{-moz-appearance:textfield}
 </style>
 <script type="application/ld+json">
 {
@@ -559,7 +562,7 @@ html, body { overflow-x: hidden }
       
 <!-- GeoTipper Support Link -->
 <div style="margin:20px 0 8px;padding:14px 18px;background:rgba(74,222,128,0.06);border:1px solid rgba(74,222,128,0.2);border-radius:12px;text-align:center;">
-  <p style="font-size:12px;color:rgba(255,255,255,0.55);margin-bottom:6px;">Found GeoTipper helpful?</p>
+  <p style="font-size:12px;color:rgba(255,255,255,0.55);margin-bottom:6px;">Was GeoTipper.com helpful?</p>
   <a href="https://donate.stripe.com/bJedRa4Aefhvd9Dabc1RC05" target="_blank" rel="noopener" style="display:inline-block;background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.4);color:#4ade80;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;padding:8px 20px;border-radius:8px;text-decoration:none;">💚 Tip the tip calculator</a>
 </div>
 <div class="insight-wrap">
@@ -941,9 +944,9 @@ if (selectedTableCirc.has('split_8plus')) _s2 += 0.04;
 if (selectedTableCirc.has('allergy')) _s2 += 0.02;
 if (selectedFoodQuality === 'great') _s2 += 0.02;
 if (selectedFoodQuality === 'poor') _s2 -= 0.03;
-if (selectedDetails.has('refills')) _s2 += 0.01;
-if (selectedDetails.has('accurate')) _s2 += 0.01;
-if (selectedDetails.has('fast')) _s2 += 0.005;
+if (selectedDetails.has('no_refills')) _s2 -= 0.02;
+if (selectedDetails.has('inaccurate')) _s2 -= 0.03;
+if (selectedDetails.has('too_slow')) _s2 -= 0.02;
 if (selectedDetails.has('special')) _s2 += 0.01;
 _s2 = Math.max(-0.04, Math.min(_s2, 0.05));
 const _c3 = 0;
@@ -1040,16 +1043,16 @@ const svcNote = ' Calibrated for a restaurant meal with ' + foodLabels[selectedF
 const _incomeEffect = _li >= 100000
 ? '+' + fmtIncome + ' median income — well above average, higher tip norms'
 : _li >= 74000
-? '+' + fmtIncome + ' median income — above the national average($74,580)'
+? '+' + fmtIncome + ' median income — above the national average ($74,580)'
 : _li >= 60000
-? '·' + fmtIncome + ' median income — near the national average($74,580)'
+? '·' + fmtIncome + ' median income — near the national average ($74,580)'
 : _li >= 50000
 ? '-' + fmtIncome + ' median income — below the national average, lower base rate'
 : '-' + fmtIncome + ' median income — significantly below average, _a5 down';
 const _adjItems = [];
 _adjItems.push(_incomeEffect);
 if (selectedBonuses['outstanding'] !== undefined && selectedBonuses['outstanding'] !== 'YEAREND') _adjItems.push('+Truly Outstanding result (+20% bonus)');
-if (selectedBonuses['yearend'] === 'YEAREND') _adjItems.push('+Year-end bonus — ' + '$' + Math.round(price||0) + ' cash gift(1 full service)');
+if (selectedBonuses['yearend'] === 'YEAREND') _adjItems.push('+Year-end bonus — ' + '$' + Math.round(price||0) + ' cash gift (1 full service)');
 if (selectedStars > 0) {
 const _starLabels = ['', 'Very disappointed', 'Below expectations', 'Acceptable', 'Good server', 'Outstanding service'];
 const _starEffects = {
@@ -1065,8 +1068,8 @@ if (_li > 90000) _adjItems.push('+High cost-of-living city');
 if (_li < 55000) _adjItems.push('-Lower income area');
 if (selectedFoodQuality === 'great') _adjItems.push('+Excellent food quality — +2%');
 if (selectedFoodQuality === 'poor') _adjItems.push('-Disappointing food quality — -3%');
-if (selectedDetails.has('refills')) _adjItems.push('+Proactive drink refills — +1%');
-if (selectedDetails.has('fast')) _adjItems.push('+Fast service — +0.5%');
+if (selectedDetails.has('no_refills')) _adjItems.push('-Drinks not refilled — -2%');
+if (selectedDetails.has('too_slow')) _adjItems.push('-Food came too slowly — -2%');
 if (selectedDetails.has('special')) _adjItems.push('+Handled special requests — +1%');
 if (selectedTableCirc.has('large_party')) _adjItems.push('+Large party(6–9) — +2%');
 if (selectedTableCirc.has('xlarge_party')) _adjItems.push('+Extra large party(10+) — +4%');
@@ -1081,7 +1084,7 @@ const insight = document.getElementById('insightBox');
 insight.textContent = '';
 const strong = document.createElement('strong'); strong.textContent = selectedCity.c + ', ' + selectedCity.s + ':';
 insight.appendChild(strong);
-insight.appendChild(document.createTextNode(' The local cost of living here(based on median household income) is ' + fmtIncome + ' — ' + incomeDesc + '. ' + svcNote + bonusInsight + fallbackNote));
+insight.appendChild(document.createTextNode(' The local cost of living here (based on median household income) is ' + fmtIncome + ' — ' + incomeDesc + '. ' + svcNote + bonusInsight + fallbackNote));
 const prevYearBox = document.getElementById('yearendBox');
 if (prevYearBox) prevYearBox.remove();
 if (yearendFlat > 0) {

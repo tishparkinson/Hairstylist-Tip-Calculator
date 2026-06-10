@@ -217,6 +217,9 @@ html,body{overflow-x:hidden}
 .results.show {
   display: block !important;
 }
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+input[type="number"]{-moz-appearance:textfield}
 </style>
 
 <style id="hamburger-nav">
@@ -427,7 +430,7 @@ html,body{overflow-x:hidden}
       
 <!-- GeoTipper Support Link -->
 <div style="margin:20px 0 8px;padding:14px 18px;background:rgba(74,222,128,0.06);border:1px solid rgba(74,222,128,0.2);border-radius:12px;text-align:center;">
-  <p style="font-size:12px;color:rgba(255,255,255,0.55);margin-bottom:6px;">Found GeoTipper helpful?</p>
+  <p style="font-size:12px;color:rgba(255,255,255,0.55);margin-bottom:6px;">Was GeoTipper.com helpful?</p>
   <a href="https://donate.stripe.com/bJedRa4Aefhvd9Dabc1RC05" target="_blank" rel="noopener" style="display:inline-block;background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.4);color:#4ade80;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;padding:8px 20px;border-radius:8px;text-decoration:none;">💚 Tip the tip calculator</a>
 </div>
 <div class="insight-box" id="insightBox"></div>
@@ -551,13 +554,6 @@ const _umi = 74580;
 let _cd = {};
 let dataReady = false;
 
-(async() => {
-  try {
-    const kr = await fetch('../counties.json');
-    if (kr.ok) _cd = await kr.json();
-  } catch (e) {}
-  dataReady = true;
-})();
 
 let selectedCity = null;
 let selectedType = 'charter';

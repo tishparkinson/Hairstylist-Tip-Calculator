@@ -296,6 +296,9 @@ html, body { overflow-x: hidden }
 .results.show {
   display: block !important;
 }
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+input[type="number"]{-moz-appearance:textfield}
 </style>
 <script type="application/ld+json">
 {
@@ -563,7 +566,7 @@ html, body { overflow-x: hidden }
       
 <!-- GeoTipper Support Link -->
 <div style="margin:20px 0 8px;padding:14px 18px;background:rgba(74,222,128,0.06);border:1px solid rgba(74,222,128,0.2);border-radius:12px;text-align:center;">
-  <p style="font-size:12px;color:rgba(255,255,255,0.55);margin-bottom:6px;">Found GeoTipper helpful?</p>
+  <p style="font-size:12px;color:rgba(255,255,255,0.55);margin-bottom:6px;">Was GeoTipper.com helpful?</p>
   <a href="https://donate.stripe.com/bJedRa4Aefhvd9Dabc1RC05" target="_blank" rel="noopener" style="display:inline-block;background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.4);color:#4ade80;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;padding:8px 20px;border-radius:8px;text-decoration:none;">💚 Tip the tip calculator</a>
 </div>
 <div class="insight-wrap">
@@ -962,7 +965,7 @@ _bt8 = _a5 - 0.02; _bs9 = _a5 + 0.01;
 _ac6 = Math.max(0.12, _a5 - 0.05); _g7 = _a5 - 0.02;
 _bt8 = _a5 + 0.02; _bs9 = _a5 + 0.05;
 } else {
-_ac6 = Math.max(0.12, _a5 - 0.04); _g7 = _a5;
+_ac6 = Math.max(0.12, _b0); _g7 = _a5;
 _bt8 = _a5 + 0.04; _bs9 = _a5 + 0.08;
 }
 // Minimum not inflated by situational bonuses
@@ -1042,9 +1045,9 @@ const svcNote = ' Calibrated for a ' + cleanLabels[selectedCleanType] + ' in thi
 const _incomeEffect = _li >= 100000
 ? '+' + fmtIncome + ' median income — well above average, higher tip norms'
 : _li >= 74000
-? '+' + fmtIncome + ' median income — above the national average($74,580)'
+? '+' + fmtIncome + ' median income — above the national average ($74,580)'
 : _li >= 60000
-? '·' + fmtIncome + ' median income — near the national average($74,580)'
+? '·' + fmtIncome + ' median income — near the national average ($74,580)'
 : _li >= 50000
 ? '-' + fmtIncome + ' median income — below the national average, lower base rate'
 : '-' + fmtIncome + ' median income — significantly below average, _a5 down';
@@ -1052,7 +1055,7 @@ const _adjItems = [];
 _adjItems.push(_incomeEffect);
 if (selectedBonuses['holiday'] !== undefined && selectedBonuses['holiday'] !== 'YEAREND') _adjItems.push('+Holiday bonus (flat cash, shown separately)');
 if (selectedBonuses['outstanding'] !== undefined && selectedBonuses['outstanding'] !== 'YEAREND') _adjItems.push('+Truly Outstanding result (+20% bonus)');
-if (selectedBonuses['yearend'] === 'YEAREND') _adjItems.push('+Year-end bonus — ' + '$' + Math.round(price||0) + ' cash gift(1 full service)');
+if (selectedBonuses['yearend'] === 'YEAREND') _adjItems.push('+Year-end bonus — ' + '$' + Math.round(price||0) + ' cash gift (1 full service)');
 if (selectedStars > 0) {
 const _starLabels = ['', 'Not happy', 'Below expectations', 'Satisfied', 'Really pleased', 'Outstanding clean'];
 const _starEffects = {
@@ -1080,7 +1083,7 @@ const insight = document.getElementById("insightBox");
 insight.textContent = "";
 const strong = document.createElement("strong"); strong.textContent = selectedCity.c + ", " + selectedCity.s + ":";
 insight.appendChild(strong);
-insight.appendChild(document.createTextNode(" The local cost of living here(based on median household income) is " + fmtIncome + " — " + incomeDesc + ". Calibrated for your clean type and city." + svcNote + bonusInsight + fallbackNote));
+insight.appendChild(document.createTextNode(" The local cost of living here (based on median household income) is " + fmtIncome + " — " + incomeDesc + ". Calibrated for your clean type and city." + svcNote + bonusInsight + fallbackNote));
 const prevYearBox = document.getElementById("yearendBox");
 if (prevYearBox) prevYearBox.remove();
 if (yearendFlat > 0) {

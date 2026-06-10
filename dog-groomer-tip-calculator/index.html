@@ -296,6 +296,9 @@ html, body { overflow-x: hidden }
 .results.show {
   display: block !important;
 }
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+input[type="number"]{-moz-appearance:textfield}
 </style>
 <script type="application/ld+json">
 {
@@ -526,7 +529,6 @@ html, body { overflow-x: hidden }
       <label>Select anything that applies.</label>
       <div class="bonus-grid" id="dogDetailsGroup">
         <button class="bonus-btn" data-dg="difficult" type="button"><span class="bonus-icon">😤</span><span>Dog was difficult<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Anxious or hard to handle</small></span></button>
-        <button class="bonus-btn" data-dg="complex_coat" type="button"><span class="bonus-icon">✂️</span><span>Complex coat / breed cut<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Doodle, poodle, etc.</small></span></button>
         <button class="bonus-btn" data-dg="full_service" type="button"><span class="bonus-icon">🛁</span><span>Full service (bath + cut + nails)<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Complete groom</small></span></button>
       </div>
     </div>
@@ -568,7 +570,7 @@ html, body { overflow-x: hidden }
       
 <!-- GeoTipper Support Link -->
 <div style="margin:20px 0 8px;padding:14px 18px;background:rgba(74,222,128,0.06);border:1px solid rgba(74,222,128,0.2);border-radius:12px;text-align:center;">
-  <p style="font-size:12px;color:rgba(255,255,255,0.55);margin-bottom:6px;">Found GeoTipper helpful?</p>
+  <p style="font-size:12px;color:rgba(255,255,255,0.55);margin-bottom:6px;">Was GeoTipper.com helpful?</p>
   <a href="https://donate.stripe.com/bJedRa4Aefhvd9Dabc1RC05" target="_blank" rel="noopener" style="display:inline-block;background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.4);color:#4ade80;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;padding:8px 20px;border-radius:8px;text-decoration:none;">💚 Tip the tip calculator</a>
 </div>
 <div class="insight-wrap">
@@ -883,7 +885,7 @@ if (_coatTypeGroup) _coatTypeGroup.querySelectorAll('.pill').forEach(btn => {
 btn.addEventListener('click', () => {
 _coatTypeGroup.querySelectorAll('.pill').forEach(b => b.classList.remove('selected'));
 btn.classList.add('selected'); selectedDogCoat = btn.dataset.val;
-if (selectedDogCoat === 'difficult') { if (!selectedDogDetails.has('complex_coat')) { selectedDogDetails.add('complex_coat'); const cb = document.querySelector('#dogDetailsGroup [data-dg="complex_coat"]'); if (cb) cb.classList.add('active'); } } else { selectedDogDetails.delete('complex_coat'); const cb = document.querySelector('#dogDetailsGroup [data-dg="complex_coat"]'); if (cb) cb.classList.remove('active'); }
+// auto-select complex removed:  } else { selectedDogDetails.delete('complex_coat'); const cb = document.querySelector('#dogDetailsGroup [data-dg="complex_coat"]'); if (cb) cb.classList.remove('active'); }
 });
 });
 const _dogDet = document.getElementById('dogDetailsGroup');
@@ -960,7 +962,7 @@ if (selectedGroomerType === 'selfemployed') _s2 += 0.02;
 if (selectedDogSize === 'large') _s2 += 0.02;
 if (selectedDogSize === 'xlarge') _s2 += 0.03;
 if (selectedDogDetails.has('difficult')) _s2 += 0.03;
-if (selectedDogDetails.has('complex_coat')) _s2 += 0.02;
+
 if (selectedDogDetails.has('full_service')) _s2 += 0.01;
 _s2 = Math.min(_s2, 0.08);
 const _c3 = (typeof selectedClient !== "undefined" && selectedClient === "regular") ? 0.015 : 0;
@@ -975,7 +977,7 @@ _ac6 = u; _g7 = Math.max(u+0.03, _a5-0.06); _bt8 = _a5-0.02; _bs9 = _a5+0.01;
 } else if (selectedStars === 3) {
 _ac6 = Math.max(0.12, _a5-0.05); _g7 = _a5-0.02; _bt8 = _a5+0.02; _bs9 = _a5+0.05;
 } else {
-_ac6 = Math.max(0.12, _a5-0.04); _g7 = _a5; _bt8 = _a5+0.04; _bs9 = _a5+0.08;
+_ac6 = Math.max(0.12, _b0); _g7 = _a5; _bt8 = _a5+0.04; _bs9 = _a5+0.08;
 }
 // Minimum not inflated by situational bonuses
 _g7 += _p4; _bt8 += _p4; _bs9 += _p4;
@@ -1044,17 +1046,17 @@ const incomeDesc = _li>=100000?"high":_li>=74000?"above the national average":_l
 const fallbackNote = dataSource==="national"?" (Using national average — local data unavailable.)":"";
 const typeLabels = {salon:'private grooming salon',petsmart:'PetSmart',petco:'Petco Grooming',mobile:'mobile/at-home groomer',selfemployed:'independent groomer',vet:'veterinary office'};
 const svcNote = 'Calibrated for a ' + typeLabels[selectedGroomerType] + ' groom in this area.';
-const _incomeEffect = _li>=100000?"+"+fmtIncome+" median income — well above average, higher tip norms":_li>=74000?"+"+fmtIncome+" median income — above the national average($74,580)":_li>=60000?"·"+fmtIncome+" median income — near the national average($74,580)":"-"+fmtIncome+" median income — below the national average, lower base rate";
+const _incomeEffect = _li>=100000?"+"+fmtIncome+" median income — well above average, higher tip norms":_li>=74000?"+"+fmtIncome+" median income — above the national average ($74,580)":_li>=60000?"·"+fmtIncome+" median income — near the national average ($74,580)":"-"+fmtIncome+" median income — below the national average, lower base rate";
 const _starEffects = {1:'-1 star(Very disappointed) — minimum applied',2:'-2 stars(Below expectations) — tips reduced',3:'·3 stars(Satisfied) — standard suggestions',4:'+4 stars(Really pleased) — generous range shown',5:'+5 stars(Outstanding!) — top-end suggestions'};
 const _adjItems = [];
 _adjItems.push(_incomeEffect);
 _adjItems.push(_starEffects[selectedStars] || ('·'+selectedStars+' stars'));
 if (selectedGroomerType==='mobile') _adjItems.push('+Mobile / at-home groomer — +3% (travel overhead)');
 if (selectedGroomerType==='selfemployed') _adjItems.push('+Self-employed / independent groomer — +2%');
-if (selectedDogSize==='large') _adjItems.push('+Large dog(50–80 lbs) — +2% (more effort)');
+if (selectedDogSize==='large') _adjItems.push('+Large dog(50–80 lbs) — +2%  (more effort)');
 if (selectedDogSize==='xlarge') _adjItems.push('+Extra large dog(80+ lbs) — +3% (significantly more effort)');
 if (selectedDogDetails.has('difficult')) _adjItems.push('+Anxious or difficult dog — +3%');
-if (selectedDogDetails.has('complex_coat')) _adjItems.push('+Complex coat / breed cut(doodle, poodle, etc.) — +2%');
+
 if (selectedDogDetails.has('full_service')) _adjItems.push('+Full service(bath + cut + nails) — +1%');
 if (typeof selectedClient !== "undefined" && selectedClient === "regular") _adjItems.push('+Regular client — loyalty bonus added');
 if (selectedBonuses["holiday"]!==undefined) _adjItems.push("+Holiday bonus (flat cash, shown separately)");
@@ -1064,7 +1066,7 @@ const insight = document.getElementById("insightBox");
 insight.textContent = "";
 const strong = document.createElement("strong"); strong.textContent = selectedCity.c + ", " + selectedCity.s + ":";
 insight.appendChild(strong);
-insight.appendChild(document.createTextNode(" The local cost of living here(based on median household income) is " + fmtIncome + " — " + incomeDesc + ". " + svcNote + fallbackNote));
+insight.appendChild(document.createTextNode(" The local cost of living here (based on median household income) is " + fmtIncome + " — " + incomeDesc + ". " + svcNote + fallbackNote));
 const prevYearBox = document.getElementById("yearendBox");
 if (prevYearBox) prevYearBox.remove();
 if (yearendFlat > 0) {

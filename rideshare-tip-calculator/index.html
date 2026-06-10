@@ -296,6 +296,9 @@ html, body { overflow-x: hidden }
 .results.show {
   display: block !important;
 }
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+input[type="number"]{-moz-appearance:textfield}
 </style>
 <script type="application/ld+json">
 {
@@ -491,11 +494,7 @@ html, body { overflow-x: hidden }
       <label>What kind of trip was this?</label>
       <div class="pill-group" id="rideTripGroup">
         <button class="pill selected" data-val="standard">Standard rideshare</button>
-        <button class="pill" data-val="veryshort">Very short trip (&lt;5 min)</button>
-        <button class="pill" data-val="short">Short trip (5–15 min)</button>
-        <button class="pill" data-val="medium">Medium trip (15–30 min)</button>
-        <button class="pill" data-val="airport">Rideshare to/from airport</button>
-        <button class="pill" data-val="long">Long trip (30+ min)</button>
+        <button class="pill" data-val="airport">Airport trip</button>
         <button class="pill" data-val="limo">Limo / Black car</button>
         <button class="pill" data-val="shuttle">Private shuttle</button>
         <button class="pill" data-val="hotel_shuttle">Hotel shuttle</button>
@@ -521,10 +520,10 @@ html, body { overflow-x: hidden }
     <div class="field">
       <label>Select anything that applies.</label>
       <div class="bonus-grid" id="rideDetailsGroup">
-        <button class="bonus-btn" data-rd="clean" type="button"><span class="bonus-icon">✨</span><span>Very clean car<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Spotless interior</small></span></button>
-        <button class="bonus-btn" data-rd="amenities" type="button"><span class="bonus-icon">🎁</span><span>Offered amenities<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Water, charger, etc.</small></span></button>
-        <button class="bonus-btn" data-rd="ontime" type="button"><span class="bonus-icon">⏱️</span><span>On time / no waiting<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Arrived promptly</small></span></button>
-        <button class="bonus-btn" data-rd="smooth" type="button"><span class="bonus-icon">🛣️</span><span>Very smooth ride<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Safe, steady driving</small></span></button>
+        <button class="bonus-btn" data-rd="dirty_car" type="button"><span class="bonus-icon">🚗</span><span>Dirty / smelly car<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Unclean or unpleasant interior</small></span></button>
+        <button class="bonus-btn" data-rd="amenities" type="button"><span class="bonus-icon">🎁</span><span>Offered amenities<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Water, charger, mints, etc.</small></span></button>
+        <button class="bonus-btn" data-rd="arrived_late" type="button"><span class="bonus-icon">⏰</span><span>Arrived late<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Significant wait beyond ETA</small></span></button>
+        <button class="bonus-btn" data-rd="rough_ride" type="button"><span class="bonus-icon">⚠️</span><span>Rough / unsafe driving<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Unsteady, aggressive, or unsafe</small></span></button>
       </div>
     </div>
     <div class="section-label">Extra? <span class="optional-label">(optional)</span></div>
@@ -548,7 +547,7 @@ html, body { overflow-x: hidden }
       
 <!-- GeoTipper Support Link -->
 <div style="margin:20px 0 8px;padding:14px 18px;background:rgba(74,222,128,0.06);border:1px solid rgba(74,222,128,0.2);border-radius:12px;text-align:center;">
-  <p style="font-size:12px;color:rgba(255,255,255,0.55);margin-bottom:6px;">Found GeoTipper helpful?</p>
+  <p style="font-size:12px;color:rgba(255,255,255,0.55);margin-bottom:6px;">Was GeoTipper.com helpful?</p>
   <a href="https://donate.stripe.com/bJedRa4Aefhvd9Dabc1RC05" target="_blank" rel="noopener" style="display:inline-block;background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.4);color:#4ade80;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;padding:8px 20px;border-radius:8px;text-decoration:none;">💚 Tip the tip calculator</a>
 </div>
 <div class="insight-wrap">
@@ -898,19 +897,15 @@ const dataSource = (_cd && fips && _cd[fips]) ? 'local' : 'national';
 const _i1 = (_li - 40000) / (120000 - 40000);
 const _b0 = Math.max(0.13, Math.min(0.27, 0.15 + _i1 * 0.10));
 let _s2 = 0;
-if (selectedRideTrip === 'veryshort') _s2 += 0.04;
-if (selectedRideTrip === 'short') _s2 += 0.02;
-if (selectedRideTrip === 'medium') _s2 += 0.01;
 if (selectedRideTrip === 'airport') _s2 += 0.01; // airport is standard, small bonus
-if (selectedRideTrip === 'long') _s2 += 0.02;
 if (selectedRideTrip === 'limo') _s2 += 0.05;
 if (selectedRideTrip === 'shuttle') _s2 += 0.03;
 if (selectedRideTrip === 'hotel_shuttle') _s2 += 0.02;
 if (selectedRideTrip === 'lost_item') _s2 += 0.10;
-// clean car = expected baseline, reflected in star rating not tip modifier
+if (selectedRideDetails.has('dirty_car')) _s2 -= 0.04;
 if (selectedRideDetails.has('amenities')) _s2 += 0.02;
-// on time = expected baseline, reflected in star rating not tip modifier
-// smooth ride = expected baseline, reflected in star rating not tip modifier
+if (selectedRideDetails.has('arrived_late')) _s2 -= 0.03;
+if (selectedRideDetails.has('rough_ride')) _s2 -= 0.05;
 _s2 = Math.min(_s2, 0.14);
 const _c3 = (typeof selectedClient !== "undefined" && selectedClient === "regular") ? 0.015 : 0;
 const _a5 = _b0 + _s2 + _c3;
@@ -1008,16 +1003,16 @@ const svcNote = ' Calibrated for a ' + tripLabels[selectedRideTrip] + ' in this 
 const _incomeEffect = _li >= 100000
 ? '+' + fmtIncome + ' median income — well above average, higher tip norms'
 : _li >= 74000
-? '+' + fmtIncome + ' median income — above the national average($74,580)'
+? '+' + fmtIncome + ' median income — above the national average ($74,580)'
 : _li >= 60000
-? '·' + fmtIncome + ' median income — near the national average($74,580)'
+? '·' + fmtIncome + ' median income — near the national average ($74,580)'
 : _li >= 50000
 ? '-' + fmtIncome + ' median income — below the national average, lower base rate'
 : '-' + fmtIncome + ' median income — significantly below average, _a5 down';
 const _adjItems = [];
 _adjItems.push(_incomeEffect);
 if (selectedBonuses['outstanding'] !== undefined && selectedBonuses['outstanding'] !== 'YEAREND') _adjItems.push('+Truly Outstanding result (+20% bonus)');
-if (selectedBonuses['yearend'] === 'YEAREND') _adjItems.push('+Year-end bonus — ' + '$' + Math.round(price||0) + ' cash gift(1 full service)');
+if (selectedBonuses['yearend'] === 'YEAREND') _adjItems.push('+Year-end bonus — ' + '$' + Math.round(price||0) + ' cash gift (1 full service)');
 if (selectedStars > 0) {
 const _starLabels = ['', 'Poor driver', 'Below average', 'Acceptable ride', 'Good driver', 'Excellent driver'];
 const _starEffects = {
@@ -1031,21 +1026,20 @@ _adjItems.push(_starEffects[selectedStars] || ('·' + selectedStars + ' stars'))
 }
 if (_li > 90000) _adjItems.push('+High cost-of-living city');
 if (selectedRideTrip === 'airport') _adjItems.push('+Airport trip — small bonus applied');
-if (selectedRideTrip === 'long') _adjItems.push('+Long trip — +2%');
-if (selectedRideTrip === 'veryshort') _adjItems.push('+Very short trip — higher % appropriate');
+// removed: if (selectedRideTrip === 'long') _adjItems.push('+Long trip — +2%');
 if (selectedRideTrip === 'limo') _adjItems.push('+Limo/black car — +5%');
 if (selectedRideTrip === 'shuttle') _adjItems.push('+Private shuttle — +3%');
 if (selectedRideTrip === 'lost_item') _adjItems.push('+Returned lost item — major bonus applied');
-if (selectedRideDetails.has('clean')) _adjItems.push('·Very clean car — reflected in your star rating');
+if (selectedRideDetails.has('dirty_car')) _adjItems.push('-Dirty or smelly car — -4%');
 if (selectedRideDetails.has('amenities')) _adjItems.push('+Offered amenities — +2%');
-if (selectedRideDetails.has('ontime')) _adjItems.push('·On time — reflected in your star rating');
-if (selectedRideDetails.has('smooth')) _adjItems.push('·Smooth ride — reflected in your star rating');
+if (selectedRideDetails.has('arrived_late')) _adjItems.push('-Driver arrived late — -3%');
+if (selectedRideDetails.has('rough_ride')) _adjItems.push('-Rough or unsafe driving — -5%');
 if (selectedStars <= 2) _adjItems.push('-Low rating — minimum applied');
 const insight = document.getElementById("insightBox");
 insight.textContent = "";
 const strong = document.createElement("strong"); strong.textContent = selectedCity.c + ", " + selectedCity.s + ":";
 insight.appendChild(strong);
-insight.appendChild(document.createTextNode(" The local cost of living here(based on median household income) is " + fmtIncome + " — " + incomeDesc + ". Calibrated for your ride type and city." + svcNote + bonusInsight + fallbackNote));
+insight.appendChild(document.createTextNode(" The local cost of living here (based on median household income) is " + fmtIncome + " — " + incomeDesc + ". Calibrated for your ride type and city." + svcNote + bonusInsight + fallbackNote));
 const prevYearBox = document.getElementById("yearendBox");
 if (prevYearBox) prevYearBox.remove();
 if (yearendFlat > 0) {

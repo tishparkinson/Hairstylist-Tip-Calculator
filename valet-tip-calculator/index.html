@@ -296,6 +296,9 @@ html, body { overflow-x: hidden }
 .results.show {
   display: block !important;
 }
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+input[type="number"]{-moz-appearance:textfield}
 </style>
 <script type="application/ld+json">
 {
@@ -485,7 +488,7 @@ html, body { overflow-x: hidden }
         <button class="pill" data-val="other">Other</button>
       </div>
     </div>
-    <div class="section-label">Wait Time <span class="optional-label">(optional)</span></div>
+    <div class="section-label">Wait Time <span class="optional-label"> (reflects service quality)</span></div>
     <div class="field">
       <label>How long did you wait for your car?</label>
       <div class="pill-group" id="waitGroup">
@@ -529,7 +532,7 @@ html, body { overflow-x: hidden }
       
 <!-- GeoTipper Support Link -->
 <div style="margin:20px 0 8px;padding:14px 18px;background:rgba(74,222,128,0.06);border:1px solid rgba(74,222,128,0.2);border-radius:12px;text-align:center;">
-  <p style="font-size:12px;color:rgba(255,255,255,0.55);margin-bottom:6px;">Found GeoTipper helpful?</p>
+  <p style="font-size:12px;color:rgba(255,255,255,0.55);margin-bottom:6px;">Was GeoTipper.com helpful?</p>
   <a href="https://donate.stripe.com/bJedRa4Aefhvd9Dabc1RC05" target="_blank" rel="noopener" style="display:inline-block;background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.4);color:#4ade80;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;padding:8px 20px;border-radius:8px;text-decoration:none;">💚 Tip the tip calculator</a>
 </div>
 <div class="insight-wrap">
@@ -923,41 +926,44 @@ const fallbackNote = dataSource === 'national' ? ' (Using national average — l
 const _incomeEffect = _li >= 100000
 ? '+' + fmtIncome + ' median income — well above average, higher tip norms'
 : _li >= 74000
-? '+' + fmtIncome + ' median income — above the national average($74,580)'
+? '+' + fmtIncome + ' median income — above the national average ($74,580)'
 : _li >= 60000
-? '·' + fmtIncome + ' median income — near the national average($74,580)'
+? '·' + fmtIncome + ' median income — near the national average ($74,580)'
 : _li >= 50000
 ? '-' + fmtIncome + ' median income — below the national average, lower base rate'
 : '-' + fmtIncome + ' median income — significantly below average, _a5 down';
 const _adjItems = [];
 _adjItems.push(_incomeEffect);
-if (selectedBonuses['yearend'] === 'YEAREND') _adjItems.push('+Year-end bonus — ' + '$' + Math.round(price||0) + ' cash gift(1 full service)');
+if (selectedBonuses['yearend'] === 'YEAREND') _adjItems.push('+Year-end bonus — ' + '$' + Math.round(price||0) + ' cash gift (1 full service)');
 if (selectedStars > 0) {
 const _starLabels = ['', 'Poor', 'Below expectations', 'Adequate', 'Good', 'Excellent'];
 const _starEffects = {
-1: '-1 star(Poor) — minimum floor applied, suggestions at low end',
-2: '-2 stars(Below expectations) — below average, suggestions reduced',
-3: '·3 stars(Adequate) — standard suggestions',
-4: '+4 stars(Good) — good rating, generous range shown',
-5: '+5 stars(Excellent) — top rating, full generous range'
+1: '-1 star (Poor) — minimum floor applied, suggestions at low end',
+2: '-2 stars (Below expectations) — below average, suggestions reduced',
+3: '·3 stars (Adequate) — standard suggestions',
+4: '+4 stars (Good) — good rating, generous range shown',
+5: '+5 stars (Excellent) — top rating, full generous range'
 };
 _adjItems.push(_starEffects[selectedStars] || ('·' + selectedStars + ' stars'));
 }
 if (_li > 90000) _adjItems.push('+High cost-of-living city');
-if (selectedVenue === 'luxury') _adjItems.push('+Upscale fine dining — higher base');
+if (selectedVenue === 'luxury') _adjItems.push('+Upscale venue — higher base');
+if (selectedVenue === 'restaurant') _adjItems.push('·Restaurant valet — standard rate');
 if (selectedVenue === 'hotel') _adjItems.push('+Hotel valet');
 if (selectedVenue === 'hospital') _adjItems.push('-Hospital — lower standard expected');
 if (selectedWait === 'fast') _adjItems.push('+Fast retrieval — +10%');
+if (selectedWait === 'normal') _adjItems.push('·Normal wait time — standard rate');
 if (selectedWait === 'slow') _adjItems.push('-Slow retrieval — -15%');
 if (selectedWait === 'very_slow') _adjItems.push('-Very long wait — -30%');
-if (selectedValetQual === 'great') _adjItems.push('+Excellent service');
-if (selectedValetQual === 'poor') _adjItems.push('-Poor service');
+if (selectedValetQual === 'great') _adjItems.push('+Excellent service — +15%');
+if (selectedValetQual === 'good') _adjItems.push('·Good service — standard range');
+if (selectedValetQual === 'poor') _adjItems.push('-Poor service — reduced');
 if (selectedValetWhen === 'both') _adjItems.push('+Tipping both drop-off and pick-up — doubled');
 const insight = document.getElementById('insightBox');
 insight.textContent = '';
 const strong = document.createElement('strong'); strong.textContent = selectedCity.c + ', ' + selectedCity.s + ':';
 insight.appendChild(strong);
-insight.appendChild(document.createTextNode(' The local cost of living here(based on median household income) is ' + fmtIncome + ' — ' + incomeDesc + '. Tip _a5 for venue type, wait time, and local income norms.' + svcNote + fallbackNote));
+insight.appendChild(document.createTextNode(' The local cost of living here (based on median household income) is ' + fmtIncome + ' — ' + incomeDesc + '. Tip _a5 for venue type, wait time, and local income norms.' + svcNote + fallbackNote));
 const prevBD = document.getElementById('adjBreakdown');
 if (prevBD) prevBD.remove();
 if (_adjItems.length) {

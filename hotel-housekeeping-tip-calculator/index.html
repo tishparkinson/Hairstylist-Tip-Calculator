@@ -296,6 +296,9 @@ html, body { overflow-x: hidden }
 .results.show {
   display: block !important;
 }
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+input[type="number"]{-moz-appearance:textfield}
 </style>
 <script type="application/ld+json">
 {
@@ -492,7 +495,7 @@ html, body { overflow-x: hidden }
         <button class="pill" data-val="allinclusive">All-Inclusive</button>
       </div>
     </div>
-    <div class="section-label">Room Type <span class="optional-label">(optional)</span></div>
+    <div id="roomTypeSection"><div class="section-label">Room Type <span class="optional-label">(optional)</span></div>
     <div class="field">
       <label>What type of room or suite?</label>
       <div class="pill-group" id="roomGroup">
@@ -500,6 +503,7 @@ html, body { overflow-x: hidden }
         <button class="pill" data-val="suite">Suite / Junior Suite</button>
         <button class="pill" data-val="villa">Villa or Separate Unit</button>
       </div>
+    </div>
     </div>
     <div class="section-label">Stay Duration</div>
     <div class="field">
@@ -547,7 +551,7 @@ html, body { overflow-x: hidden }
       
 <!-- GeoTipper Support Link -->
 <div style="margin:20px 0 8px;padding:14px 18px;background:rgba(74,222,128,0.06);border:1px solid rgba(74,222,128,0.2);border-radius:12px;text-align:center;">
-  <p style="font-size:12px;color:rgba(255,255,255,0.55);margin-bottom:6px;">Found GeoTipper helpful?</p>
+  <p style="font-size:12px;color:rgba(255,255,255,0.55);margin-bottom:6px;">Was GeoTipper.com helpful?</p>
   <a href="https://donate.stripe.com/bJedRa4Aefhvd9Dabc1RC05" target="_blank" rel="noopener" style="display:inline-block;background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.4);color:#4ade80;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;padding:8px 20px;border-radius:8px;text-decoration:none;">💚 Tip the tip calculator</a>
 </div>
 <div class="insight-wrap">
@@ -919,14 +923,14 @@ perNight = Math.max(1, perNight);
 const totalBase = perNight * selectedNights;
 const isAirbnb = ['airbnb','cabin'].includes(selectedProp);
 const flatCards = isAirbnb ? [
-{cls:'good', label:'Optional', tipAmt:totalBase * 0.8, desc:'Tipping is optional at Airbnbs but appreciated for exceptional cleanliness.', isAcceptable:false},
-{cls:'better', label:"Generous (above standard)", tipAmt:totalBase, desc:'A thoughtful gesture for a well-prepared property.', isAcceptable:false},
-{cls:'best', label:'Very Generous', tipAmt:totalBase*1.3, desc:'For outstanding cleanliness and preparation.', isAcceptable:false},
-{cls:'minimum', label:'Skip Tip', tipAmt:0, desc:"Tipping isn't standard at Airbnbs — it's a personal choice.", isAcceptable:true},
+{cls:'good', label:'Good (Optional)', tipAmt:totalBase * 0.8, desc:'Tipping is optional at Airbnbs but appreciated for exceptional cleanliness.', isAcceptable:false},
+{cls:'better', label:"Better", tipAmt:totalBase, desc:'A thoughtful gesture for a well-prepared property.', isAcceptable:false},
+{cls:'best', label:'Best', tipAmt:totalBase*1.3, desc:'For outstanding cleanliness and preparation.', isAcceptable:false},
+{cls:'minimum', label:'Minimum', tipAmt:0, desc:"Tipping isn't standard at Airbnbs — it's a personal choice.", isAcceptable:true},
 ] : [
-{cls:'good', label:'Standard', tipAmt:perNight, desc:'Per night — the widely accepted US norm.', isAcceptable:false},
-{cls:'better', label:"Generous (above standard)", tipAmt:perNight * 1.4, desc:'Above standard — appreciated for quality service.', isAcceptable:false},
-{cls:'best', label:'Best (Per Night)', tipAmt:perNight * 1.5, desc:'Leave this each day for exceptional service — staff can vary, so daily is always better.', isAcceptable:false},
+{cls:'good', label:'Good', tipAmt:perNight, desc:'Per night — the widely accepted US norm.', isAcceptable:false},
+{cls:'better', label:"Better", tipAmt:perNight * 1.4, desc:'Above standard — appreciated for quality service.', isAcceptable:false},
+{cls:'best', label:'Best', tipAmt:perNight * 1.5, desc:'Leave this each day for exceptional service — staff can vary, so daily is always better.', isAcceptable:false},
 {cls:'minimum', label:'Minimum', tipAmt:Math.max(1, perNight * 0.6), desc:'Below average — only if service was disappointing.', isAcceptable:true},
 ];
 const propLabels = {hotel:'hotel',motel:'motel',luxury:'luxury hotel',resort:'resort',extended:'extended stay',airbnb:'Airbnb',cabin:'cabin rental',allinclusive:'all-inclusive resort'};
@@ -962,15 +966,15 @@ const fallbackNote = dataSource === 'national' ? ' (Using national average — l
 const _incomeEffect = _li >= 100000
 ? '+' + fmtIncome + ' median income — well above average, higher tip norms'
 : _li >= 74000
-? '+' + fmtIncome + ' median income — above the national average($74,580)'
+? '+' + fmtIncome + ' median income — above the national average ($74,580)'
 : _li >= 60000
-? '·' + fmtIncome + ' median income — near the national average($74,580)'
+? '·' + fmtIncome + ' median income — near the national average ($74,580)'
 : _li >= 50000
 ? '-' + fmtIncome + ' median income — below the national average, lower base rate'
 : '-' + fmtIncome + ' median income — significantly below average, _a5 down';
 const _adjItems = [];
 _adjItems.push(_incomeEffect);
-if (selectedBonuses['yearend'] === 'YEAREND') _adjItems.push('+Year-end bonus — ' + '$' + Math.round(price||0) + ' cash gift(1 full service)');
+if (selectedBonuses['yearend'] === 'YEAREND') _adjItems.push('+Year-end bonus — ' + '$' + Math.round(price||0) + ' cash gift (1 full service)');
 if (selectedStars > 0) {
 const _starLabels = ['', 'Poor', 'Below expectations', 'Adequate', 'Good service', 'Excellent service'];
 const _starEffects = {
@@ -996,7 +1000,7 @@ const insight = document.getElementById('insightBox');
 insight.textContent = '';
 const strong = document.createElement('strong'); strong.textContent = selectedCity.c + ', ' + selectedCity.s + ':';
 insight.appendChild(strong);
-insight.appendChild(document.createTextNode(' The local cost of living here(based on median household income) is ' + fmtIncome + ' — ' + incomeDesc + '. Tip suggestions _a5 for your property type, room, and stay length.' + svcNote + fallbackNote));
+insight.appendChild(document.createTextNode(' The local cost of living here (based on median household income) is ' + fmtIncome + ' — ' + incomeDesc + '. Tip suggestions _a5 for your property type, room, and stay length.' + svcNote + fallbackNote));
 const prevBD = document.getElementById('adjBreakdown');
 if (prevBD) prevBD.remove();
 if (_adjItems.length) {
@@ -1349,5 +1353,20 @@ document.querySelectorAll('#cityInput, .city-input').forEach(function (inp){
   });
 })();
 </script>
+<script>
+// Hide room type question for airbnb/cabin
+const _propGroup = document.getElementById('propTypeGroup');
+const _roomTypeSection = document.querySelector('.section-label ~ .field #roomTypeGroup');
+if (_propGroup) {
+  const _rtSection = document.getElementById('roomTypeSection');
+  function _updateRoomTypeVisibility() {
+    const isVacationRental = ['airbnb','cabin'].includes(selectedProp);
+    if (_rtSection) _rtSection.style.display = isVacationRental ? 'none' : '';
+  }
+  _propGroup.querySelectorAll('.pill').forEach(btn => {
+    btn.addEventListener('click', () => setTimeout(_updateRoomTypeVisibility, 50));
+  });
+  _updateRoomTypeVisibility();
+}</script>
 </body>
 </html>

@@ -296,6 +296,9 @@ html, body { overflow-x: hidden }
 .results.show {
   display: block !important;
 }
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+input[type="number"]{-moz-appearance:textfield}
 </style>
 <script type="application/ld+json">
 {
@@ -548,7 +551,7 @@ html, body { overflow-x: hidden }
       
 <!-- GeoTipper Support Link -->
 <div style="margin:20px 0 8px;padding:14px 18px;background:rgba(74,222,128,0.06);border:1px solid rgba(74,222,128,0.2);border-radius:12px;text-align:center;">
-  <p style="font-size:12px;color:rgba(255,255,255,0.55);margin-bottom:6px;">Found GeoTipper helpful?</p>
+  <p style="font-size:12px;color:rgba(255,255,255,0.55);margin-bottom:6px;">Was GeoTipper.com helpful?</p>
   <a href="https://donate.stripe.com/bJedRa4Aefhvd9Dabc1RC05" target="_blank" rel="noopener" style="display:inline-block;background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.4);color:#4ade80;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;padding:8px 20px;border-radius:8px;text-decoration:none;">💚 Tip the tip calculator</a>
 </div>
 <div class="insight-wrap">
@@ -955,9 +958,9 @@ const prevBar = grid.parentNode.querySelector(".bonus-bar");
 if (prevBar) prevBar.remove();
 const typeLabels = {standard:"curbside/door delivery",room:"room-of-choice delivery",whiteglove:"white glove delivery",assembly:"delivery + assembly",removal:"delivery + haul-away"};
 const cards = [
-{cls:"good", label:"Per Delivery Person", tipAmt:perPerson, desc:"Give this to each delivery person individually.", isAcceptable:false},
-{cls:"better", label:"Generous(Per Person)", tipAmt:Math.round(perPerson*1.4), desc:"Above standard for an excellent crew.", isAcceptable:false},
-{cls:"best", label:"Total Crew(" + selectedDeliveryCrew + " people)", tipAmt:totalTip, desc:selectedDeliveryCrew + " people × $" + perPerson + ". Tip each person separately in cash.", isAcceptable:false},
+{cls:"good", label:"Good", tipAmt:perPerson, desc:"Per person — give this to each delivery person individually.", isAcceptable:false},
+{cls:"better", label:"Better", tipAmt:Math.round(perPerson*1.4), desc:"Per person — above standard for a smooth, careful delivery.", isAcceptable:false},
+{cls:"best", label:"Best", tipAmt:Math.round(perPerson*1.7), desc:"Per person — for exceptional service, heavy items, or challenging delivery.", isAcceptable:false},
 {cls:"minimum", label:"Minimum Per Person", tipAmt:Math.max(3, Math.round(perPerson * 0.55)), desc:"Below standard — for a genuinely disappointing experience.", isAcceptable:true},
 ];
 cards.forEach(card => {
@@ -977,7 +980,7 @@ const fmtIncome = "$" + _li.toLocaleString();
 const incomeDesc = _li>=100000?"high":_li>=74000?"above the national average":_li>=55000?"near the national average":"below the national average";
 const fallbackNote = dataSource==="national"?" (Using national average — local data unavailable.)":"";
 const svcNote = " Calibrated for " + typeLabels[selectedFurnitureType] + " in this area.";
-const _incomeEffect = _li>=100000?"+"+fmtIncome+" median income — well above average":_li>=74000?"+"+fmtIncome+" median income — above the national average($74,580)":"·"+fmtIncome+" median income — near or below the national average";
+const _incomeEffect = _li>=100000?"+"+fmtIncome+" median income — well above average":_li>=74000?"+"+fmtIncome+" median income — above the national average ($74,580)":"·"+fmtIncome+" median income — near or below the national average";
 const _adjItems = [_incomeEffect];
 if (selectedFurnitureType==="whiteglove") _adjItems.push("+White glove service — higher base");
 if (selectedFurnitureType==="assembly") _adjItems.push("+Delivery + assembly — extra work");
@@ -989,7 +992,7 @@ const insight = document.getElementById("insightBox");
 insight.textContent = "";
 const strong = document.createElement("strong"); strong.textContent = selectedCity.c + ", " + selectedCity.s + ":";
 insight.appendChild(strong);
-insight.appendChild(document.createTextNode(" The local cost of living here(based on median household income) is " + fmtIncome + " — " + incomeDesc + "." + svcNote + fallbackNote));
+insight.appendChild(document.createTextNode(" The local cost of living here (based on median household income) is " + fmtIncome + " — " + incomeDesc + "." + svcNote + fallbackNote));
 const prevBD = document.getElementById("adjBreakdown");
 if (prevBD) prevBD.remove();
 if (_adjItems.length) {
