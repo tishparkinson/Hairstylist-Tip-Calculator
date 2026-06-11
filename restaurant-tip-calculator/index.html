@@ -1179,7 +1179,7 @@ if (el){ el.style.cssText += DARK_STYLES; }
 }
 .tip-card.acceptable:hover { transform: none !important; }
 
-/* MINIMUM label — same pill style as good/better/best labels */
+/* MINIMUM label pill — identical to good/better/best label style */
 .tip-card.acceptable .tip-card-label {
   font-size: 11px !important;
   font-weight: 700 !important;
@@ -1191,22 +1191,22 @@ if (el){ el.style.cssText += DARK_STYLES; }
   white-space: nowrap !important;
   display: inline-block !important;
   width: auto !important;
-  box-sizing: border-box !important;
   background: linear-gradient(135deg, #6B7280 0%, #9CA3AF 50%, #6B7280 100%) !important;
   color: rgba(15,15,15,0.9) !important;
   align-self: center !important;
 }
 .tip-card.acceptable .tip-card-label::before { content: none !important; }
 
-/* Amount — EXACTLY matches .tip-card-amount */
+/* Amount — match EXACTLY what good/better/best cards render
+   (Inter 900 from accumulated block 1 rules) */
 .tip-card.acceptable .tip-card-amount {
-  font-family: 'Syne', sans-serif !important;
-  font-size: 36px !important;
-  font-weight: 600 !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-size: clamp(26px, 5vw, 36px) !important;
+  font-weight: 900 !important;
+  letter-spacing: -.02em !important;
   line-height: 1 !important;
   color: var(--ink, #FAFAF8) !important;
   margin-bottom: 3px !important;
-  letter-spacing: 0.03em !important;
   text-align: center !important;
   width: 100% !important;
   display: block !important;
@@ -1215,7 +1215,7 @@ if (el){ el.style.cssText += DARK_STYLES; }
   white-space: normal !important;
 }
 
-/* Total block — same as good/better/best .tip-card-total */
+/* Total block */
 .tip-card.acceptable .tip-card-total {
   display: flex !important;
   flex-direction: column !important;
@@ -1242,7 +1242,7 @@ if (el){ el.style.cssText += DARK_STYLES; }
   display: block !important;
 }
 
-/* Total value — same as base .tip-card-total-value (uses --serif) */
+/* Total value — same as base .tip-card-total-value */
 .tip-card.acceptable .tip-card-total-value {
   font-family: var(--serif, 'Cormorant Garamond', Georgia, serif) !important;
   font-size: 21px !important;
@@ -1254,7 +1254,7 @@ if (el){ el.style.cssText += DARK_STYLES; }
   text-align: center !important;
 }
 
-/* Pct line */
+/* Pct */
 .tip-card.acceptable .tip-card-pct {
   font-size: 13px !important;
   color: var(--ink-2, rgba(255,255,255,0.75)) !important;
