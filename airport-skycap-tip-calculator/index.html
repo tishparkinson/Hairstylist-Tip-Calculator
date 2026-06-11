@@ -748,8 +748,8 @@ function calculate() {
 
   const wcOnly = hasWheelchair && !hasBagdrop && !hasHeavy && !hasRush;
   const cards = [
-    {cls:'good',    tipAmt:_good,   desc: wcOnly ? 'Standard amount for wheelchair assistance.' : 'Per-bag standard — the widely accepted norm.',     isAcceptable:false},
-    {cls:'better',  tipAmt:_better, desc: wcOnly ? 'Appreciated for attentive, helpful assistance.' : 'Above standard — for attentive, fast service.',  isAcceptable:false},
+    {cls:'good',    tipAmt:_good,   desc: wcOnly ? 'Standard amount for wheelchair assistance.' : 'The widely accepted standard.',     isAcceptable:false},
+    {cls:'better',  tipAmt:_better, desc: wcOnly ? 'Appreciated for attentive, helpful assistance.' : 'For attentive, fast service.',  isAcceptable:false},
     {cls:'best',    tipAmt:_best,   desc: wcOnly ? 'For exceptional escort across a long distance.' : 'For exceptional speed, attitude, or extra help.', isAcceptable:false},
     {cls:'minimum', tipAmt:_min,    desc: 'Below standard — only if service was poor.',            isAcceptable:true},
   ];
@@ -765,10 +765,14 @@ function calculate() {
     if (card.isAcceptable) {
       const pct = document.createElement('div'); pct.className = 'tip-card-pct';
       const perBagAmt = selectedBags > 0 ? Math.round(card.tipAmt / selectedBags) : card.tipAmt;
-pct.textContent = '$' + perBagAmt + ' per bag';
-      div.appendChild(lbl); div.appendChild(desc); div.appendChild(amt); div.appendChild(pct);
+      pct.textContent = '$' + perBagAmt + ' per bag';
+      div.appendChild(lbl); div.appendChild(amt); div.appendChild(pct); div.appendChild(desc);
     } else {
-      div.appendChild(lbl); div.appendChild(amt); div.appendChild(desc);
+      const perBagLine = document.createElement('div');
+      perBagLine.className = 'tip-card-pct';
+      const perBagAmt = selectedBags > 0 ? Math.round(card.tipAmt / selectedBags) : card.tipAmt;
+      perBagLine.textContent = '$' + perBagAmt + ' per bag';
+      div.appendChild(lbl); div.appendChild(amt); div.appendChild(perBagLine); div.appendChild(desc);
     }
     grid.appendChild(div);
   });
@@ -870,432 +874,15 @@ pct.textContent = '$' + perBagAmt + ' per bag';
   });
 })();
 </script>
-</body>
-</htmlgetElementById('calcBtn').addEventListener('click', calculate);DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How Much to Tip a Skycap — Airport Skycap Tip Calculator by City</title>
-<meta name="description" content="How much to tip a skycap? Use our free airport skycap tip calculator — calibrated to your city's cost of living. Get the right tip for curbside bag drop, wheelchair assistance, and more.">
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
-<meta property="og:title" content="How Much to Tip a Skycap — Airport Skycap Tip Calculator">
-<meta property="og:description" content="Free airport skycap tip calculator calibrated to your city. How much to tip skycap workers for bag check, curbside service, and wheelchair assistance.">
-<meta property="og:image" content="https://geotipper.com/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://geotipper.com/og-image.png">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "How Much to Tip a Skycap",
-  "description": "Free airport skycap tip calculator — city-calibrated suggestions for curbside bag drop, wheelchair assistance, and general skycap services.",
-  "url": "https://geotipper.com/airport-skycap-tip-calculator/",
-  "mainEntity": {
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How much to tip a skycap?",
-        "acceptedAnswer": {"@type": "Answer", "text": "The standard airport skycap tip is $2–$3 per bag for curbside bag drop. At busy airports or for excellent service, $3–$5 per bag is appropriate. Always tip in cash directly to the skycap at the time of service — they do not share in credit card tips."}
-      },
-      {
-        "@type": "Question",
-        "name": "What is an airport skycap tip?",
-        "acceptedAnswer": {"@type": "Answer", "text": "An airport skycap tip is a cash gratuity given directly to the skycap who handles your checked luggage at the curbside baggage drop area outside the terminal. Skycaps are not airline employees — they are contracted workers who depend on tips as a primary income source."}
-      },
-      {
-        "@type": "Question",
-        "name": "Do skycaps get to keep their tips?",
-        "acceptedAnswer": {"@type": "Answer", "text": "Yes — cash tips go directly to the individual skycap who served you. Some airports pool tips among skycap crews working the same shift, but the tip stays within the skycap workforce. This is why cash is preferred over adding a tip to a card transaction."}
-      },
-      {
-        "@type": "Question",
-        "name": "Should you tip a skycap for wheelchair assistance?",
-        "acceptedAnswer": {"@type": "Answer", "text": "Yes. Tipping a skycap or airport wheelchair attendant $5–$10 for short wheelchair assistance and $10–$20 for longer escort service(gate-to-gate or long terminal walks) is standard and strongly appreciated. Wheelchair attendants are among the most undercompensated airport workers."}
-      },
-      {
-        "@type": "Question",
-        "name": "Do you have to use a skycap?",
-        "acceptedAnswer": {"@type": "Answer", "text": "No — curbside skycap service is optional. You can check your bags inside at the airline counter for free. However, skycap service saves time and avoids long check-in lines. Airlines typically charge a $3–$7 curbside check-in fee, paid to the airline — this is separate from the tip paid directly to the skycap."}
-      },
-      {
-        "@type": "Question",
-        "name": "Is there a minimum tip for a skycap?",
-        "acceptedAnswer": {"@type": "Answer", "text": "A minimum of $2 per bag is the widely accepted standard, with $5 total as a floor even for one lightweight bag. Tipping less than $1 per bag is considered poor form. Skycaps rely on tips as a core part of their income."}
-      },
-      {
-        "@type": "Question",
-        "name": "Do you tip a skycap before or after they take your bags?",
-        "acceptedAnswer": {"@type": "Answer", "text": "Tip after they finish — once they have tagged your bags and handed you the claim receipts. This is the natural handoff moment. Some travelers tip before as a way to ensure attentive service, but after is standard practice."}
-      }
-    ]
-  }
-}
-</script>
-<link rel="preload" href="/fonts/fonts.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="/fonts/fonts.css"></noscript>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0}
-:root{--bg:#0D0D0F;--surface:#161618;--surface-2:#1E1E22;--ink:#FAFAF8;--ink-2:rgba(255,255,255,0.75);--ink-3:rgba(255,255,255,0.45);--rule:rgba(255,255,255,0.08);--green:#4ade80;--green-dim:rgba(74,222,128,0.8);--green-pale:rgba(74,222,128,0.1);--r:12px;--r-sm:8px;--sans:'Inter',system-ui,sans-serif}
-body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
-a{color:var(--green);text-decoration:none}
-.site-nav{display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,3vw,28px);height:88px;background:rgba(13,13,15,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);position:sticky;top:0;z-index:1000}
-.site-logo{display:flex;align-items:center;gap:8px;text-decoration:none}
-.site-logo-img{width:80px;height:80px;object-fit:contain;flex-shrink:0}
-.site-logo span{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:#fff;letter-spacing:-.02em}
-.site-logo span em{font-style:normal;color:#4ade80}
-.site-nav-links{display:flex;gap:20px;align-items:center}
-.site-nav-links a{font-size:13px;color:rgba(255,255,255,0.45);font-weight:500;text-decoration:none}
-.site-nav-links a:hover{color:rgba(255,255,255,0.9)}
-.site-nav-cta{background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.3);color:#4ade80;padding:7px 16px;border-radius:20px;font-size:12px;font-weight:700}
-.header{background:radial-gradient(ellipse 55% 45% at 50% 0%,rgba(74,222,128,0.09) 0%,transparent 70%);padding:clamp(28px,6vw,52px) clamp(16px,4vw,24px) clamp(24px,5vw,44px);text-align:center;position:relative;overflow:hidden}
-.header-orb-a{position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(74,222,128,0.11) 0%,transparent 70%);top:-100px;left:-60px;pointer-events:none;z-index:0;animation:orb-drift-a 9s ease-in-out infinite}
-.header-orb-b{position:absolute;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(74,222,128,0.07) 0%,transparent 70%);bottom:-40px;right:-30px;pointer-events:none;z-index:0;animation:orb-drift-b 12s ease-in-out infinite}
-.header-orbs-clip{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
-@keyframes orb-drift-a{0%{transform:translate(0,0) scale(1)}33%{transform:translate(18px,-22px) scale(1.06)}66%{transform:translate(-14px,16px) scale(0.96)}100%{transform:translate(0,0) scale(1)}}
-@keyframes orb-drift-b{0%{transform:translate(0,0) scale(1)}40%{transform:translate(-20px,14px) scale(1.04)}75%{transform:translate(16px,-18px) scale(0.97)}100%{transform:translate(0,0) scale(1)}}
-.header>*:not (.header-orbs-clip){position:relative;z-index:4}
-.header h1{font-family:'Syne',sans-serif;font-size:clamp(28px,5vw,48px);font-weight:800;color:#fff;line-height:1.05;letter-spacing:-.025em;margin-bottom:10px}
-.header h1 em{font-style:normal;color:#4ade80}
-.header-sub{display:inline-flex;align-items:center;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:6px 18px;font-size:12px;font-weight:500;color:rgba(255,255,255,0.72);margin:10px auto 0;width:auto}
-@keyframes fade-up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-.hero-anim-1{opacity:0;animation:fade-up .5s cubic-bezier(.22,1,.36,1) .05s forwards}
-.hero-anim-2{opacity:0;animation:fade-up .5s cubic-bezier(.22,1,.36,1) .18s forwards}
-.hero-anim-3{opacity:0;animation:fade-up .5s cubic-bezier(.22,1,.36,1) .30s forwards}
-.main{max-width:600px;margin:0 auto;padding:28px 16px 60px}
-.card{background:var(--surface);border-radius:var(--r);border:1px solid var(--rule);padding:26px 22px;margin-bottom:14px}
-.section-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#4ade80;margin:0 0 8px;display:flex;align-items:center;gap:8px}
-.section-label::after{content:'';flex:1;height:1px;background:rgba(74,222,128,0.2)}
-.optional-label{color:rgba(255,255,255,0.35);font-size:10px;letter-spacing:.06em;font-weight:500;text-transform:uppercase}
-.field{margin-bottom:20px}
-.field:last-child{margin-bottom:0}
-.field>label{display:block;font-size:14px;font-weight:600;color:rgba(255,255,255,0.9);margin-bottom:10px}
-.helper{font-size:13px;color:rgba(255,255,255,0.5);margin-top:6px;line-height:1.6}
-.autocomplete-wrap{position:relative}
-.autocomplete-list{position:absolute;top:calc(100%+4px);left:0;right:0;background:#1a1a1e;border:1px solid rgba(255,255,255,0.2);border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,0.6);z-index:9999;max-height:220px;overflow-y:auto;display:none}
-.autocomplete-list.open{display:block}
-.ac-item{padding:11px 14px;cursor:pointer;font-size:14px;color:#E8E8E4;border-bottom:1px solid rgba(255,255,255,0.07)}
-.ac-item:last-child{border-bottom:none}
-.ac-item:hover,.ac-item.active{background:rgba(74,222,128,0.1);color:#4ade80}
-input[type="text"],input[type="number"]{background:#1a1a1e;border:1.5px solid rgba(255,255,255,0.18);border-radius:10px;color:#fff;font-size:15px;font-family:'Inter',sans-serif;padding:12px 14px;width:100%;transition:border-color .15s;box-sizing:border-box}
-input:focus{border-color:#4ade80;outline:none}
-input::placeholder{color:rgba(255,255,255,0.3)}
-.pill-group{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
-.pill{display:inline-flex;align-items:center;padding:9px 16px;border-radius:50px;border:1.5px solid rgba(255,255,255,0.14);background:rgba(255,255,255,0.05);font-size:13px;font-weight:500;color:rgba(255,255,255,0.65);cursor:pointer;transition:all .15s;white-space:normal;word-break:break-word;text-align:left;line-height:1.4;font-family:'Inter',sans-serif}
-.pill:hover{border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.9)}
-.pill.selected,.pill.active{background:rgba(74,222,128,0.14);border-color:rgba(74,222,128,0.6);color:#4ade80;font-weight:700}
-.stars-wrap{display:flex;gap:6px;margin-top:8px}
-.star-btn{font-size:28px;padding:4px 6px;cursor:pointer;background:none;border:none;color:rgba(255,255,255,0.2);transition:color .1s;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
-.star-btn.lit{color:#4ade80}
-.star-label{font-size:13px;color:rgba(255,255,255,0.82);margin-top:8px;min-height:20px;font-weight:500}
-.calc-btn{width:100%;padding:15px;background:#4ade80;color:#052e16;border:none;border-radius:10px;font-family:'Inter',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:background .15s;margin-top:8px}
-.calc-btn:hover{background:#22c55e}
-.error-msg{font-size:13px;color:#f87171;margin-top:6px;display:none;line-height:1.5}
-.error-msg.show{display:block}
-.results{display:none}
-.result-header{margin-bottom:16px}
-.city-name{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(74,222,128,0.75);margin-bottom:4px}
-.result-header h2{font-family:'Syne',sans-serif;font-size:clamp(18px,3vw,22px);font-weight:700;color:#fff}
-.tip-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:12px;align-items:stretch}
-.tip-card{border-radius:14px;overflow:hidden;display:flex;flex-direction:column;padding:0;background:#161618;box-shadow:0 6px 24px rgba(0,0,0,0.45);transition:transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .2s;border:none}
-.tip-card:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 12px 36px rgba(0,0,0,0.6)}
-.tip-card-label{font-size:0;display:block;width:100%;box-sizing:border-box;padding:20px 14px 14px;text-align:center}
-.tip-card-label::before{font-family:'Syne',sans-serif;font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;display:block}
-.tip-card.good .tip-card-label{background:linear-gradient(145deg,#0284C7 0%,#0EA5E9 55%,#22D3EE 100%)}
-.tip-card.good .tip-card-label::before{content:'STANDARD';color:rgba(255,255,255,0.9)}
-.tip-card.better .tip-card-label{background:linear-gradient(145deg,#4338CA 0%,#6366F1 55%,#A855F7 100%)}
-.tip-card.better .tip-card-label::before{content:'GENEROUS';color:rgba(255,255,255,0.9)}
-.tip-card.best .tip-card-label{background:linear-gradient(145deg,#16A34A 0%,#22C55E 55%,#4ADE80 100%)}
-.tip-card.best .tip-card-label::before{content:'EXCELLENT';color:rgba(5,46,22,0.9)}
-.tip-card.good{border:1.5px solid rgba(34,211,238,0.4)}
-.tip-card.better{border:1.5px solid rgba(168,85,247,0.4)}
-.tip-card.best{border:1.5px solid rgba(74,222,128,0.55)}
-.tip-card-amount{font-family:'Syne',sans-serif;font-size:clamp(24px,4vw,32px);font-weight:800;color:#fff;text-align:center;padding:12px 12px 4px;line-height:1;background:#161618}
-.tip-card-pct{font-size:13px;color:rgba(255,255,255,0.5);text-align:center;padding:4px 12px 2px;background:#161618}
-.tip-card-desc{font-size:12px;color:rgba(255,255,255,0.6);text-align:center;padding:6px 12px 14px;line-height:1.55;flex:1;background:#161618}
-.tip-card.acceptable{border:1.5px solid rgba(255,255,255,0.12);background:#161618;grid-column:1/-1;flex-direction:column;border-radius:14px;overflow:hidden;padding:0;transform:none;box-shadow:none}
-.tip-card.acceptable:hover{transform:none;box-shadow:none}
-.tip-card.acceptable>.tip-card-label{font-size:0;padding:18px 14px 12px;background:linear-gradient(145deg,#4B5563 0%,#9CA3AF 40%,#D1D5DB 65%,#9CA3AF 100%)}
-.tip-card.acceptable>.tip-card-label::before{content:'MINIMUM';font-size:11px;font-weight:800;letter-spacing:.18em;color:rgba(30,30,30,0.85)}
-.tip-card.acceptable .tip-card-desc{text-align:center;padding:12px 20px 4px;font-size:13px;color:rgba(255,255,255,0.7);background:#161618}
-.tip-card.acceptable .tip-card-amount{font-size:28px;text-align:center;padding:8px 14px 2px}
-.tip-card.acceptable .tip-card-pct{text-align:center;padding:2px 14px 6px}
-.tip-card.acceptable .tip-card-total{display:flex;flex-direction:column;align-items:center;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:6px 20px 8px;margin:4px auto 14px;width:auto;text-align:center}
-.tip-card-total{display:table;margin:8px auto;padding:6px 16px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);border-radius:8px;text-align:center}
-.tip-card-total-label{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.38);display:block}
-.tip-card-total-value{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:#fff;display:block}
-.insight-box{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:rgba(255,255,255,0.72);font-size:14px;line-height:1.7;padding:16px 18px;margin-top:12px}
-.insight-box strong{color:#fff}
-.adj-breakdown{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:10px;padding:14px 16px;margin-top:12px}
-.adj-breakdown-title{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(74,222,128,0.7);margin-bottom:10px}
-.adj-breakdown-row{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:rgba(255,255,255,0.75);padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.06);line-height:1.5}
-.adj-breakdown-row:last-child{border-bottom:none}
-.adj-tag{display:inline-block;width:auto;height:auto;border-radius:0;background:none;border:none;font-size:15px;font-weight:700;flex-shrink:0;line-height:1;padding:0 2px 0 0}
-.adj-tag.adj-pos{color:#4ade80;background:none;border:none}
-.adj-tag.adj-neg{color:#60a5fa;background:none;border:none}
-.adj-tag:not (.adj-pos):not (.adj-neg){color:rgba(255,255,255,0.35);font-size:12px}
-.recalc-btn{width:100%;padding:14px;background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.7);border:1.5px solid rgba(255,255,255,0.15);border-radius:10px;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:background .15s;margin-top:12px}
-.recalc-btn:hover{background:rgba(255,255,255,0.09);color:#fff}
-.seo-section{background:#0D0D0F;border-top:1px solid rgba(255,255,255,0.07);padding:clamp(32px,6vw,52px) clamp(16px,4vw,20px)}
-.seo-inner{max-width:720px;margin:0 auto}
-.seo-h2{font-family:'Syne',sans-serif;font-size:clamp(20px,3vw,28px);font-weight:700;color:#fff;margin-bottom:8px}
-.seo-lead{font-size:14px;color:rgba(255,255,255,0.6);margin-bottom:28px;line-height:1.7}
-.seo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:20px 0 32px}
-.seo-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:20px}
-.seo-card h3{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:#fff;margin:0 0 8px}
-.seo-card p{font-size:13px;color:rgba(255,255,255,0.65);line-height:1.65;margin:0}
-.seo-faq-title{font-family:'Syne',sans-serif;font-size:20px;font-weight:700;color:#fff;margin:0 0 16px}
-.seo-faq-item{border-bottom:1px solid rgba(255,255,255,0.07);padding-bottom:16px;margin-bottom:16px}
-.seo-faq-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
-.seo-faq-item strong{display:block;font-size:14px;font-weight:600;color:rgba(255,255,255,0.88);margin-bottom:5px}
-.seo-faq-item p{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.65}
-.footer{background:rgba(255,255,255,0.02);border-top:1px solid rgba(255,255,255,0.09);padding:52px 0 0}
-.footer-inner{max-width:960px;margin:0 auto;padding:0 clamp(16px,4vw,20px)}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:40px}
-.footer-logo{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:#fff;text-decoration:none;letter-spacing:-.02em;display:flex;align-items:center;gap:8px;margin-bottom:12px}
-.footer-logo img{width:48px;height:48px;object-fit:contain}
-.footer-logo em{font-style:normal;color:#4ade80}
-.footer-tagline{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.65;margin-bottom:16px}
-.footer-copy{font-size:12px;color:rgba(255,255,255,0.3);line-height:1.7}
-.footer-copy a{color:rgba(255,255,255,0.4);text-decoration:none}
-.footer-col{display:flex;flex-direction:column;gap:10px}
-.footer-col-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:4px}
-.footer-col a{font-size:13px;color:rgba(255,255,255,0.65);text-decoration:none;transition:color .15s}
-.footer-col a:hover{color:#4ade80}
-.footer-bottom{border-top:1px solid rgba(255,255,255,0.07);padding:20px 0 28px;display:flex;gap:24px;flex-wrap:wrap}
-.footer-bottom p{font-size:11px;color:rgba(255,255,255,0.28);line-height:1.65;flex:1;min-width:200px}
-@media (max-width:600px){.tip-grid{grid-template-columns:1fr!important;gap:10px}.seo-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr;gap:24px}.footer-grid .footer-col:first-child{grid-column:1/-1}.footer-bottom{flex-direction:column;gap:8px}.site-nav{padding:0 16px}}
-
-/* mobile overflow fix */
-html,body{overflow-x:hidden}
-.header{overflow:hidden!important}
-.header-orbs-clip{overflow:hidden!important}
-@media (max-width:640px){
-  .header{padding:32px 16px 28px!important}
-  .main{padding:20px 16px 60px!important}
-  .seo-section{padding:32px 16px!important}
-  .site-nav{padding:0 16px!important}
-}
-
-.result-feedback{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:rgba(255,255,255,0.35);margin-top:14px;cursor:default;position:relative}
-.result-feedback .ri{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);font-size:10px;font-weight:700;cursor:pointer;flex-shrink:0;font-style:normal}
-.result-feedback .ri:hover{background:rgba(255,255,255,0.18)}
-.result-feedback .rpop{display:none;position:absolute;bottom:calc(100%+8px);left:0;width:280px;background:#1a1a1e;color:rgba(255,255,255,0.8);font-size:12px;line-height:1.6;border-radius:8px;padding:12px 14px;box-shadow:0 8px 32px rgba(0,0,0,0.6);z-index:100;border:1px solid rgba(255,255,255,0.15)}
-.result-feedback .ri:hover .rpop,.result-feedback .ri:focus .rpop{display:block}
-
-/* ── Label + amount font fix ── */
-.tip-card-label::before,
-.tip-card.good .tip-card-label::before,
-.tip-card.better .tip-card-label::before,
-.tip-card.best .tip-card-label::before {
-  font-family: 'Inter', system-ui, sans-serif !important;
-  font-size: 10px !important;
-  font-weight: 900 !important;
-  letter-spacing: .22em !important;
-  text-transform: uppercase !important;
-}
-.tip-card-amount {
-  font-family: 'Inter', system-ui, sans-serif !important;
-  font-size: clamp(26px,5vw,34px) !important;
-  font-weight: 900 !important;
-  letter-spacing: -.02em !important;
-}
-</style>
-</head>
-<body>
-
-<nav class="site-nav">
-  <a href="../index.html" class="site-logo"><img src="../logo.png" alt="GeoTipper" class="site-logo-img"><span>Geo<em>Tipper</em></span></a>
-  <div class="site-nav-links">
-    <a href="../blog/index.html">Blog</a>
-    <a href="../about/index.html">About</a>
-    <a href="../pricing/index.html" class="site-nav-cta">Premium</a>
-  </div>
-</nav>
-
-<header class="header">
-  <div class="header-orbs-clip"><div class="header-orb-a"></div><div class="header-orb-b"></div></div>
-  <h1 class="hero-anim-1">How Much to Tip<br><em>a Skycap?</em></h1>
-  <p class="header-sub hero-anim-2">Curbside Bag Check · Wheelchair Assistance · Baggage Handling</p>
-</header>
-
-<main class="main">
-
-  <div class="card" id="formCard">
-
-    <div class="section-label">Your Location</div>
-    <div class="field">
-      <label for="cityInput">City &amp; State</label>
-      <div class="autocomplete-wrap">
-        <input type="text" id="cityInput" placeholder="Start typing a city…" autocomplete="off" maxlength="80">
-        <div class="autocomplete-list" id="autocompleteList"></div>
-      </div>
-      <p class="helper">Tips are calibrated to the local cost of living using US Census income data.</p>
-      <div class="error-msg" id="cityError">Please select a city from the list.</div>
-    </div>
-
-    <div class="section-label">Number of Bags <span class="optional-label">(optional)</span></div>
-    <div class="field">
-      <label>How many bags are you checking?</label>
-      <div class="pill-group" id="bagsGroup">
-        <button class="pill" data-val="1">1 bag</button>
-        <button class="pill selected" data-val="2">2 bags</button>
-        <button class="pill" data-val="3">3 bags</button>
-        <button class="pill" data-val="4">4 bags</button>
-        <button class="pill" data-val="6">5–6 bags</button>
-        <button class="pill" data-val="8">7+ bags</button>
-      </div>
-    </div>
-
-    <div class="section-label">Service Type <span class="optional-label">(optional)</span></div>
-    <div class="field">
-      <label>What did the skycap do? <span style="font-size:11px;color:rgba(255,255,255,0.4);font-weight:400">(select all that apply)</span></label>
-      <div class="pill-group" id="serviceGroup">
-        <button class="pill selected" data-val="bagdrop">Curbside bag check / check-in</button>
-        <button class="pill" data-val="wheelchair">Wheelchair assistance</button>
-        <button class="pill" data-val="heavy">Heavy or oversized luggage</button>
-        <button class="pill" data-val="rush">Rush / expedited assistance</button>
-      </div>
-    </div>
-
-    <div class="section-label">Experience <span class="optional-label">(optional)</span></div>
-    <div class="field">
-      <label>How was the service?</label>
-      <div class="stars-wrap" id="starsWrap">
-        <button class="star-btn" data-star="1">★</button>
-        <button class="star-btn" data-star="2">★</button>
-        <button class="star-btn" data-star="3">★</button>
-        <button class="star-btn" data-star="4">★</button>
-        <button class="star-btn" data-star="5">★</button>
-      </div>
-      <div class="star-label" id="starLabel">Tap to rate</div>
-    </div>
-
-    <button class="calc-btn" id="calcBtn">Calculate My Tip →</button>
-  </div>
-
-  <div class="results" id="resultsSection" style="display:none">
-    <div class="card">
-      <div class="result-header">
-        <div class="city-name" id="resultCity"></div>
-        <h2>Your Skycap Tip Suggestions</h2>
-      </div>
-      <div class="tip-grid" id="tipGrid"></div>
-      <div class="insight-box" id="insightBox"></div>
-      <div class="result-feedback">Got an unexpected result? <span class="ri" tabindex="0">i<span class="rpop">If a suggestion looks off, we want to know. Email <a href="mailto:verdantwebsolutions@gmail.com" style="color:#4ade80">verdantwebsolutions@gmail.com</a> with the calculator name, the inputs you entered, and the result you got — we'll review and fix it.</span></span></div>
-      <button class="recalc-btn" id="recalcBtn">← Calculate Again</button>
-    </div>
-  </div>
-
-  <div class="card" style="margin-top:28px">
-    <h2 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:12px">How much to tip a skycap?</h2>
-    <p style="font-size:13px;color:rgba(255,255,255,0.62);line-height:1.75;margin-bottom:14px">The standard airport skycap tip is <strong style="color:#fff">$2–$3 per bag</strong> for curbside bag check. At high-cost cities or for especially fast and helpful service, $3–$5 per bag is appropriate. Always tip in cash — skycaps do not receive a share of credit card tips.</p>
-    <h2 style="font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:#fff;margin:18px 0 10px">Are skycaps the same as hotel bellhops?</h2>
-    <p style="font-size:13px;color:rgba(255,255,255,0.62);line-height:1.75;margin-bottom:14px">No. Skycaps work at airports handling curbside check-in and baggage. Bellhops work at hotels moving luggage to your room. Both depend on tips but have different tipping norms — hotel bellhops typically receive $2–$5 per bag, while skycaps are $2–$3 per bag with a higher floor for wheelchair service.</p>
-    <h2 style="font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:#fff;margin:18px 0 10px">Should you tip before or after?</h2>
-    <p style="font-size:13px;color:rgba(255,255,255,0.62);line-height:1.75">Tip after — once the skycap has tagged your bags and handed you the claim receipts. Have cash ready before you arrive at the curb so there is no fumbling.</p>
-  </div>
-
-</main>
-
-<section class="seo-section">
-  <div class="seo-inner">
-    <h2 class="seo-h2">Airport Skycap Tip — What You Need to Know</h2>
-    <p class="seo-lead">Skycaps are curbside airline workers who handle your bags at check-in outside the terminal. They are separate from airline employees and depend on tips as a primary source of income.</p>
-
-    <div class="seo-grid">
-      <div class="seo-card">
-        <h3>Cash Only</h3>
-        <p>Always tip in cash. Skycaps do not receive a cut of credit card charges. Have small bills ready — $1s and $5s — before you reach the curb. Asking a skycap to make change creates an awkward moment.</p>
-      </div>
-      <div class="seo-card">
-        <h3>Separate from the Service Fee</h3>
-        <p>Airlines charge a curbside check-in fee ($3–$7) that goes to the airline, not the skycap. The tip is entirely separate and should be given directly to the worker who handled your bags.</p>
-      </div>
-      <div class="seo-card">
-        <h3>Wheelchair Assistance</h3>
-        <p>Tip wheelchair attendants $5–$10 for short escort service and $10–$20 for extended assistance across the terminal or between gates. These workers are among the lowest-compensated in the airport.</p>
-      </div>
-      <div class="seo-card">
-        <h3>When to Tip More</h3>
-        <p>Tip above the standard rate if you have heavy, oversized, or awkwardly shaped bags; if the skycap resolved a check-in problem; or if they moved quickly during a tight connection.</p>
-      </div>
-    </div>
-
-    <h3 class="seo-faq-title">Frequently Asked Questions</h3>
-    <div class="seo-faq-item"><strong>How much to tip a skycap?</strong><p>$2–$3 per bag is the standard airport skycap tip for curbside bag check. For excellent, fast, or heavy-bag service, $3–$5 per bag is appropriate. Always tip in cash directly to the skycap.</p></div>
-    <div class="seo-faq-item"><strong>What is an airport skycap tip?</strong><p>An airport skycap tip is a cash gratuity given to the curbside worker who checks your bags outside the terminal. Skycaps are contracted workers — not airline employees — and tips are their primary income supplement.</p></div>
-    <div class="seo-faq-item"><strong>Do skycaps get to keep their tips?</strong><p>Yes. Cash tips go directly to the individual skycap or are pooled among the crew on that shift. Either way, the money stays with the skycap workers — unlike credit card tips, which may not reach them at all.</p></div>
-    <div class="seo-faq-item"><strong>Should you tip a skycap for wheelchair assistance?</strong><p>Absolutely — $5–$10 for short distances and $10–$20 for longer terminal escorts. Wheelchair attendants are among the most undercompensated airport workers and rely heavily on tips.</p></div>
-    <div class="seo-faq-item"><strong>Is there a minimum tip for a skycap?</strong><p>$2 per bag is the widely accepted minimum, with $5 total as a floor even for one light bag. Tipping nothing or less than $1 per bag is considered poor form.</p></div>
-    <div class="seo-faq-item"><strong>Do you tip a skycap before or after they take your bags?</strong><p>After — once your bags are tagged and you have the claim receipts. Have cash ready in your coat pocket or a front pocket before you reach the curb so the handoff is natural.</p></div>
-    <div class="seo-faq-item"><strong>What if I don't have cash for a skycap tip?</strong><p>Curbside check-in is optional. If you have no cash, check your bags at the airline counter inside instead. There is no obligation to use the curbside service, and skycaps understand — it is far better than being tipped nothing at the curb.</p></div>
-  </div>
-</section>
-
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <a href="../index.html" class="footer-logo"><img src="../logo.png" alt="GeoTipper" style="width:48px;height:48px;object-fit:contain">Geo<em>Tipper</em></a>
-        <p class="footer-tagline">The right tip says: the effort was seen,<br>and the person behind it matters.</p>
-        <p class="footer-copy">&#169; <span id="copy-year">2025</span> Verdant Web Solutions, LLC<br>Idaho &middot; <a href="mailto:verdantwebsolutions@gmail.com">verdantwebsolutions@gmail.com</a></p>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-label">Calculators</div>
-        <a href="../pricing/index.html#free">All Calculators</a>
-        <a href="../pricing/index.html#premium">Premium Calculators</a>
-        <a href="../wedding-tip-calculators/index.html">Wedding Vendors</a>
-        <a href="../pricing/index.html">GeoTipper Premium</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-label">Learn</div>
-        <a href="../blog/index.html">Tipping Guides</a>
-        <a href="../about/index.html">How It Works</a>
-        <a href="../suggest-a-calculator/index.html">Suggest a Calculator</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-label">Account</div>
-        <a href="https://billing.stripe.com/p/login/8x25kE7Mq8T7edH8341RC00" target="_blank">Manage Subscription</a>
-        <a href="https://billing.stripe.com/p/login/8x25kE7Mq8T7edH8341RC00" target="_blank">Cancel Subscription</a>
-        <a href="../pricing/index.html">Pricing &amp; Plans</a>
-        <a href="../redeem/index.html">Enter License Key</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-label">Legal</div>
-        <a href="../privacy-policy/index.html">Privacy Policy</a>
-        <a href="../terms-of-use/index.html">Terms of Use</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>All calculations run in your browser — we collect no personal data. Income data from US Census Bureau ACS 5-year estimates.</p>
-      <p><strong>Disclaimer:</strong> Tip suggestions are estimates only. Always use your own judgment.</p>
-    </div>
-  </div>
-</footer>
-
-<script>var y=document.getElementById("copy-year");if (y)y.textContent=new Date().getFullYear();</script>
-<script src="../cities.json" type="application/json" id="citiesDataScript"></script>
-
-
-
 <style id="minimum-card-final">
 /* ══ MINIMUM CARD — DEFINITIVE FINAL ══ */
-/* The minimum card is full-width but its content styling MUST match good/better/best exactly */
-
 .tip-card.acceptable,
 .tip-grid .tip-card.acceptable {
   grid-column: 1 / -1 !important;
   flex-direction: column !important;
-  padding: 0 !important;
-  overflow: hidden !important;
+  align-items: center !important;
+  padding: 14px 12px 16px !important;
+  overflow: visible !important;
   border-radius: 14px !important;
   border: 1.5px solid rgba(255,255,255,0.14) !important;
   background: #161618 !important;
@@ -1303,35 +890,28 @@ html,body{overflow-x:hidden}
   transform: none !important;
   width: auto !important;
   max-width: 100% !important;
-  align-items: center !important;
+  display: flex !important;
 }
 .tip-card.acceptable:hover { transform: none !important; }
 
-/* MINIMUM header bar — unique silver gradient label */
+/* MINIMUM label — same pill style as good/better/best labels */
 .tip-card.acceptable .tip-card-label {
-  font-size: 0 !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-  padding: 22px 14px 18px !important;
-  text-align: center !important;
-  background: linear-gradient(145deg,#4B5563 0%,#9CA3AF 40%,#D1D5DB 65%,#9CA3AF 100%) !important;
-  border-radius: 0 !important;
-  margin: 0 0 11px !important;
-  display: block !important;
-  white-space: normal !important;
-  letter-spacing: normal !important;
-}
-.tip-card.acceptable .tip-card-label::before {
-  content: 'MINIMUM' !important;
-  font-family: 'Syne', sans-serif !important;
-  font-size: 13px !important;
-  font-weight: 800 !important;
-  letter-spacing: 0.2em !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
   text-transform: uppercase !important;
-  color: rgba(30,30,30,0.85) !important;
-  display: block !important;
-  text-align: center !important;
+  padding: 3px 14px !important;
+  border-radius: 20px !important;
+  margin-bottom: 11px !important;
+  white-space: nowrap !important;
+  display: inline-block !important;
+  width: auto !important;
+  box-sizing: border-box !important;
+  background: linear-gradient(135deg, #6B7280 0%, #9CA3AF 50%, #6B7280 100%) !important;
+  color: rgba(15,15,15,0.9) !important;
+  align-self: center !important;
 }
+.tip-card.acceptable .tip-card-label::before { content: none !important; }
 
 /* Amount — EXACTLY matches .tip-card-amount */
 .tip-card.acceptable .tip-card-amount {
@@ -1339,17 +919,18 @@ html,body{overflow-x:hidden}
   font-size: 36px !important;
   font-weight: 600 !important;
   line-height: 1 !important;
-  color: var(--ink, #E8E8E4) !important;
+  color: var(--ink, #FAFAF8) !important;
   margin-bottom: 3px !important;
   letter-spacing: 0.03em !important;
   text-align: center !important;
   width: 100% !important;
   display: block !important;
   background: transparent !important;
-  padding: 0 16px !important;
+  padding: 0 !important;
+  white-space: normal !important;
 }
 
-/* Total block — EXACTLY matches .tip-card-total */
+/* Total block — same as good/better/best .tip-card-total */
 .tip-card.acceptable .tip-card-total {
   display: flex !important;
   flex-direction: column !important;
@@ -1358,80 +939,65 @@ html,body{overflow-x:hidden}
   border: 1.5px solid var(--rule, rgba(255,255,255,0.12)) !important;
   border-radius: 7px !important;
   padding: 6px 12px 7px !important;
-  margin: 8px 16px 6px !important;
-  width: calc(100% - 32px) !important;
-  box-sizing: border-box !important;
+  margin: 8px auto 6px !important;
+  width: auto !important;
+  max-width: 140px !important;
   gap: 1px !important;
+  box-sizing: border-box !important;
 }
 
-/* Total label — EXACTLY matches .tip-card-total-label */
+/* Total label */
 .tip-card.acceptable .tip-card-total-label {
   font-size: 10px !important;
   font-weight: 600 !important;
   letter-spacing: 0.1em !important;
   text-transform: uppercase !important;
-  color: var(--ink-3, rgba(255,255,255,0.38)) !important;
+  color: var(--ink-3, rgba(255,255,255,0.45)) !important;
   font-family: inherit !important;
   display: block !important;
 }
 
-/* Total value — EXACTLY matches .tip-card-total-value */
+/* Total value — same as base .tip-card-total-value (uses --serif) */
 .tip-card.acceptable .tip-card-total-value {
-  font-family: 'Syne', sans-serif !important;
+  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif) !important;
   font-size: 21px !important;
   font-weight: 600 !important;
-  color: var(--ink, #E8E8E4) !important;
+  color: var(--ink, #FAFAF8) !important;
   line-height: 1.1 !important;
   letter-spacing: 0.02em !important;
   display: block !important;
   text-align: center !important;
 }
 
-/* Pct — EXACTLY matches .tip-card-pct */
+/* Pct line */
 .tip-card.acceptable .tip-card-pct {
   font-size: 13px !important;
-  color: var(--ink-2, rgba(255,255,255,0.55)) !important;
+  color: var(--ink-2, rgba(255,255,255,0.75)) !important;
   text-align: center !important;
   width: 100% !important;
   display: block !important;
-  padding: 0 16px !important;
+  padding: 0 !important;
   background: transparent !important;
   letter-spacing: normal !important;
+  font-family: inherit !important;
+  margin-bottom: 4px !important;
 }
 
-/* Desc — matches .tip-card-desc */
+/* Desc */
 .tip-card.acceptable .tip-card-desc {
   font-size: 13px !important;
-  color: var(--ink-2, rgba(255,255,255,0.55)) !important;
+  color: var(--ink-2, rgba(255,255,255,0.75)) !important;
   text-align: center !important;
   width: 100% !important;
   display: block !important;
-  padding: 4px 16px 18px !important;
+  padding: 4px 0 0 !important;
   line-height: 1.5 !important;
   background: transparent !important;
+  font-family: inherit !important;
 }
 
 .tip-card.acceptable .most-common-tag { display: none !important; }
 .tip-card-label { white-space: normal !important; word-wrap: break-word !important; overflow-wrap: break-word !important; min-height: auto !important; }
 </style>
-<script>
-// Reject numbers in city/state input
-document.querySelectorAll('#cityInput, .city-input').forEach(function (inp){
-  inp.addEventListener('input', function (){
-    var v = this.value;
-    var cleaned = v.replace(/[0-9]/g, '');
-    if (cleaned !== v) {
-      var pos = this.selectionStart - (v.length - cleaned.length);
-      this.value = cleaned;
-      try { this.setSelectionRange(pos, pos); } catch (e){}
-    }
-  });
-  inp.addEventListener('keydown', function (e){
-    if (e.key >= '0' && e.key <= '9' && !e.ctrlKey && !e.metaKey) {
-      e.preventDefault();
-    }
-  });
-});
-</script>
 </body>
 </html>
