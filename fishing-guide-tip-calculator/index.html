@@ -216,6 +216,42 @@ html,body{overflow-x:hidden}
   display: block !important;
 }
 </style>
+<style id="total-box-fix">
+.tip-card:not(.acceptable) .tip-card-total {
+  width: auto !important;
+  max-width: 160px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+</style>
+<style id="helper-text-fix">
+.field > p.helper, .field > p:not(.section-label),
+p.helper { font-size: 11px !important; color: rgba(255,255,255,0.42) !important; }
+</style>
+<style id="total-value-fix">
+/* Restore correct total-value font for good/better/best cards */
+.tip-card:not(.acceptable) .tip-card-total-value {
+  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif) !important;
+  font-size: 21px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
+  color: var(--ink, #FAFAF8) !important;
+  line-height: 1.1 !important;
+  width: auto !important;
+  display: block !important;
+  text-align: center !important;
+}
+.tip-card:not(.acceptable) .tip-card-total-label {
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: var(--ink-3, rgba(255,255,255,0.45)) !important;
+  width: auto !important;
+  display: block !important;
+  text-align: center !important;
+}
+</style>
 </head>
 <body>
 
@@ -239,6 +275,18 @@ html,body{overflow-x:hidden}
 <main class="main">
 
   <div class="card" id="formCard">
+
+        <div class="section-label">Your Location</div>
+    <div class="field">
+      <label>City &amp; State</label>
+      <div class="autocomplete-wrap">
+        <input type="text" id="cityInput" placeholder="Start typing a city…" autocomplete="off" maxlength="80">
+        <div class="autocomplete-list" id="autocompleteList"></div>
+      </div>
+      <p class="helper">Calibrates the tip to local cost of living.</p>
+      <p style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:4px;line-height:1.4;">If your city isn't listed, use the closest one to you.</p>
+      <div class="error-msg" id="cityError">Please select a city from the list.</div>
+    </div>
 
     <div class="section-label">Trip Cost <span class="optional-label">(recommended)</span></div>
     <div class="field">
@@ -421,6 +469,17 @@ html,body{overflow-x:hidden}
 <script>var y=document.getElementById("copy-year");if(y)y.textContent=new Date().getFullYear();</script>
 <script>
 const _umi = 74580;
+
+(async()=>{
+try{
+const cc=sessionStorage.getItem('gt_cities');
+if(cc){window._cities=JSON.parse(cc);}
+else{const r=await fetch('../cities.json');if(r.ok){const d=await r.json();window._cities=d;sessionStorage.setItem('gt_cities',JSON.stringify(d));}}
+const kc=sessionStorage.getItem('gt_counties');
+if(kc){_cd=JSON.parse(kc);}
+else{const r2=await fetch('../counties.json');if(r2.ok){const d2=await r2.json();_cd=d2;sessionStorage.setItem('gt_counties',JSON.stringify(d2));}}
+}catch(e){}
+})();
 let _cd = {};
 let dataReady = false;
 
@@ -432,15 +491,49 @@ let dataReady = false;
   dataReady = true;
 })();
 
+
+let selectedCity = null;
+const cityInput = document.getElementById('cityInput');
+const acList = document.getElementById('autocompleteList');
+function closeAC(){if(acList){acList.innerHTML='';acList.style.display='none';}}
+if(cityInput){
+  cityInput.addEventListener('input',()=>{
+    const q=cityInput.value.trim().toLowerCase();
+    document.getElementById('cityError').classList.remove('show');
+    selectedCity=null;
+    if(q.length<2){closeAC();return;}
+    const src=window._cities||[];
+    const hits=src.filter(c=>c.c.toLowerCase().startsWith(q)||(c.c+', '+c.s).toLowerCase().startsWith(q)).slice(0,8);
+    if(!hits.length){closeAC();return;}
+    acList.innerHTML=hits.map((c,i)=>'<div class="ac-item" data-i="'+i+'">'+c.c+', '+c.s+'</div>').join('');
+    acList.style.display='block';
+    acList.querySelectorAll('.ac-item').forEach((el,i)=>{
+      el.addEventListener('mousedown',e=>{
+        e.preventDefault();
+        selectedCity=hits[i];
+        cityInput.value=hits[i].c+', '+hits[i].s;
+        // Update income multiplier
+        if(selectedCity&&_cd&&_cd[selectedCity.f]){localIncome=_cd[selectedCity.f];}
+        else{localIncome=_umi;}
+        closeAC();
+        document.getElementById('cityError').classList.remove('show');
+        cityInput.classList.remove('error');
+      });
+    });
+  });
+  document.addEventListener('click',e=>{if(!e.target.closest('.autocomplete-wrap'))closeAC();});
+}
+let localIncome = _umi;
+
 let selectedType = 'charter';
 let selectedGroup = 1;
 let selectedLength = 'full';
 let selectedStars = 0;
 
 // ── Guide type ──
-document.document.getElementById('typeGroup').querySelectorAll('.pill').forEach(btn => {
+document.getElementById('typeGroup').querySelectorAll('.pill').forEach(btn => {
   btn.addEventListener('click', function() {
-    document.document.getElementById('typeGroup').querySelectorAll('.pill').forEach(b => b.classList.remove('selected'));
+    document.getElementById('typeGroup').querySelectorAll('.pill').forEach(b => b.classList.remove('selected'));
     this.classList.add('selected');
     selectedType = this.dataset.val;
   });
@@ -486,6 +579,7 @@ document.getElementById('recalcBtn').addEventListener('click', () => {
 document.getElementById('calcBtn').addEventListener('click', calculate);
 
 function calculate() {
+  if(!selectedCity){document.getElementById('cityError').classList.add('show');cityInput.classList.add('error');return;}
   const costRaw = parseFloat(document.getElementById('costInput').value);
   if (!costRaw || isNaN(costRaw) || costRaw < 1) {
     document.getElementById('costError').classList.add('show');

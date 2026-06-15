@@ -443,6 +443,38 @@ input[type="number"]{-moz-appearance:textfield}
 .input-wrap .input-prefix { position: absolute !important; left: 14px !important; top: 50% !important; transform: translateY(-50%) !important; color: var(--ink-3, rgba(255,255,255,0.45)) !important; font-size: 15px !important; font-weight: 500 !important; pointer-events: none !important; z-index: 1 !important; }
 .input-wrap input { padding-left: 28px !important; }
 </style>
+<style id="total-box-fix">
+.tip-card:not(.acceptable) .tip-card-total {
+  width: auto !important;
+  max-width: 160px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+</style>
+<style id="total-value-fix">
+/* Restore correct total-value font for good/better/best cards */
+.tip-card:not(.acceptable) .tip-card-total-value {
+  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif) !important;
+  font-size: 21px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
+  color: var(--ink, #FAFAF8) !important;
+  line-height: 1.1 !important;
+  width: auto !important;
+  display: block !important;
+  text-align: center !important;
+}
+.tip-card:not(.acceptable) .tip-card-total-label {
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: var(--ink-3, rgba(255,255,255,0.45)) !important;
+  width: auto !important;
+  display: block !important;
+  text-align: center !important;
+}
+</style>
 </head>
 <body>
 <nav class="site-nav">
@@ -766,8 +798,8 @@ grid.parentNode.insertBefore(bar,grid);
 }
 const cards=[
 {cls:'good',   label:'Good',    tip:tipGood,   mostCommon:false,       isAcceptable:false, desc:'A solid, respectful tip for this service.'},
-{cls:'better', label:'Better',  tip:tipBetter, mostCommon:stars>=3,    isAcceptable:false, desc:'The local sweet spot. Shows real appreciation.'},
-{cls:'best',   label:'Best',    tip:tipBest,   mostCommon:false,       isAcceptable:false, desc:'For service that truly stood out.'},
+{cls:'better', label:'Better',  tip:tipBetter, mostCommon:stars>=3,    isAcceptable:false, desc:'Per server — the local sweet spot. Shows real appreciation.'},
+{cls:'best',   label:'Best',    tip:tipBest,   mostCommon:false,       isAcceptable:false, desc:'Per server — for service that truly stood out.'},
 {cls:'acceptable',label:stars<=2?'If Unhappy':'Minimum',tip:tipMin,mostCommon:false,isAcceptable:true,desc:'Still acknowledges the effort.'}
 ];
 cards.forEach(card=>{

@@ -336,6 +336,42 @@ html, body { overflow-x: hidden }
 <style id="main-width-fix">
 .main, .main-wrap { max-width: 600px !important; margin-left: auto !important; margin-right: auto !important; }
 </style>
+<style id="total-box-fix">
+.tip-card:not(.acceptable) .tip-card-total {
+  width: auto !important;
+  max-width: 160px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+</style>
+<style id="helper-text-fix">
+.field > p.helper, .field > p:not(.section-label),
+p.helper { font-size: 11px !important; color: rgba(255,255,255,0.42) !important; }
+</style>
+<style id="total-value-fix">
+/* Restore correct total-value font for good/better/best cards */
+.tip-card:not(.acceptable) .tip-card-total-value {
+  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif) !important;
+  font-size: 21px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
+  color: var(--ink, #FAFAF8) !important;
+  line-height: 1.1 !important;
+  width: auto !important;
+  display: block !important;
+  text-align: center !important;
+}
+.tip-card:not(.acceptable) .tip-card-total-label {
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: var(--ink-3, rgba(255,255,255,0.45)) !important;
+  width: auto !important;
+  display: block !important;
+  text-align: center !important;
+}
+</style>
 </head>
 <body>
 
@@ -428,7 +464,19 @@ html, body { overflow-x: hidden }
         <button class="pill" data-val="xlarge">150+</button>
       </div>
     </div>
-    <div class="section-label">Your Experience</div>
+    
+    <div class="section-label">Service Charge / Gratuity</div>
+    <div class="field">
+      <label>Was a service charge included in your contract?</label>
+      <div class="pill-group" id="caterGratGroup">
+        <button class="pill selected" data-val="no">No service charge</button>
+        <button class="pill" data-val="staff">Yes — goes to staff</button>
+        <button class="pill" data-val="company">Yes — goes to the company</button>
+      </div>
+      <p class="helper">If the service charge goes to the company, the staff may receive little or none of it — a direct tip is still appropriate. If it goes to staff, a smaller additional tip or none is fine.</p>
+    </div>
+
+<div class="section-label">Your Experience</div>
     <div class="field">
       <label>How was the overall catering experience?</label>
       <div class="star-row">
@@ -568,34 +616,6 @@ let selectedCaterDetails = new Set();
 let selectedGuestCount = 'medium';
 let selectedBonuses = {};
 const US_MEDIAN_INCOME = 74580;
-let citiesData = [];
-let _cd;
-let countiesData = {};
-let dataReady = false;
-(async() => {
-try {
-const cachedCities = sessionStorage.getItem('gt_cities');
-const cachedCounties = sessionStorage.getItem('gt_counties');
-if (cachedCities && cachedCounties) {
-citiesData = JSON.parse(cachedCities);
-_cd = JSON.parse(cachedCounties);
-} else {
-const [cr, kr] = await Promise.all([
-fetch('/cities.json'),
-fetch('/counties.json')
-]);
-if (cr.ok && kr.ok) {
-const [fullCities, fullCounties] = await Promise.all([cr.json(), kr.json()]);
-citiesData = fullCities;
-_cd = fullCounties;
-sessionStorage.setItem('gt_cities', JSON.stringify(fullCities));
-sessionStorage.setItem('gt_counties', JSON.stringify(fullCounties));
-}
-}
-} catch(e) {}
-dataReady = true;
-})();
-
 const cityInput = document.getElementById('cityInput');
 const acList = document.getElementById('autocompleteList');
 let acActiveIdx = -1;
@@ -811,6 +831,20 @@ document.getElementById('starLabel').textContent = starLabels[selectedStars] || 
 document.getElementById('starError').classList.remove('show');
 });
 });
+
+let selectedCaterGrat = 'no';
+(function(){
+  const grp = document.getElementById('caterGratGroup');
+  if(!grp) return;
+  grp.querySelectorAll('.pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      grp.querySelectorAll('.pill').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      selectedCaterGrat = btn.dataset.val;
+    });
+  });
+})();
+
 document.getElementById('calcBtn').addEventListener('click', calculate);
 document.getElementById('recalcBtn').addEventListener('click', () => {
 document.getElementById('resultsSection').style.display = 'none';
@@ -840,6 +874,11 @@ if (document.getElementById('priceError')) { document.getElementById('priceError
 }
 if (selectedStars === 0) { if (document.getElementById('starError')) document.getElementById('starError').classList.add('show'); valid = false; }
 if (!valid) return;
+// Adjust for gratuity in contract
+let gratAdj = 0;
+if(selectedCaterGrat === 'staff') gratAdj = -0.05; // reduce if staff already paid
+if(selectedCaterGrat === 'company') gratAdj = 0; // full tip still appropriate
+
 const fips = selectedCity.f;
 const _li = (_cd && fips && _cd[fips]) ? _cd[fips] : _umi;
 const dataSource = (_cd && fips && _cd[fips]) ? 'local' : 'national';

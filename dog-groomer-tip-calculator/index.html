@@ -436,6 +436,42 @@ input[type="number"]{-moz-appearance:textfield}
   .tip-card{min-width:0!important}
 }
 </style>
+<style id="total-box-fix">
+.tip-card:not(.acceptable) .tip-card-total {
+  width: auto !important;
+  max-width: 160px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+</style>
+<style id="helper-text-fix">
+.field > p.helper, .field > p:not(.section-label),
+p.helper { font-size: 11px !important; color: rgba(255,255,255,0.42) !important; }
+</style>
+<style id="total-value-fix">
+/* Restore correct total-value font for good/better/best cards */
+.tip-card:not(.acceptable) .tip-card-total-value {
+  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif) !important;
+  font-size: 21px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
+  color: var(--ink, #FAFAF8) !important;
+  line-height: 1.1 !important;
+  width: auto !important;
+  display: block !important;
+  text-align: center !important;
+}
+.tip-card:not(.acceptable) .tip-card-total-label {
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: var(--ink-3, rgba(255,255,255,0.45)) !important;
+  width: auto !important;
+  display: block !important;
+  text-align: center !important;
+}
+</style>
 </head>
 <body>
 

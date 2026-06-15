@@ -440,6 +440,38 @@ input[type="number"]{-moz-appearance:textfield}
 .input-wrap .input-prefix { position: absolute !important; left: 14px !important; top: 50% !important; transform: translateY(-50%) !important; color: var(--ink-3, rgba(255,255,255,0.45)) !important; font-size: 15px !important; font-weight: 500 !important; pointer-events: none !important; z-index: 1 !important; }
 .input-wrap input { padding-left: 28px !important; }
 </style>
+<style id="total-box-fix">
+.tip-card:not(.acceptable) .tip-card-total {
+  width: auto !important;
+  max-width: 160px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+</style>
+<style id="total-value-fix">
+/* Restore correct total-value font for good/better/best cards */
+.tip-card:not(.acceptable) .tip-card-total-value {
+  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif) !important;
+  font-size: 21px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
+  color: var(--ink, #FAFAF8) !important;
+  line-height: 1.1 !important;
+  width: auto !important;
+  display: block !important;
+  text-align: center !important;
+}
+.tip-card:not(.acceptable) .tip-card-total-label {
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: var(--ink-3, rgba(255,255,255,0.45)) !important;
+  width: auto !important;
+  display: block !important;
+  text-align: center !important;
+}
+</style>
 </head>
 <body>
 <nav class="site-nav">
@@ -550,14 +582,7 @@ input[type="number"]{-moz-appearance:textfield}
           <div class="error-msg" id="starError">Please rate your experience.</div>
         </div>
       </div>
-      <div class="field-group">
-        <div class="section-label">Bonus? <span class="optional-label">(optional)</span></div>
-        <div class="field">
-          <div class="bonus-grid" id="bonusGroup">
-            <button class="bonus-btn" data-bonus="0.04" data-key="outstanding" type="button"><span class="bonus-icon">✨</span><span>Truly Outstanding<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Everyone was on the dance floor</small></span></button>
-            <button class="bonus-btn" data-bonus="0.03" data-key="holiday" type="button"><span class="bonus-icon">🎄</span><span>Holiday / Christmas<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+3% suggested</small></span></button>
-          </div>
-        </div>
+      
       </div>
     <button class="calc-btn" id="calcBtn">Calculate My Tip &rarr;</button>
   </div>
