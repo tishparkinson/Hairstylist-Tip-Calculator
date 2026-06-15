@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Block Netlify internals
+Disallow: /.netlify/
+Disallow: /netlify/
+
+# Block raw data files (large JSON, not useful to crawl)
+Disallow: /cities.json
+Disallow: /counties.json
+
+# Block config/build files
+Disallow: /netlify.toml
+Disallow: /package.json
+Disallow: /_config.yml
+Disallow: /README.md
+
+# Block activate endpoint
+Disallow: /activate
+
+Sitemap: https://geotipper.com/sitemap.xml

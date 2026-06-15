@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How GeoTipper Works — About</title>
+<link rel="preload" href="/fonts/fonts.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/fonts/fonts.css"></noscript>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{background:#0D0D0F;color:#E8E8E4;font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}a{color:#4ade80;text-decoration:none}a:hover{color:#22c55e}img{max-width:100%;height:auto}.site-nav{z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,3vw,28px);height:88px;background:rgba(13,13,15,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.07);position:sticky;top:0;z-index:1000}.site-logo{font-family:'Syne',sans-serif!important;font-size:17px;font-weight:800;color:#fff!important;letter-spacing:-.02em;text-decoration:none}.site-logo em{font-style:normal;color:#4ade80}.site-nav-links{display:flex;gap:20px;align-items:center}.site-nav-links a{font-size:13px;color:rgba(255,255,255,0.45);font-weight:500;text-decoration:none;transition:color .15s}.site-nav-links a:hover{color:rgba(255,255,255,0.9)}.page-hero{background:rgba(255,255,255,0.02);border-bottom:1px solid rgba(255,255,255,0.07);padding:52px 28px 44px;max-width:none}.page-hero-inner{max-width:760px;margin:0 auto}.page-hero .meta,.page-hero p.meta{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(74,222,128,0.65);margin-bottom:14px;display:block}.page-hero h1,.hero h1{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:800;color:#fff;line-height:1.05;letter-spacing:-.025em;margin-bottom:12px}.page-hero p:not (.meta),.hero p{font-size:16px;color:rgba(255,255,255,0.55);line-height:1.65;max-width:600px}.main,.page-body,.blog-body,.post-body,.content{max-width:760px;margin:0 auto;padding:52px 28px 80px}h1,h2,h3,h4{font-family:'Syne',sans-serif;font-weight:700;color:#fff;line-height:1.15;letter-spacing:-.015em;margin-top:40px;margin-bottom:14px}h2{font-size:clamp(20px,3vw,26px)}h3{font-size:clamp(16px,2.5vw,20px);color:rgba(255,255,255,0.9)}h4{font-size:16px;color:rgba(255,255,255,0.85)}p{font-size:15px;color:rgba(255,255,255,0.68);line-height:1.75;margin-bottom:18px}p strong,strong{color:rgba(255,255,255,0.92)}ul,ol{padding-left:22px;margin-bottom:20px}li{font-size:15px;color:rgba(255,255,255,0.65);line-height:1.7;margin-bottom:8px}li strong{color:rgba(255,255,255,0.88)}blockquote{border-left:3px solid #4ade80;padding:12px 20px;margin:24px 0;background:rgba(74,222,128,0.05);border-radius:0 8px 8px 0}blockquote p{color:rgba(255,255,255,0.75);margin:0}hr{border:none;border-top:1px solid rgba(255,255,255,0.08);margin:36px 0}em{font-style:italic}.blog-grid,.post-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-top:28px}.blog-card,.post-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:12px;padding:22px;display:flex;flex-direction:column;transition:border-color .15s,transform .15s}.blog-card:hover,.post-card:hover{border-color:rgba(255,255,255,0.2);transform:translateY(-2px)}.blog-card h2,.blog-card h3,.post-card h2,.post-card h3{font-size:16px;margin:0 0 8px;color:#fff}.blog-card p,.post-card p{font-size:13px;color:rgba(255,255,255,0.5);margin:0;line-height:1.6}.blog-card a,.post-card a{text-decoration:none;color:inherit}.section-group{margin-bottom:48px}.section-eyebrow{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(74,222,128,0.65);display:block;margin-bottom:12px}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0 40px}.step{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:12px;padding:20px}.step-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(74,222,128,0.65);margin-bottom:8px;display:block}.step h3{font-size:15px;font-weight:700;color:#fff;margin:0 0 8px}.step p{font-size:13px;color:rgba(255,255,255,0.55);margin:0;line-height:1.6}@media (max-width:600px){.steps{grid-template-columns:1fr}}.site-footer,footer{background:rgba(255,255,255,0.02);border-top:1px solid rgba(255,255,255,0.07);padding:24px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}.footer-links{display:flex;gap:16px}.footer-links a{font-size:11px;color:rgba(255,255,255,0.3);text-decoration:none}.footer-links a:hover{color:rgba(255,255,255,0.65)}footer p,footer small{font-size:11px;color:rgba(255,255,255,0.3)}@media (max-width:600px){.site-nav{padding:0 16px}.main,.page-body,.blog-body,.post-body,.content{padding:36px 18px 60px}.blog-grid,.post-grid{grid-template-columns:1fr}}.site-nav{display:flex!important;align-items:center!important;justify-content:space-between!important;padding:0 clamp(16px,3vw,28px)!important;height:88px!important;background:rgba(13,13,15,0.97)!important;backdrop-filter:blur(12px)!important;border-bottom:1px solid rgba(255,255,255,0.07)!important;position:sticky!important;top:0!important;z-index:1000!important;width:100%!important;box-sizing:border-box!important}.site-nav-links{display:flex!important;gap:20px!important;align-items:center!important;margin-left:auto!important}.site-nav-links a{font-size:13px!important;color:rgba(255,255,255,0.45)!important;font-weight:500!important;text-decoration:none!important}.site-nav-links a:hover{color:rgba(255,255,255,0.9)!important}.site-logo{font-family:'Syne',sans-serif!important;font-size:17px!important;font-weight:800!important;color:#fff!important;letter-spacing:-.02em!important;text-decoration:none!important;flex-shrink:0!important}.site-logo em{font-style:normal!important;color:#4ade80!important}
+.site-logo{display:flex;align-items:center;gap:8px;text-decoration:none}
+.site-logo-img{width:80px;height:80px;object-fit:contain;flex-shrink:0}
+.site-logo span{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:#fff;letter-spacing:-.02em}
+.site-logo span em{font-style:normal;color:#4ade80}
+
+.site-logo-img { width: 80px !important; height: 80px !important; margin-top: 0 !important; }
+</style>
+
+<style>.site-footer{background:rgba(255,255,255,0.02);border-top:1px solid rgba(255,255,255,0.09);padding:52px 0 0}.site-footer .footer-inner{max-width:960px;margin:0 auto;padding:0 clamp(16px,4vw,20px)}.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:40px}.footer-col{display:flex;flex-direction:column;gap:10px}.footer-col-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:4px}.footer-col a{font-size:13px;color:rgba(255,255,255,0.65);text-decoration:none;transition:color .15s;width:fit-content}.footer-col a:hover{color:#4ade80}.footer-bottom{border-top:1px solid rgba(255,255,255,0.07);padding:20px 0 28px;display:flex;gap:24px;flex-wrap:wrap}.footer-bottom p{font-size:11px;color:rgba(255,255,255,0.28);line-height:1.65;flex:1;min-width:200px}@media (max-width:700px){.footer-grid{grid-template-columns:1fr 1fr;gap:24px}.footer-grid .footer-col:first-child{grid-column:1/-1}}
+
+
+/* ── Mobile overflow fix v3 ── */
+html, body { overflow-x: hidden }
+
+/* Clip orbs so they never expand the page */
+.header { overflow: hidden !important }
+.header-orbs-clip { overflow: hidden !important }
+.header-orb-a, .header-orb-b { pointer-events: none }
+
+/* Ref table scrolls horizontally within its wrapper - never expands page */
+.ref-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch }
+
+@media (max-width: 640px) {
+
+  /* ── Header / Hero ── */
+  .header {
+    padding: 40px 20px 36px !important;
+  }
+  .hero-split {
+    padding: 40px 20px 44px !important;
+    width: 100% !important;
+  }
+  .header-orb-a { width: 180px !important; height: 180px !important; left: -40px !important; top: -40px !important }
+  .header-orb-b { width: 140px !important; height: 140px !important; right: -30px !important }
+
+  /* ── Search bar ── */
+  .tip-search-wrap { width: 100% !important }
+  .tip-search-inner { border-radius: 12px !important }
+  .tip-search-btn { padding: 10px 14px !important; font-size: 12px !important }
+
+  /* ── Main content area ── */
+  .main {
+    padding: 24px 20px 60px !important;
+  }
+
+  /* ── Section wrappers (ref, diff) ── */
+  .ref-section, .diff-section, .section-wrap {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* ── Info / diff box ── */
+  .diff-box {
+    padding: 20px !important;
+  }
+  .diff-items {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* ── SEO info sections on calc pages ── */
+  .seo-section {
+    padding: 40px 20px !important;
+  }
+  .seo-inner {
+    padding: 0 !important;
+  }
+  .seo-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* ── Site footer (simple flex version) ── */
+  .site-footer {
+    padding: 20px !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+  .footer-links {
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+  }
+
+  /* ── Multi-column footer (index / premium pages) ── */
+  .footer { padding: 32px 0 0 !important }
+  .footer-inner { padding: 0 20px !important }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 24px !important;
+  }
+  .footer-grid .footer-col:first-child { grid-column: 1 / -1 !important }
+  .footer-bottom { flex-direction: column !important; gap: 8px !important; padding: 16px 0 24px !important }
+
+  /* ── Nav ── */
+  .site-nav { padding: 0 20px !important }
+
+  /* ── Calc page form cards ── */
+  .card { padding: 20px !important }
+}
+
+@media (max-width: 390px) {
+  /* iPhone SE / mini — tighten slightly more */
+  .header { padding: 32px 16px 28px !important }
+  .hero-split { padding: 32px 16px 36px !important }
+  .main { padding: 20px 16px 60px !important }
+  .ref-section, .diff-section, .section-wrap { padding-left: 16px !important; padding-right: 16px !important }
+  .diff-box { padding: 16px !important }
+  .seo-section { padding: 32px 16px !important }
+  .site-footer { padding: 16px !important }
+  .footer-inner { padding: 0 16px !important }
+  .site-nav { padding: 0 16px !important }
+  .card { padding: 16px !important }
+  .tip-search-btn { padding: 8px 10px !important; font-size: 11px !important }
+}
+</style>
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
+<meta property="og:image" content="https://geotipper.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://geotipper.com/og-image.png">
+
+<style id="hamburger-nav">
+/* Hamburger button — hidden on desktop */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.2s ease, width 0.2s ease;
+  transform-origin: center;
+}
+.nav-hamburger.open span:nth-child (1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-hamburger.open span:nth-child (2) {
+  opacity: 0;
+  width: 0;
+}
+.nav-hamburger.open span:nth-child (3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile drawer */
+.nav-mobile-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(13,13,15,0.98);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 8px 0 12px;
+  z-index: 999;
+  /* Animate open */
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+.nav-mobile-menu.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.nav-mobile-menu a {
+  display: block;
+  padding: 12px 24px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  transition: color 0.15s, background 0.15s;
+  border-radius: 0;
+}
+.nav-mobile-menu a:hover,
+.nav-mobile-menu a:active {
+  color: #fff;
+  background: rgba(255,255,255,0.05);
+}
+.nav-mobile-menu .site-nav-cta {
+  color: #4ade80 !important;
+  font-weight: 600 !important;
+}
+.nav-mobile-menu .site-nav-cta:hover {
+  background: rgba(74,222,128,0.08) !important;
+}
+
+@media (max-width: 640px) {
+  .nav-hamburger { display: flex !important; }
+  .site-nav-links { display: none !important; }
+  .site-nav { position: relative !important; }
+}
+</style>
+<style id="mobile-grid-fix">
+@media (max-width:480px){
+  .tip-grid{grid-template-columns:1fr!important}
+  .tip-card{min-width:0!important}
+}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a href="../index.html" class="site-logo"><img src="../logo.png" alt="GeoTipper" class="site-logo-img"><span>Geo<em>Tipper</em></span></a>
+  <div class="site-nav-links">
+<a href="../blog/index.html">Blog</a>
+    <a href="index.html">About</a>
+  
+    <a href="../redeem/index.html">Have a Key?</a>
+  </div>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-mobile-menu" id="navMobileMenu">
+<a href="../blog/index.html">Blog</a>
+    <a href="index.html">About</a>
+  
+    <a href="../redeem/index.html">Have a Key?</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <span class="meta">About GeoTipper</span>
+    <h1>How GeoTipper Works</h1>
+    <p>Why a flat percentage is not good enough — and how we calculate a tip that actually fits where you are.</p>
+  </div>
+</div>
+
+<div class="main">
+  <div class="steps">
+    <div class="step"><span class="step-label">Step 1</span><h3>You enter a city</h3><p>GeoTipper looks up the county median household income from US Census ACS data.</p></div>
+    <div class="step"><span class="step-label">Step 2</span><h3>Income sets the base rate</h3><p>Higher income = higher local expectations. Base rate scales from 13% to 27%.</p></div>
+    <div class="step"><span class="step-label">Step 3</span><h3>Service + quality adjust it</h3><p>Session type, travel, satisfaction rating, and any bonus circumstances refine the final number.</p></div>
+  </div>
+
+  <h2>The Problem With Generic Tip Calculators</h2>
+<p>Every other tip calculator gives you the same number regardless of where you live. Type in $60 and they say $12 (20%). Whether you are in rural Mississippi or midtown Manhattan, the answer is identical.</p>
+  <p>That is not how tipping actually works. A 20% tip means something very different when the median household income in a county is $42,000 versus $136,000. Local cost of living shapes what service workers earn, what they expect, and what feels genuinely fair. GeoTipper accounts for that.</p>
+
+  <h2>The Data We Use</h2>
+<p>GeoTipper uses <strong>US Census Bureau American Community Survey (ACS) 5-year estimates</strong> for median household income at the county level. We have income data for <strong>439 US counties</strong>, covering the vast majority of the US population.</p>
+  <p>When you type a city name, GeoTipper identifies the county that city is in using FIPS county codes and retrieves the local median household income for that county. We use median household income as the primary signal for local cost of living because:</p>
+  <ul>
+    <li>It is the most consistent, widely available, and regularly updated measure of local economic conditions in the US</li>
+    <li>It directly reflects what local residents earn — which is what actually drives tipping expectations and norms in that community</li>
+    <li>It is a better signal than generic cost-of-living indices, which often focus on housing costs rather than the service worker wages that tip expectations follow</li>
+    <li>The Census Bureau updates this data annually, making it more current than most alternatives</li>
+  </ul>
+  <p>All data is embedded directly in each calculator page — no server requests required. Everything runs in your browser. We never see your inputs.</p>
+
+  <h2>The Formula</h2>
+<p>The core calculation converts local income into a base tip rate, then adjusts for service type, quality, and any bonus circumstances.</p>
+
+  
+    <span class="label">Step 1 — Income Ratio</span>
+    incomeRatio = (localCountyIncome &minus; $40,000) &divide; ($120,000 &minus; $40,000)
+    <br><br>
+    <span class="label">Step 2 — Base Rate</span>
+    baseRate = 15% + (incomeRatio &times; 10%)
+    <br>baseRate is clamped: minimum 13%, maximum 27%
+    <br><br>
+    <span class="label">Step 3 — Adjustments</span>
+    finalRate = baseRate + serviceAdj + qualityAdj + bonuses
+  
+
+  <p>In plain terms:</p>
+  <ul>
+    <li>A county with $40,000 median income gets a <strong>13% base rate</strong> (low-income floor)</li>
+    <li>A county at the US national average ($74,580) gets a <strong>~18.5% base rate</strong></li>
+    <li>A county with $120,000+ income gets a <strong>23%–27% base rate</strong> (high cost-of-living ceiling)</li>
+  </ul>
+
+  <h3>Service Adjustments</h3>
+  <p>Each calculator adds or subtracts from the base rate based on what the service actually involves. Color correction at a salon, full-day wedding photography, and a long-distance move all warrant higher tips than a basic trim or a short rideshare. These adjustments are calibrated to real US tipping norms for each service type.</p>
+
+  <h3>Quality and Bonus Adjustments</h3>
+  <p>Your star rating shifts the suggested range. A 5-star experience shows the full generous range. A 2-star rating applies a reduced floor that still acknowledges the service worker's effort. Optional bonus toggles — holidays, year-end gifts, exceptional service — add specific percentages on top of the base suggestion.</p>
+
+  <h2>Example: Same $80 Service, Five Cities</h2>
+<table class="example-table">
+    <thead>
+      <tr><th>Location</th><th>County Median Income</th><th>Base Rate</th><th>Suggested Tip</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Rural Alabama</td><td>$42,000</td><td>~15%</td><td>$12</td></tr>
+      <tr><td>Indianapolis, IN</td><td>$60,000</td><td>~17%</td><td>$14</td></tr>
+      <tr><td>US national average</td><td>$74,580</td><td>~18.5%</td><td>$15</td></tr>
+      <tr><td>Seattle, WA</td><td>$96,000</td><td>~22%</td><td>$18</td></tr>
+      <tr><td>San Jose, CA</td><td>$130,000+</td><td>~27% (cap)</td><td>$22</td></tr>
+    </tbody>
+  </table>
+
+  <h2>What We Do Not Do</h2>
+<ul>
+    <li><strong>No accounts or user tracking.</strong> All calculations run in your browser. We never see your inputs — not the bill amount, not the city, not the star rating.</li>
+    <li><strong>No server-side processing.</strong> City, county, and income data are embedded in each calculator page. The site works without any API calls.</li>
+    <li><strong>No selling user data.</strong> GeoTipper is ad-supported through Google AdSense. We do not sell or share user data with any third parties.</li>
+    <li><strong>No inflated suggestions.</strong> Our formula is designed to reflect actual US tipping norms calibrated to local conditions — not to push you toward higher tips for our benefit.</li>
+  </ul>
+
+  <h2>Data Freshness</h2>
+<p>We update our county income data annually following the US Census Bureau's ACS 5-year estimate release, typically each December. The data currently embedded reflects the most recent available ACS estimates at the time of the last site update.</p>
+
+  <h2>Coverage</h2>
+<p>We have county-level income data for 439 US counties covering approximately 85% of the US population. For cities not covered by our county data, we fall back to the US national median household income ($74,580), which produces a standard 18%–20% suggestion range consistent with general US norms.</p>
+
+  <h2>Who Built This</h2>
+<p>GeoTipper.com is owned and operated by <strong>Verdant Web Solutions, LLC</strong>, based in Idaho. We built GeoTipper because existing tip calculators ignore the single most important variable in tipping: where you are. A flat 20% is not the right answer everywhere — and we wanted to build a tool that knows that.</p>
+  <p>Questions, corrections, or feedback: <strong>verdantwebsolutions@gmail.com</strong></p>
+
+  
+    <p><strong>Ready to calculate a tip that fits your city?</strong></p>
+    <p><a href="../index.html">Browse all 33 tip calculators</a> &nbsp;&middot;&nbsp; <a href="../blog/index.html">Read our tipping guides</a></p>
+  
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="../index.html" class="site-logo" style="font-size:20px;margin-bottom:10px;display:block;"><img src="../logo.png" alt="GeoTipper" class="footer-logo-img" style="width:48px;height:48px;object-fit:contain;display:block;margin-bottom:8px;">Geo<em>Tipper</em></a>
+        <p style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.7;margin-bottom:14px;">The right tip says: the effort was seen,<br>and the person behind it matters.</p>
+        <p style="font-size:12px;color:rgba(255,255,255,0.3);line-height:1.7;">&#169; <span id="copy-year">2025</span> Verdant Web Solutions, LLC<br>Idaho &middot; <a href="mailto:verdantwebsolutions@gmail.com" style="color:rgba(255,255,255,0.4);text-decoration:none;">verdantwebsolutions@gmail.com</a></p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Calculators</div>
+        <a href="../index.html">All Calculators</a>
+        <a href="../wedding-tip-calculators/index.html">Wedding Calculators</a>
+        <a href="../wedding-tip-calculators/index.html">Wedding Vendors</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Learn</div>
+        <a href="../blog/index.html">Tipping Guides</a>
+        <a href="../about/index.html">How It Works</a>
+        <a href="../suggest-a-calculator/index.html">Suggest a Calculator</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Account</div>
+        <a href="https://billing.stripe.com/p/login/8x25kE7Mq8T7edH8341RC00" target="_blank">Manage Subscription</a>
+        <a href="../pricing/index.html">Pricing &amp; Plans</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Legal</div>
+        <a href="../privacy-policy/index.html">Privacy Policy</a>
+        <a href="../terms-of-use/index.html">Terms of Use</a>
+        <a href="../sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>All calculations run in your browser — we collect no personal data. Income data from US Census Bureau ACS 5-year estimates.</p>
+      <p><strong>Disclaimer:</strong> Tip suggestions are estimates only. Always use your own judgment.</p>
+    </div>
+  </div>
+</footer>
+<script>var y=document.getElementById("copy-year");if (y)y.textContent=new Date().getFullYear();</script>
+
+
+<style id="minimum-card-final">
+/* ══ MINIMUM CARD — DEFINITIVE FINAL ══ */
+.tip-card.acceptable,
+.tip-grid .tip-card.acceptable {
+  grid-column: 1 / -1 !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  padding: 14px 12px 16px !important;
+  overflow: visible !important;
+  border-radius: 14px !important;
+  border: 1.5px solid rgba(255,255,255,0.14) !important;
+  background: #161618 !important;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.45) !important;
+  transform: none !important;
+  width: auto !important;
+  max-width: 100% !important;
+  display: flex !important;
+}
+.tip-card.acceptable:hover { transform: none !important; }
+
+/* MINIMUM label pill — identical to good/better/best label style */
+.tip-card.acceptable .tip-card-label {
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  padding: 3px 14px !important;
+  border-radius: 20px !important;
+  margin-bottom: 11px !important;
+  white-space: nowrap !important;
+  display: inline-block !important;
+  width: auto !important;
+  background: linear-gradient(135deg, #6B7280 0%, #9CA3AF 50%, #6B7280 100%) !important;
+  color: rgba(20,20,20,0.92) !important;
+  align-self: center !important;
+}
+.tip-card.acceptable .tip-card-label::before { content: none !important; }
+
+/* Amount — match EXACTLY what good/better/best cards render
+   (Inter 900 from accumulated block 1 rules) */
+.tip-card.acceptable .tip-card-amount {
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-size: clamp(26px, 5vw, 36px) !important;
+  font-weight: 900 !important;
+  letter-spacing: -.02em !important;
+  line-height: 1 !important;
+  color: var(--ink, #FAFAF8) !important;
+  margin-bottom: 3px !important;
+  text-align: center !important;
+  width: 100% !important;
+  display: block !important;
+  background: transparent !important;
+  padding: 0 !important;
+  white-space: normal !important;
+}
+
+/* Total block */
+.tip-card.acceptable .tip-card-total {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  background: rgba(255,255,255,0.08) !important;
+  border: 1.5px solid var(--rule, rgba(255,255,255,0.15)) !important;
+  border-radius: 7px !important;
+  padding: 6px 12px 7px !important;
+  margin: 8px auto 6px !important;
+  width: auto !important;
+  max-width: 140px !important;
+  gap: 1px !important;
+  box-sizing: border-box !important;
+}
+
+/* Total label */
+.tip-card.acceptable .tip-card-total-label {
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: var(--ink-3, rgba(255,255,255,0.45)) !important;
+  font-family: inherit !important;
+  display: block !important;
+}
+
+/* Total value — same as base .tip-card-total-value */
+.tip-card.acceptable .tip-card-total-value {
+  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif) !important;
+  font-size: 21px !important;
+  font-weight: 600 !important;
+  color: var(--ink, #FAFAF8) !important;
+  line-height: 1.1 !important;
+  letter-spacing: 0.02em !important;
+  display: block !important;
+  text-align: center !important;
+}
+
+/* Pct */
+.tip-card.acceptable .tip-card-pct {
+  font-size: 13px !important;
+  color: var(--ink-2, rgba(255,255,255,0.75)) !important;
+  text-align: center !important;
+  width: 100% !important;
+  display: block !important;
+  padding: 0 !important;
+  background: transparent !important;
+  letter-spacing: normal !important;
+  font-family: inherit !important;
+  margin-bottom: 4px !important;
+}
+
+/* Desc */
+.tip-card.acceptable .tip-card-desc {
+  font-size: 13px !important;
+  color: var(--ink-2, rgba(255,255,255,0.75)) !important;
+  text-align: center !important;
+  width: 100% !important;
+  display: block !important;
+  padding: 6px 16px 16px !important;
+  line-height: 1.5 !important;
+  background: transparent !important;
+  font-family: inherit !important;
+}
+
+
+/* Force correct order: label, amount, total, pct, desc */
+.tip-card.acceptable .tip-card-label   { order: 1 !important; }
+.tip-card.acceptable .tip-card-amount  { order: 2 !important; }
+.tip-card.acceptable .tip-card-total   { order: 3 !important; }
+.tip-card.acceptable .tip-card-pct     { order: 4 !important; }
+.tip-card.acceptable .tip-card-desc    { order: 5 !important; }
+.tip-card.acceptable .most-common-tag { display: none !important; }
+.tip-card-label { white-space: normal !important; word-wrap: break-word !important; overflow-wrap: break-word !important; min-height: auto !important; }
+</style>
+
+<script id="hamburger-script">
+(function (){
+  var btn = document.getElementById('navHamburger');
+  var menu = document.getElementById('navMobileMenu');
+  if (!btn || !menu) return;
+  btn.addEventListener('click', function (e){
+    e.stopPropagation();
+    var open = btn.classList.toggle('open');
+    if (open) {
+      menu.style.display = 'block';
+      requestAnimationFrame(function (){
+        menu.classList.add('open');
+      });
+    } else {
+      menu.classList.remove('open');
+      setTimeout(function (){ menu.style.display = 'none'; }, 200);
+    }
+  });
+  document.addEventListener('click', function (e){
+    if (!e.target.closest('.site-nav')) {
+      btn.classList.remove('open');
+      menu.classList.remove('open');
+      setTimeout(function (){ menu.style.display = 'none'; }, 200);
+    } else if (e.target.tagName === 'A' && e.target.closest('.nav-mobile-menu')) {
+      // Let the link navigate; close menu after a short delay
+      btn.classList.remove('open');
+      menu.classList.remove('open');
+      setTimeout(function (){ menu.style.display = 'none'; }, 300);
+    }
+  });
+})();
+</script>
+</body>
+</html>
+
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="../index.html" class="site-logo" style="font-size:20px;margin-bottom:10px;display:block;"><img src="../logo.png" alt="GeoTipper" class="footer-logo-img" style="width:48px;height:48px;object-fit:contain;display:block;margin-bottom:8px;">Geo<em>Tipper</em></a>
+        <p style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.7;margin-bottom:14px;">The right tip says: the effort was seen,<br>and the person behind it matters.</p>
+        <p style="font-size:12px;color:rgba(255,255,255,0.3);line-height:1.7;">&#169; <span id="copy-year">2025</span> Verdant Web Solutions, LLC<br>Idaho &middot; <a href="mailto:verdantwebsolutions@gmail.com" style="color:rgba(255,255,255,0.4);text-decoration:none;">verdantwebsolutions@gmail.com</a></p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Calculators</div>
+        <a href="../index.html">All Calculators</a>
+        <a href="../wedding-tip-calculators/index.html">Wedding Calculators</a>
+        <a href="../wedding-tip-calculators/index.html">Wedding Vendors</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Learn</div>
+        <a href="../blog/index.html">Tipping Guides</a>
+        <a href="../about/index.html">How It Works</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Account</div>
+        <a href="https://billing.stripe.com/p/login/8x25kE7Mq8T7edH8341RC00" target="_blank">Manage Subscription</a>
+        <a href="../pricing/index.html">Pricing &amp; Plans</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Legal</div>
+        <a href="../privacy-policy/index.html">Privacy Policy</a>
+        <a href="../terms-of-use/index.html">Terms of Use</a>
+        <a href="../sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>All calculations run in your browser — we collect no personal data. Income data from US Census Bureau ACS 5-year estimates.</p>
+      <p><strong>Disclaimer:</strong> Tip suggestions are estimates only. Always use your own judgment.</p>
+    </div>
+  </div>
+</footer>
+
+<style id="minimum-card-final">
+/* ══ MINIMUM CARD — DEFINITIVE FINAL ══ */
+.tip-card.acceptable,
+.tip-grid .tip-card.acceptable {
+  grid-column: 1 / -1 !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  padding: 14px 12px 16px !important;
+  overflow: visible !important;
+  border-radius: 14px !important;
+  border: 1.5px solid rgba(255,255,255,0.14) !important;
+  background: #161618 !important;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.45) !important;
+  transform: none !important;
+  width: auto !important;
+  max-width: 100% !important;
+  display: flex !important;
+}
+.tip-card.acceptable:hover { transform: none !important; }
+
+/* MINIMUM label pill — identical to good/better/best label style */
+.tip-card.acceptable .tip-card-label {
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  padding: 3px 14px !important;
+  border-radius: 20px !important;
+  margin-bottom: 11px !important;
+  white-space: nowrap !important;
+  display: inline-block !important;
+  width: auto !important;
+  background: linear-gradient(135deg, #6B7280 0%, #9CA3AF 50%, #6B7280 100%) !important;
+  color: rgba(20,20,20,0.92) !important;
+  align-self: center !important;
+}
+.tip-card.acceptable .tip-card-label::before { content: none !important; }
+
+/* Amount — match EXACTLY what good/better/best cards render
+   (Inter 900 from accumulated block 1 rules) */
+.tip-card.acceptable .tip-card-amount {
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-size: clamp(26px, 5vw, 36px) !important;
+  font-weight: 900 !important;
+  letter-spacing: -.02em !important;
+  line-height: 1 !important;
+  color: var(--ink, #FAFAF8) !important;
+  margin-bottom: 3px !important;
+  text-align: center !important;
+  width: 100% !important;
+  display: block !important;
+  background: transparent !important;
+  padding: 0 !important;
+  white-space: normal !important;
+}
+
+/* Total block */
+.tip-card.acceptable .tip-card-total {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  background: rgba(255,255,255,0.08) !important;
+  border: 1.5px solid var(--rule, rgba(255,255,255,0.15)) !important;
+  border-radius: 7px !important;
+  padding: 6px 12px 7px !important;
+  margin: 8px auto 6px !important;
+  width: auto !important;
+  max-width: 140px !important;
+  gap: 1px !important;
+  box-sizing: border-box !important;
+}
+
+/* Total label */
+.tip-card.acceptable .tip-card-total-label {
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: var(--ink-3, rgba(255,255,255,0.45)) !important;
+  font-family: inherit !important;
+  display: block !important;
+}
+
+/* Total value — same as base .tip-card-total-value */
+.tip-card.acceptable .tip-card-total-value {
+  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif) !important;
+  font-size: 21px !important;
+  font-weight: 600 !important;
+  color: var(--ink, #FAFAF8) !important;
+  line-height: 1.1 !important;
+  letter-spacing: 0.02em !important;
+  display: block !important;
+  text-align: center !important;
+}
+
+/* Pct */
+.tip-card.acceptable .tip-card-pct {
+  font-size: 13px !important;
+  color: var(--ink-2, rgba(255,255,255,0.75)) !important;
+  text-align: center !important;
+  width: 100% !important;
+  display: block !important;
+  padding: 0 !important;
+  background: transparent !important;
+  letter-spacing: normal !important;
+  font-family: inherit !important;
+  margin-bottom: 4px !important;
+}
+
+/* Desc */
+.tip-card.acceptable .tip-card-desc {
+  font-size: 13px !important;
+  color: var(--ink-2, rgba(255,255,255,0.75)) !important;
+  text-align: center !important;
+  width: 100% !important;
+  display: block !important;
+  padding: 6px 16px 16px !important;
+  line-height: 1.5 !important;
+  background: transparent !important;
+  font-family: inherit !important;
+}
+
+
+/* Force correct order: label, amount, total, pct, desc */
+.tip-card.acceptable .tip-card-label   { order: 1 !important; }
+.tip-card.acceptable .tip-card-amount  { order: 2 !important; }
+.tip-card.acceptable .tip-card-total   { order: 3 !important; }
+.tip-card.acceptable .tip-card-pct     { order: 4 !important; }
+.tip-card.acceptable .tip-card-desc    { order: 5 !important; }
+.tip-card.acceptable .most-common-tag { display: none !important; }
+.tip-card-label { white-space: normal !important; word-wrap: break-word !important; overflow-wrap: break-word !important; min-height: auto !important; }
+</style>
+</body>
+</html>
