@@ -55,7 +55,7 @@
   font-weight: 800 !important;
   letter-spacing: .2em !important;
   text-transform: uppercase !important;
-  color: rgba(30,30,30,0.85) !important;
+  color: rgba(20,20,20,0.92) !important;
   text-align: center !important;
   padding: 14px 14px 12px !important;
   background: linear-gradient(145deg,#4B5563 0%,#9CA3AF 40%,#D1D5DB 65%,#9CA3AF 100%) !important;
@@ -432,6 +432,12 @@ input[type="number"]{-moz-appearance:textfield}
   .nav-hamburger { display: flex !important; }
   .site-nav-links { display: none !important; }
   .site-nav { position: relative !important; }
+}
+</style>
+<style id="mobile-grid-fix">
+@media (max-width:480px){
+  .tip-grid{grid-template-columns:1fr!important}
+  .tip-card{min-width:0!important}
 }
 </style>
 </head>
@@ -994,15 +1000,15 @@ const bonusDollar = [pctDollar, yearDollar].filter(Boolean).join(' · ') || '';
 if (activeKeys.length) {
 const bar = document.createElement('div'); bar.className = 'bonus-bar';
 const iconsSpan = document.createElement('span'); iconsSpan.className = 'bonus-bar-icons'; iconsSpan.textContent = bonusIconString;
-const textSpan = document.createElement('span'); textSpan.className = 'bonus-bar-text'; textSpan.textContent = activeKeys.map(k => bonusFriendly[k]).join(' + ') + ' bonus included in each tip suggestion';
+const textSpan = document.createElement('span'); textSpan.className = 'bonus-bar-text'; textSpan.textContent = (activeKeys.includes('yearend') ? 'Year-End Cash Gift — give separately, in addition to tip' : activeKeys.map(k => bonusFriendly[k]).join(' + ') + ' included in tip');
 const amtSpan = document.createElement('span'); amtSpan.className = 'bonus-bar-amount'; amtSpan.textContent = bonusDollar;
 bar.appendChild(iconsSpan); bar.appendChild(textSpan); bar.appendChild(amtSpan);
 grid.parentNode.insertBefore(bar, grid);
 }
 const cards = [
-{ cls:'good', label:'Good', tipAmt:fmt(_g7), total:fmtTotal(_g7), pct:fmtPct(_g7), mostCommon:false, isAcceptable:false, desc:'A solid tip for skilled tattoo work.' },
-{ cls:'better', label:'Better', tipAmt:fmt(_bt8), total:fmtTotal(_bt8), pct:fmtPct(_bt8), mostCommon:selectedStars>=3, isAcceptable:false, desc:'The local sweet spot — shows real appreciation for the artistry.' },
-{ cls:'best', label:'Best', tipAmt:fmt(_bs9), total:fmtTotal(_bs9), pct:fmtPct(_bs9), mostCommon:false, isAcceptable:false, desc:selectedStars===5?'Exceptional work — a memorable piece deserves a memorable tip._loved':'Exceptional work — a memorable piece deserves a memorable tip.' },
+{ cls:'good', label:'Good', tipAmt:fmt(_g7), total:fmtTotal(_g7), pct:(price>0&&Math.round(price*_g7)>=150)?'':fmtPct(_g7), mostCommon:false, isAcceptable:false, desc:'A solid tip for skilled tattoo work.' },
+{ cls:'better', label:'Better', tipAmt:fmt(_bt8), total:fmtTotal(_bt8), pct:(price>0&&Math.round(price*_bt8)>=250)?'':fmtPct(_bt8), mostCommon:selectedStars>=3, isAcceptable:false, desc:'The local sweet spot — shows real appreciation for the artistry.' },
+{ cls:'best', label:'Best', tipAmt:fmt(_bs9), total:fmtTotal(_bs9), pct:(price>0&&Math.round(price*_bs9)>=350)?'':fmtPct(_bs9), mostCommon:false, isAcceptable:false, desc:selectedStars===5?'Exceptional work — a memorable piece deserves a memorable tip._loved':'Exceptional work — a memorable piece deserves a memorable tip.' },
 { cls:'minimum', label:selectedStars<=2?'If Unhappy':'Minimum', tipAmt:fmt(_ac6), total:fmtTotal(_ac6), pct:fmtPct(_ac6), mostCommon:false, isAcceptable:true, desc:selectedStars<=2?'Not thrilled, but they invested real time and skill.':'Disappointed — still acknowledges the effort.' }
 ];
 cards.forEach(card => {
@@ -1042,36 +1048,36 @@ const _incomeEffect = _li >= 100000
 ? '+' + fmtIncome + ' median income — well above average, higher tip norms'
 : _li >= 74000
 ? '+' + fmtIncome + ' median income — above the national average ($74,580)'
-: _li >= 60000
+: _li >= 68000
 ? '·' + fmtIncome + ' median income — near the national average ($74,580)'
-: _li >= 50000
+: _li >= 55000
 ? '-' + fmtIncome + ' median income — below the national average, lower base rate'
 : '-' + fmtIncome + ' median income — significantly below average, _a5 down';
 const _adjItems = [];
 _adjItems.push(_incomeEffect);
-if (selectedBonuses['squeeze'] !== undefined && selectedBonuses['squeeze'] !== 'YEAREND') _adjItems.push('+Squeezed me in +5%');
-if (selectedBonuses['outstanding'] !== undefined && selectedBonuses['outstanding'] !== 'YEAREND') _adjItems.push('+Truly Outstanding result (+20% bonus)');
-if (selectedBonuses['yearend'] === 'YEAREND') _adjItems.push('+Year-end bonus — ' + '$' + Math.round(price||0) + ' cash gift (1 full service)');
+if (selectedBonuses['squeeze'] !== undefined && selectedBonuses['squeeze'] !== 'YEAREND') _adjItems.push ('+Squeezed me in +5%');
+if (selectedBonuses['outstanding'] !== undefined && selectedBonuses['outstanding'] !== 'YEAREND') _adjItems.push ('+Truly Outstanding result (+20% bonus)');
+if (selectedBonuses['yearend'] === 'YEAREND') _adjItems.push ('+Year-end bonus — ' + '$' + Math.round(price||0) + ' cash gift (1 full service)');
 if (selectedStars > 0) {
 const _starLabels = ['', 'Not happy', 'Below expectations', 'Satisfied', 'Really pleased', 'Absolutely loved it'];
 const _starEffects = {
-1: '-1 star(Not happy) — minimum floor applied, suggestions at low end',
-2: '-2 stars(Below expectations) — below average, suggestions reduced',
+1: '-1 star (Not happy) — minimum applied (-20% from base)',
+2: '-2 stars (Below expectations) — suggestions reduced (-10%)',
 3: '·3 stars(Satisfied) — standard suggestions',
-4: '+4 stars(Really pleased) — good rating, generous range shown',
-5: '+5 stars(Absolutely loved it) — top rating, full generous range'
+4: '+4 stars (Really pleased) — generous range shown (+10%)',
+5: '+5 stars (Outstanding) — top-end suggestions (+20%)'
 };
 _adjItems.push(_starEffects[selectedStars] || ('·' + selectedStars + ' stars'));
 }
-if (_li > 90000) _adjItems.push('+High cost-of-living city');
-if (selectedComplexity === 'complex') _adjItems.push('+Complex/custom artwork — +2.5%');
-if (selectedSession === 'final') _adjItems.push('+Final session(piece complete) — +3%');
-if (selectedSession === 'ongoing') _adjItems.push('-Mid-project session — standard rate');
-if (selectedClient === 'regular') _adjItems.push('+Returning client');
-if (tattooPrice >= 2000) _adjItems.push('-High value piece — percentage capped(flat amount more appropriate)');
-else if (tattooPrice >= 1000) _adjItems.push('-$1K+ piece — percentage ceiling applied');
-if (_p4 > 0) _adjItems.push('+Bonus — ' + Math.round(_p4*100) + '% added');
-if (selectedStars <= 2) _adjItems.push('-Low satisfaction — minimum applied');
+if (_li > 90000) _adjItems.push ('+High cost-of-living city');
+if (selectedComplexity === 'complex') _adjItems.push ('+Complex/custom artwork — +2.5%');
+if (selectedSession === 'final') _adjItems.push ('+Final session (piece complete) — +3%');
+if (selectedSession === 'ongoing') _adjItems.push ('-Mid-project session — standard rate');
+if (selectedClient === 'regular') _adjItems.push ('+Returning client');
+if (tattooPrice >= 2000) _adjItems.push ('-High value piece — percentage capped (flat amount more appropriate)');
+else if (tattooPrice >= 1000) _adjItems.push ('-$1K+ piece — percentage ceiling applied');
+if (_p4 > 0) _adjItems.push ('+Bonus — ' + Math.round(_p4*100) + '% added');
+if (selectedStars <= 2) _adjItems.push ('-Low satisfaction — minimum applied');
 const insight = document.getElementById('insightBox');
 insight.textContent = '';
 const strong = document.createElement('strong'); strong.textContent = selectedCity.c + ', ' + selectedCity.s + ':';
@@ -1183,7 +1189,7 @@ if (el){ el.style.cssText += DARK_STYLES; }
   display: inline-block !important;
   width: auto !important;
   background: linear-gradient(135deg, #6B7280 0%, #9CA3AF 50%, #6B7280 100%) !important;
-  color: rgba(15,15,15,0.9) !important;
+  color: rgba(20,20,20,0.92) !important;
   align-self: center !important;
 }
 .tip-card.acceptable .tip-card-label::before { content: none !important; }
@@ -1211,8 +1217,8 @@ if (el){ el.style.cssText += DARK_STYLES; }
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  background: var(--bg, #1E1E22) !important;
-  border: 1.5px solid var(--rule, rgba(255,255,255,0.12)) !important;
+  background: rgba(255,255,255,0.08) !important;
+  border: 1.5px solid var(--rule, rgba(255,255,255,0.15)) !important;
   border-radius: 7px !important;
   padding: 6px 12px 7px !important;
   margin: 8px auto 6px !important;
@@ -1266,12 +1272,19 @@ if (el){ el.style.cssText += DARK_STYLES; }
   text-align: center !important;
   width: 100% !important;
   display: block !important;
-  padding: 4px 0 0 !important;
+  padding: 6px 16px 16px !important;
   line-height: 1.5 !important;
   background: transparent !important;
   font-family: inherit !important;
 }
 
+
+/* Force correct order: label, amount, total, pct, desc */
+.tip-card.acceptable .tip-card-label   { order: 1 !important; }
+.tip-card.acceptable .tip-card-amount  { order: 2 !important; }
+.tip-card.acceptable .tip-card-total   { order: 3 !important; }
+.tip-card.acceptable .tip-card-pct     { order: 4 !important; }
+.tip-card.acceptable .tip-card-desc    { order: 5 !important; }
 .tip-card.acceptable .most-common-tag { display: none !important; }
 .tip-card-label { white-space: normal !important; word-wrap: break-word !important; overflow-wrap: break-word !important; min-height: auto !important; }
 </style>

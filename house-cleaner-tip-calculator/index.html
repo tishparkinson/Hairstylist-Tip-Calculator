@@ -53,7 +53,7 @@
   font-weight: 800 !important;
   letter-spacing: .2em !important;
   text-transform: uppercase !important;
-  color: rgba(30,30,30,0.85) !important;
+  color: rgba(20,20,20,0.92) !important;
   text-align: center !important;
   padding: 14px 14px 12px !important;
   background: linear-gradient(145deg,#4B5563 0%,#9CA3AF 40%,#D1D5DB 65%,#9CA3AF 100%) !important;
@@ -431,6 +431,12 @@ input[type="number"]{-moz-appearance:textfield}
   .nav-hamburger { display: flex !important; }
   .site-nav-links { display: none !important; }
   .site-nav { position: relative !important; }
+}
+</style>
+<style id="mobile-grid-fix">
+@media (max-width:480px){
+  .tip-grid{grid-template-columns:1fr!important}
+  .tip-card{min-width:0!important}
 }
 </style>
 </head>
@@ -1011,7 +1017,7 @@ const cards = [
 { cls:"good", label:_isMultiCrew?"Per Cleaner":"Good", tipAmt:_isMultiCrew?_perPersonFmt(_g7):fmt(_g7), total:fmtTotal(_g7), pct:fmtPct(_g7), mostCommon:false, isAcceptable:false, desc:_isMultiCrew?"Give " + _perPersonFmt(_g7) + " to each of your " + selectedCleanerCrew + " cleaners (" + fmt(_g7) + " total).":"A solid tip for quality service." },
 { cls:"better", label:_isMultiCrew?"Per Cleaner":"Better", tipAmt:_isMultiCrew?_perPersonFmt(_bt8):fmt(_bt8), total:fmtTotal(_bt8), pct:fmtPct(_bt8), mostCommon:selectedStars>=3, isAcceptable:false, desc:_isMultiCrew?"Give " + _perPersonFmt(_bt8) + " to each of your " + selectedCleanerCrew + " cleaners (" + fmt(_bt8) + " total) — the local sweet spot.":"The local sweet spot — shows real appreciation." },
 { cls:"best", label:_isMultiCrew?"Per Cleaner":"Best", tipAmt:_isMultiCrew?_perPersonFmt(_bs9):fmt(_bs9), total:fmtTotal(_bs9), pct:fmtPct(_bs9), mostCommon:false, isAcceptable:false, desc:_isMultiCrew?"Give " + _perPersonFmt(_bs9) + " to each of your " + selectedCleanerCrew + " cleaners (" + fmt(_bs9) + " total) — exceptional.":"Exceptional — the cleanest your home has ever been." },
-{ cls:"minimum", label:selectedStars<=2?"If Unhappy":"Minimum", tipAmt:fmt(_ac6), total:fmtTotal(_ac6), pct:fmtPct(_ac6), mostCommon:false, isAcceptable:true, desc:(selectedStars<=2?"Not what you expected — still acknowledges the effort.":"Disappointed — still acknowledges the effort.") + _crewSuffixMin }
+{ cls:"minimum", label:selectedStars<=2?"If Unhappy":"Minimum", tipAmt:_isMultiCrew?_perPersonFmt(_ac6):fmt(_ac6), total:fmtTotal(_ac6), pct:fmtPct(_ac6), mostCommon:false, isAcceptable:true, desc:_isMultiCrew?"Give " + _perPersonFmt(_ac6) + " to each of your " + selectedCleanerCrew + " cleaners (" + fmt(_ac6) + " total) — only if service was disappointing.":"Disappointed — only if service fell short." }
 ];
 cards.forEach(card => {
 const div = document.createElement("div");
@@ -1046,39 +1052,39 @@ const _incomeEffect = _li >= 100000
 ? '+' + fmtIncome + ' median income — well above average, higher tip norms'
 : _li >= 74000
 ? '+' + fmtIncome + ' median income — above the national average ($74,580)'
-: _li >= 60000
+: _li >= 68000
 ? '·' + fmtIncome + ' median income — near the national average ($74,580)'
-: _li >= 50000
+: _li >= 55000
 ? '-' + fmtIncome + ' median income — below the national average, lower base rate'
 : '-' + fmtIncome + ' median income — significantly below average, _a5 down';
 const _adjItems = [];
 _adjItems.push(_incomeEffect);
-if (selectedBonuses['holiday'] !== undefined && selectedBonuses['holiday'] !== 'YEAREND') _adjItems.push('+Holiday bonus (flat cash, shown separately)');
-if (selectedBonuses['outstanding'] !== undefined && selectedBonuses['outstanding'] !== 'YEAREND') _adjItems.push('+Truly Outstanding result (+20% bonus)');
-if (selectedBonuses['yearend'] === 'YEAREND') _adjItems.push('+Year-end bonus — ' + '$' + Math.round(price||0) + ' cash gift (1 full service)');
+if (selectedBonuses['holiday'] !== undefined && selectedBonuses['holiday'] !== 'YEAREND') _adjItems.push ('+Holiday bonus (flat cash, shown separately)');
+if (selectedBonuses['outstanding'] !== undefined && selectedBonuses['outstanding'] !== 'YEAREND') _adjItems.push ('+Truly Outstanding result (+20% bonus)');
+if (selectedBonuses['yearend'] === 'YEAREND') _adjItems.push ('+Year-end bonus — ' + '$' + Math.round(price||0) + ' cash gift (1 full service)');
 if (selectedStars > 0) {
 const _starLabels = ['', 'Not happy', 'Below expectations', 'Satisfied', 'Really pleased', 'Outstanding clean'];
 const _starEffects = {
-1: '-1 star(Not happy) — minimum floor applied, suggestions at low end',
-2: '-2 stars(Below expectations) — below average, suggestions reduced',
+1: '-1 star (Not happy) — minimum applied (-20% from base)',
+2: '-2 stars (Below expectations) — suggestions reduced (-10%)',
 3: '·3 stars(Satisfied) — standard suggestions',
-4: '+4 stars(Really pleased) — good rating, generous range shown',
-5: '+5 stars(Outstanding clean) — top rating, full generous range'
+4: '+4 stars (Really pleased) — generous range shown (+10%)',
+5: '+5 stars (Outstanding) — top-end suggestions (+20%)'
 };
 _adjItems.push(_starEffects[selectedStars] || ('·' + selectedStars + ' stars'));
 }
-if (_li > 90000) _adjItems.push('+High cost-of-living city');
-if (selectedCleanType === 'deep') _adjItems.push('+Deep clean — +2%');
-if (selectedCleanType === 'movein') _adjItems.push('+Move-in/out clean — +3%');
-if (selectedCleanType === 'onetime') _adjItems.push('+One-time clean — +1%');
-if (selectedHomeSize === 'large') _adjItems.push('+Large home — +1%');
-if (selectedHomeSize === 'xlarge') _adjItems.push('+Very large home — +2%');
-if (selectedCleanerCrew > 1) _adjItems.push('+' + selectedCleanerCrew + '-person crew — tip shown is total, split equally');
-if (selectedCleanerDetails.has('instructions')) _adjItems.push('+Followed specific instructions — +2%');
-if (selectedCleanerDetails.has('above_beyond')) _adjItems.push('+Went above and beyond — +2%');
-if (selectedCleanerDetails.has('supplies')) _adjItems.push('+Brought own supplies — +1%');
-if (_p4 > 0) _adjItems.push('+Bonus occasion — ' + Math.round(_p4*100) + '% added');
-if (selectedStars <= 2) _adjItems.push('-Low satisfaction — minimum applied');
+if (_li > 90000) _adjItems.push ('+High cost-of-living city');
+if (selectedCleanType === 'deep') _adjItems.push ('+Deep clean — +2%');
+if (selectedCleanType === 'movein') _adjItems.push ('+Move-in/out clean — +3%');
+if (selectedCleanType === 'onetime') _adjItems.push ('+One-time clean — +1%');
+if (selectedHomeSize === 'large') _adjItems.push ('+Large home — +1%');
+if (selectedHomeSize === 'xlarge') _adjItems.push ('+Very large home — +2%');
+// crew count note removed from adjItems
+if (selectedCleanerDetails.has('instructions')) _adjItems.push ('+Followed specific instructions — +2%');
+if (selectedCleanerDetails.has('above_beyond')) _adjItems.push ('+Went above and beyond — +2%');
+if (selectedCleanerDetails.has('supplies')) _adjItems.push ('+Brought own supplies — +1%');
+if (_p4 > 0) _adjItems.push ('+Bonus occasion — ' + Math.round(_p4*100) + '% added');
+if (selectedStars <= 2) _adjItems.push ('-Low satisfaction — minimum applied');
 const insight = document.getElementById("insightBox");
 insight.textContent = "";
 const strong = document.createElement("strong"); strong.textContent = selectedCity.c + ", " + selectedCity.s + ":";
@@ -1190,7 +1196,7 @@ if (el){ el.style.cssText += DARK_STYLES; }
   display: inline-block !important;
   width: auto !important;
   background: linear-gradient(135deg, #6B7280 0%, #9CA3AF 50%, #6B7280 100%) !important;
-  color: rgba(15,15,15,0.9) !important;
+  color: rgba(20,20,20,0.92) !important;
   align-self: center !important;
 }
 .tip-card.acceptable .tip-card-label::before { content: none !important; }
@@ -1218,8 +1224,8 @@ if (el){ el.style.cssText += DARK_STYLES; }
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  background: var(--bg, #1E1E22) !important;
-  border: 1.5px solid var(--rule, rgba(255,255,255,0.12)) !important;
+  background: rgba(255,255,255,0.08) !important;
+  border: 1.5px solid var(--rule, rgba(255,255,255,0.15)) !important;
   border-radius: 7px !important;
   padding: 6px 12px 7px !important;
   margin: 8px auto 6px !important;
@@ -1273,12 +1279,19 @@ if (el){ el.style.cssText += DARK_STYLES; }
   text-align: center !important;
   width: 100% !important;
   display: block !important;
-  padding: 4px 0 0 !important;
+  padding: 6px 16px 16px !important;
   line-height: 1.5 !important;
   background: transparent !important;
   font-family: inherit !important;
 }
 
+
+/* Force correct order: label, amount, total, pct, desc */
+.tip-card.acceptable .tip-card-label   { order: 1 !important; }
+.tip-card.acceptable .tip-card-amount  { order: 2 !important; }
+.tip-card.acceptable .tip-card-total   { order: 3 !important; }
+.tip-card.acceptable .tip-card-pct     { order: 4 !important; }
+.tip-card.acceptable .tip-card-desc    { order: 5 !important; }
 .tip-card.acceptable .most-common-tag { display: none !important; }
 .tip-card-label { white-space: normal !important; word-wrap: break-word !important; overflow-wrap: break-word !important; min-height: auto !important; }
 </style>

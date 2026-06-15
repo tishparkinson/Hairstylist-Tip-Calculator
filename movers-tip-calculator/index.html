@@ -53,7 +53,7 @@
   font-weight: 800 !important;
   letter-spacing: .2em !important;
   text-transform: uppercase !important;
-  color: rgba(30,30,30,0.85) !important;
+  color: rgba(20,20,20,0.92) !important;
   text-align: center !important;
   padding: 14px 14px 12px !important;
   background: linear-gradient(145deg,#4B5563 0%,#9CA3AF 40%,#D1D5DB 65%,#9CA3AF 100%) !important;
@@ -435,6 +435,12 @@ input[type="number"]{-moz-appearance:textfield}
   .nav-hamburger { display: flex !important; }
   .site-nav-links { display: none !important; }
   .site-nav { position: relative !important; }
+}
+</style>
+<style id="mobile-grid-fix">
+@media (max-width:480px){
+  .tip-grid{grid-template-columns:1fr!important}
+  .tip-card{min-width:0!important}
 }
 </style>
 </head>
@@ -938,10 +944,10 @@ const _b0 = Math.min(_minAmt,    _goodAmt - 5);
 
 const _perLabel = estimatedCrew > 1 ? ' per mover (' + estimatedCrew + ' movers)' : '';
 const flatCards = [
-{cls:'good',    label:'Good',  tipAmt:_goodAmt,   desc:'Standard tip' + _perLabel + ' — hand cash to each mover individually.',                    isAcceptable:false},
-{cls:'better',  label:'Better',  tipAmt:_b2,         desc:'Above standard' + _perLabel + ' — for a smooth, efficient, careful move.',                  isAcceptable:false},
-{cls:'best',    label:'Best', tipAmt:_b3,          desc:'Outstanding' + _perLabel + ' — for a crew that truly went above and beyond.',               isAcceptable:false},
-{cls:'minimum', label:'Minimum',   tipAmt:Math.max(10, _b0), desc:'Below standard' + _perLabel + ' — only if there were significant problems.',          isAcceptable:true},
+{cls:'good',    label:'Good',  tipAmt:_goodAmt,   desc:'Per mover — hand cash directly to each mover.', isAcceptable:false},
+{cls:'better',  label:'Better',  tipAmt:_b2,         desc:'Per mover — for a smooth, efficient, careful crew.', isAcceptable:false},
+{cls:'best',    label:'Best', tipAmt:_b3,          desc:'Per mover — for a crew that truly went above and beyond.', isAcceptable:false},
+{cls:'minimum', label:'Minimum',   tipAmt:Math.max(10, _b0), desc:'Per mover — only if there were significant problems.', isAcceptable:true},
 ];
 const moveLabels = {short5:'short(under 5 miles)',medium:'medium(5–25 miles)',medlong:'medium-long(26–50 miles)',long:'long distance(50+ miles)',extralong:'extra long(100+ miles)',crosscountry:'cross-country'};
 const packedNote = selectedMoverDetails.has('packed') ? ' Includes an adjustment for full packing service — movers who pack deserve meaningfully more.' : '';
@@ -972,38 +978,38 @@ const _incomeEffect = _li >= 100000
 ? '+' + fmtIncome + ' median income — well above average, higher tip norms'
 : _li >= 74000
 ? '+' + fmtIncome + ' median income — above the national average ($74,580)'
-: _li >= 60000
+: _li >= 68000
 ? '·' + fmtIncome + ' median income — near the national average ($74,580)'
-: _li >= 50000
+: _li >= 55000
 ? '-' + fmtIncome + ' median income — below the national average, lower base rate'
 : '-' + fmtIncome + ' median income — significantly below average, _a5 down';
 const _adjItems = [];
 _adjItems.push(_incomeEffect);
-if (selectedBonuses['yearend'] === 'YEAREND') _adjItems.push('+Year-end bonus — ' + '$' + Math.round(price||0) + ' cash gift (1 full service)');
+if (selectedBonuses['yearend'] === 'YEAREND') _adjItems.push ('+Year-end bonus — ' + '$' + Math.round(price||0) + ' cash gift (1 full service)');
 if (selectedStars > 0) {
 const _starLabels = ['', 'Very disappointed', 'Below expectations', 'Acceptable', 'Good crew', 'Outstanding crew'];
 const _starEffects = {
-1: '-1 star(Very disappointed) — minimum floor applied, suggestions at low end',
-2: '-2 stars(Below expectations) — below average, suggestions reduced',
+1: '-1 star (Not happy) — minimum applied (-20% from base)',
+2: '-2 stars (Below expectations) — suggestions reduced (-10%)',
 3: '·3 stars(Acceptable) — standard suggestions',
-4: '+4 stars(Good crew) — good rating, generous range shown',
-5: '+5 stars(Outstanding crew) — top rating, full generous range'
+4: '+4 stars (Really pleased) — generous range shown (+10%)',
+5: '+5 stars (Outstanding) — top-end suggestions (+20%)'
 };
 _adjItems.push(_starEffects[selectedStars] || ('·' + selectedStars + ' stars'));
 }
-if (_li > 90000) _adjItems.push('+High cost-of-living area');
-if (selectedMoveType === 'crosscountry') _adjItems.push('+Cross-country move — highest rate');
-if (selectedMoveType === 'extralong') _adjItems.push('+Extra long distance — higher rate');
-if (selectedMoveType === 'long') _adjItems.push('+Long distance — higher rate');
-if (selectedMoverDetails.has('stairs')) _adjItems.push('+Stairs involved — +12%');
-if (selectedMoverDetails.has('heavy')) _adjItems.push('+Piano/heavy specialty items — +15%');
-if (selectedMoverDetails.has('packed')) _adjItems.push('+Packed boxes(full packing service) — +10%');
-if (selectedMoverDetails.has('careful')) _adjItems.push('+Careful with all belongings — +8%');
-if (selectedMoverDetails.has('instructions')) _adjItems.push('+Followed all instructions — +5%');
-if (selectedMoverDetails.has('hot')) _adjItems.push('+Very hot or harsh weather — +10%');
-if (selectedMoverDetails.has('damaged')) _adjItems.push('-Items scratched or damaged — -25%');
-if (selectedMoverDetails.has('walls')) _adjItems.push('-Walls/floors damaged — -20%');
-_adjItems.push('+Per mover — tip each person individually');
+if (_li > 90000) _adjItems.push ('+High cost-of-living area');
+if (selectedMoveType === 'crosscountry') _adjItems.push ('+Cross-country move — highest rate');
+if (selectedMoveType === 'extralong') _adjItems.push ('+Extra long distance — higher rate');
+if (selectedMoveType === 'long') _adjItems.push ('+Long distance — higher rate');
+if (selectedMoverDetails.has('stairs')) _adjItems.push ('+Stairs involved — +12%');
+if (selectedMoverDetails.has('heavy')) _adjItems.push ('+Piano/heavy specialty items — +15%');
+if (selectedMoverDetails.has('packed')) _adjItems.push ('+Packed boxes (full packing service) — +10%');
+if (selectedMoverDetails.has('careful')) _adjItems.push ('+Careful with all belongings — +8%');
+if (selectedMoverDetails.has('instructions')) _adjItems.push ('+Followed all instructions — +5%');
+if (selectedMoverDetails.has('hot')) _adjItems.push ('+Very hot or harsh weather — +10%');
+if (selectedMoverDetails.has('damaged')) _adjItems.push ('-Items scratched or damaged — -25%');
+if (selectedMoverDetails.has('walls')) _adjItems.push ('-Walls/floors damaged — -20%');
+// Per mover note removed from adjItems
 const insight = document.getElementById('insightBox');
 insight.textContent = '';
 const strong = document.createElement('strong'); strong.textContent = selectedCity.c + ', ' + selectedCity.s + ':';
@@ -1105,7 +1111,7 @@ if (el){ el.style.cssText += DARK_STYLES; }
   display: inline-block !important;
   width: auto !important;
   background: linear-gradient(135deg, #6B7280 0%, #9CA3AF 50%, #6B7280 100%) !important;
-  color: rgba(15,15,15,0.9) !important;
+  color: rgba(20,20,20,0.92) !important;
   align-self: center !important;
 }
 .tip-card.acceptable .tip-card-label::before { content: none !important; }
@@ -1133,8 +1139,8 @@ if (el){ el.style.cssText += DARK_STYLES; }
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  background: var(--bg, #1E1E22) !important;
-  border: 1.5px solid var(--rule, rgba(255,255,255,0.12)) !important;
+  background: rgba(255,255,255,0.08) !important;
+  border: 1.5px solid var(--rule, rgba(255,255,255,0.15)) !important;
   border-radius: 7px !important;
   padding: 6px 12px 7px !important;
   margin: 8px auto 6px !important;
@@ -1188,12 +1194,19 @@ if (el){ el.style.cssText += DARK_STYLES; }
   text-align: center !important;
   width: 100% !important;
   display: block !important;
-  padding: 4px 0 0 !important;
+  padding: 6px 16px 16px !important;
   line-height: 1.5 !important;
   background: transparent !important;
   font-family: inherit !important;
 }
 
+
+/* Force correct order: label, amount, total, pct, desc */
+.tip-card.acceptable .tip-card-label   { order: 1 !important; }
+.tip-card.acceptable .tip-card-amount  { order: 2 !important; }
+.tip-card.acceptable .tip-card-total   { order: 3 !important; }
+.tip-card.acceptable .tip-card-pct     { order: 4 !important; }
+.tip-card.acceptable .tip-card-desc    { order: 5 !important; }
 .tip-card.acceptable .most-common-tag { display: none !important; }
 .tip-card-label { white-space: normal !important; word-wrap: break-word !important; overflow-wrap: break-word !important; min-height: auto !important; }
 </style>

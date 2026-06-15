@@ -53,7 +53,7 @@
   font-weight: 800 !important;
   letter-spacing: .2em !important;
   text-transform: uppercase !important;
-  color: rgba(30,30,30,0.85) !important;
+  color: rgba(20,20,20,0.92) !important;
   text-align: center !important;
   padding: 14px 14px 12px !important;
   background: linear-gradient(145deg,#4B5563 0%,#9CA3AF 40%,#D1D5DB 65%,#9CA3AF 100%) !important;
@@ -430,6 +430,12 @@ input[type="number"]{-moz-appearance:textfield}
   .nav-hamburger { display: flex !important; }
   .site-nav-links { display: none !important; }
   .site-nav { position: relative !important; }
+}
+</style>
+<style id="mobile-grid-fix">
+@media (max-width:480px){
+  .tip-grid{grid-template-columns:1fr!important}
+  .tip-card{min-width:0!important}
 }
 </style>
 </head>
@@ -956,16 +962,16 @@ const fips = selectedCity.f;
 const _li = (_cd && fips && _cd[fips]) ? _cd[fips] : _umi;
 const dataSource = (_cd && fips && _cd[fips]) ? 'local' : 'national';
 const _i1 = (_li - 40000) / (120000 - 40000);
-const _b0 = Math.max(0.13, Math.min(0.27, 0.15 + _i1 * 0.10));
+const _b0 = Math.max(0.10, Math.min(0.20, 0.12 + _i1 * 0.08));
 let _s2 = 0;
-if (selectedEventType === 'wedding') _s2 += 0.02;
+if (selectedEventType === 'wedding') _s2 += 0.01;
 if (selectedEventType === 'foodtruck') _s2 -= 0.03;
 if (selectedEventType === 'taco') _s2 -= 0.02;
-if (selectedServiceStyle === 'plated') _s2 += 0.02;
+if (selectedServiceStyle === 'plated') _s2 += 0.01;
 if (selectedServiceStyle === 'dropoff') _s2 -= 0.04;
-if (selectedCaterDetails.has('traveled')) _s2 += 0.02;
+if (selectedCaterDetails.has('traveled')) _s2 += 0.01;
 if (selectedCaterDetails.has('setup')) _s2 += 0.01;
-if (selectedCaterDetails.has('servers')) _s2 += 0.02;
+if (selectedCaterDetails.has('servers')) _s2 += 0.01;
 if (selectedCaterDetails.has('gratuity_included')) _s2 -= 0.10;
 if (selectedGuestCount === 'xlarge') _s2 += 0.01;
 _s2 = Math.max(-0.10, Math.min(_s2, 0.08));
@@ -1060,15 +1066,15 @@ const _evtLabels = {wedding:'+Wedding event — +2%',corporate:'·Corporate cate
 if (_evtLabels[selectedEventType]) _adjItems.push(_evtLabels[selectedEventType]);
 const _styleLabels = {plated:'+Plated service — +2%',buffet:'·Buffet service — standard',stations:'·Food stations — standard',dropoff:'-Drop-off only — -4%'};
 if (_styleLabels[selectedServiceStyle]) _adjItems.push(_styleLabels[selectedServiceStyle]);
-if (selectedCaterDetails.has('traveled')) _adjItems.push('+Caterer traveled — +2%');
-if (selectedCaterDetails.has('setup')) _adjItems.push('+Setup/breakdown included — +1%');
-if (selectedCaterDetails.has('servers')) _adjItems.push('+Servers provided — +2%');
-if (selectedCaterDetails.has('gratuity_included')) _adjItems.push('·Contract gratuity included — tip reduced');
+if (selectedCaterDetails.has('traveled')) _adjItems.push ('+Caterer traveled — +2%');
+if (selectedCaterDetails.has('setup')) _adjItems.push ('+Setup/breakdown included — +1%');
+if (selectedCaterDetails.has('servers')) _adjItems.push ('+Servers provided — +2%');
+if (selectedCaterDetails.has('gratuity_included')) _adjItems.push ('·Contract gratuity included — tip reduced');
 const _guestLabels = {small:'·Small group (<20)',medium:'·Medium group (20–49)',large:'+Large event (50–99) — +1%',xlarge:'+Very large event (100+) — +2%'};
 if (_guestLabels[selectedGuestCount]) _adjItems.push(_guestLabels[selectedGuestCount]);
-if (selectedBonuses["holiday"]!==undefined) _adjItems.push("+Holiday bonus (flat cash, shown separately)");
-if (selectedBonuses["outstanding"]!==undefined) _adjItems.push("+Truly Outstanding result (+20% bonus)");
-if (selectedBonuses["yearend"]==="YEAREND") _adjItems.push("+Year-end bonus — $"+Math.round(price||0)+" cash gift");
+if (selectedBonuses["holiday"]!==undefined) _adjItems.push ("+Holiday bonus (flat cash, shown separately)");
+if (selectedBonuses["outstanding"]!==undefined) _adjItems.push ("+Truly Outstanding result (+20% bonus)");
+if (selectedBonuses["yearend"]==="YEAREND") _adjItems.push ("+Year-end bonus — $"+Math.round(price||0)+" cash gift");
 const insight = document.getElementById("insightBox");
 insight.textContent = "";
 const strong = document.createElement("strong"); strong.textContent = selectedCity.c + ", " + selectedCity.s + ":";
@@ -1189,7 +1195,7 @@ if (el){ el.style.cssText += DARK_STYLES; }
   display: inline-block !important;
   width: auto !important;
   background: linear-gradient(135deg, #6B7280 0%, #9CA3AF 50%, #6B7280 100%) !important;
-  color: rgba(15,15,15,0.9) !important;
+  color: rgba(20,20,20,0.92) !important;
   align-self: center !important;
 }
 .tip-card.acceptable .tip-card-label::before { content: none !important; }
@@ -1217,8 +1223,8 @@ if (el){ el.style.cssText += DARK_STYLES; }
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  background: var(--bg, #1E1E22) !important;
-  border: 1.5px solid var(--rule, rgba(255,255,255,0.12)) !important;
+  background: rgba(255,255,255,0.08) !important;
+  border: 1.5px solid var(--rule, rgba(255,255,255,0.15)) !important;
   border-radius: 7px !important;
   padding: 6px 12px 7px !important;
   margin: 8px auto 6px !important;
@@ -1272,12 +1278,19 @@ if (el){ el.style.cssText += DARK_STYLES; }
   text-align: center !important;
   width: 100% !important;
   display: block !important;
-  padding: 4px 0 0 !important;
+  padding: 6px 16px 16px !important;
   line-height: 1.5 !important;
   background: transparent !important;
   font-family: inherit !important;
 }
 
+
+/* Force correct order: label, amount, total, pct, desc */
+.tip-card.acceptable .tip-card-label   { order: 1 !important; }
+.tip-card.acceptable .tip-card-amount  { order: 2 !important; }
+.tip-card.acceptable .tip-card-total   { order: 3 !important; }
+.tip-card.acceptable .tip-card-pct     { order: 4 !important; }
+.tip-card.acceptable .tip-card-desc    { order: 5 !important; }
 .tip-card.acceptable .most-common-tag { display: none !important; }
 .tip-card-label { white-space: normal !important; word-wrap: break-word !important; overflow-wrap: break-word !important; min-height: auto !important; }
 </style>

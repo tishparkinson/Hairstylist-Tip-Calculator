@@ -53,7 +53,7 @@
   font-weight: 800 !important;
   letter-spacing: .2em !important;
   text-transform: uppercase !important;
-  color: rgba(30,30,30,0.85) !important;
+  color: rgba(20,20,20,0.92) !important;
   text-align: center !important;
   padding: 14px 14px 12px !important;
   background: linear-gradient(145deg,#4B5563 0%,#9CA3AF 40%,#D1D5DB 65%,#9CA3AF 100%) !important;
@@ -429,6 +429,12 @@ input[type="number"]{-moz-appearance:textfield}
   .site-nav { position: relative !important; }
 }
 </style>
+<style id="mobile-grid-fix">
+@media (max-width:480px){
+  .tip-grid{grid-template-columns:1fr!important}
+  .tip-card{min-width:0!important}
+}
+</style>
 </head>
 <body>
 
@@ -499,12 +505,10 @@ input[type="number"]{-moz-appearance:textfield}
     </div>
     <div class="section-label">Multiple Services? <span class="optional-label">(optional)</span></div>
     <div class="field">
-      <label>Were additional color services combined?</label>
-      <div class="bonus-grid" id="multiServiceGroup">
-        <button class="bonus-btn" data-ms="toner_addon" type="button"><span class="bonus-icon">✨</span><span>+ Toner / gloss added<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">After main color service</small></span></button>
-        <button class="bonus-btn" data-ms="second_technique" type="button"><span class="bonus-icon">🎨</span><span>+ Second technique<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">e.g. balayage + babylights</small></span></button>
-        <button class="bonus-btn" data-ms="root_plus_highlight" type="button"><span class="bonus-icon">🌿</span><span>+ Root touch-up + highlights<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Two services in one visit</small></span></button>
-        <button class="bonus-btn" data-ms="blowout" type="button"><span class="bonus-icon">💨</span><span>+ Blowout / style included<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Full service finish</small></span></button>
+      <label>Was a second technique used? <small style="font-weight:400;color:rgba(255,255,255,0.5)">(e.g. balayage, root smudge, baby lights)</small></label>
+      <div class="pill-group" id="multiServiceGroup">
+        <button class="pill" data-ms="second_technique" type="button">Yes — second technique</button>
+        <button class="pill selected" data-ms="none" type="button">No</button>
       </div>
       <p class="helper" style="margin-top:6px">Multiple color techniques in one visit take significantly more time and skill — tip should reflect the total service.</p>
     </div>
@@ -963,10 +967,10 @@ if (selectedColorService === 'allover') _s2 += 0.02;
 if (selectedColorService === 'partial_medium') _s2 += 0.01;
 if (selectedColorService === 'partial_light') _s2 += 0.005;
 if (selectedColorService === 'toner') _s2 -= 0.02;
-if (selectedMultiServices.has('second_technique')) _s2 += 0.03;
-if (selectedMultiServices.has('root_plus_highlight')) _s2 += 0.02;
-if (selectedMultiServices.has('toner_addon')) _s2 += 0.01;
-if (selectedMultiServices.has('blowout')) _s2 += 0.01;
+if (selectedMultiServices.has('second_technique')) _s2 += 0.025;
+
+
+
 if (selectedColorTime >= 3) _s2 += 0.02;
 if (selectedColorTime >= 4) _s2 += 0.02;
 const isCorrectionService = selectedColorService === 'correction';
@@ -1063,15 +1067,15 @@ const _starLabelsAdj = {1:'-1 star (Very disappointed) — minimum applied',2:'-
 if (selectedStars > 0) _adjItems.push(_starLabelsAdj[selectedStars] || ('·'+selectedStars+' stars'));
 const _svcLabels = {correction:'+Color correction — +5%',fashion:'+Fashion/vivid color — +3%',balayage:'+Balayage — +2.5%',full:'+Full highlights — +2%',babylights:'+Babylights — +2.5%',rootmelt:'+Root melt — +1%',allover:'+All-over color — +2%',partial_medium:'+Partial highlights — +1%',partial_light:'+Light touch-up — +0.5%',toner:'·Toner only — lower base'};
 if (_svcLabels[selectedColorService]) _adjItems.push(_svcLabels[selectedColorService]);
-if (selectedMultiServices.has('second_technique')) _adjItems.push('+Second technique added — +3%');
-if (selectedMultiServices.has('root_plus_highlight')) _adjItems.push('+Root color + highlights — +2%');
-if (selectedColorTime >= 3) _adjItems.push('+3+ hours in chair — +2%');
-if (selectedColorTime >= 4) _adjItems.push('+4+ hours in chair — additional +2%');
-if (typeof selectedClient !== "undefined" && selectedClient === "regular") _adjItems.push('+Regular client — loyalty bonus +1.5%');
-if (selectedBonuses["holiday"]!==undefined) _adjItems.push("+Holiday bonus (flat cash, shown separately)");
-if (selectedBonuses["outstanding"]!==undefined) _adjItems.push("+Truly Outstanding result (+20% bonus)");
-if (selectedBonuses["yearend"]==="YEAREND") _adjItems.push("+Year-end bonus — $"+Math.round(price||0)+" cash gift");
-if (selectedBonuses["squeeze"]!==undefined) _adjItems.push("+Squeezed me in — +3%");
+if (selectedMultiServices.has('second_technique')) _adjItems.push ('+Second technique added — +3%');
+
+if (selectedColorTime >= 3) _adjItems.push ('+3+ hours in chair — +2%');
+if (selectedColorTime >= 4) _adjItems.push ('+4+ hours in chair — additional +2%');
+if (typeof selectedClient !== "undefined" && selectedClient === "regular") _adjItems.push ('+Returning client — +1.5%');
+if (selectedBonuses["holiday"]!==undefined) _adjItems.push ("+Holiday bonus (flat cash, shown separately)");
+if (selectedBonuses["outstanding"]!==undefined) _adjItems.push ("+Truly Outstanding result (+20% bonus)");
+if (selectedBonuses["yearend"]==="YEAREND") _adjItems.push ("+Year-end bonus — $"+Math.round(price||0)+" cash gift");
+if (selectedBonuses["squeeze"]!==undefined) _adjItems.push ("+Squeezed me in — +3%");
 const insight = document.getElementById("insightBox");
 insight.textContent = "";
 const strong = document.createElement("strong"); strong.textContent = selectedCity.c + ", " + selectedCity.s + ":";
@@ -1195,10 +1199,10 @@ if (selectedColorService === 'allover') _s2 += 0.02;
 if (selectedColorService === 'partial_medium') _s2 += 0.01;
 if (selectedColorService === 'partial_light') _s2 += 0.005;
 if (selectedColorService === 'toner') _s2 -= 0.02;
-if (selectedMultiServices.has('second_technique')) _s2 += 0.03;
-if (selectedMultiServices.has('root_plus_highlight')) _s2 += 0.02;
-if (selectedMultiServices.has('toner_addon')) _s2 += 0.01;
-if (selectedMultiServices.has('blowout')) _s2 += 0.01;
+if (selectedMultiServices.has('second_technique')) _s2 += 0.025;
+
+
+
 if (selectedColorTime >= 3) _s2 += 0.02;
 if (selectedColorTime >= 4) _s2 += 0.02;
 const isCorrectionService = selectedColorService === 'correction';
@@ -1274,10 +1278,10 @@ const svcNote = 'Calibrated for ' + (svcLabels[selectedColorService]||selectedCo
 const _incomeEffect = _li>=100000?"+"+fmtIncome+" median income — well above average, higher tip norms":_li>=74000?"+"+fmtIncome+" median income — above the national average ($74,580)":_li>=60000?"·"+fmtIncome+" median income — near the national average ($74,580)":"-"+fmtIncome+" median income — below the national average, lower base rate";
 const _adjItems = [];
 _adjItems.push(_incomeEffect);
-if (selectedBonuses["holiday"]!==undefined) _adjItems.push("+Holiday bonus (flat cash, shown separately)");
-if (selectedBonuses["outstanding"]!==undefined) _adjItems.push("+Truly Outstanding result (+20% bonus)");
-if (selectedBonuses["yearend"]==="YEAREND") _adjItems.push("+Year-end bonus — $"+Math.round(price||0)+" cash gift");
-if (selectedStars<=2) _adjItems.push("-Low satisfaction — minimum applied");
+if (selectedBonuses["holiday"]!==undefined) _adjItems.push ("+Holiday bonus (flat cash, shown separately)");
+if (selectedBonuses["outstanding"]!==undefined) _adjItems.push ("+Truly Outstanding result (+20% bonus)");
+if (selectedBonuses["yearend"]==="YEAREND") _adjItems.push ("+Year-end bonus — $"+Math.round(price||0)+" cash gift");
+if (selectedStars<=2) _adjItems.push ("-Low satisfaction — minimum applied");
 const insight = document.getElementById("insightBox");
 insight.textContent = "";
 const strong = document.createElement("strong"); strong.textContent = selectedCity.c + ", " + selectedCity.s + ":";
@@ -1386,7 +1390,7 @@ if (el){ el.style.cssText += DARK_STYLES; }
   display: inline-block !important;
   width: auto !important;
   background: linear-gradient(135deg, #6B7280 0%, #9CA3AF 50%, #6B7280 100%) !important;
-  color: rgba(15,15,15,0.9) !important;
+  color: rgba(20,20,20,0.92) !important;
   align-self: center !important;
 }
 .tip-card.acceptable .tip-card-label::before { content: none !important; }
@@ -1414,8 +1418,8 @@ if (el){ el.style.cssText += DARK_STYLES; }
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  background: var(--bg, #1E1E22) !important;
-  border: 1.5px solid var(--rule, rgba(255,255,255,0.12)) !important;
+  background: rgba(255,255,255,0.08) !important;
+  border: 1.5px solid var(--rule, rgba(255,255,255,0.15)) !important;
   border-radius: 7px !important;
   padding: 6px 12px 7px !important;
   margin: 8px auto 6px !important;
@@ -1469,12 +1473,19 @@ if (el){ el.style.cssText += DARK_STYLES; }
   text-align: center !important;
   width: 100% !important;
   display: block !important;
-  padding: 4px 0 0 !important;
+  padding: 6px 16px 16px !important;
   line-height: 1.5 !important;
   background: transparent !important;
   font-family: inherit !important;
 }
 
+
+/* Force correct order: label, amount, total, pct, desc */
+.tip-card.acceptable .tip-card-label   { order: 1 !important; }
+.tip-card.acceptable .tip-card-amount  { order: 2 !important; }
+.tip-card.acceptable .tip-card-total   { order: 3 !important; }
+.tip-card.acceptable .tip-card-pct     { order: 4 !important; }
+.tip-card.acceptable .tip-card-desc    { order: 5 !important; }
 .tip-card.acceptable .most-common-tag { display: none !important; }
 .tip-card-label { white-space: normal !important; word-wrap: break-word !important; overflow-wrap: break-word !important; min-height: auto !important; }
 </style>
