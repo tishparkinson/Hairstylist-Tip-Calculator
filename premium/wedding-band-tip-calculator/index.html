@@ -451,7 +451,7 @@ input[type="number"]{-moz-appearance:textfield}
 <style id="total-value-fix">
 /* Restore correct total-value font for good/better/best cards */
 .tip-card:not(.acceptable) .tip-card-total-value {
-  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif) !important;
+  font-family: 'Syne', sans-serif !important;
   font-size: 21px !important;
   font-weight: 600 !important;
   letter-spacing: 0.02em !important;
@@ -1025,7 +1025,7 @@ document.getElementById('calcBtn').addEventListener('click',calculate);</script>
 
 /* Total value — same as base .tip-card-total-value */
 .tip-card.acceptable .tip-card-total-value {
-  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif) !important;
+  font-family: 'Syne', sans-serif !important;
   font-size: 21px !important;
   font-weight: 600 !important;
   color: var(--ink, #FAFAF8) !important;
@@ -1121,6 +1121,19 @@ document.querySelectorAll('#cityInput, .city-input').forEach(function (inp){
       menu.classList.remove('open');
       setTimeout(function (){ menu.style.display = 'none'; }, 300);
     }
+  });
+})();
+</script>
+<script>
+(function(){
+  var btn = document.getElementById('recalcBtn');
+  if (!btn) return;
+  btn.addEventListener('click', function() {
+    var res = document.getElementById('resultsSection');
+    var form = document.getElementById('formCard');
+    if (res) { res.classList.remove('show'); res.style.display = 'none'; }
+    if (form) { form.style.display = ''; }
+    window.scrollTo({top: 0, behavior: 'smooth'});
   });
 })();
 </script>

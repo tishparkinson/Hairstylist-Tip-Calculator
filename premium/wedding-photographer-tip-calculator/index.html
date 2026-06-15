@@ -451,7 +451,7 @@ input[type="number"]{-moz-appearance:textfield}
 <style id="total-value-fix">
 /* Restore correct total-value font for good/better/best cards */
 .tip-card:not(.acceptable) .tip-card-total-value {
-  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif) !important;
+  font-family: 'Syne', sans-serif !important;
   font-size: 21px !important;
   font-weight: 600 !important;
   letter-spacing: 0.02em !important;
@@ -581,16 +581,7 @@ input[type="number"]{-moz-appearance:textfield}
           <div class="error-msg" id="starError">Please rate your experience.</div>
         </div>
       </div>
-      <div class="field-group">
-        <div class="section-label">Bonus? <span class="optional-label">(optional)</span></div>
-        <div class="field">
-          <label>Tip a little extra for any of these?</label>
-          <div class="bonus-grid" id="bonusGroup">
-            <button class="bonus-btn" data-bonus="0.04" data-key="outstanding" type="button"><span class="bonus-icon">✨</span><span>Truly Outstanding<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Exceeded all expectations</small></span></button>
-            <button class="bonus-btn" data-bonus="0.03" data-key="holiday" type="button"><span class="bonus-icon">🎄</span><span>Holiday / Christmas<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+3% suggested</small></span></button>
-            <button class="bonus-btn" data-bonus="0.03" data-key="squeeze" type="button"><span class="bonus-icon">⏰</span><span>Squeezed Me In<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Last-minute booking</small></span></button>
-          </div>
-        </div>
+      
       </div>
     <button class="calc-btn" id="calcBtn">Calculate My Tip &rarr;</button>
   </div>
@@ -794,7 +785,7 @@ function clamp(val,mn,mx){return Math.max(mn,Math.min(mx,val));}
 function buildCards(price,tipGood,tipBetter,tipBest,tipMin,stars,bonusLabel,perPersonNote){
 tipGood=clamp(tipGood,0,tipBest);
 const fmt=t=>'$'+Math.round(t).toLocaleString();
-const pct=t=>Math.round(t/price*100)+'%';
+const pct=t=>{const p=Math.round(t/price*100);return p<8?'':p+'%';};
 const tot=t=>'$'+(price+Math.round(t)).toLocaleString();
 const grid=document.getElementById('tipGrid');
 grid.innerHTML='';
@@ -837,7 +828,7 @@ if (perPersonNote){
 const pn=document.getElementById('perPersonNote')||document.createElement('div');
 pn.id='perPersonNote';pn.className='insight-box';pn.style.marginTop='10px';
 pn.innerHTML='<strong>📍 '+perPersonNote+'</strong>';
-grid.parentNode.insertBefore(pn,grid.nextSibling);
+grid.parentNode.insertBefore(pn,grid);
 }
 }
 
@@ -1048,7 +1039,7 @@ document.getElementById('calcBtn').addEventListener('click',calculate);</script>
 
 /* Total value — same as base .tip-card-total-value */
 .tip-card.acceptable .tip-card-total-value {
-  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif) !important;
+  font-family: 'Syne', sans-serif !important;
   font-size: 21px !important;
   font-weight: 600 !important;
   color: var(--ink, #FAFAF8) !important;
@@ -1144,6 +1135,19 @@ document.querySelectorAll('#cityInput, .city-input').forEach(function (inp){
       menu.classList.remove('open');
       setTimeout(function (){ menu.style.display = 'none'; }, 300);
     }
+  });
+})();
+</script>
+<script>
+(function(){
+  var btn = document.getElementById('recalcBtn');
+  if (!btn) return;
+  btn.addEventListener('click', function() {
+    var res = document.getElementById('resultsSection');
+    var form = document.getElementById('formCard');
+    if (res) { res.classList.remove('show'); res.style.display = 'none'; }
+    if (form) { form.style.display = ''; }
+    window.scrollTo({top: 0, behavior: 'smooth'});
   });
 })();
 </script>

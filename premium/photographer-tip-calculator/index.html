@@ -461,7 +461,7 @@ p.helper { font-size: 11px !important; color: rgba(255,255,255,0.42) !important;
 <style id="total-value-fix">
 /* Restore correct total-value font for good/better/best cards */
 .tip-card:not(.acceptable) .tip-card-total-value {
-  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif) !important;
+  font-family: 'Syne', sans-serif !important;
   font-size: 21px !important;
   font-weight: 600 !important;
   letter-spacing: 0.02em !important;
@@ -836,7 +836,10 @@ initPills('photoTravelGroup', v => { selectedPhotoTravel = v; });
 
 document.getElementById('calcBtn').addEventListener('click', calculate);
 document.getElementById('recalcBtn').addEventListener('click', () => {
-window.history.back();
+document.getElementById('resultsSection').classList.remove('show');
+  document.getElementById('resultsSection').style.display = 'none';
+  document.getElementById('formCard').style.display = '';
+  window.scrollTo({top: 0, behavior: 'smooth'});
 });
 
 function calculate() {
@@ -920,9 +923,9 @@ grid.parentNode.insertBefore(bar, grid);
 }
 
 const cards = [
-{cls:"good",    label:"Good",    tipAmt:fmt(goodPct),   total:fmtTotal(goodPct),   pct:fmtPct(goodPct),   mostCommon:false,           isAcceptable:false, desc:"A solid tip for quality photography work."},
-{cls:"better",  label:"Better",  tipAmt:fmt(betterPct), total:fmtTotal(betterPct), pct:fmtPct(betterPct), mostCommon:selectedStars>=3, isAcceptable:false, desc:"Great photos deserve genuine appreciation."},
-{cls:"best",    label:"Best",    tipAmt:fmt(bestPct),   total:fmtTotal(bestPct),   pct:fmtPct(bestPct),   mostCommon:false,            isAcceptable:false, desc:"Exceptional results — make their day."},
+{cls:"good",    label:"Good",    tipAmt:fmt(goodPct),   total:fmtTotal(goodPct),   pct:(price>0&&Math.round(price*goodPct)>=150)?'':fmtPct(goodPct),   mostCommon:false,           isAcceptable:false, desc:"A solid tip for quality photography work."},
+{cls:"better",  label:"Better",  tipAmt:fmt(betterPct), total:fmtTotal(betterPct), pct:(price>0&&Math.round(price*betterPct)>=250)?'':fmtPct(betterPct), mostCommon:selectedStars>=3, isAcceptable:false, desc:"Great photos deserve genuine appreciation."},
+{cls:"best",    label:"Best",    tipAmt:fmt(bestPct),   total:fmtTotal(bestPct),   pct:(price>0&&Math.round(price*bestPct)>=400)?'':fmtPct(bestPct),   mostCommon:false,            isAcceptable:false, desc:"Exceptional results — make their day."},
 {cls:"minimum", label:selectedStars<=2?"If Unhappy":"Minimum", tipAmt:fmt(acceptablePct), total:fmtTotal(acceptablePct), pct:fmtPct(acceptablePct), mostCommon:false, isAcceptable:true, desc:"Acknowledges the effort."}
 ];
 
@@ -1117,7 +1120,7 @@ if (el){ el.style.cssText += DARK_STYLES; }
 
 /* Total value — same as base .tip-card-total-value */
 .tip-card.acceptable .tip-card-total-value {
-  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif) !important;
+  font-family: 'Syne', sans-serif !important;
   font-size: 21px !important;
   font-weight: 600 !important;
   color: var(--ink, #FAFAF8) !important;

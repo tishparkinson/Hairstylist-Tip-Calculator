@@ -359,7 +359,7 @@ html, body { overflow-x: hidden }
 <style id="total-value-fix">
 /* Restore correct total-value font for good/better/best cards */
 .tip-card:not(.acceptable) .tip-card-total-value {
-  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif) !important;
+  font-family: 'Syne', sans-serif !important;
   font-size: 21px !important;
   font-weight: 600 !important;
   letter-spacing: 0.02em !important;
@@ -653,7 +653,7 @@ function getBase(li){const r=(li-40000)/(120000-40000);return Math.max(0.10,Math
 function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
 function buildCards(price,tipGood,tipBetter,tipBest,tipMin,stars,bonusLabel,perNote){
 const fmt=t=>'$'+Math.round(t).toLocaleString();
-const pct=t=>Math.round(t/price*100)+'%';
+const pct=t=>{const p=Math.round(t/price*100);return p<8?'':p+'%';};
 const tot=t=>'$'+(price+Math.round(t)).toLocaleString();
 const grid=document.getElementById('tipGrid');
 grid.innerHTML='';
@@ -1054,6 +1054,19 @@ document.querySelectorAll('#cityInput, .city-input').forEach(function(inp){
 </script>
 <script id="hamburger-script">
 (function(){var btn=document.getElementById('navHamburger');var menu=document.getElementById('navMobileMenu');if(!btn||!menu)return;btn.addEventListener('click',function(e){e.stopPropagation();var open=btn.classList.toggle('open');if(open){menu.style.display='block';requestAnimationFrame(function(){menu.classList.add('open')});}else{menu.classList.remove('open');setTimeout(function(){menu.style.display='none';},200);}});document.addEventListener('click',function(e){if(!e.target.closest('.site-nav')){btn.classList.remove('open');menu.classList.remove('open');setTimeout(function(){menu.style.display='none';},200);}});})();
+</script>
+<script>
+(function(){
+  var btn = document.getElementById('recalcBtn');
+  if (!btn) return;
+  btn.addEventListener('click', function() {
+    var res = document.getElementById('resultsSection');
+    var form = document.getElementById('formCard');
+    if (res) { res.classList.remove('show'); res.style.display = 'none'; }
+    if (form) { form.style.display = ''; }
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+})();
 </script>
 </body>
 </html>

@@ -454,7 +454,7 @@ input[type="number"]{-moz-appearance:textfield}
 <style id="total-value-fix">
 /* Restore correct total-value font for good/better/best cards */
 .tip-card:not(.acceptable) .tip-card-total-value {
-  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif) !important;
+  font-family: 'Syne', sans-serif !important;
   font-size: 21px !important;
   font-weight: 600 !important;
   letter-spacing: 0.02em !important;
@@ -566,16 +566,7 @@ input[type="number"]{-moz-appearance:textfield}
           </div>
           <div class="error-msg" id="starError">Please rate your experience.</div>
         </div>
-      </div>      <div class="field-group">
-        <div class="section-label">Bonus? <span class="optional-label">(optional)</span></div>
-        <div class="field">
-          <label>Tip a little extra for any of these?</label>
-          <div class="bonus-grid" id="bonusGroup">
-            <button class="bonus-btn" data-bonus="HOLIDAY" data-key="holiday" type="button"><span class="bonus-icon">🎄</span><span>Holiday / Christmas<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+5% suggested</small></span></button>
-            <button class="bonus-btn" data-bonus="0.05" data-key="outstanding" type="button"><span class="bonus-icon">✨</span><span>Truly Outstanding<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">Flawless service all night</small></span></button>
-            <button class="bonus-btn" data-bonus="0.05" data-key="yearend" type="button"><span class="bonus-icon">🎁</span><span>Year-End Appreciation<br><small style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">December / year-end</small></span></button>
-          </div>
-        </div>
+      </div>      
       </div>
     <button class="calc-btn" id="calcBtn">Calculate My Tip &rarr;</button>
   </div>
@@ -1053,7 +1044,7 @@ if (recalcBtn){recalcBtn.addEventListener('click',()=>{
 
 /* Total value — same as base .tip-card-total-value */
 .tip-card.acceptable .tip-card-total-value {
-  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif) !important;
+  font-family: 'Syne', sans-serif !important;
   font-size: 21px !important;
   font-weight: 600 !important;
   color: var(--ink, #FAFAF8) !important;
@@ -1149,6 +1140,19 @@ document.querySelectorAll('#cityInput, .city-input').forEach(function (inp){
       menu.classList.remove('open');
       setTimeout(function (){ menu.style.display = 'none'; }, 300);
     }
+  });
+})();
+</script>
+<script>
+(function(){
+  var btn = document.getElementById('recalcBtn');
+  if (!btn) return;
+  btn.addEventListener('click', function() {
+    var res = document.getElementById('resultsSection');
+    var form = document.getElementById('formCard');
+    if (res) { res.classList.remove('show'); res.style.display = 'none'; }
+    if (form) { form.style.display = ''; }
+    window.scrollTo({top: 0, behavior: 'smooth'});
   });
 })();
 </script>
