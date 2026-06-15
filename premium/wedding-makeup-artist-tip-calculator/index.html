@@ -737,9 +737,7 @@ initPills('airGroup',v=>selectedAir=v);
 initPills('kitGroup',v=>selectedKit=v);
 initPills('travelGroup',v=>selectedTravel=v);
 initPills('hoursGroup',v=>selectedHours=v);
-(document.getElementById('bonusGroup')||{querySelectorAll:()=>[]}).querySelectorAll('.bonus-btn').forEach(btn=>{
-btn.addEventListener('click',()=>{btn.classList.toggle('active');if(btn.classList.contains('active'))selectedBonuses[btn.dataset.key]=parseFloat(btn.dataset.bonus);else delete selectedBonuses[btn.dataset.key];});
-});
+// bonusGroup listener removed
 function calculate(){
 let valid=true;
 if(!selectedCity){document.getElementById('cityError').classList.add('show');cityInput.classList.add('error');valid=false;}

@@ -491,16 +491,7 @@ p.helper { font-size: 11px !important; color: rgba(255,255,255,0.42) !important;
       </div>
       <div class="error-msg" id="starError">Please rate your experience.</div>
     </div>
-    <div class="section-label">Special Occasion? <span class="optional-label">(optional)</span></div>
-    <div class="field">
-      <div class="bonus-grid" id="bonusGroup">
-        
-        <button class="bonus-btn" data-bonus="0.05" data-key="outstanding" type="button"><span class="bonus-icon">✨</span><span>Truly Outstanding<br><small class="bonus-sub" style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.55)">+5% suggested</small></span></button>
-        
-      </div>
-      <p class="bonus-note" id="bonusNote" style="display:none"></p>
-    </div>
-        <button class="calc-btn" id="calcBtn">Calculate My Tip →</button>
+            <button class="calc-btn" id="calcBtn">Calculate My Tip →</button>
   </div>
 
   
@@ -752,30 +743,7 @@ lbl.textContent = price >= 1 ? '+ $' + Math.round(price) + ' cash bonus' : '= 1 
 }
 }
 document.getElementById('priceInput').addEventListener('input', updateYearendLabel);
-document.getElementById('bonusGroup').querySelectorAll('.bonus-btn').forEach(btn => {
-btn.addEventListener('click', () => {
-const key = btn.dataset.key;
-if (selectedBonuses[key] !== undefined) {
-delete selectedBonuses[key];
-btn.classList.remove('active');
-} else {
-if (key === 'yearend') {
-selectedBonuses[key] = 'YEAREND';
-} else {
-selectedBonuses[key] = parseFloat(btn.dataset.bonus);
-}
-btn.classList.add('active');
-}
-const keys = Object.keys(selectedBonuses);
-const note = document.getElementById('bonusNote');
-if (keys.length) {
-note.textContent = keys.map(k => bonusLabels[k]).join(' · ');
-note.style.display = '';
-} else {
-note.style.display = 'none';
-}
-});
-});
+// bonusGroup removed
 const _eventTypeGroup = document.getElementById('eventTypeGroup');
 if (_eventTypeGroup) _eventTypeGroup.querySelectorAll('.pill').forEach(btn => {
 btn.addEventListener('click', () => {

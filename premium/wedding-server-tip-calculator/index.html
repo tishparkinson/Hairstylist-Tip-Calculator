@@ -869,13 +869,7 @@ initPills('setupGroup', v => selectedSetup=v);
 initPills('guestGroup', v => selectedGuests=v);
 initPills('gratGroup', v => selectedGrat=v);
 
-(document.getElementById('bonusGroup')||{querySelectorAll:()=>[]}).querySelectorAll('.bonus-btn').forEach(btn=>{
-btn.addEventListener('click',()=>{
-btn.classList.toggle('active');
-if (btn.classList.contains('active')) selectedBonuses[btn.dataset.key]=parseFloat(btn.dataset.bonus);
-else delete selectedBonuses[btn.dataset.key];
-});
-});
+// bonusGroup listener removed
 
 function calculate(){
 let valid=true;
