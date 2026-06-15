@@ -432,7 +432,7 @@ input[type="number"]{-moz-appearance:textfield}
 }
 </style>
 <style id="main-width-fix">
-.main { max-width: 600px !important; margin: 0 auto !important; }
+.main, .main-wrap { max-width: 600px !important; margin-left: auto !important; margin-right: auto !important; }
 </style>
 </head>
 <body>
@@ -654,75 +654,37 @@ input[type="number"]{-moz-appearance:textfield}
     </div>
   </div>
 </footer>
-<script>let selectedCity  = null;
-let selectedStars = 0;
-let selectedTravel = 'local';
-let selectedBonuses = {};
+<script>const cityInput = document.getElementById('cityInput');
+const acList    = document.getElementById('autocompleteList');
+let acActiveIdx = -1;
 
-const US_MEDIAN_INCOME = 74580;
-const bonusLabels = { outstanding: 'Truly Outstanding bonus included' };
-const starLabels = ['','Very disappointed','Below expectations','Satisfied','Really happy','Outstanding!'];
-
-const citiesData = [{"c":"New York","s":"NY","f":"36081"},{"c":"Los Angeles","s":"CA","f":"06037"},{"c":"Chicago","s":"IL","f":"17031"},{"c":"Houston","s":"TX","f":"48201"},{"c":"Phoenix","s":"AZ","f":"04013"},{"c":"Philadelphia","s":"PA","f":"42101"},{"c":"San Antonio","s":"TX","f":"48029"},{"c":"San Diego","s":"CA","f":"06073"},{"c":"Dallas","s":"TX","f":"48113"},{"c":"San Jose","s":"CA","f":"06085"},{"c":"Austin","s":"TX","f":"48453"},{"c":"Jacksonville","s":"FL","f":"12031"},{"c":"Fort Worth","s":"TX","f":"48439"},{"c":"Columbus","s":"OH","f":"39049"},{"c":"Charlotte","s":"NC","f":"37119"},{"c":"Indianapolis","s":"IN","f":"18097"},{"c":"San Francisco","s":"CA","f":"06075"},{"c":"Seattle","s":"WA","f":"53033"},{"c":"Denver","s":"CO","f":"08031"},{"c":"Nashville","s":"TN","f":"47037"}];
 let citiesData = [];
 let _cd;
 let countiesData = {};
 let dataReady = false;
 (async() => {
 try {
-// Use sessionStorage to avoid re-fetching on every premium page load
 const cachedCities = sessionStorage.getItem('gt_cities');
 const cachedCounties = sessionStorage.getItem('gt_counties');
 if (cachedCities && cachedCounties) {
 citiesData = JSON.parse(cachedCities);
 _cd = JSON.parse(cachedCounties);
 } else {
-const base = '/';
 const [cr, kr] = await Promise.all([
-fetch(base + 'cities.json'),
-fetch(base + 'counties.json')
+fetch('/cities.json'),
+fetch('/counties.json')
 ]);
 if (cr.ok && kr.ok) {
 const [fullCities, fullCounties] = await Promise.all([cr.json(), kr.json()]);
 citiesData = fullCities;
 _cd = fullCounties;
-try {
 sessionStorage.setItem('gt_cities', JSON.stringify(fullCities));
 sessionStorage.setItem('gt_counties', JSON.stringify(fullCounties));
-} catch (e) { /* storage quota exceeded, that's fine */ }
-} else {
 }
 }
-} catch (e) {
-}
+} catch(e) {}
 dataReady = true;
-if (document.getElementById('cityInput') && document.getElementById('cityInput').value.length >= 2) {
-document.getElementById('cityInput').dispatchEvent(new Event('input'));
-}
 })();
-
-let 
-async function loadData() {
-try {
-const cachedCities = sessionStorage.getItem('gt_cities');
-const cachedCounties = sessionStorage.getItem('gt_counties');
-if (cachedCities && cachedCounties) {
-window._cities = JSON.parse(cachedCities);
-countiesData = JSON.parse(cachedCounties);
-} else {
-const [cr, cc] = await Promise.all([
-fetch('/cities.json').then(r => r.json()),
-fetch('/counties.json').then(r => r.json())
-]);
-window._cities = cr; countiesData = cc;
-try {
-sessionStorage.setItem('gt_cities', JSON.stringify(cr));
-sessionStorage.setItem('gt_counties', JSON.stringify(cc));
-} catch (e) {}
-}
-} catch (e) { window._cities = []; countiesData = {}; }
-}
-loadData();
 
 let selectedCity=null;
 
