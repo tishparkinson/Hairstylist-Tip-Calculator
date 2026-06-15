@@ -343,6 +343,11 @@ html, body { overflow-x: hidden }
 .nav-mobile-menu a:hover,.nav-mobile-menu a:active{color:#fff;background:rgba(255,255,255,0.05)}
 @media(max-width:640px){.nav-hamburger{display:flex!important}.site-nav-links{display:none!important}.site-nav{position:relative!important;z-index:1000!important}}
 </style>
+<style id="input-prefix-fix">
+.input-wrap { position: relative !important; display: flex !important; align-items: center !important; }
+.input-wrap .input-prefix { position: absolute !important; left: 14px !important; top: 50% !important; transform: translateY(-50%) !important; color: var(--ink-3, rgba(255,255,255,0.45)) !important; font-size: 15px !important; font-weight: 500 !important; pointer-events: none !important; z-index: 1 !important; }
+.input-wrap input { padding-left: 28px !important; }
+</style>
 </head>
 <body>
 <nav class="site-nav">
@@ -533,7 +538,8 @@ html, body { overflow-x: hidden }
     </div>
   </div>
 </footer>
-<script>let citiesData = [];
+<script>const US_MEDIAN_INCOME = 74580;
+let citiesData = [];
 let _cd;
 let countiesData = {};
 let dataReady = false;

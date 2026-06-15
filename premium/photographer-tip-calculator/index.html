@@ -441,6 +441,11 @@ input[type="number"]{-moz-appearance:textfield}
 <style id="main-width-fix">
 .main { max-width: 600px !important; margin: 0 auto !important; }
 </style>
+<style id="input-prefix-fix">
+.input-wrap { position: relative !important; display: flex !important; align-items: center !important; }
+.input-wrap .input-prefix { position: absolute !important; left: 14px !important; top: 50% !important; transform: translateY(-50%) !important; color: var(--ink-3, rgba(255,255,255,0.45)) !important; font-size: 15px !important; font-weight: 500 !important; pointer-events: none !important; z-index: 1 !important; }
+.input-wrap input { padding-left: 28px !important; }
+</style>
 </head>
 <body>
 
