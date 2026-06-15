@@ -600,6 +600,9 @@ input[type="number"]{-moz-appearance:textfield}
   .tip-card{min-width:0!important}
 }
 </style>
+<style id="main-width-fix">
+.main { max-width: 600px !important; margin: 0 auto !important; }
+</style>
 </head>
 <body>
 
@@ -1295,7 +1298,8 @@ const activeKeys = Object.keys(selectedBonuses);
 const bonusIconString = activeKeys.map(k => bonusIcons[k]).join('');
 const pctDollar = _p4 > 0 ? '+$' + Math.round(price * _p4) : '';
 const yearDollar = yearendFlat > 0 ? '+$' + Math.round(yearendFlat) + ' cash' : '';
-const bonusDollar = [pctDollar, yearDollar].filter(Boolean).join(' · ') || '';
+const holDollar = holidayFlat > 0 ? '+$' + holidayFlat + ' holiday gift' : '';
+const bonusDollar = [pctDollar, yearDollar, holDollar].filter(Boolean).join(' · ') || '';
 if (activeKeys.length) {
 const bar = document.createElement('div');
 bar.className = 'bonus-bar';

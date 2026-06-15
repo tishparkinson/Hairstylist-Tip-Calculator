@@ -954,15 +954,15 @@ _adjItems.push(_starEffects[selectedStars] || ('·' + selectedStars + ' stars'))
 }
 if (_li > 90000) _adjItems.push ('+High cost-of-living city');
 if (selectedVenue === 'luxury') _adjItems.push ('+Upscale venue — higher base');
-if (selectedVenue === 'restaurant') _adjItems.push ('·Restaurant valet — standard rate');
+if (selectedVenue === 'restaurant') // removed neutral: _adjItems.push ('·Restaurant valet — standard rate');
 if (selectedVenue === 'hotel') _adjItems.push ('+Hotel valet');
 if (selectedVenue === 'hospital') _adjItems.push ('-Hospital — lower standard expected');
 if (selectedWait === 'fast') _adjItems.push ('+Fast retrieval — +10%');
-if (selectedWait === 'normal') _adjItems.push ('·Normal wait time — standard rate');
+if (selectedWait === 'normal') // removed neutral: _adjItems.push ('·Normal wait time — standard rate');
 if (selectedWait === 'slow') _adjItems.push ('-Slow retrieval — -15%');
 if (selectedWait === 'very_slow') _adjItems.push ('-Very long wait — -30%');
 if (selectedValetQual === 'great') _adjItems.push ('+Excellent service — +15%');
-if (selectedValetQual === 'good') _adjItems.push ('·Good service — standard range');
+if (selectedValetQual === 'good') // removed neutral: _adjItems.push ('·Good service — standard range');
 if (selectedValetQual === 'poor') _adjItems.push ('-Poor service — reduced');
 if (selectedValetWhen === 'both') _adjItems.push ('+Tipping both drop-off and pick-up — doubled');
 const insight = document.getElementById('insightBox');

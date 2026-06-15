@@ -624,9 +624,9 @@ let selectedLength = 'full';
 let selectedStars = 0;
 
 // ── Guide type ──
-document.getElementById('typeGroup').document.getElementById('typeGroup').querySelectorAll('.pill').forEach(btn => {
+document.getElementById('typeGroup').querySelectorAll('.pill').forEach(btn => {
   btn.addEventListener('click', function () {
-    document.document.getElementById('typeGroup').querySelectorAll('.pill').forEach(b => b.classList.remove('selected'));
+    document.getElementById('typeGroup').querySelectorAll('.pill').forEach(b => b.classList.remove('selected'));
     this.classList.add('selected');
     selectedType = this.dataset.val;
   });

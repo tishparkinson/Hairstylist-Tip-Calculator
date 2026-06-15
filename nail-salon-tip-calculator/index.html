@@ -984,7 +984,8 @@ const activeKeys = Object.keys(selectedBonuses);
 const bonusIconString = activeKeys.map(k => bonusIcons[k]).join('');
 const pctDollar = _p4 > 0 ? '+$' + Math.round(price * _p4) : '';
 const yearDollar = yearendFlat > 0 ? '+$' + Math.round(yearendFlat) + ' cash' : '';
-const bonusDollar = [pctDollar, yearDollar].filter(Boolean).join(' · ') || '';
+const holDollar = holidayFlat > 0 ? '+$' + holidayFlat + ' holiday gift' : '';
+const bonusDollar = [pctDollar, yearDollar, holDollar].filter(Boolean).join(' · ') || '';
 if (activeKeys.length) {
 const bar = document.createElement('div'); bar.className = 'bonus-bar';
 const iconsSpan = document.createElement('span'); iconsSpan.className = 'bonus-bar-icons'; iconsSpan.textContent = bonusIconString;

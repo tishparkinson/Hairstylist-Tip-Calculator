@@ -435,6 +435,9 @@ input[type="number"]{-moz-appearance:textfield}
   .tip-card{min-width:0!important}
 }
 </style>
+<style id="main-width-fix">
+.main { max-width: 600px !important; margin: 0 auto !important; }
+</style>
 </head>
 <body>
 
@@ -883,11 +886,12 @@ btn.classList.add('selected'); selectedColorService = btn.dataset.val;
 });
 });
 const _msGrp = document.getElementById('multiServiceGroup');
-if (_msGrp) _msGrp.querySelectorAll('.bonus-btn').forEach(btn => {
+if (_msGrp) _msGrp.querySelectorAll('.pill').forEach(btn => {
 btn.addEventListener('click', () => {
-const k = btn.dataset.ms;
-if (selectedMultiServices.has(k)) { selectedMultiServices.delete(k); btn.classList.remove('active'); }
-else { selectedMultiServices.add(k); btn.classList.add('active'); }
+_msGrp.querySelectorAll('.pill').forEach(b => b.classList.remove('selected'));
+btn.classList.add('selected');
+selectedMultiServices.clear();
+if (btn.dataset.ms !== 'none') selectedMultiServices.add(btn.dataset.ms);
 });
 });
 document.getElementById('colorServiceGroup').querySelectorAll('.pill').forEach(btn => {

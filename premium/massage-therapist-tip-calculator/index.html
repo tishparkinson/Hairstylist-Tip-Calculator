@@ -441,6 +441,9 @@ input[type="number"]{-moz-appearance:textfield}
   .tip-card{min-width:0!important}
 }
 </style>
+<style id="main-width-fix">
+.main { max-width: 600px !important; margin: 0 auto !important; }
+</style>
 </head>
 <body>
 
@@ -520,13 +523,13 @@ input[type="number"]{-moz-appearance:textfield}
         <button class="pill" data-val="sports">Sports Massage</button>
         <button class="pill" data-val="prenatal">Prenatal</button>
         <button class="pill" data-val="hot_stone">Hot Stone</button>
-        <button class="pill" data-val="medical">Medical / Therapeutic</button>
         <button class="pill" data-val="other">Other</button>
       </div>
     </div>
     
     <div class="section-label">Setting <span class="optional-label">(optional)</span></div>
     <div class="field">
+      <p class="helper" style="margin-bottom:8px;color:rgba(255,200,50,0.8);font-size:12px;">⚕️ Tips are generally not expected at medical clinics, hospitals, or physical therapy offices. This calculator is for spa/wellness settings.</p>
       <label>Where did you receive your massage?</label>
       <div class="pill-group" id="settingGroup">
         <button class="pill selected" data-val="spa">Spa or Salon</button>
@@ -1094,7 +1097,8 @@ const activeKeys = Object.keys(selectedBonuses);
 const bonusIconString = activeKeys.map(k => bonusIcons[k]).join('');
 const pctDollar = _p4 > 0 ? '+$' + Math.round(price * _p4) : '';
 const yearDollar = yearendFlat > 0 ? '+$' + Math.round(yearendFlat) + ' cash' : '';
-const bonusDollar = [pctDollar, yearDollar].filter(Boolean).join(' · ') || '';
+const holDollar = holidayFlat > 0 ? '+$' + holidayFlat + ' holiday gift' : '';
+const bonusDollar = [pctDollar, yearDollar, holDollar].filter(Boolean).join(' · ') || '';
 if (activeKeys.length) {
 const bar = document.createElement('div'); bar.className = 'bonus-bar';
 const iconsSpan = document.createElement('span'); iconsSpan.className = 'bonus-bar-icons'; iconsSpan.textContent = bonusIconString;
@@ -1104,10 +1108,10 @@ bar.appendChild(iconsSpan); bar.appendChild(textSpan); bar.appendChild(amtSpan);
 grid.parentNode.insertBefore(bar, grid);
 }
 const cards = [
-{ cls:'good', label:'Good', tipAmt:fmt(_g7), total:fmtTotal(_g7), pct:fmtPct(_g7), mostCommon:false, isAcceptable:false, desc:'A solid tip for a quality session.' },
-{ cls:'better', label:'Better', tipAmt:fmt(_bt8), total:fmtTotal(_bt8), pct:fmtPct(_bt8), mostCommon:selectedStars>=3, isAcceptable:false, desc:'The local sweet spot. Shows real appreciation for skilled work.' },
-{ cls:'best', label:'Best', tipAmt:fmt(_bs9), total:fmtTotal(_bs9), pct:fmtPct(_bs9), mostCommon:false, isAcceptable:false, desc:selectedStars===5?'Exceptional session — make their day._loved':'Exceptional session — make their day.' },
-{ cls:'minimum', label:selectedStars<=2?'If Unhappy':'Minimum', tipAmt:fmt(_ac6), total:fmtTotal(_ac6), pct:fmtPct(_ac6), mostCommon:false, isAcceptable:true, desc:selectedStars<=2?'Not thrilled, but they invested real time and skill.':'Disappointed — still acknowledges the effort.' }
+{ cls:'good', label:'Good', tipAmt:fmt(_g7), total:'', pct:fmtPct(_g7), mostCommon:false, isAcceptable:false, desc:'A solid tip for a quality session.' },
+{ cls:'better', label:'Better', tipAmt:fmt(_bt8), total:'', pct:fmtPct(_bt8), mostCommon:selectedStars>=3, isAcceptable:false, desc:'The local sweet spot. Shows real appreciation for skilled work.' },
+{ cls:'best', label:'Best', tipAmt:fmt(_bs9), total:'', pct:fmtPct(_bs9), mostCommon:false, isAcceptable:false, desc:selectedStars===5?'Exceptional session — make their day._loved':'Exceptional session — make their day.' },
+{ cls:'minimum', label:selectedStars<=2?'If Unhappy':'Minimum', tipAmt:fmt(_ac6), total:'', pct:fmtPct(_ac6), mostCommon:false, isAcceptable:true, desc:selectedStars<=2?'Not thrilled, but they invested real time and skill.':'Disappointed — still acknowledges the effort.' }
 ];
 cards.forEach(card => {
 const div = document.createElement('div');

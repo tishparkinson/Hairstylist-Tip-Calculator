@@ -929,10 +929,10 @@ perNight = Math.max(1, perNight);
 const totalBase = perNight * selectedNights;
 const isAirbnb = ['airbnb','cabin'].includes(selectedProp);
 const flatCards = isAirbnb ? [
-{cls:'good', label:'Good (Optional)', tipAmt:totalBase * 0.8, desc:'Tipping is optional at Airbnbs but appreciated for exceptional cleanliness.', isAcceptable:false},
+{cls:'good', label:'Good (Optional)', tipAmt:totalBase * 0.8, desc:'Tipping is optional at ' + selectedProp.charAt(0).toUpperCase() + selectedProp.slice(1) + 's but appreciated for exceptional cleanliness.', isAcceptable:false},
 {cls:'better', label:"Better", tipAmt:totalBase, desc:'A thoughtful gesture for a well-prepared property.', isAcceptable:false},
 {cls:'best', label:'Best', tipAmt:totalBase*1.3, desc:'For outstanding cleanliness and preparation.', isAcceptable:false},
-{cls:'minimum', label:'Minimum', tipAmt:0, desc:"Tipping isn't standard at Airbnbs — it's a personal choice.", isAcceptable:true},
+{cls:'minimum', label:'Minimum', tipAmt:0, desc:"Tipping isn't standard at " + selectedProp.charAt(0).toUpperCase() + selectedProp.slice(1) + "s — it's a personal choice.", isAcceptable:true},
 ] : [
 {cls:'good', label:'Good', tipAmt:perNight, desc:'Per night — the widely accepted US norm.', isAcceptable:false},
 {cls:'better', label:"Better", tipAmt:perNight * 1.4, desc:'Above standard — appreciated for quality service.', isAcceptable:false},

@@ -813,7 +813,7 @@ function calculate() {
   if (hasWheelchair) _adjItems.push ('+Wheelchair assistance — flat amount added on top of bag tip (+$' + wcFlat + ')');
   if (hasHeavy) _adjItems.push ('+Heavy/oversized luggage — extra effort (+25%)');
   if (hasRush) _adjItems.push ('+Rush/expedited service — time pressure premium (+20%)');
-  if (hasBagdrop && !hasWheelchair && !hasHeavy && !hasRush) _adjItems.push ('·Curbside bag check — standard service (baseline)');
+  if (hasBagdrop && !hasWheelchair && !hasHeavy && !hasRush) // curbside is baseline - does not change tip, removed from adjItems
   if (selectedStars > 0) {
     const starEffects = {1:'-1 star — well below standard, minimum floor applied(-40%)',2:'-2 stars — below expectations, suggestions reduced(-20%)',3:'·3 stars — satisfactory, standard suggestions(neutral)',4:'+4 stars — great service, generous range shown(+20%)',5:'+5 stars — outstanding, top range suggested(+40%)'};
     _adjItems.push(starEffects[selectedStars]);
