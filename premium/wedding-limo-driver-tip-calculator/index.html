@@ -729,7 +729,7 @@ initPills('tripsGroup',v=>selectedTrips=v);
 initPills('gratGroup',v=>selectedGrat=v);
 initPills('timeGroup',v=>selectedTime=v);
 initPills('helpGroup',v=>selectedHelp=v);
-document.getElementById('bonusGroup').querySelectorAll('.bonus-btn').forEach(btn=>{
+(document.getElementById('bonusGroup')||{querySelectorAll:()=>[]}).querySelectorAll('.bonus-btn').forEach(btn=>{
 btn.addEventListener('click',()=>{btn.classList.toggle('active');if(btn.classList.contains('active'))selectedBonuses[btn.dataset.key]=parseFloat(btn.dataset.bonus);else delete selectedBonuses[btn.dataset.key];});
 });
 function calculate(){

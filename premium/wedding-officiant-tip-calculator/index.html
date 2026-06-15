@@ -731,7 +731,7 @@ initPills('rehearsalGroup',v=>selectedRehearsal=v);
 initPills('meetingsGroup',v=>selectedMeetings=v);
 initPills('lengthGroup',v=>selectedLength=v);
 initPills('travelGroup',v=>selectedTravel=v);
-document.getElementById('bonusGroup').querySelectorAll('.bonus-btn').forEach(btn=>{
+(document.getElementById('bonusGroup')||{querySelectorAll:()=>[]}).querySelectorAll('.bonus-btn').forEach(btn=>{
 btn.addEventListener('click',()=>{btn.classList.toggle('active');if(btn.classList.contains('active'))selectedBonuses[btn.dataset.key]=parseFloat(btn.dataset.bonus);else delete selectedBonuses[btn.dataset.key];});
 });
 function calculate(){

@@ -871,16 +871,11 @@ let selectedBonuses={};
 
 initPills('hoursGroup', v => selectedHours=v);
 initPills('secondGroup', v => selectedSecond=v);
-initPills('engageGroup', v => selectedEngage=v);
+// engageGroup removed
 initPills('travelGroup', v => selectedTravel=v);
-initPills('turnGroup', v => selectedTurn=v);
+// turnGroup removed
 
-document.getElementById('bonusGroup').querySelectorAll('.bonus-btn').forEach(btn=>{
-btn.addEventListener('click',()=>{
-btn.classList.toggle('active');
-if (btn.classList.contains('active')) selectedBonuses[btn.dataset.key]=parseFloat(btn.dataset.bonus);
-else delete selectedBonuses[btn.dataset.key];
-});
+// bonusGroup removed
 });
 
 function calculate(){

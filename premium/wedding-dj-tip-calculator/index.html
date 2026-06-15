@@ -902,7 +902,7 @@ initPills('playlistGroup', v=>selectedPlaylist=v);
 initPills('gratGroup', v=>selectedGrat=v);
 initPills('travelGroup', v=>selectedTravel=v);
 initPills('danceGroup', v=>selectedDance=v);
-document.getElementById('bonusGroup').querySelectorAll('.bonus-btn').forEach(btn=>{
+(document.getElementById('bonusGroup')||{querySelectorAll:()=>[]}).querySelectorAll('.bonus-btn').forEach(btn=>{
 btn.addEventListener('click',()=>{btn.classList.toggle('active');if (btn.classList.contains('active'))selectedBonuses[btn.dataset.key]=parseFloat(btn.dataset.bonus);else delete selectedBonuses[btn.dataset.key];});
 });
 
