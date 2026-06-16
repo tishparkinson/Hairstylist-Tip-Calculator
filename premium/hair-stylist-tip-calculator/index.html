@@ -834,7 +834,6 @@ p.helper { font-size: 11px !important; color: rgba(255,255,255,0.42) !important;
 </footer>
 
 <script>const _umi = 74580;
-const CITIES_FALLBACK = [{"c":"New York","s":"NY","f":"36081"},{"c":"Los Angeles","s":"CA","f":"06037"},{"c":"Chicago","s":"IL","f":"17031"},{"c":"Houston","s":"TX","f":"48201"},{"c":"Phoenix","s":"AZ","f":"04013"},{"c":"Philadelphia","s":"PA","f":"42101"},{"c":"San Antonio","s":"TX","f":"48029"},{"c":"San Diego","s":"CA","f":"06073"},{"c":"Dallas","s":"TX","f":"48113"},{"c":"San Jose","s":"CA","f":"06085"},{"c":"Austin","s":"TX","f":"48453"},{"c":"Jacksonville","s":"FL","f":"12031"},{"c":"Fort Worth","s":"TX","f":"48439"},{"c":"Columbus","s":"OH","f":"39049"},{"c":"Charlotte","s":"NC","f":"37119"},{"c":"Indianapolis","s":"IN","f":"18097"},{"c":"San Francisco","s":"CA","f":"06075"},{"c":"Seattle","s":"WA","f":"53033"},{"c":"Denver","s":"CO","f":"08031"},{"c":"Nashville","s":"TN","f":"47037"}];
 let citiesData = [];
 let _cd;
 let dataReady = false;
@@ -850,10 +849,10 @@ const [fullCities, fullCounties] = await Promise.all([cr.json(), kr.json()]);
 citiesData = fullCities;
 _cd = fullCounties;
 } else {
-citiesData = CITIES_FALLBACK;
+citiesData = citiesData;
 }
 } catch (e) {
-citiesData = CITIES_FALLBACK;
+citiesData = citiesData;
 }
 dataReady = true;
 if (document.getElementById('cityInput') && document.getElementById('cityInput').value.length >= 2) {
@@ -869,6 +868,30 @@ let selectedStars = 0;
 let selectedClient = 'regular';
 let selectedBonuses = {};
 const US_MEDIAN_INCOME = 74580;
+
+(async () => {
+try {
+const cachedCities = sessionStorage.getItem('gt_cities');
+const cachedCounties = sessionStorage.getItem('gt_counties');
+if (cachedCities && cachedCounties) {
+citiesData = JSON.parse(cachedCities);
+_cd = JSON.parse(cachedCounties);
+} else {
+const [cr, kr] = await Promise.all([
+fetch('/cities.json'),
+fetch('/counties.json')
+]);
+if (cr.ok && kr.ok) {
+const [fc, fk] = await Promise.all([cr.json(), kr.json()]);
+citiesData = fc;
+_cd = fk;
+sessionStorage.setItem('gt_cities', JSON.stringify(fc));
+sessionStorage.setItem('gt_counties', JSON.stringify(fk));
+}
+}
+} catch(e) {}
+dataReady = true;
+})();
 const cityInput = document.getElementById('cityInput');
 const acList = document.getElementById('autocompleteList');
 let acActiveIdx = -1;

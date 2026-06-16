@@ -677,7 +677,6 @@ const US_MEDIAN_INCOME = 74580;
 const bonusLabels = { outstanding: 'Truly Outstanding bonus included' };
 const starLabels = ['','Very disappointed','Below expectations','Satisfied','Really happy','Outstanding!'];
 
-const citiesData = [{"c":"New York","s":"NY","f":"36081"},{"c":"Los Angeles","s":"CA","f":"06037"},{"c":"Chicago","s":"IL","f":"17031"},{"c":"Houston","s":"TX","f":"48201"},{"c":"Phoenix","s":"AZ","f":"04013"},{"c":"Philadelphia","s":"PA","f":"42101"},{"c":"San Antonio","s":"TX","f":"48029"},{"c":"San Diego","s":"CA","f":"06073"},{"c":"Dallas","s":"TX","f":"48113"},{"c":"Austin","s":"TX","f":"48453"},{"c":"San Francisco","s":"CA","f":"06075"},{"c":"Seattle","s":"WA","f":"53033"},{"c":"Denver","s":"CO","f":"08031"},{"c":"Nashville","s":"TN","f":"47037"},{"c":"Portland","s":"OR","f":"41051"},{"c":"Las Vegas","s":"NV","f":"32003"},{"c":"Atlanta","s":"GA","f":"13121"},{"c":"Miami","s":"FL","f":"12086"},{"c":"Minneapolis","s":"MN","f":"27053"},{"c":"Boston","s":"MA","f":"25025"}];
 let countiesData = {};
 
 async function loadData() {
@@ -703,6 +702,9 @@ sessionStorage.setItem('gt_counties', JSON.stringify(cc));
 loadData();
 
 
+let citiesData = [];
+let _cd;
+let dataReady = false;
 const cityInput = document.getElementById('cityInput');
 const acList    = document.getElementById('autocompleteList');
 function closeAC(){acList.innerHTML='';acList.style.display='none';}
